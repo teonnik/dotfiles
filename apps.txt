@@ -1,0 +1,60 @@
+# Software
+
+python {
+    anaconda
+    pip
+}  
+
+java 8
+
+eclipse {
+    code coverage
+    maven
+    CDT 
+    PTP 
+}
+
+cpp {
+    llvm 
+    clang 
+    gcc 
+    googletest
+    cmake  
+}
+git {
+    gitignore_boiler_plates (repo)
+}
+
+vim  {
+    vundle 
+    YouCompleteMe 
+    ctrlp 
+    vim-fugitive 
+}
+
+firefox { 
+    DownloadThemAll
+    AddBlock
+}
+OpenMPI 
+
+clion 
+pdftk 
+unrar 
+
+zsh
+oh-my-zsh
+tmux
+
+latex
+texlive-full
+texstudio
+
+sshfs
+
+Dropbox 
+Mendeley  
+vlc 
+Calibre  
+inkscape 
+Skype
