@@ -1,0 +1,5 @@
+Host <short_name>
+    HostName <host_name>
+    User <user_name>
+    Port 22
+    IdentityFile ~/.ssh/id_rsa

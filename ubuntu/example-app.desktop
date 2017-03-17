@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=clipgrab
+Exec=/opt/clipgrab-3.5.6/clipgrab
+Icon=/opt/clipgrab-3.5.6/clipgrab-logo.png
