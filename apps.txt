@@ -25,6 +25,8 @@ git {
     gitignore_boiler_plates (repo)
 }
 
+
+
 vim  {
     vundle 
     YouCompleteMe 
@@ -41,6 +43,12 @@ OpenMPI
 clion 
 pdftk 
 unrar 
+
+gnome-terminal {
+    colourful ls: https://github.com/seebi/dircolors-solarized
+    powerline fonts
+    Anthony25 / gnome-terminal-colors-solarized 
+}
 
 zsh
 oh-my-zsh

@@ -1,8 +1,8 @@
 # If you come from bash you might have to change your $PATH.
-  export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/teodor/.oh-my-zsh
+export ZSH=/home/teodor/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -56,22 +56,19 @@ ZSH_THEME="agnoster"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export DEFAULT_USER=`whoami`
 export PATH="/home/teodor/anaconda3/bin:$PATH"                                  
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"                        
 export CC=/usr/bin/clang-3.8                                                    
 export CXX=/usr/bin/clang++-3.8
-#export GTEST_ROOT=""
-# export MANPATH="/usr/local/man:$MANPATH"
+
+eval `dircolors ~/.dir_colors/dircolors`
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
