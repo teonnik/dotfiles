@@ -9,9 +9,10 @@
 
 - link:
     ~/.dotfiles: ''
-    ~/.tmux.conf: tmux/.tmux.conf
-    ~/.vimrc: vim/.vimrc
-    ~/.zshrc: zsh/.zshrc    
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vim.conf
+    ~/.zshrc: zsh.conf    
+    ~/.gitconfig: git.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
