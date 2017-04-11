@@ -15,6 +15,7 @@
     ~/.vimrc: conf/vim.conf
     ~/.zshrc: conf/zsh.conf    
     ~/.gitconfig: conf/git.conf
+    ~/.config/texstudio/texstudio.ini: conf/texstudio.conf  
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
