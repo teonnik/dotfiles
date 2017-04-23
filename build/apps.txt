@@ -42,6 +42,7 @@ firefox {
 OpenMPI 
 
 clion 
+pycharm
 pdftk 
 unrar 
 
