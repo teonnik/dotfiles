@@ -50,3 +50,14 @@ cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
 ```
 
+## Install tmux
+Plugin manager
+```shell
+git clone https://github.com/tmux-plugins/tpm.git  
+
+```
+
+State capture
+```shell
+git clone https://github.com/tmux-plugins/tmux-resurrect
+```
