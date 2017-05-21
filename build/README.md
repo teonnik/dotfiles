@@ -61,3 +61,5 @@ State capture
 ```shell
 git clone https://github.com/tmux-plugins/tmux-resurrect
 ```
+
+Set options for 'ssh' and 'vim' remote

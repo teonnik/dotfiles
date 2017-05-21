@@ -16,6 +16,7 @@
     ~/.zshrc: conf/zsh.conf    
     ~/.gitconfig: conf/git.conf
     ~/.config/texstudio/texstudio.ini: conf/texstudio.conf  
+    ~/.ssh/config: conf/ssh.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
