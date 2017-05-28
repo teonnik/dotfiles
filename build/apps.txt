@@ -54,7 +54,9 @@ gnome-terminal {
 
 zsh
 oh-my-zsh
-tmux
+tmux {
+    xclip
+}
 
 latex
 texlive-full
