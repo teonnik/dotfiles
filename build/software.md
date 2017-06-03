@@ -1,47 +1,39 @@
 python 
   - anaconda
   - pip
+  - pycharm
   
 java
-  -eclipse 
-    - code coverage
-    - maven
-    - CDT 
-    - PTP
+  - eclipse 
+  - code coverage
+  - maven
+  - CDT 
+  - PTP
 
 C++
   - llvm 
   - clang 
   - gcc 
   - googletest
-  - cmake  
+  - cmake
+  - OpenMPI
+  - clion
   
 git
   - gitignore_boiler_plates
 
 vim
-  - vim-gtk (+clipboard)
   - vundle 
   - YouCompleteMe 
   - ctrlp 
   - vim-fugitive
 
-## firefox
+firefox
   - DownloadThemAll
   - AddBlock
-  
-## OpenMPI 
 
-clion 
-pycharm
 pdftk 
 unrar 
-
-gnome-terminal {
-    colourful ls: https://github.com/seebi/dircolors-solarized
-    powerline fonts
-    Anthony25 / gnome-terminal-colors-solarized 
-}
 
 zsh
 oh-my-zsh
@@ -50,12 +42,11 @@ tmux {
 }
 
 latex
-texlive-full
-texstudio
+  - texlive-full
+  - texstudio
 
 sshfs
-
-Dropbox 
+ 
 Mendeley  
 vlc 
 Calibre  
