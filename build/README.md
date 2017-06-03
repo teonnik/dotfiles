@@ -1,4 +1,4 @@
-## Install zsh
+## zsh
 
 ```shell
 wget -O zsh.tar.gz https://sourceforge.net/projects/zsh/files/latest/download
@@ -17,10 +17,10 @@ export SHELL=`which zsh`
 [ -z "$ZSH_VERSION" ] && exec "$SHELL" -l
 ```
 
-## Install oh-my-zsh
+## oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
-## Install 'gnome-terminal-solarized' and 'dircolors-solorized'
+## 'gnome-terminal-solarized' and 'dircolors-solorized'
 
 ```shell
 sudo apt-get install dconf-cli
@@ -29,7 +29,7 @@ cd gnome-terminal-colors-solarized
 ./install.sh
 ```
 
-## Install Vundle
+## Vundle
 
 For `bash`
 
@@ -43,11 +43,11 @@ For `zsh`
 vundle
 ```
 
-## Install YouCompleteMe
+## YouCompleteMe
 
 ```shell
 cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
+./install.py
 ```
 
 ## tmux
@@ -66,18 +66,26 @@ xclip: https://www.howtoforge.com/command-line-copy-and-paste-with-xclip-debian-
 clarification: https://askubuntu.com/questions/383462/unable-to-paste-with-xclip-outside-of-terminal
 
 
+## LAPACK & BLAS
+
+```shell
+sudo apt-get install libblas-dev liblapack-dev (LAPACK, BLAS)
+```
+
 ## Trilinos
 
 Information
-Build reference: https://trilinos.org/docs/files/TrilinosBuildReference.html
+    - reference: https://trilinos.org/docs/files/TrilinosBuildReference.html
                  https://github.com/trilinos/Trilinos/wiki/Tools-%7C--CMake
-List packages: ./do-configure.sh 2>&1 | grep "Trilinos_SE_PACKAGES: " (Trilinos_ENABLE)
-List third party libraries (TPL): "./do-configure.sh 2>&1 | grep "Final set of . TPLs"
 
-Dependencies: Pthreads, LAPACK, BLAS, MPI
-1. sudo apt-get install libblas-dev liblapack-dev (LAPACK, BLAS)
-2. Clone repository
-3. Build with cmake from subdirectory using `trilinos_conf` script
+    - packages: https://github.com/trilinos/Trilinos/blob/master/PackagesList.cmake
+    - TPLs: https://github.com/trilinos/Trilinos/blob/master/TPLsList.cmake
+
+Dependencies 
+    - Pthreads
+    - MPI
+    - LAPACK
+    - BLAS
 
 ```shell
 cmake .. \
@@ -102,29 +110,43 @@ cmake .. \
 #  -DTPL_LAPACK_LIBRARIES=${BLAS_PATH} \
 ```
 
-NOTE: remove spaces
+## Boost
+Instructions
+    http://www.boost.org/doc/libs/1_64_0/more/getting_started/unix-variants.html
 
+```shell
+cd $BOOST
+bootstrap --prefix=<where to install boost>
+./b2 -j<N> --build-type=complete
+./b2 install
+```
+
+# hwloc
+Instructions:
+    - http://www.open-mpi.de/software/hwloc/v1.11/
 
 ## HPX
 Instructions: 
     http://stellar-group.github.io/hpx/docs/html/index.html
+    http://stellar-group.github.io/hpx/docs/html/hpx/manual/build_system/building_hpx/cmake_variables.html
 
 Dependencies
-boost: 
-    - Instruction: http://www.boost.org/doc/libs/1_64_0/more/getting_started/unix-variants.html
-hwloc: http://www.open-mpi.de/software/hwloc/v1.11/
-gperftools: clone repository
-
-Command
+    - boost 
+    - hwloc 
+    - gperftools
 
 ```shell
 cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=~/soft \
 
+#  -DPAPI_ROOT=<path> \   
     -DBOOST_ROOT=~/soft \
     -DHWLOC_ROOT=~/soft \
 
+#  -DHPX_WITH_MAX_CPU_COUNT:STRING \
+#  -DHPX_WITH_GOOGLE_PERFTOOLS \
+    
     -DHPX_WITH_PARCELPORT_MPI=On \
     -DHPX_WITH_DATAPAR_VC=ON \  
     -DHPX_WITH_MALLOC="tcmalloc" \
