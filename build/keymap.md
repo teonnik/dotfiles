@@ -4,4 +4,4 @@
 # tmux
   - `prefix =: Ctrl + A`
   - `prefix + ?` : print bindings
-  - `prefix + c`
+  - `prefix + c` : new window
