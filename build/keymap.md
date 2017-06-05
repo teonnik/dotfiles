@@ -5,3 +5,4 @@
   - `prefix =: Ctrl + A`
   - `prefix + ?` : print bindings
   - `prefix + c` : new window
+  - `prefix + n` : next window
