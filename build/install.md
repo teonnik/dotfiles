@@ -51,6 +51,9 @@ cd ~/.vim/bundle/YouCompleteMe
 ```
 
 ## tmux
+From source:
+  - libevent
+
 Plugin manager
 ```shell
 git clone https://github.com/tmux-plugins/tpm.git  
