@@ -18,6 +18,7 @@ C++
   - cmake
   - OpenMPI
   - clion
+  - perf
   
 git
   - gitignore_boiler_plates
