@@ -18,8 +18,7 @@ C++
   - cmake
   - OpenMPI
   - clion
-  - perf
-  
+   
 git
   - gitignore_boiler_plates
 
@@ -32,23 +31,23 @@ vim
 firefox
   - DownloadThemAll
   - AddBlock
+  - LastPass
 
-pdftk 
-unrar 
-
-sysdig
-zsh
-oh-my-zsh
-tmux {
-    xclip
-}
-
+system
+  - sysdig
+  - perf
+  - pdftk
+  - unrar 
+  - zsh
+  - oh-my-zsh
+  - tmux 
+  - xclip
+  - sshfs
+  
 latex
   - texlive-full
   - texstudio
 
-sshfs
- 
 Mendeley  
 vlc 
 Calibre  
