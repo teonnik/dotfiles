@@ -36,6 +36,7 @@ firefox
 pdftk 
 unrar 
 
+sysdig
 zsh
 oh-my-zsh
 tmux {
