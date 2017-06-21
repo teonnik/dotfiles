@@ -1,0 +1,16 @@
+Check FAQ for how to install: http://www.open-mpi.de/faq/?category=building
+
+If installing on a cluster FAQ26 is useful
+
+26. How do I build Open MPI with support for [my favorite network type]?
+
+SLURM is automatically supported, LSF has to be configured, see
+31. How do I build Open MPI with support for Platform LSF?
+
+Building with CUDA aware support
+34. How do I build Open MPI with CUDA-aware support?
+
+Use `--enable-mpi-thread-multiple`
+
+Easiest way to uninstall a package is to run 
+`make uninstall` from the build directory of the package
