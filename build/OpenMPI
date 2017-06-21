@@ -11,6 +11,3 @@ Building with CUDA aware support
 34. How do I build Open MPI with CUDA-aware support?
 
 Use `--enable-mpi-thread-multiple`
-
-Easiest way to uninstall a package is to run 
-`make uninstall` from the build directory of the package
