@@ -1,8 +1,6 @@
-
 ## Issues
 
 - Does not support `MPI_THREAD_MULTIPLE`
-- Info: http://www.vi-hps.org/upload/packages/scorep/OPEN_ISSUES-3.1.txt 
 
 MPI support
 
@@ -30,3 +28,5 @@ Sampling
 > is not active, may mysteriously alter the application output
 > just by linking libunwind. Thus, sampling/libunwind support is
 > disabled when Intel MPI is detected.
+
+[] Info: http://www.vi-hps.org/upload/packages/scorep/OPEN_ISSUES-3.1.txt 
