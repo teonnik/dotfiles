@@ -37,6 +37,7 @@ system
   - sysdig
   - perf
   - pdftk
+  - pandoc
   - unrar 
   - zsh
   - oh-my-zsh
@@ -50,6 +51,6 @@ latex
 
 Mendeley  
 vlc 
-Calibre  
+Calibre (for .mobi)
 inkscape 
 Skype
