@@ -17,6 +17,7 @@
     ~/.gitconfig: conf/git.conf
     ~/.config/texstudio/texstudio.ini: conf/texstudio.conf  
     ~/.ssh/config: conf/ssh.conf
+    ~/.config/user-dirs.dirs: conf/xdg.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]

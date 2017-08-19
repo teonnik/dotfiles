@@ -80,6 +80,7 @@ Information
 
     - packages: https://github.com/trilinos/Trilinos/blob/master/PackagesList.cmake
     - TPLs: https://github.com/trilinos/Trilinos/blob/master/TPLsList.cmake
+    - sample scripts: https://github.com/trilinos/Trilinos/blob/master/sampleScripts/do-configure-mkl-mpi-gcc-linux
 
 Dependencies 
     - Pthreads
@@ -98,6 +99,12 @@ cmake .. \
   -DTrilinos_ENABLE_EXPLICIT_INSTANTIATION=ON \
   -DTrilinos_ENABLE_Fortran=OFF \
   -DTrilinos_ENABLE_ALL_OPTIONAL_PACKAGES=OFF \
+  -DTrilinos_ENABLE_FLOAT=ON \
+  -DTrilinos_ENABLE_COMPLEX=ON \
+#  -DTrilinos_ENABLE_OpenMP=ON \
+#  -DTpetra_INST_PTHREAD=ON \
+#  -DKokkos_ENABLE_Pthread=ON \
+#  -Tpetra_INST_SERIAL:BOOL=OFF \
 
   -DTrilinos_ENABLE_Tpetra=ON \
   -DTrilinos_ENABLE_MueLu=ON \
@@ -105,7 +112,7 @@ cmake .. \
   -DTrilinos_ENABLE_Belos=ON \
 
   -DTPL_ENABLE_MPI=ON \
-  -DTPL_ENABLE_Pthread=ON \
+#  -DTPL_ENABLE_Pthread=ON \
 #  -DTPL_BLAS_LIBRARIES=${BLAS_PATH} \
 #  -DTPL_LAPACK_LIBRARIES=${BLAS_PATH} \
 ```
