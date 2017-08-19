@@ -16,7 +16,6 @@
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.config/texstudio/texstudio.ini: texstudio.conf  
-    ~/.ssh/config: ssh.conf
     ~/.config/user-dirs.dirs: xdg.conf
 
 - shell:
