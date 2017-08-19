@@ -18,7 +18,7 @@ C++
   - cmake
   - OpenMPI
   - clion
-  
+   
 git
   - gitignore_boiler_plates
 
@@ -31,24 +31,26 @@ vim
 firefox
   - DownloadThemAll
   - AddBlock
+  - LastPass
 
-pdftk 
-unrar 
-
-zsh
-oh-my-zsh
-tmux {
-    xclip
-}
-
+system
+  - sysdig
+  - perf
+  - pdftk
+  - pandoc
+  - unrar 
+  - zsh
+  - oh-my-zsh
+  - tmux 
+  - xclip
+  - sshfs
+  
 latex
   - texlive-full
   - texstudio
 
-sshfs
- 
 Mendeley  
 vlc 
-Calibre  
+Calibre (for .mobi)
 inkscape 
 Skype

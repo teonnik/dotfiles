@@ -51,6 +51,9 @@ cd ~/.vim/bundle/YouCompleteMe
 ```
 
 ## tmux
+From source:
+  - libevent
+
 Plugin manager
 ```shell
 git clone https://github.com/tmux-plugins/tpm.git  
@@ -159,3 +162,5 @@ cmake .. \
     -DHPX_WITH_MALLOC="tcmalloc" \
     -DTCMALLOC_ROOT=~/soft 
 ```
+# google perf tools
+- libunwind
