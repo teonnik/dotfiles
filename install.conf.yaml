@@ -9,14 +9,13 @@
 
 - link:
     ~/.dotfiles: ''
-    ~/workspace/.metadata: eclipse.conf
+    ~/soft/eclipse/workspace/.metadata: eclipse.conf
     ~/.gdbinit: gdb.conf
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vim.conf
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.config/texstudio/texstudio.ini: texstudio.conf  
-    ~/.config/user-dirs.dirs: xdg.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
