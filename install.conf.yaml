@@ -9,7 +9,6 @@
 
 - link:
     ~/.dotfiles: ''
-    ~/soft/eclipse/workspace/.metadata: eclipse.conf
     ~/.gdbinit: gdb.conf
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vim.conf
