@@ -14,8 +14,8 @@
     ~/.vimrc: vim.conf
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
-    ~/.config/i3/i3blocks.conf: i3blocks.conf
     ~/.config/i3/config: i3.conf
+    ~/.config/polybar/config: polybar.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
