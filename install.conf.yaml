@@ -12,6 +12,7 @@
     ~/.gdbinit: gdb.conf
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vim.conf
+    ~/.vim/keymap/bulgarian-phonetic.vim: bulgarian-phonetic.vim
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.config/i3/config: i3.conf
