@@ -15,9 +15,11 @@
     ~/.vim/keymap/bulgarian-phonetic.vim: bulgarian-phonetic.vim
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
-    ~/.config/i3/config: i3.conf
-    ~/.config/plasma-workspace/env/wm.sh: wm.conf
     ~/.latexmkrc: latexmkrc.conf
+    ~/.config/kglobalshortcutsrc: kde_shortcuts.conf 
+    ~/.config/kwinrc: kwin.conf
+    #    ~/.config/i3/config: i3.conf
+    #    ~/.config/plasma-workspace/env/wm.sh: wm.conf
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
