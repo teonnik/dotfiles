@@ -16,10 +16,11 @@
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.latexmkrc: latexmkrc.conf
-    ~/.config/kglobalshortcutsrc: kde_shortcuts.conf 
-    ~/.config/kwinrc: kwin.conf
-    #    ~/.config/i3/config: i3.conf
-    #    ~/.config/plasma-workspace/env/wm.sh: wm.conf
+    ~/.config/i3/config: i3.conf
+    ~/.config/plasma-workspace/env/wm.sh: wm.conf
+    # ~/.config/kglobalshortcutsrc: kde_shortcuts.conf 
+    # ~/.config/kwinrc: kwin.conf
+    
 
 - shell:
       - [git submodule update --init --recursive, Installing submodules]
