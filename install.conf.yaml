@@ -16,7 +16,19 @@
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.latexmkrc: latexmkrc.conf
+
     ~/.config/i3/config: i3.conf
+
+    #~/.config/polybar/config: ./polybar/config.ini
+    #~/.config/polybar/launch.sh: ./polybar/launch.sh
+    
+    #~/.config/sxhkd/sxhkdrc: ./sxhkd/sxhkdrc 
+    #~/.config/bspwm/bspwmrc: ./bspwm/bspwmrc 
+    
+    #~/.config/compton.conf: ./compton/compton.conf
+    
+    # KDE
+    #
     ~/.config/plasma-workspace/env/wm.sh: wm.conf
     # ~/.config/kglobalshortcutsrc: kde_shortcuts.conf 
     # ~/.config/kwinrc: kwin.conf
