@@ -11,8 +11,8 @@
     ~/.dotfiles: ''
     ~/.gdbinit: gdb.conf
     ~/.tmux.conf: tmux.conf
-    ~/.vimrc: vim.conf
-    ~/.vim/keymap/bulgarian-phonetic.vim: bulgarian-phonetic.vim
+    ~/.vimrc: ./vim/vim.conf
+    ~/.vim/keymap/bulgarian-phonetic.vim: ./vim/bulgarian-phonetic.vim
     ~/.zshrc: zsh.conf    
     ~/.gitconfig: git.conf
     ~/.latexmkrc: latexmkrc.conf
@@ -29,7 +29,7 @@
     
     # KDE
     #
-    ~/.config/plasma-workspace/env/wm.sh: wm.conf
+    ~/.config/plasma-workspace/env/wm.sh: ./kde/wm.conf
     # ~/.config/kglobalshortcutsrc: kde_shortcuts.conf 
     # ~/.config/kwinrc: kwin.conf
     
