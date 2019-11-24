@@ -2,96 +2,76 @@
 
 # TODO: set pacman's Color option in /etc/pacman.conf
 
-# Development
+# Other: ??
 #
-pacman -Syu make \
-            git \
-            cmake \
-            zsh \
-            qtcreator \
-            gvim \
-            perf
+# alsa-utils 
+# b43-fwcutter
 
-# Network
-#
-pacman -Syu nm-connection-editor \
-            networkmanager \
-            networkmanager-openconnect \
-            networkmanager-openvpn \
-            networkmanager-vpnc
+packages=(
 
-# Security
-#
-pacman -Syu openssh \
-            keepassxc
+  # sway
+  sway wl-clipboard wofi lightdm
 
-# LaTeX
-#
-pacman -Syu texlive-most \
-            biber
+  # development
+  make gdb git cmake zsh gvim qtcreator
 
-# Fonts
-#
-pacman -Syu ttf-liberation \
-            ttf-font-awesome \
-            ttf-roboto \
-            powerline-fonts
+  # performance
+  perf htop
 
-# KDE/Qt
-#
-pacman -Syu qt5ct \
-            konsole \
-            okular \
-            dolphin \
-            gwenview
- 
-# Printing
-#
-pacman -Syu cups
+  # network
+  nm-connection-editor networkmanager 
 
-# Bluetooth
-#
-pacman -Syu bluez \
-            bluez-utils
+  # vpn
+  networkmanager-openconnect networkmanager-openvpn networkmanager-vpnc
 
-# Sway
-#
-pacman -Syu wl-clipboard \
-            wofi \
-            sway \
-            light \
-            lightdm
+  # web
+  firefox youtube-dl wget
 
-# Backup & Sync
-#
-pacman -Syu syncthing \
-            borg \
-            rclone \
-            rsync
+  # security
+  sudo openssh keepassxc 
 
-# PDF
-#
-pacman -Syu pdf2svg \
-            pdfarranger
+  # latex
+  texlive-most biber 
 
-# CLI utils
-#
-pacman -Syu zip \
-            unrar \
-            jq \
-            htop \
-            youtube-dl \
-            wget \
-            pacman-contrib
+  # fonts
+  ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
 
-# GUI apps
-#
-pacman -Syu mendeley \
-            thunderbird \
-            vlc \
-            inkscape \
-            gimp \
-            libreoffice-still
+  # kde / qt
+  qt5ct konsole okular dolphin gwenview
+
+  # printing
+  cups
+
+  # bluetooth
+  bluez bluez-utils
+
+  # audio
+  pulseaudio
+
+  # brightness
+  light
+
+  # backup & sync
+  syncthing borg rclone rsync
+
+  # pdf
+  pdf2svg pdfarranger
+
+  # utils
+  zip unzip unrar jq pacman-contrib
+
+  # images 
+  inkscape gimp
+
+  # office
+  thunderbird libreoffice-still
+
+  # video
+  vlc 
+
+)
+
+pacman --noconfirm --needed -S  ${packages[@]}
 
 
 # TODO: AUR packages
@@ -103,7 +83,8 @@ pacman -Syu mendeley \
 
 yay -S base-devel \
        polybar \
-       skype
+       skype \
+       mendeleydesktop 
 
 
 # TODO: install `firefox` addons: AddBlock, LastPass
