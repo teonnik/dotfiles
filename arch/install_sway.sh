@@ -10,7 +10,7 @@
 packages=(
 
   # sway
-  sway wl-clipboard wofi lightdm
+  sway wl-clipboard wofi rofi lightdm
 
   # development
   make gdb git cmake zsh gvim qtcreator
