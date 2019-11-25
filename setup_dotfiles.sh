@@ -10,6 +10,9 @@ mkdir -p ~/.config/plasma-workspace
 mkdir -p ~/.config/polybar
 mkdir -p ~/.config/sxhkd
 mkdir -p ~/.config/bspwm
+mkdir -p ~/.config/waybar
+mkdir -p ~/.config/waybar/modules
+mkdir -p ~/.config/sway
 
 
 ln -sf $script_dir/gdb.conf ~/.gdbinit
@@ -28,3 +31,9 @@ ln -sf $script_dir/polybar/launch.sh ~/.config/polybar/launch.sh
 ln -sf $script_dir/sxhkd/sxhkdrc ~/.config/sxhkd/sxhkdrc
 ln -sf $script_dir/bspwm/bspwmrc ~/.config/bspwm/bspwmrc
 ln -sf $script_dir/compton/compton.conf ~/.config/compton.conf
+
+ln -sf $script_dir/sway/config              ~/.config/sway/config
+ln -sf $script_dir/waybar/config.json       ~/.config/waybar/config
+ln -sf $script_dir/waybar/style.css         ~/.config/waybar/style.css
+ln -sf $script_dir/waybar/modules/kblayout  ~/.config/waybar/modules/kblayout
+
