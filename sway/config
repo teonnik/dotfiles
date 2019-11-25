@@ -1,7 +1,22 @@
 # Read `man 5 sway` for a complete reference.
+#
+
+# TODO: locking
+#
+
 
 # super (modifier) key
 set $mod Mod4
+
+
+# colour of             border   background  text     indicator  child_border
+client.focused          #bf616a  #2f343f     #d8dee8  #bf616a    #d8dee8
+client.focused_inactive #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.unfocused        #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.urgent           #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.placeholder      #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.background       #2f343f
+
 
 # ------------------------------------------------------------------------------
 # Gaps
@@ -193,32 +208,30 @@ bindsym $mod+r mode "resize"
 # ------------------------------------------------------------------------------
 # Apps
 
-# Start a bar
+# bar
 bar {
     swaybar_command waybar
 }
 
-# Start a terminal
+# terminal
 bindsym $mod+Return exec konsole
 
-# Start your launcher
+# launcher
 bindsym $mod+d exec rofi -modi drun -show drun
 
-# Pulse Audio controls
+# audio
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
-# Sreen brightness controls
+# screen brightness
 bindsym XF86MonBrightnessUp   exec light -A 20
 bindsym XF86MonBrightnessDown exec light -U 20
 
-# Media player controls
+# media player
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# TODO: locking
-#
 
