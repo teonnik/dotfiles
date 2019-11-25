@@ -1,8 +1,5 @@
 # Read `man 5 sway` for a complete reference.
 
-# wallpaper for desktop and lock
-set $pic ~/pics/wallpapers/casey-horner-9XRpNnTqdJE-unsplash.jpg
-
 # super (modifier) key
 set $mod Mod4
 
@@ -28,7 +25,7 @@ gaps inner 10
 # Output configuration
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg $pic fill
+output * bg ~/pics/wallpapers/geometry.jpg fill
 
 #
 # Example configuration:
@@ -196,7 +193,7 @@ bar {
 }
 
 # lock
-bindsym $mod+l exec swaylock -i $pic -k -i
+bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
 
 # terminal
 bindsym $mod+Return exec konsole
