@@ -5,7 +5,7 @@
 
     "modules-left": [ "memory", "cpu", "temperature", "backlight", "battery" ],
     "modules-center": [ "sway/workspaces",  "sway/mode" ],
-    "modules-right": [ "pulseaudio", "network", "clock" ],
+    "modules-right": [ "custom/layout", "pulseaudio", "network", "clock" ],
 
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -44,18 +44,18 @@
         "bat": "BAT2"
     },
     "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "⚠ Disconnected",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
+        "format-source": " {volume}%",
         "format-source-muted": "",
         "format-icons": {
             "headphones": "",
@@ -67,5 +67,10 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/layout": {
+        "format": " {}",
+        "exec": "~/.config/waybar/modules/kblayout '1:1:AT_Translated_Set_2_keyboard'",
+        "tooltip": false
     }
 }

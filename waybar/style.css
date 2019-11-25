@@ -43,6 +43,7 @@ window#waybar {
     border-bottom: 3px solid #ffffff;
 }
 
+#custom-layout,
 #clock,
 #battery,
 #cpu,
