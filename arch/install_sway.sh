@@ -13,7 +13,7 @@ packages=(
   sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi lightdm
 
   # development
-  make gdb git cmake zsh gvim qtcreator
+  make gdb git mercurial cmake zsh gvim qtcreator
 
   # performance
   perf htop
@@ -46,7 +46,7 @@ packages=(
   bluez bluez-utils
 
   # audio
-  pulseaudio
+  pulseaudio pulseaudio-bluetooth
 
   # brightness
   light
@@ -58,7 +58,10 @@ packages=(
   pdf2svg pdfarranger
 
   # utils
-  zip unzip unrar jq pacman-contrib
+  zip unzip unrar jq  tree
+
+  # arch
+  pacman-contrib pacgraph
 
   # images 
   inkscape gimp
@@ -67,7 +70,7 @@ packages=(
   thunderbird libreoffice-still
 
   # video
-  vlc 
+  vlc playerctl
 
 )
 
