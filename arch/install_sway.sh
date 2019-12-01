@@ -37,7 +37,7 @@ packages=(
   ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
 
   # kde / qt
-  qt5ct konsole okular dolphin gwenview
+  qt5ct konsole okular dolphin gwenview breeze
 
   # printing
   cups

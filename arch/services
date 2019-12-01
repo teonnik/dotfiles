@@ -1,0 +1,2 @@
+systemctl enable bluetooth.service org.cups.cupsd.service NetworkManager.service 
+

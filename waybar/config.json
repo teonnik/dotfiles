@@ -3,7 +3,7 @@
     "position": "top",  
     "height": 25,          
 
-    "modules-left": [ "memory", "cpu", "temperature", "backlight", "battery" ],
+    "modules-left": [ "memory", "cpu", "temperature", "backlight", "battery", "idle_inhibitor" ],
     "modules-center": [ "sway/workspaces",  "sway/mode" ],
     "modules-right": [ "custom/layout", "pulseaudio", "network", "clock" ],
 
@@ -72,5 +72,12 @@
         "format": " {}",
         "exec": "~/.config/waybar/modules/kblayout '1:1:AT_Translated_Set_2_keyboard'",
         "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     }
 }
