@@ -12,7 +12,7 @@ mkdir -p ~/.config/sway
 
 
 ln -sf $script_dir/gdb.conf                     ~/.gdbinit
-ln -sf $script_dir/zsh.conf                     ~/.zshrc
+ln -sf $script_dir/zsh/zshrc                    ~/.zshrc
 ln -sf $script_dir/git.conf                     ~/.gitconfig
 ln -sf $script_dir/latexmkrc.conf               ~/.latexmkrc
 ln -sf $script_dir/vim/vim.conf                 ~/.vimrc
