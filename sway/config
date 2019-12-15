@@ -13,8 +13,8 @@ client.placeholder      #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
 client.background       #2f343f
 
 # borders
-default_border pixel 4
-default_floating_border pixel 4
+default_border pixel 3
+default_floating_border pixel 3
 
 # ------------------------------------------------------------------------------
 # Gaps
@@ -25,7 +25,11 @@ gaps inner 10
 # Output configuration
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/pics/wallpapers/geometry.jpg fill
+#output * bg ~/pics/wallpapers/geometry.jpg fill
+
+# Home - Zurich
+output eDP-1 disable
+output HDMI-A-1 resolution 1920x1080 position 0,0
 
 #
 # Example configuration:
@@ -56,12 +60,13 @@ exec swayidle -w \
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+# unbind caps lock
 input * {
   xkb_layout us,bg
   xkb_variant ,phonetic
   xkb_options grp:alt_shift_toggle
+  xkb_options caps:none
 }
-
 
 # ------------------------------------------------------------------------------
 # Key bindings
@@ -153,24 +158,44 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
-mode "resize" {
-    # Grows the container width in left|right|up|down
-    bindsym Left  resize grow left  10px
-    bindsym Right resize grow right 10px
-    bindsym Up    resize grow up    10px
-    bindsym Down  resize grow down  10px
+# ------------------------------------------------------------------------------
+# Modes
 
-    # Shrinks the container width in left|right|up|down
-    bindsym Shift+Left  resize shrink left  10px
-    bindsym Shift+Right resize shrink right 10px
-    bindsym Shift+Up    resize shrink up    10px
-    bindsym Shift+Down  resize shrink down  10px
+mode "resize_left" {
+  bindsym Left  resize grow   left 20px
+  bindsym Right resize shrink left 20px
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym Mod3+Left mode "resize_left"
+
+mode "resize_right" {
+  bindsym Left  resize shrink right 20px
+  bindsym Right resize grow   right 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym Mod3+Right mode "resize_right"
+
+mode "resize_top" {
+  bindsym Up   resize grow   up 20px
+  bindsym Down resize shrink up 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym Mod3+Up mode "resize_top"
+
+mode "resize_bottom" {
+  bindsym Up   resize grow   down 20px
+  bindsym Down resize shrink down 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym Mod3+Down mode "resize_bottom"
 
 
 # ------------------------------------------------------------------------------
@@ -188,7 +213,8 @@ bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
 bindsym $mod+Return exec konsole
 
 # launcher
-bindsym $mod+d exec rofi -modi drun -show drun
+#bindsym $mod+d exec rofi -modi drun -show drun
+bindsym $mod+d exec rofi -modi drun -show drun -theme Monokai
 
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
@@ -210,3 +236,6 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
 
+# ------------------------------------------------------------------------------
+# Windows
+#for_window [class="konsole"] opacity set 0.8
