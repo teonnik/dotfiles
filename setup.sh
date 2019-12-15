@@ -9,6 +9,7 @@ mkdir -p ~/.config/polybar
 mkdir -p ~/.config/waybar
 mkdir -p ~/.config/waybar/modules
 mkdir -p ~/.config/sway
+mkdir -p ~/.xkb/symbols
 
 
 ln -sf $script_dir/gdb.conf                     ~/.gdbinit
@@ -26,4 +27,6 @@ ln -sf $script_dir/sway/config                  ~/.config/sway/config
 ln -sf $script_dir/waybar/config.json           ~/.config/waybar/config
 ln -sf $script_dir/waybar/style.css             ~/.config/waybar/style.css
 ln -sf $script_dir/waybar/modules/kblayout      ~/.config/waybar/modules/kblayout
+
+#ln -sf $script_dir/xkb/symbols/capslock         ~/.xkb/symbols/capslock
 
