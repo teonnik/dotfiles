@@ -28,5 +28,3 @@ ln -sf $script_dir/waybar/config.json           ~/.config/waybar/config
 ln -sf $script_dir/waybar/style.css             ~/.config/waybar/style.css
 ln -sf $script_dir/waybar/modules/kblayout      ~/.config/waybar/modules/kblayout
 
-#ln -sf $script_dir/xkb/symbols/capslock         ~/.xkb/symbols/capslock
-

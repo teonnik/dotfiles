@@ -1,5 +1,0 @@
-hidden partial modifier_keys
-xkb_symbols "none" {
-    key <CAPS> { [ VoidSymbol ] };
-    modifier_map Mod3 { <CAPS> };
-};

@@ -105,7 +105,7 @@ packages=(
   syncthing-gtk syncthing borg rclone rsync
 
   # pdf
-  pdf2svg pdfarranger
+  pdf2svg pdfarranger xournalpp
 
   # utils
   zip unzip unrar jq tree
