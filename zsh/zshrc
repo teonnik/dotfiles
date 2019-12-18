@@ -1,0 +1,39 @@
+# ------------------------------------------------------------------------------
+# Environment variables
+
+# local bin
+export PATH=$HOME/bin:$PATH
+
+# user
+export DEFAULT_USER=`whoami`
+
+# language
+export LANG=en_US.UTF-8
+
+# editor 
+export EDITOR='vim'
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# anaconda
+export PATH=$HOME/anaconda/bin:$PATH
+
+# ------------------------------------------------------------------------------
+# Aliases
+
+alias vl="vim ~/readme/log.md"
+alias vt="vim ~/readme/todo.md"
+
+# ------------------------------------------------------------------------------
+# oh-my-zsh
+
+# theme
+ZSH_THEME="spaceship"
+
+# plugins 
+plugins=(zsh-autosuggestions)
+
+# activate
+export ZSH=~/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
