@@ -3,7 +3,6 @@
 # super (modifier) key
 set $mod Mod4
 
-
 # colour of             border   background  text     indicator  child_border
 client.focused          #2f343f  #2f5491     #d8dee8  #2f343f    #2f343f
 client.focused_inactive #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
@@ -16,52 +15,35 @@ client.background       #2f343f
 #default_border pixel 3
 #default_floating_border pixel 3
 
-# ------------------------------------------------------------------------------
-# Gaps
-
 # gaps inner 10
 
-# ------------------------------------------------------------------------------
-# Output configuration
-
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg ~/pics/wallpapers/geometry.jpg fill
-
-# Home - Zurich
-#output eDP-1 disable
-#output HDMI-A-1 resolution 1920x1080 position 0,0
-
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-
-# ------------------------------------------------------------------------------
-# Idle configuration
-
-
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# 1. lock screens after 300 seconds of inactivity
+# 2. turn off displays after another 300 seconds
+# 3. turn screens back on when resumed
+# 4. lock screens before computer goes to sleep
 exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
+# ------------------------------------------------------------------------------
+# Output configuration: `man 5 sway-output` / `swaymsg -t get_outputs`
 
+# laptop lid closed
+bindswitch --reload lid:on output eDP-1 disable
+bindswitch --reload lid:off output eDP-1 enable
+
+# external display
+#output HDMI-A-1 resolution 1920x1080 position 0,0
+
+# wallpaper
+#output * bg ~/pics/wallpapers/geometry.jpg fill
 
 # ------------------------------------------------------------------------------
-# Input configuration
+# Input configuration: `man 5 sway-input` / `swaymsg -t get_inputs`
 
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
-# unbind caps lock
-input * {
+input type:keyboard {
   xkb_layout us,bg
   xkb_variant ,phonetic
   xkb_options grp:alt_shift_toggle
@@ -76,8 +58,6 @@ bindsym $mod+Shift+q kill
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
 floating_modifier $mod normal
 
 # Reload the configuration file
@@ -111,6 +91,7 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # Move focused container to workspace
+# Note: workspaces can have any name you want, not just numbers.
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -121,8 +102,12 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-# Note: workspaces can have any name you want, not just numbers.
-# We just use 1-10 as the default.
+
+# Move current workspace between monitors
+bindsym $mod+Control+Left  move workspace to output left
+bindsym $mod+Control+Down  move workspace to output down
+bindsym $mod+Control+Up    move workspace to output up
+bindsym $mod+Control+Right move workspace to output right
 
 # You can "split" the current object of your focus with
 # $mod+h or $mod+v, for horizontal and vertical splits
@@ -157,6 +142,12 @@ bindsym $mod+Shift+minus move scratchpad
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
 
+# move back and forth between windows
+bindsym $mod+Tab workspace back_and_forth
+
+# assing workspace to screen
+#workspace $wrks1 output DVI-I-1-1
+
 # ------------------------------------------------------------------------------
 # Modes
 
@@ -167,7 +158,7 @@ mode "resize_left" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym Mod1+Left mode "resize_left"
+bindsym $mod+Mod1+Left mode "resize_left"
 
 mode "resize_right" {
   bindsym Left  resize shrink right 20px
@@ -176,7 +167,7 @@ mode "resize_right" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym Mod1+Right mode "resize_right"
+bindsym $mod+Mod1+Right mode "resize_right"
 
 mode "resize_top" {
   bindsym Up   resize grow   up 20px
@@ -185,7 +176,7 @@ mode "resize_top" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym Mod1+Up mode "resize_top"
+bindsym $mod+Mod1+Up mode "resize_top"
 
 mode "resize_bottom" {
   bindsym Up   resize shrink down 20px
@@ -194,7 +185,7 @@ mode "resize_bottom" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-bindsym Mod1+Down mode "resize_bottom"
+bindsym $mod+Mod1+Down mode "resize_bottom"
 
 
 # ------------------------------------------------------------------------------
