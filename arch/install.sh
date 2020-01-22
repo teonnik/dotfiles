@@ -60,7 +60,7 @@ packages=(
   lightdm-gtk-greeter lightdm
 
   # sway window manager
-  sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi 
+  sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim
 
   # development
   make gdb git mercurial cmake zsh gvim qtcreator
@@ -154,6 +154,9 @@ systemctl enable lightdm.service \
                  org.cups.cupsd.service \
                  NetworkManager.service \
                  syncthing@teonnik.service
+
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_QPA_PLATFORM=wayland
 
 # TODO: xdg-user-dirs ?
 
