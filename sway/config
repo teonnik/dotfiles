@@ -40,6 +40,9 @@ bindswitch --reload lid:off output eDP-1 enable
 # wallpaper
 #output * bg ~/pics/wallpapers/geometry.jpg fill
 
+# work
+#output * scale 1.5
+
 # ------------------------------------------------------------------------------
 # Input configuration: `man 5 sway-input` / `swaymsg -t get_inputs`
 
@@ -225,6 +228,9 @@ bindsym XF86AudioPlay  exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
+
+# screenshot
+bindsym $mod+p exec grim screenshot.png
 
 # ------------------------------------------------------------------------------
 # Windows
