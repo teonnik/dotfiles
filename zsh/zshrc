@@ -19,6 +19,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # anaconda
 export PATH=$HOME/anaconda/bin:$PATH
 
+# spack
+source $HOME/software/spack/share/spack/setup-env.sh
+
 # ------------------------------------------------------------------------------
 # Aliases
 

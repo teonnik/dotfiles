@@ -48,7 +48,7 @@ useradd -m teonnik
 # Installs sway and plasma
 # 
 # TODO: set pacman's Color option in /etc/pacman.conf
-# TODO: `firefox` addons: AddBlock, LastPass, DarkReader
+# TODO: `firefox` addons: AddBlock, LastPass, DarkReader, Saka key
 # TODO: vundle, YouCompleteMe, ctrlp
 # TODO: oh-my-zsh, zsh spaceship, zsh autosuggestions
 packages=(
@@ -132,7 +132,6 @@ pacman --noconfirm --needed -S  ${packages[@]}
 # TODO: AUR packages
 # TODO: install yay
 
-#
 #git clone https://aur.archlinux.org/yay.git
 #cd yay
 #makepkg -si
