@@ -31,7 +31,7 @@ exec swayidle -w \
 # Output configuration: `man 5 sway-output` / `swaymsg -t get_outputs`
 
 # laptop lid closed
-bindsym $mod+o output HDMI-A-1 resolution 1920x1080 position 0,0 ;\
+bindsym $mod+o output HDMI-A-1 resolution 1920x1080 position 0 0 ;\
                output eDP-1 disable
 
 # wallpaper

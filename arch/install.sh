@@ -141,6 +141,8 @@ yay -S base-devel \
        skype \
        mendeleydesktop 
 
+# TODO: konsole : trim trailing white spaces
+
 # Custom 
 #
 # TODO: spack
