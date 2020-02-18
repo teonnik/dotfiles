@@ -96,7 +96,7 @@ packages=(
   bluez bluez-utils
 
   # audio
-  pulseaudio pulseaudio-bluetooth
+  pulseaudio pulseaudio-bluetooth pavucontrol
 
   # brightness
   light
