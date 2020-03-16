@@ -200,11 +200,11 @@ bar {
 bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
 
 # terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec "_JAVA_AWT_WM_NONREPARENTING=1 QT_WAYLAND_DISABLE_WINDOWDECORATION=1 QT_QPA_PLATFORM=wayland QT_QPA_PLATFORMTHEME=qt5ct konsole"
 
 # launcher
-#bindsym $mod+d exec rofi -modi drun -show drun
-bindsym $mod+d exec rofi -modi drun -show drun -theme Monokai
+# bindsym $mod+d exec rofi -modi drun -show drun
+bindsym $mod+d exec "_JAVA_AWT_WM_NONREPARENTING=1 QT_WAYLAND_DISABLE_WINDOWDECORATION=1 QT_QPA_PLATFORM=wayland QT_QPA_PLATFORMTHEME=qt5ct rofi -modi drun -show drun -theme Monokai"
 
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
