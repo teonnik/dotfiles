@@ -48,7 +48,7 @@ useradd -m teonnik
 # Installs sway and plasma
 # 
 # TODO: set pacman's Color option in /etc/pacman.conf
-# TODO: `firefox` addons: AddBlock, LastPass, DarkReader, Saka key
+# TODO: `firefox` addons: AddBlock, LastPass, Saka key, bypass-paywall-firefox
 # TODO: vundle, YouCompleteMe, ctrlp
 # TODO: oh-my-zsh, zsh spaceship, zsh autosuggestions
 packages=(
@@ -87,7 +87,7 @@ packages=(
   ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
 
   # kde / qt
-  plasma-desktop qt5ct konsole okular dolphin gwenview qt5-wayland
+  plasma-desktop qt5ct konsole okular dolphin gwenview qt5-wayland krdc
 
   # printing
   cups
@@ -155,9 +155,6 @@ systemctl enable lightdm.service \
                  org.cups.cupsd.service \
                  NetworkManager.service \
                  syncthing@teonnik.service
-
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_QPA_PLATFORM=wayland
 
 # TODO: xdg-user-dirs ?
 
