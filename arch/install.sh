@@ -63,7 +63,7 @@ packages=(
   sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim
 
   # development
-  make gdb git mercurial cmake zsh gvim qtcreator
+  make gdb git mercurial cmake zsh gvim qtcreator clang openmp
 
   # performance
   perf htop
