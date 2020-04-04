@@ -10,6 +10,7 @@ mkdir -p ~/.config/waybar
 mkdir -p ~/.config/waybar/modules
 mkdir -p ~/.config/sway
 mkdir -p ~/.xkb/symbols
+mkdir -p ~/.spack
 
 
 ln -sf $script_dir/gdb.conf                     ~/.gdbinit
@@ -29,3 +30,5 @@ ln -sf $script_dir/waybar/style.css             ~/.config/waybar/style.css
 ln -sf $script_dir/waybar/modules/kblayout      ~/.config/waybar/modules/kblayout
 
 ln -sf $script_dir/xdg/xdg.conf                 ~/.config/user-dirs.dirs
+
+ln -sf $script_dir/spack/packages.yaml          ~/.spack/packages.yaml

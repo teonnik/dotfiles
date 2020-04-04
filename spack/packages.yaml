@@ -1,0 +1,92 @@
+# Spack and Arch defalt to the most current version, not specifying the version
+# explicitly should be fine in most cases.
+#
+packages:
+  all:
+    compiler: [gcc@8.3.0, gcc@9.2.1, clang@9.0.1]
+    providers:
+      mpi: [mpich]
+      mkl: [intel-mkl]
+      blas: [intel-mkl]
+      scalapack: [intel-mkl]
+      pkgconfig: [pkgconf]
+  autoconf:
+    paths:
+      autoconf: /usr
+    buildable: false
+  automake:
+    paths:
+      automake: /usr
+    buildable: false
+  cmake:
+    paths:
+      cmake: /usr
+    buildable: false
+  python:
+    paths:
+      python@3.8.2: /usr
+    buildable: false
+  cuda:
+    paths:
+      cuda: /opt/cuda
+    buildable: false
+  git:
+    paths:
+      git: /usr
+    buildable: false
+  openssl:
+    paths:
+      openssl: /usr
+    buildable: false
+  pkgconf:
+    paths:
+      pkgconf: /usr
+    buildable: false
+  bzip2:
+    paths:
+      bzip2: /usr
+    buildable: false
+  libunwind:
+    paths:
+      libunwind: /usr
+    buildable: false
+  m4:
+    paths:
+      m4: /usr
+    buildable: false
+  xz:
+    paths:
+      xz: /usr
+    buildable: false
+  libxml2:
+    paths:
+      libxml2: /usr
+    buildable: false
+  libpciaccess:
+    paths:
+      libpciaccess@0.16: /usr
+    buildable: false
+  zlib:
+    paths:
+      zlib: /usr
+    buildable: false
+  libtool:
+    paths:
+      libtool: /usr
+    buildable: false
+  numactl:
+    paths:
+      numactl: /usr
+    buildable: false
+  texinfo:
+    paths:
+      texinfo: /usr
+    buildable: false
+  findutils:
+    paths:
+      findutils: /usr
+    buildable: false
+  cpio:
+    paths:
+      cpio: /usr
+    buildable: false
