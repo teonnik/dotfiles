@@ -65,6 +65,9 @@ packages=(
   # development
   make gdb git mercurial cmake zsh gvim qtcreator clang openmp
 
+  # notifications
+  mako libnotify
+
   # performance
   perf htop
 
