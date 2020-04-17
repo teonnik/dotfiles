@@ -57,13 +57,16 @@ packages=(
   grub
 
   # display manager
-  lightdm-gtk-greeter lightdm
+  sddm
 
   # sway window manager
   sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim
 
-  # development
+  # dev tools
   make gdb git mercurial cmake zsh gvim qtcreator clang openmp
+
+  # dev libraries
+  boost gperftools hwloc
 
   # notifications
   mako libnotify
@@ -153,7 +156,7 @@ yay -S base-devel \
 
 # Services
 #
-systemctl enable lightdm.service \
+systemctl enable sddm.service \
                  bluetooth.service \
                  org.cups.cupsd.service \
                  NetworkManager.service \
