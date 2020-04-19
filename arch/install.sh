@@ -31,7 +31,7 @@ arch-chroot /mnt
 
 # Time zone
 #
-ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime  # FIXME
+ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 hwclock --systohc
 
 # Localization TODO
@@ -46,10 +46,9 @@ passwd
 useradd -m teonnik
 
 # Installs sway and plasma
-# 
+#
 # TODO: set pacman's Color option in /etc/pacman.conf
 # TODO: `firefox` addons: AddBlock, LastPass, Saka key, bypass-paywall-firefox
-# TODO: vundle, YouCompleteMe, ctrlp
 # TODO: oh-my-zsh, zsh spaceship, zsh autosuggestions
 packages=(
 
@@ -75,7 +74,7 @@ packages=(
   perf htop
 
   # network
-  nm-connection-editor networkmanager 
+  nm-connection-editor networkmanager
 
   # vpn
   networkmanager-openconnect networkmanager-openvpn networkmanager-vpnc
@@ -84,16 +83,16 @@ packages=(
   firefox youtube-dl wget
 
   # security
-  su sudo openssh keepassxc 
+  su sudo openssh keepassxc
 
   # latex
-  texlive-most biber 
+  texlive-most biber
 
   # fonts
   ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
 
   # kde / qt
-  plasma-desktop qt5ct konsole okular dolphin gwenview qt5-wayland krdc
+  plasma-desktop qt5ct konsole okular dolphin gwenview qt5-wayland
 
   # printing
   cups
@@ -108,7 +107,7 @@ packages=(
   light
 
   # backup & sync
-  syncthing-gtk syncthing borg rclone rsync
+  syncthing borg rclone rsync
 
   # pdf
   pdf2svg pdfarranger xournalpp
@@ -122,7 +121,7 @@ packages=(
   # docs
   man-db man-pages
 
-  # images 
+  # images
   inkscape gimp
 
   # office
@@ -145,14 +144,22 @@ pacman --noconfirm --needed -S  ${packages[@]}
 yay -S base-devel \
        polybar \
        skype \
-       mendeleydesktop 
+       mendeleydesktop
 
 # TODO: konsole : trim trailing white spaces
 
-# Custom 
+# Custom
 #
 # TODO: spack
 # TODO: setup dotfiles
+
+# install vim plugin manager
+curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# install vim plugins
+vim +PlugInstall +qall
+# install YouCompleteMe
+(cd ${HOME}/.vim/bundle/YouCompleteMe; python3 install.py --clangd-completer)
 
 # Services
 #
