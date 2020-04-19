@@ -3,53 +3,42 @@
 # ------------------------------
 # Pre-Installation
 
-
 # Update the system clock
-#
 timedatectl set-ntp true
 
 # TODO: partition the disks
 # TODO: format the partitions
-
 # TODO: edit mirrorlist
 
 # Install base packages
-#
 pacstrap /mnt base linux linux-firmware
 
 # Generate an fstab file
-#
 genfstab -U /mnt >> /mnt/etc/fstab
 
 
 # ------------------------------
 # Installation
 
-# Change root
-#
+# change root
 arch-chroot /mnt
 
 # Time zone
-#
 ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
 hwclock --systohc
 
 # Localization TODO
-#
 
 # Root password
-#
 passwd
 
 # Add a user
-#
 useradd -m teonnik
 
-# Installs sway and plasma
-#
-# TODO: set pacman's Color option in /etc/pacman.conf
-# TODO: `firefox` addons: AddBlock, LastPass, Saka key, bypass-paywall-firefox
-# TODO: oh-my-zsh, zsh spaceship, zsh autosuggestions
+# Set pacman's Color option
+sed -i '/Color/s/^#//g' /etc/pacman.conf 
+
+# Install official Arch packages
 packages=(
 
   # boot loader
@@ -113,7 +102,7 @@ packages=(
   pdf2svg pdfarranger xournalpp
 
   # utils
-  zip unzip unrar jq tree
+  zip unzip unrar jq tree wget curl base-devel
 
   # arch
   pacman-contrib pacgraph
@@ -131,20 +120,17 @@ packages=(
   vlc playerctl
 
 )
-
 pacman --noconfirm --needed -S  ${packages[@]}
 
-# TODO: AUR packages
+# TODO: Install AUR packages
 # TODO: install yay
-
 #git clone https://aur.archlinux.org/yay.git
 #cd yay
 #makepkg -si
 
-yay -S base-devel \
-       polybar \
-       skype \
-       mendeleydesktop
+#yay -S polybar \
+#       skype \
+#       mendeleydesktop
 
 # TODO: konsole : trim trailing white spaces
 
@@ -152,6 +138,11 @@ yay -S base-devel \
 #
 # TODO: spack
 # TODO: setup dotfiles
+# TODO: `firefox` addons: NoScript, LastPass
+
+
+# ------------------------------
+# vim
 
 # install vim plugin manager
 curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
@@ -161,8 +152,21 @@ vim +PlugInstall +qall
 # install YouCompleteMe
 (cd ${HOME}/.vim/bundle/YouCompleteMe; python3 install.py --clangd-completer)
 
+
+# ------------------------------
+# zsh
+
+# make zsh default shell
+chsh -s $(which zsh)
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# install zsh spaceship
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# install zsh autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 # Services
-#
 systemctl enable sddm.service \
                  bluetooth.service \
                  org.cups.cupsd.service \
@@ -172,6 +176,5 @@ systemctl enable sddm.service \
 # TODO: xdg-user-dirs ?
 
 # Reboot
-#
 exit
 reboot
