@@ -90,11 +90,6 @@ packages:
     paths:
       cpio: /usr
     buildable: false
-  boost:
-    variants: cxxstd=14
-    paths:
-      boost: /usr
-    buildable: false
   hwloc:
     paths:
       hwloc: /usr
