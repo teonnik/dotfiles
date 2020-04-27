@@ -1,0 +1,25 @@
+[user]
+  email = teodor.nikolov22@gmail.com
+  name = Teodor Nikolov
+[push]
+  default = current
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[color]
+  ui = auto
+[commit]
+  #  Include a diff of the changes below the message area when editing the
+  #  commit message (the diff does NOT become part of the commit message, it's
+  #  only there for information).
+  verbose = true
+[diff]
+  # Prettier diffs
+  compactionHeuristic = true
+  indentHeuristic = on
+[rebase]
+  # Stash any dirty changes before running rebase, and then unstashes them
+  # afterwards.
+  autostash = true
+[alias]
+  lg = log --oneline --graph

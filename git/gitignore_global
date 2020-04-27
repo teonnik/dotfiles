@@ -1,0 +1,4 @@
+CMakeList.txt.user
+compile_commands.json
+.clangd
+build

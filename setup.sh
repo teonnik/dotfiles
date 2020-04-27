@@ -15,7 +15,8 @@ mkdir -p ~/.spack
 
 ln -sf $script_dir/gdb.conf                     ~/.gdbinit
 ln -sf $script_dir/zsh/zshrc                    ~/.zshrc
-ln -sf $script_dir/git.conf                     ~/.gitconfig
+ln -sf $script_dir/git/gitconfig                ~/.gitconfig
+ln -sf $script_dir/git/gitignore_global         ~/.gitignore_global
 ln -sf $script_dir/latexmkrc.conf               ~/.latexmkrc
 ln -sf $script_dir/vim/vim.conf                 ~/.vimrc
 ln -sf $script_dir/vim/bulgarian-phonetic.vim   ~/.vim/keymap/bulgarian-phonetic.vim
