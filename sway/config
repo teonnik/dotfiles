@@ -199,6 +199,12 @@ bar {
 # lock
 bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
 
+# https://github.com/emersion/kanshi/issues/43
+exec_always pkill kanshi; exec kanshi
+
+# to avoid issues with apps that don't work well with env vars
+bindsym $mod+Shift+Return exec "konsole"
+
 # terminal
 bindsym $mod+Return exec "_JAVA_AWT_WM_NONREPARENTING=1 QT_WAYLAND_DISABLE_WINDOWDECORATION=1 QT_QPA_PLATFORM=wayland QT_QPA_PLATFORMTHEME=qt5ct konsole"
 

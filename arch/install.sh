@@ -48,7 +48,7 @@ packages=(
   sddm
 
   # sway window manager
-  sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim
+  sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim kanshi
 
   # dev tools
   make gdb git mercurial cmake zsh gvim qtcreator clang openmp

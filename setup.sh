@@ -9,6 +9,7 @@ mkdir -p ~/.config/polybar
 mkdir -p ~/.config/waybar
 mkdir -p ~/.config/waybar/modules
 mkdir -p ~/.config/sway
+mkdir -p ~/.config/kanshi
 mkdir -p ~/.xkb/symbols
 mkdir -p ~/.spack
 
@@ -26,6 +27,7 @@ ln -sf $script_dir/polybar/config.ini           ~/.config/polybar/config
 ln -sf $script_dir/polybar/launch.sh            ~/.config/polybar/launch.sh 
 
 ln -sf $script_dir/sway/config                  ~/.config/sway/config
+ln -sf $script_dir/kanshi/config                ~/.config/kanshi/config
 ln -sf $script_dir/waybar/config.json           ~/.config/waybar/config
 ln -sf $script_dir/waybar/style.css             ~/.config/waybar/style.css
 ln -sf $script_dir/waybar/modules/kblayout      ~/.config/waybar/modules/kblayout
