@@ -30,10 +30,6 @@ exec swayidle -w \
 # ------------------------------------------------------------------------------
 # Output configuration: `man 5 sway-output` / `swaymsg -t get_outputs`
 
-# laptop lid closed
-bindsym $mod+o output HDMI-A-1 resolution 1920x1080 position 0 0 ;\
-               output eDP-1 disable
-
 # wallpaper
 #output * bg ~/pics/wallpapers/geometry.jpg fill
 
@@ -196,11 +192,11 @@ bar {
     swaybar_command waybar
 }
 
+# automatic output management on hot-plug/unplug
+exec kanshi
+
 # lock
 bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
-
-# https://github.com/emersion/kanshi/issues/43
-exec_always pkill kanshi; exec kanshi
 
 # to avoid issues with apps that don't work well with env vars
 bindsym $mod+Shift+Return exec "konsole"
