@@ -22,6 +22,9 @@ export PATH=$HOME/anaconda/bin:$PATH
 # spack
 source $HOME/software/spack/share/spack/setup-env.sh
 
+# fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
 # ------------------------------------------------------------------------------
 # Aliases
 
