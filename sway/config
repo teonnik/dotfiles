@@ -196,7 +196,7 @@ bar {
 exec kanshi
 
 # lock
-bindsym $mod+l exec swaylock -i ~/pics/wallpapers/geometry_blurred.jpg -k -l
+bindsym $mod+l exec swaylock -i ~/media/wallpapers/geometry_blurred.jpg -k -l
 
 # to avoid issues with apps that don't work well with env vars
 bindsym $mod+Shift+Return exec "konsole"
