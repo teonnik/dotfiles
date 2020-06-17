@@ -1,35 +1,36 @@
 #!/bin/bash
 
 # get the dir of the current script
-script_dir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+CONF=${HOME}/.config
 
-ln -sf $script_dir/git/gitconfig                ~/.gitconfig
-ln -sf $script_dir/git/gitignore_global         ~/.gitignore_global
-ln -sf $script_dir/vim/vim.conf                 ~/.vimrc
-ln -sf $script_dir/zsh/zshrc                    ~/.zshrc
+ln -sf ${DOTS}/git/gitconfig                ${HOME}/.gitconfig
+ln -sf ${DOTS}/git/gitignore_global         ${HOME}/.gitignore_global
+ln -sf ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
+ln -sf ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
 
-mkdir -p ~/.config/sway
-ln -sf $script_dir/sway/config                  ~/.config/sway/config
+ln -sf ${DOTS}/xdg/xdg.conf                 ${CONF}/user-dirs.dirs
+ln -sf ${DOTS}/gdb/gdb.conf                 ${HOME}/.gdbinit
+ln -sf ${DOTS}/latex/latexmkrc.conf         ${HOME}/.latexmkrc
 
-mkdir -p ~/.config/kanshi
-ln -sf $script_dir/kanshi/config                ~/.config/kanshi/config
+mkdir -p ${CONF}/sway
+ln -sf ${DOTS}/sway/config                  ${CONF}/sway/config
 
-mkdir -p ~/.config/waybar
-ln -sf $script_dir/waybar/config.json           ~/.config/waybar/config
-ln -sf $script_dir/waybar/style.css             ~/.config/waybar/style.css
-mkdir -p ~/.config/waybar/modules
-ln -sf $script_dir/waybar/modules/kblayout      ~/.config/waybar/modules/kblayout
+mkdir -p ${CONF}/kanshi
+ln -sf ${DOTS}/kanshi/config                ${CONF}/kanshi/config
 
-ln -sf $script_dir/xdg/xdg.conf                 ~/.config/user-dirs.dirs
-ln -sf $script_dir/gdb.conf                     ~/.gdbinit
-ln -sf $script_dir/latexmkrc.conf               ~/.latexmkrc
+mkdir -p ${CONF}/waybar
+mkdir -p ${CONF}/waybar/modules
+ln -sf ${DOTS}/waybar/config.json           ${CONF}/waybar/config
+ln -sf ${DOTS}/waybar/style.css             ${CONF}/waybar/style.css
+ln -sf ${DOTS}/waybar/modules/kblayout      ${CONF}/waybar/modules/kblayout
 
-#mkdir -p ~/.config/i3
-#ln -sf $script_dir/i3.conf                      ~/.config/i3/config
+#mkdir -p ${HOME}/.spack
+#ln -sf ${DOTS}/spack/packages.yaml          ${HOME}/.spack/packages.yaml
 
-#mkdir -p ~/.config/polybar
-#ln -sf $script_dir/polybar/config.ini           ~/.config/polybar/config
-#ln -sf $script_dir/polybar/launch.sh            ~/.config/polybar/launch.sh
+#mkdir -p ${CONF}/i3
+#ln -sf ${DOTS}/i3/i3.conf                   ${CONF}/i3/config
 
-#mkdir -p ~/.spack
-#ln -sf $script_dir/spack/packages.yaml          ~/.spack/packages.yaml
+#mkdir -p ${CONF}/polybar
+#ln -sf ${DOTS}/polybar/config.ini           ${CONF}/polybar/config
+#ln -sf ${DOTS}/polybar/launch.sh            ${CONF}/polybar/launch.sh
