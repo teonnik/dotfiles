@@ -151,7 +151,8 @@ curl -fLo ${HOME}/.vim/autoload/plug.vim --create-dirs \
 vim +PlugInstall +qall
 # install YouCompleteMe
 (cd ${HOME}/.vim/bundle/YouCompleteMe; python3 install.py --clangd-completer)
-
+# install bulgarian phonetic
+curl -fLo ${HOME}/.vim/keymap/bulgarian-phonetic.vim --create-dirs http://www.math.bas.bg/bantchev/vim/bulgarian-phonetic.vim
 
 # ------------------------------
 # zsh
@@ -160,9 +161,8 @@ vim +PlugInstall +qall
 chsh -s $(which zsh)
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-# install zsh spaceship
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# install powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 # install zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
