@@ -208,12 +208,12 @@ bindsym $mod+Return exec "_JAVA_AWT_WM_NONREPARENTING=1 QT_WAYLAND_DISABLE_WINDO
 bindsym $mod+d exec "_JAVA_AWT_WM_NONREPARENTING=1 QT_WAYLAND_DISABLE_WINDOWDECORATION=1 QT_QPA_PLATFORM=wayland QT_QPA_PLATFORMTHEME=qt5ct rofi -modi drun -show drun -theme Monokai"
 
 # audio
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute        exec pactl set-sink-mute 0 toggle
-bindsym $mod+a               exec pactl set-sink-volume 0 +5%
-bindsym $mod+Shift+a         exec pactl set-sink-volume 0 -5%
-bindsym $mod+m               exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym $mod+a               exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Shift+a         exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+m               exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 
 # screen brightness (not working sometimes)
 bindsym XF86MonBrightnessUp   exec light -A 5

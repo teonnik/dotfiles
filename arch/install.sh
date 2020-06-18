@@ -122,6 +122,9 @@ packages=(
 )
 pacman --noconfirm --needed -S  ${packages[@]}
 
+# Fix for `light` on Arch
+usermod -aG video <your-user>
+
 # TODO: Install AUR packages
 # TODO: install yay
 #git clone https://aur.archlinux.org/yay.git
