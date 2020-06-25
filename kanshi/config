@@ -5,3 +5,7 @@
     output eDP-1 disable
     output "BenQ Corporation BenQ GW2470 Y5K00800019" enable mode 1920x1080
 }
+{
+    output eDP-1 disable
+    output "BenQ Corporation BenQ GW2470 28H01790SL0" enable mode 1920x1080
+}

@@ -31,6 +31,10 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 alias vl="vim ~/readme/log.md"
 alias vt="vim ~/readme/todo.md"
 
+alias sps="spack spec -Il"
+alias spf="spack find -lvd"
+alias sph="spack help --all"
+
 # ------------------------------------------------------------------------------
 # oh-my-zsh
 
