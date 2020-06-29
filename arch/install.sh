@@ -53,6 +53,9 @@ packages=(
   # dev tools
   make gdb git mercurial cmake zsh gvim qtcreator clang openmp
 
+  # compilers (for spack and cuda)
+  gcc8 gcc8-fortran
+
   # dev libraries
   boost gperftools hwloc
 
