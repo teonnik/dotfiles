@@ -3,7 +3,7 @@
 #
 packages:
   all:
-    compiler: [gcc@8.4.0, clang@9.0.1]
+    compiler: [gcc@8.4.0, clang@10.0.0]
     providers:
       mpi: [mpich]
       mkl: [intel-mkl]

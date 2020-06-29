@@ -102,7 +102,7 @@ packages=(
   pdf2svg pdfarranger xournalpp
 
   # utils
-  zip unzip unrar jq tree wget curl base-devel
+  zip unzip unrar jq tree wget curl base-devel fzf the_silver_searcher
 
   # arch
   pacman-contrib pacgraph
@@ -143,6 +143,7 @@ usermod -aG video <your-user>
 # TODO: setup dotfiles
 # TODO: `firefox` addons: NoScript, LastPass
 
+# # slack-desktop
 
 # ------------------------------
 # vim

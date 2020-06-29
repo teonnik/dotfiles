@@ -9,3 +9,7 @@
     output eDP-1 disable
     output "BenQ Corporation BenQ GW2470 28H01790SL0" enable mode 1920x1080
 }
+{
+    output eDP-1 disable
+    output "Dell Inc. DELL U2719D HFQH4N2" enable mode 2560x1440
+}
