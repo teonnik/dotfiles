@@ -24,6 +24,7 @@ source $HOME/software/spack/share/spack/setup-env.sh
 alias sps="spack spec -Il"
 alias spf="spack find -lvd"
 alias sph="spack help --all"
+alias spi="spack install -v"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
