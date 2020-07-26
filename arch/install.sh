@@ -66,7 +66,7 @@ packages=(
   perf htop
 
   # network
-  nm-connection-editor networkmanager
+  nm-connection-editor networkmanager nethogs mtr
 
   # vpn
   networkmanager-openconnect networkmanager-openvpn networkmanager-vpnc
@@ -88,6 +88,12 @@ packages=(
 
   # printing
   cups
+
+  # reddit
+  rtv
+
+  # docs
+  tldr man
 
   # bluetooth
   bluez bluez-utils

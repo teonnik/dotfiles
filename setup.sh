@@ -25,6 +25,9 @@ ln -sf ${DOTS}/waybar/config.json           ${CONF}/waybar/config
 ln -sf ${DOTS}/waybar/style.css             ${CONF}/waybar/style.css
 ln -sf ${DOTS}/waybar/modules/kblayout      ${CONF}/waybar/modules/kblayout
 
+mkdir -p $HOME/.xkb/symbols
+ln -sf ${DOTS}/xkb/us-german-umlaut         $HOME/.xkb/symbols/us-german-umlaut
+
 #mkdir -p ${HOME}/.spack
 #ln -sf ${DOTS}/spack/packages.yaml          ${HOME}/.spack/packages.yaml
 

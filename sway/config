@@ -40,7 +40,7 @@ exec swayidle -w \
 # Input configuration: `man 5 sway-input` / `swaymsg -t get_inputs`
 
 input type:keyboard {
-  xkb_layout us,bg
+  xkb_layout us-german-umlaut,bg
   xkb_variant ,phonetic
   xkb_options grp:alt_shift_toggle
 }
