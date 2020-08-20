@@ -51,10 +51,10 @@ packages=(
   sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim kanshi
 
   # dev tools
-  make gdb git mercurial cmake zsh gvim qtcreator clang openmp
+  make gdb git mercurial cmake zsh gvim
 
   # compilers (for spack and cuda)
-  gcc8 gcc8-fortran
+  gcc8 gcc8-fortran clang openmp
 
   # dev libraries
   boost gperftools hwloc
@@ -111,7 +111,10 @@ packages=(
   pdf2svg pdfarranger xournalpp
 
   # utils
-  zip unzip unrar jq tree wget curl base-devel fzf the_silver_searcher
+  zip unzip unrar jq wget curl base-devel fzf the_silver_searcher fd
+
+  # files & folders
+  ncdu broot tree
 
   # arch
   pacman-contrib pacgraph
