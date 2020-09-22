@@ -36,7 +36,7 @@ passwd
 useradd -m teonnik
 
 # Set pacman's Color option
-sed -i '/Color/s/^#//g' /etc/pacman.conf 
+sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Install official Arch packages
 packages=(
@@ -51,7 +51,7 @@ packages=(
   sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim kanshi
 
   # dev tools
-  make gdb git mercurial cmake zsh gvim
+  make ninja gdb git mercurial cmake zsh gvim diff-so-fancy
 
   # compilers (for spack and cuda)
   gcc8 gcc8-fortran clang openmp
@@ -72,7 +72,7 @@ packages=(
   networkmanager-openconnect networkmanager-openvpn networkmanager-vpnc
 
   # web
-  firefox youtube-dl wget
+  firefox youtube-dl wget rtv newsboat github-cli
 
   # security
   su sudo openssh keepassxc
@@ -84,13 +84,16 @@ packages=(
   ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
 
   # kde / qt
-  plasma-desktop qt5ct konsole okular dolphin gwenview qt5-wayland
+  qt5-wayland qt5ct konsole okular
+
+  # pyton
+  python-numpy python-scipy python-pandas python-matplotlib python-seaborn ipython jupyter
 
   # printing
   cups
 
-  # reddit
-  rtv
+  # chat
+  weechat weechat-matrix
 
   # docs
   tldr man
@@ -111,7 +114,7 @@ packages=(
   pdf2svg pdfarranger xournalpp
 
   # utils
-  zip unzip unrar jq wget curl base-devel fzf the_silver_searcher fd
+  zip unzip unrar jq wget curl base-devel fzf the_silver_searcher fd neofetch
 
   # files & folders
   ncdu broot tree
@@ -123,13 +126,16 @@ packages=(
   man-db man-pages
 
   # images
-  inkscape gimp
+  imv inkscape gimp
 
   # office
   thunderbird libreoffice-still
 
   # video
   vlc playerctl
+
+  # no longer used
+  # texstudio gwenview feh
 
 )
 pacman --noconfirm --needed -S  ${packages[@]}

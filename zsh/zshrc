@@ -30,7 +30,7 @@ alias spi="spack install -v"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # vim
-alias vl="vim ~/readme/log.md"
+alias vl='vim ~/log/$(date "+%Y-%m-%d").md'
 alias vt="vim ~/readme/todo.md"
 
 # slurm
