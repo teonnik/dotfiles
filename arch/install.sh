@@ -40,103 +40,116 @@ sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Install official Arch packages
 packages=(
+  grub        # boot loader
+  efibootmgr  # EFI boot manager
 
-  # boot loader
-  grub
+  sddm                  # display manager
+  sway                  # window manager
+  xorg-server-xwayland  # wayland xorg support
+  kanshi                # monitors setup manager
+  swaylock              # screen locker
+  swayidle              # desktop dimming manager
+  wl-clipboard          # clipboard
+  rofi                  # app launcher
+  grim                  # screenshot utility
+  mako libnotify        # notifications
 
-  # display manager
-  sddm
+  base-devel     # basic tools: make, which, gcc, grep, sudo, sed, etc
+  zsh            # shell
+  gvim           # editor
+  ninja          # alternative to make
+  gdb            # debugger
+  git            # version control management
+  cmake          # build tool
+  diff-so-fancy  # better diff
+  clang openmp   # clang with opnemp support
+  perf htop      # performance
 
-  # sway window manager
-  sway swaylock swayidle wl-clipboard xorg-server-xwayland rofi grim kanshi
-
-  # dev tools
-  make ninja gdb git mercurial cmake zsh gvim diff-so-fancy
-
-  # compilers (for spack and cuda)
-  gcc8 gcc8-fortran clang openmp
-
-  # dev libraries
-  boost gperftools hwloc
-
-  # notifications
-  mako libnotify
-
-  # performance
-  perf htop
-
-  # network
-  nm-connection-editor networkmanager nethogs mtr
+  networkmanager  # network manager
+  nethogs         # net top tool
+  mtr             # traceroute alternative
 
   # vpn
-  networkmanager-openconnect networkmanager-openvpn networkmanager-vpnc
+  networkmanager-openconnect
+  networkmanager-openvpn
+  networkmanager-vpnc
 
-  # web
-  firefox youtube-dl wget rtv newsboat github-cli
-
-  # security
-  su sudo openssh keepassxc
+  openssh # ssh
+  wget
+  curl
+  aria2
+  youtube-dl
+  newsboat
+  rtv
+  github-cli
 
   # latex
-  texlive-most biber
+  texlive-bin
+  texlive-core
+  texlive-science
+  biber
 
   # fonts
-  ttf-liberation ttf-font-awesome ttf-roboto powerline-fonts
+  ttf-liberation
+  ttf-font-awesome
+  ttf-roboto
+  powerline-fonts
 
-  # kde / qt
-  qt5-wayland qt5ct konsole okular
+  # qt
+  qt5-wayland
+  qt5ct
 
-  # pyton
-  python-numpy python-scipy python-pandas python-matplotlib python-seaborn ipython jupyter
-
-  # printing
-  cups
+  # python
+  python-numpy
+  python-scipy
+  python-pandas
+  python-matplotlib
+  python-seaborn
+  ipython
+  jupyter
 
   # chat
-  weechat weechat-matrix
+  weechat
+  weechat-matrix
 
-  # docs
-  tldr man
+  bluez bluez-utils                 # bluetooth
+  pulseaudio pulseaudio-bluetooth   # sound server
+  pavucontrol                       # volume control
+  light                             # brightness
+  cups                              # printing
 
-  # bluetooth
-  bluez bluez-utils
+  borg          # backup
+  syncthing     # sync continuously
+  rclone        # sync to cloud storage
+  rsync         # sync to remote
 
-  # audio
-  pulseaudio pulseaudio-bluetooth pavucontrol
+  neofetch                    # system info
+  zip unzip unrar             # archives
+  jq                          # json
+  fzf the_silver_searcher fd  # search
+  ncdu tree                   # files & folders
+  pacman-contrib pacgraph     # arch
+  man man-db man-pages        # man pages
+  tldr                        # alternative to man pages
+  pdf2svg                     # pdf to svg converter
+  playerctl                   # media player controller
 
-  # brightness
-  light
 
-  # backup & sync
-  syncthing borg rclone rsync
+  firefox               # browser
+  nm-connection-editor  # network manager GUI
+  keepassxc             # password manager
+  konsole               # terminal emulator
+  zathura-pdf-mupdf     # pdf viewer
+  xournalpp             # pdf editor
+  pdfarranger           # pdf merge/split/arrange
+  imv                   # image viewer
+  vlc                   # media player
+  thunderbird           # mail client
+  libreoffice-still     # office suite
+  inkscape              # vector graphics editor
+  gimp                  # raster graphics editor
 
-  # pdf
-  pdf2svg pdfarranger xournalpp
-
-  # utils
-  zip unzip unrar jq wget curl base-devel fzf the_silver_searcher fd neofetch
-
-  # files & folders
-  ncdu broot tree
-
-  # arch
-  pacman-contrib pacgraph
-
-  # docs
-  man-db man-pages
-
-  # images
-  imv inkscape gimp
-
-  # office
-  thunderbird libreoffice-still
-
-  # video
-  vlc playerctl
-
-  # no longer used
-  # texstudio gwenview feh
-
+  # no longer used: texstudio gwenview okular dolphin feh
 )
 pacman --noconfirm --needed -S  ${packages[@]}
 
