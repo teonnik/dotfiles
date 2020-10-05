@@ -27,11 +27,6 @@ packages:
     externals:
     - spec: python@3.8.2
       prefix: /usr
-  cuda:
-    buildable: false
-    externals:
-    - spec: cuda
-      prefix: /opt/cuda
   git:
     buildable: false
     externals:
