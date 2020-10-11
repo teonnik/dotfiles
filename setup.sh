@@ -30,6 +30,9 @@ ln -sf ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlau
 mkdir -p ${CONF}/alacritty
 ln -sf ${DOTS}/alacritty/alacritty.yml      ${CONF}/alacritty/alacritty.yml
 
+mkdir -p ${CONF}/zathura
+ln -sf ${DOTS}/zathura/zathurarc            ${CONF}/zathura/zathurarc
+
 #mkdir -p ${HOME}/.spack
 #ln -sf ${DOTS}/spack/packages.yaml          ${HOME}/.spack/packages.yaml
 

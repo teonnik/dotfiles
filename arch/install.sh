@@ -69,6 +69,9 @@ packages=(
   nethogs         # net top tool
   mtr             # traceroute alternative
 
+  gnupg  # encryption and signing tool
+  pass   # password store
+
   # vpn
   networkmanager-openconnect
   networkmanager-openvpn
