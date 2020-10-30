@@ -38,6 +38,9 @@ useradd -m teonnik
 # Set pacman's Color option
 sed -i '/Color/s/^#//g' /etc/pacman.conf
 
+# Create local folders
+mkdir -p ~/code ~/build ~/env ~/downloads ~/bin ~/install ~/software
+
 # Install official Arch packages
 packages=(
   grub        # boot loader
@@ -53,6 +56,9 @@ packages=(
   rofi                  # app launcher
   grim                  # screenshot utility
   mako libnotify        # notifications
+  #wev                   # debugging Wayland events
+
+  at                    # schedule commands
 
   base-devel     # basic tools: make, which, gcc, grep, sudo, sed, etc
   zsh            # shell
@@ -71,6 +77,8 @@ packages=(
 
   gnupg  # encryption and signing tool
   pass   # password store
+  lastpass-cli
+  pwgen  # generate passwords from the command line
 
   # vpn
   networkmanager-openconnect
@@ -139,6 +147,7 @@ packages=(
 
 
   firefox               # browser
+  qutebrowser
   nm-connection-editor  # network manager GUI
   keepassxc             # password manager
   konsole               # terminal emulator
@@ -156,28 +165,31 @@ packages=(
 )
 pacman --noconfirm --needed -S  ${packages[@]}
 
-# Fix for `light` on Arch
-usermod -aG video <your-user>
+# Install yay
+git clone https://aur.archlinux.org/yay.git
+(cd yay; makepkg -si)
 
-# TODO: Install AUR packages
-# TODO: install yay
-#git clone https://aur.archlinux.org/yay.git
-#cd yay
-#makepkg -si
+# AUR packages
+aur_pkgs=(
+  skypeforlinux-stable-bin
+  mendeleydesktop
+  zoom
+  slack-desktop
+  navi-bin
+  gcalcli
+  mutt-wizard-git
+)
+yay --noconfirm --needed -S ${aur_pkgs[@]}
 
-#yay -S polybar \
-#       skype \
-#       mendeleydesktop
+# spack
+git clone https://github.com/spack/spack.git ~/code
 
-# TODO: konsole : trim trailing white spaces
+# dotfiles
+git clone https://github.com/teonnik/dotfiles.git ~/code
+~/code/dotfiles/setup.sh
 
-# Custom
-#
-# TODO: spack
-# TODO: setup dotfiles
-# TODO: `firefox` addons: NoScript, LastPass
+# TODO: `firefox` addons: NoScript (?), LastPass, Bypass Paywalls, Adblock Plus
 
-# # slack-desktop
 
 # ------------------------------
 # vim
@@ -209,7 +221,11 @@ systemctl enable sddm.service \
                  bluetooth.service \
                  org.cups.cupsd.service \
                  NetworkManager.service \
-                 syncthing@teonnik.service
+                 syncthing@teonnik.service \
+                 atd.service
+
+# Fix for `light` on Arch
+usermod -aG video <your-user>
 
 # TODO: xdg-user-dirs ?
 

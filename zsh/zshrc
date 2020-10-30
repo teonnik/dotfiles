@@ -39,6 +39,10 @@ alias slc="scancel -u $(whoami)"
 alias sli="sinfo -S P -o \"%10P %6a %10A %20G %7m %z\""
 alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,AllocGRES%20,Elapsed,ExitCode,State"
 
+# lpass
+export LPASS_CLIPBOARD_COMMAND="wl-copy"
+
+
 # ------------------------------------------------------------------------------
 # oh-my-zsh
 
