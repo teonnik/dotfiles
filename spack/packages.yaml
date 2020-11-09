@@ -1,6 +1,5 @@
 packages:
   all:
-    compiler: [gcc@8.4.0, clang@10.0.0]
     providers:
       mpi: [mpich]
       mkl: [intel-mkl]
@@ -9,96 +8,69 @@ packages:
       pkgconfig: [pkgconf]
   autoconf:
     buildable: false
-    externals:
-    - spec: autoconf
-      prefix: /usr
   automake:
     buildable: false
-    externals:
-    - spec: automake
-      prefix: /usr
-  cmake:
+  bash:
     buildable: false
-    externals:
-    - spec: cmake
-      prefix: /usr
-  python:
+  bison:
     buildable: false
-    externals:
-    - spec: python@3.8.2
-      prefix: /usr
-  git:
-    buildable: false
-    externals:
-    - spec: git
-      prefix: /usr
-  openssl:
-    buildable: false
-    externals:
-    - spec: openssl
-      prefix: /usr
-  pkgconf:
-    buildable: false
-    externals:
-    - spec: pkgconf
-      prefix: /usr
   bzip2:
     buildable: false
-    externals:
-    - spec: bzip2
-      prefix: /usr
-  libunwind:
+  cmake:
     buildable: false
-    externals:
-    - spec: libunwind
-      prefix: /usr
-  m4:
-    buildable: false
-    externals:
-    - spec: m4
-      prefix: /usr
-  xz:
-    buildable: false
-    externals:
-    - spec: xz
-      prefix: /usr
-  libxml2:
-    buildable: false
-    externals:
-    - spec: libxml2
-      prefix: /usr
-  libpciaccess:
-    buildable: false
-    externals:
-    - spec: libpciaccess@0.16
-      prefix: /usr
-  zlib:
-    buildable: false
-    externals:
-    - spec: zlib
-      prefix: /usr
-  libtool:
-    buildable: false
-    externals:
-    - spec: libtool
-      prefix: /usr
-  numactl:
-    buildable: false
-    externals:
-    - spec: numactl
-      prefix: /usr
-  texinfo:
-    buildable: false
-    externals:
-    - spec: texinfo
-      prefix: /usr
-  findutils:
-    buildable: false
-    externals:
-    - spec: findutils
-      prefix: /usr
   cpio:
     buildable: false
-    externals:
-    - spec: cpio
-      prefix: /usr
+  diffutils:
+    buildable: false
+  findutils:
+    buildable: false
+  flex:
+    buildable: false
+  fzf:
+    buildable: false
+  gcc:
+    buildable: false
+  ghostscript:
+    buildable: false
+  git:
+    buildable: false
+  gmake:
+    buildable: false
+  go:
+    buildable: false
+  gpgme:
+    buildable: false
+  openjdk:
+    buildable: false
+  libtool:
+    buildable: false
+  m4:
+    buildable: false
+  ncurses:
+    buildable: false
+  openssl:
+    buildable: false
+  perl:
+    buildable: false
+  pkgconf:
+    buildable: false
+  python:
+    buildable: false
+  ruby:
+    buildable: false
+  tar:
+    buildable: false
+  texinfo:
+    buildable: false
+  xz:
+    buildable: false
+  libunwind:
+    buildable: false
+  libxml2:
+    buildable: false
+  libpciaccess:
+    buildable: false
+  zlib:
+    buildable: false
+  numactl:
+    buildable: false
