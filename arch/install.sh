@@ -60,6 +60,8 @@ packages=(
 
   at                    # schedule commands
 
+  hexyl          # command line hex viewer
+
   base-devel     # basic tools: make, which, gcc, grep, sudo, sed, etc
   zsh            # shell
   gvim           # editor
@@ -69,7 +71,11 @@ packages=(
   cmake          # build tool
   diff-so-fancy  # better diff
   clang openmp   # clang with opnemp support
-  perf htop      # performance
+
+  # monitoring
+  perf
+  htop
+  glances
 
   networkmanager  # network manager
   nethogs         # net top tool
@@ -111,6 +117,7 @@ packages=(
   qt5ct
 
   # python
+  python-black # formatting
   python-numpy
   python-scipy
   python-pandas
@@ -122,6 +129,13 @@ packages=(
   # chat
   weechat
   weechat-matrix
+
+  neomutt # email client
+  notmuch # index and search mail
+  lynx    # view HTML email
+  msmtp   # SMTP client
+  isync   # sync IMAP and Maildir mailboxes
+  abook   # address book for mutt
 
   bluez bluez-utils                 # bluetooth
   pulseaudio pulseaudio-bluetooth   # sound server
@@ -178,6 +192,7 @@ aur_pkgs=(
   navi-bin
   gcalcli
   mutt-wizard-git
+  direnv
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 
