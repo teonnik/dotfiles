@@ -42,6 +42,8 @@ alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,Allo
 # lpass
 export LPASS_CLIPBOARD_COMMAND="wl-copy"
 
+# direnv
+eval "$(direnv hook zsh)"
 
 # ------------------------------------------------------------------------------
 # oh-my-zsh

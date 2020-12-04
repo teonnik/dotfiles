@@ -1,0 +1,38 @@
+# vim: filetype=neomuttrc
+
+set from = "teodor.nikolov22@gmail.com"
+set sendmail = "msmtp -a gmail"
+
+# Set folders
+set spoolfile = "+gmail/inbox"
+set mbox = "+gmail/archive"
+set postponed = "+gmail/drafts"
+set record = "+gmail/sent"
+set trash = "+gmail/trash"
+
+macro index o \
+  "<shell-escape>mbsync gmail<enter>" \
+  "run mbsync to sync mail for this account"
+
+macro index,pager s \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+gmail/spam<enter>" \
+  "mark as read and move to spam folder"
+
+macro index,pager a \
+  "<save-message>+gmail/archive<enter>" \
+  "move message to the archive"
+
+macro index,pager i \
+  "<save-message>+gmail/inbox<enter>" \
+  "move message to the inbox"
+
+macro index,pager gi "<change-folder>+gmail/inbox<enter>" "Go to sent."
+macro index,pager gs "<change-folder>+gmail/sent<enter>" "Go to sent."
+macro index,pager gd "<change-folder>+gmail/drafts<enter>" "Go to drafts."
+macro index,pager gt "<change-folder>+gmail/trash<enter>" "Go to trash."
+macro index,pager gS "<change-folder>+gmail/spam<enter>" "Go to spam."
+macro index,pager ga "<change-folder>+gmail/archive<enter>" "Go to archive."
+
+mailboxes +gmail/inbox +gmail/sent +gmail/archive +gmail/drafts +gmail/spam +gmail/trash

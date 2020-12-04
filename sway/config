@@ -15,26 +15,24 @@ client.background       #2f343f
 #default_border pixel 3
 #default_floating_border pixel 3
 
-# gaps inner 10
 
 # 1. lock screens after 300 seconds of inactivity
 # 2. turn off displays after another 300 seconds
 # 3. turn screens back on when resumed
 # 4. lock screens before computer goes to sleep
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
+         timeout 300 'swaylock' \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'swaylock'
 
 # ------------------------------------------------------------------------------
 # Output configuration: `man 5 sway-output` / `swaymsg -t get_outputs`
 
 # wallpaper
-#output * bg ~/pics/wallpapers/geometry.jpg fill
-
-# work
-#output * scale 1.5
+#
+# https://github.com/swaywm/sway/issues/1269
+output * bg `find ~/pics/wallpapers -type f | shuf -n 1` fill
 
 # ------------------------------------------------------------------------------
 # Input configuration: `man 5 sway-input` / `swaymsg -t get_inputs`
@@ -192,14 +190,14 @@ bar {
     swaybar_command waybar
 }
 
+# gaps
+#bindsym $mod+g gaps inner all 10
+
 # automatic output management on hot-plug/unplug
 exec kanshi
 
 # lock
-bindsym $mod+l exec swaylock -i ~/media/wallpapers/geometry_blurred.jpg -k -l
-
-# to avoid issues with apps that don't work well with env vars
-bindsym $mod+Shift+Return exec "konsole"
+bindsym $mod+l exec swaylock
 
 # terminal
 bindsym $mod+Return exec "alacritty"
@@ -230,10 +228,13 @@ bindsym XF86AudioPrev  exec playerctl previous
 # screenshot
 bindsym $mod+p exec grim screenshot.png
 
+# ------------------------------------------------------------------------------
+# Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`
+
 # inhibit idle when fullscreen
-for_window [class="Firefox"] inhibit_idle fullscreen # xwayland
+for_window [class="firefox"] inhibit_idle fullscreen # xwayland
 for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
 for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 
 # set opacity for window
-#for_window [class="konsole"] opacity set 0.8
+for_window [app_id="Alacritty"] opacity set 0.95

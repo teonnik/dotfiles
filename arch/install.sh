@@ -39,7 +39,7 @@ useradd -m teonnik
 sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Create local folders
-mkdir -p ~/code ~/build ~/env ~/downloads ~/bin ~/install ~/software
+mkdir -p ~/code ~/build ~/downloads ~/bin ~/install ~/software
 
 # Install official Arch packages
 packages=(
@@ -57,6 +57,11 @@ packages=(
   grim                  # screenshot utility
   mako libnotify        # notifications
   #wev                   # debugging Wayland events
+
+  # lscpu
+  util-linux
+
+  xdg-user-dirs
 
   at                    # schedule commands
 
@@ -193,6 +198,7 @@ aur_pkgs=(
   gcalcli
   mutt-wizard-git
   direnv
+  ripgrep-all
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 

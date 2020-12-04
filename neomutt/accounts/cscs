@@ -1,0 +1,40 @@
+# vim: filetype=neomuttrc
+set from = "tnikolov@cscs.ch"
+set sendmail = "msmtp -a cscs"
+
+# Set folders
+set spoolfile = "+cscs/inbox"
+set mbox = "+cscs/archive"
+set postponed = "+cscs/drafts"
+set record = "+cscs/sent"
+set trash = "+cscs/trash"
+
+# Alternate email addresses.
+alternates ^teodor.nikolov@cscs.ch$
+
+macro index o \
+  "<shell-escape>mbsync cscs<enter>" \
+  "run mbsync to sync mail for this account"
+
+macro index,pager s \
+  "<enter-command>set my_old_resolve=\$resolve noresolve<enter>\
+  <tag-prefix><clear-flag>n<enter-command>set resolve=\$my_old_resolve<enter>\
+  <save-message>+cscs/spam<enter>" \
+  "mark as read and move to spam folder"
+
+macro index,pager a \
+  "<save-message>+cscs/archive<enter>"  \
+  "move message to the archive"
+
+macro index,pager i \
+  "<save-message>+cscs/inbox<enter>"  \
+  "move message to the inbox"
+
+macro index,pager gi "<change-folder>+cscs/inbox<enter>" "Go to sent."
+macro index,pager gs "<change-folder>+cscs/sent<enter>" "Go to sent."
+macro index,pager gd "<change-folder>+cscs/drafts<enter>" "Go to drafts."
+macro index,pager gt "<change-folder>+cscs/trash<enter>" "Go to trash."
+macro index,pager gS "<change-folder>+cscs/spam<enter>" "Go to spam."
+macro index,pager ga "<change-folder>+cscs/archive<enter>" "Go to archive."
+
+mailboxes +cscs/inbox +cscs/sent +cscs/archive +cscs/drafts +cscs/spam +cscs/trash

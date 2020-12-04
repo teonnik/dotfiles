@@ -1,0 +1,128 @@
+# Global Channel configuration.
+Create Both
+Expunge Both
+SyncState *
+
+# ----- GMail -----
+
+IMAPAccount gmail
+Host imap.gmail.com
+User teodor.nikolov22@gmail.com
+PassCmd "lpass show --password \"neomutt gmail\""
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+# Remote storage
+IMAPStore gmail-remote
+Account gmail
+
+# Local storage
+MaildirStore gmail-local
+Path ~/mail/gmail/
+Inbox ~/mail/gmail/inbox
+
+# Inbox
+Channel gmail-inbox
+Master :gmail-remote:"INBOX"
+Slave  :gmail-local:inbox
+
+# Sent
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+slave  :gmail-local:sent
+
+# Archive
+Channel gmail-archive
+Master :gmail-remote:"Archived Mail"
+slave  :gmail-local:archive
+
+# Drafts
+Channel gmail-drafts
+Master :gmail-remote:"[Gmail]/Drafts"
+slave  :gmail-local:drafts
+
+# Trash
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Bin"
+slave  :gmail-local:trash
+
+# Spam
+Channel gmail-spam
+Master :gmail-remote:"[Gmail]/Spam"
+slave  :gmail-local:spam
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-sent
+Channel gmail-archive
+Channel gmail-drafts
+Channel gmail-trash
+Channel gmail-spam
+
+
+# ----- CSCS -----
+# Note: the PipelineDepth parameter resolves problems with executing multiple
+# imap commands concurrently. [1]
+#
+# [1]: https://wiki.archlinux.org/index.php/Isync
+IMAPAccount cscs
+Host mail.ethz.ch
+User tnikolov
+PassCmd "lpass show --password \"eth ldap\""
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+AuthMech PLAIN
+PipelineDepth 1
+
+# Remote storage
+IMAPStore cscs-remote
+Account cscs
+
+# Local storage
+MaildirStore cscs-local
+Path ~/mail/cscs/
+Inbox ~/mail/cscs/Inbox
+#SubFolders Verbatim
+#
+#Channel cscs
+#Master :cscs-remote:
+#Slave :cscs-local:
+#Patterns *
+
+# Inbox
+Channel cscs-inbox
+Master :cscs-remote:"Inbox"
+Slave  :cscs-local:inbox
+
+# Sent
+Channel cscs-sent
+Master :cscs-remote:"Sent"
+Slave  :cscs-local:sent
+
+# Archive
+Channel cscs-archive
+Master :cscs-remote:"Archives"
+Slave  :cscs-local:archive
+
+# Drafts
+Channel cscs-drafts
+Master :cscs-remote:"Drafts"
+Slave  :cscs-local:drafts
+
+# Trash
+Channel cscs-trash
+Master :cscs-remote:"Trash"
+Slave  :cscs-local:trash
+
+# Spam
+Channel cscs-spam
+Master :cscs-remote:"Junk E-Mail"
+Slave  :cscs-local:spam
+
+Group cscs
+Channel cscs-inbox
+Channel cscs-sent
+Channel cscs-archive
+Channel cscs-drafts
+Channel cscs-trash
+Channel cscs-spam
