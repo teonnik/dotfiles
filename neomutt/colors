@@ -96,10 +96,10 @@ color compose security_none     color208 color234
 # --- My additions
 
 # Default index colors:
-color index_author red default '.*'
-color index_number blue default
-color index_subject cyan default '.*'
-color index_date color142 default
+color index_author  red      color234 '.*'
+color index_number  blue     color234
+color index_subject cyan     color234 '.*'
+color index_date    color142 color234
 
 # Tagged mail is highlighted:
 color index_author brightred blue "~T"

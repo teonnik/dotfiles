@@ -1,4 +1,5 @@
 # vim: filetype=neomuttrc
+unmailboxes *
 
 set from = "teodor.nikolov22@gmail.com"
 set sendmail = "msmtp -a gmail"

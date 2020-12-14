@@ -1,4 +1,6 @@
 # vim: filetype=neomuttrc
+unmailboxes *
+
 set from = "tnikolov@cscs.ch"
 set sendmail = "msmtp -a cscs"
 

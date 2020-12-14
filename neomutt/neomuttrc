@@ -65,6 +65,9 @@ set spoolfile = "+gmail/inbox"
 folder-hook gmail/* source ~/.config/neomutt/accounts/gmail
 folder-hook cscs/* source ~/.config/neomutt/accounts/cscs
 
+macro index <F1> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'
+macro index <F2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/cscs<enter><change-folder>!<enter>'
+
 # Mailboxes
 #named-mailboxes "gmail ========" "+gmail/inbox"
 #mailboxes +gmail/sent +gmail/archive +gmail/drafts +gmail/spam +gmail/trash
