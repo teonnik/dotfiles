@@ -3,32 +3,40 @@
 DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 CONF=${HOME}/.config
 
+ln -sf ${DOTS}/alacritty                    ${CONF}/alacritty
+
+ln -sf ${DOTS}/gdb/gdb.conf                 ${HOME}/.gdbinit
+
 ln -sf ${DOTS}/git/gitconfig                ${HOME}/.gitconfig
 ln -sf ${DOTS}/git/gitignore_global         ${HOME}/.gitignore_global
-ln -sf ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
-ln -sf ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
 
-ln -sf ${DOTS}/xdg/xdg.conf                 ${CONF}/user-dirs.dirs
-ln -sf ${DOTS}/gdb/gdb.conf                 ${HOME}/.gdbinit
+ln -sf ${DOTS}/kanshi                       ${CONF}/kanshi
+
 ln -sf ${DOTS}/latex/latexmkrc.conf         ${HOME}/.latexmkrc
 
-mkdir -p ${CONF}/sway
-ln -sf ${DOTS}/sway/config                  ${CONF}/sway/config
+ln -sf ${DOTS}/mbsyncrc                     ${HOME}/.mbsyncrc
 
-mkdir -p ${CONF}/kanshi
-ln -sf ${DOTS}/kanshi/config                ${CONF}/kanshi/config
+ln -sf ${DOTS}/msmtprc                      ${HOME}/.msmtprc
 
-mkdir -p ${CONF}/waybar
-mkdir -p ${CONF}/waybar/modules
-ln -sf ${DOTS}/waybar/config.json           ${CONF}/waybar/config
-ln -sf ${DOTS}/waybar/style.css             ${CONF}/waybar/style.css
-ln -sf ${DOTS}/waybar/modules/kblayout      ${CONF}/waybar/modules/kblayout
+ln -sf ${DOTS}/neomutt                      ${CONF}/neomutt
+
+ln -sf ${DOTS}/rofi/power.sh                ${HOME}/bin/power.sh
+
+ln -sf ${DOTS}/sway                         ${CONF}/sway
+
+ln -sf ${DOTS}/swaylock                     ${CONF}/swaylock
+
+# TODO: syncthing
+
+ln -sf ${DOTS}/user-dirs.dirs               ${CONF}/user-dirs.dirs
+
+ln -sf ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
+
+ln -sf ${DOTS}/waybar                       ${CONF}/waybar
 
 mkdir -p ${HOME}/.xkb/symbols
 ln -sf ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlaut
 
-mkdir -p ${CONF}/alacritty
-ln -sf ${DOTS}/alacritty/alacritty.yml      ${CONF}/alacritty/alacritty.yml
+ln -sf ${DOTS}/zathura                      ${CONF}/zathura
 
-mkdir -p ${CONF}/zathura
-ln -sf ${DOTS}/zathura/zathurarc            ${CONF}/zathura/zathurarc
+ln -sf ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
