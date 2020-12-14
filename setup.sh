@@ -32,13 +32,3 @@ ln -sf ${DOTS}/alacritty/alacritty.yml      ${CONF}/alacritty/alacritty.yml
 
 mkdir -p ${CONF}/zathura
 ln -sf ${DOTS}/zathura/zathurarc            ${CONF}/zathura/zathurarc
-
-#mkdir -p ${HOME}/.spack
-#ln -sf ${DOTS}/spack/packages.yaml          ${HOME}/.spack/packages.yaml
-
-#mkdir -p ${CONF}/i3
-#ln -sf ${DOTS}/i3/i3.conf                   ${CONF}/i3/config
-
-#mkdir -p ${CONF}/polybar
-#ln -sf ${DOTS}/polybar/config.ini           ${CONF}/polybar/config
-#ln -sf ${DOTS}/polybar/launch.sh            ${CONF}/polybar/launch.sh
