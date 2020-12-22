@@ -1,0 +1,12 @@
+# vim: ft=conf tw=0
+
+# https://wiki.archlinux.org/index.php/Newsboat#Color_schemes
+
+auto-reload yes
+browser firefox
+
+include /usr/share/doc/newsboat/contrib/colorschemes/nord
+color article             default   default
+color background          default   default
+color listfocus           red       default
+color listfocus_unread    red       default

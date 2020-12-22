@@ -20,6 +20,10 @@ ln -sf ${DOTS}/msmtprc                      ${HOME}/.msmtprc
 
 ln -sf ${DOTS}/neomutt                      ${CONF}/neomutt
 
+mkdir -p ${HOME}/.newsboat
+ln -sf ${DOTS}/newsboat/urls                ${HOME}/.newsboat/urls
+ln -sf ${DOTS}/newsboat/config              ${HOME}/.newsboat/config
+
 ln -sf ${DOTS}/rofi/power.sh                ${HOME}/bin/power.sh
 
 ln -sf ${DOTS}/sway                         ${CONF}/sway

@@ -115,6 +115,7 @@ packages=(
 
   # python
   python-black # formatting
+  python-parse # the reverse of `format()`, like scanf() in `C`
   python-numpy
   python-scipy
   python-pandas
