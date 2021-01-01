@@ -20,6 +20,15 @@ https://planetpython.org/rss20.xml
 # Politics
 # https://www.svobodnaevropa.bg/api/z$ipmqetjpmi
 
-#
-http://www.reddit.com/r/cpp/.rss
-https://news.ycombinator.com/rss
+# reddit
+#http://www.reddit.com/r/cpp/.rss
+#https://www.reddit.com/r/hacking/
+https://reddit-top-rss.herokuapp.com/?subreddit=programming&averagePostsPerDay=5&view=rss
+https://reddit-top-rss.herokuapp.com/?subreddit=linux&averagePostsPerDay=5&view=rss
+https://reddit-top-rss.herokuapp.com/?subreddit=hardware&averagePostsPerDay=5&view=rss
+
+# Hacker News
+#https://hnrss.org/bestcomments
+https://hnrss.org/newest?points=200
+#https://news.ycombinator.com/rss
+

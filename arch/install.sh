@@ -130,7 +130,7 @@ packages=(
 
   neomutt # email client
   notmuch # index and search mail
-  lynx    # view HTML email
+  w3m     # view HTML email
   msmtp   # SMTP client
   isync   # sync IMAP and Maildir mailboxes
   abook   # address book for mutt
@@ -238,6 +238,7 @@ aur_pkgs=(
   gcalcli
   direnv
   ripgrep-all
+  stdman
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 

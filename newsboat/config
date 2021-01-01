@@ -3,7 +3,8 @@
 # https://wiki.archlinux.org/index.php/Newsboat#Color_schemes
 
 auto-reload yes
-browser firefox
+#browser firefox
+browser w3m
 
 include /usr/share/doc/newsboat/contrib/colorschemes/nord
 color article             default   default
