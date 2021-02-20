@@ -234,9 +234,9 @@ git clone https://aur.archlinux.org/yay.git
 # AUR packages
 aur_pkgs=(
   skypeforlinux-stable-bin
-  mendeleydesktop
+  #mendeleydesktop
   slack-desktop
-  zoom
+  #zoom
   direnv
   gcalcli
   ripgrep-all
