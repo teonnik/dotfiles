@@ -39,6 +39,8 @@ ln -sf ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
 
 ln -sf ${DOTS}/waybar                       ${CONF}/waybar
 
+ln -sf ${DOTS}/wofi                         ${CONF}/wofi
+
 mkdir -p ${HOME}/.xkb/symbols
 ln -sf ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlaut
 
