@@ -24,16 +24,12 @@ mkdir -p ${HOME}/.newsboat
 ln -sf ${DOTS}/newsboat/urls                ${HOME}/.newsboat/urls
 ln -sf ${DOTS}/newsboat/config              ${HOME}/.newsboat/config
 
-#ln -sf ${DOTS}/rofi/power.sh                ${HOME}/bin/power.sh
-
 ln -sf ${DOTS}/sway                         ${CONF}/sway
 ln -sf ${DOTS}/sway/run                     ${HOME}/bin/sway-run
 
 ln -sf ${DOTS}/swaylock                     ${CONF}/swaylock
 
 # TODO: syncthing
-
-ln -sf ${DOTS}/user-dirs.dirs               ${CONF}/user-dirs.dirs
 
 ln -sf ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
 
