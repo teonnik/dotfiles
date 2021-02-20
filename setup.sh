@@ -24,9 +24,10 @@ mkdir -p ${HOME}/.newsboat
 ln -sf ${DOTS}/newsboat/urls                ${HOME}/.newsboat/urls
 ln -sf ${DOTS}/newsboat/config              ${HOME}/.newsboat/config
 
-ln -sf ${DOTS}/rofi/power.sh                ${HOME}/bin/power.sh
+#ln -sf ${DOTS}/rofi/power.sh                ${HOME}/bin/power.sh
 
 ln -sf ${DOTS}/sway                         ${CONF}/sway
+ln -sf ${DOTS}/sway/run                     ${HOME}/bin/sway-run
 
 ln -sf ${DOTS}/swaylock                     ${CONF}/swaylock
 
@@ -44,3 +45,4 @@ ln -sf ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlau
 ln -sf ${DOTS}/zathura                      ${CONF}/zathura
 
 ln -sf ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
+ln -sf ${DOTS}/zsh/profile                  ${HOME}/.zprofile

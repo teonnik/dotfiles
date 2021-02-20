@@ -48,11 +48,13 @@ packages=(
   swaylock              # screen locker
   swayidle              # desktop dimming manager
   wl-clipboard          # clipboard
-  rofi                  # app launcher
+  wofi                  # app launcher
   grim                  # screenshot utility
   mako libnotify        # notifications
   waybar                # bar
   #wev                   # debugging Wayland events
+
+  lsof                  # list open files
 
   alacritty             # terminal emulator
   xdg-user-dirs         # user directory manager
@@ -150,7 +152,8 @@ packages=(
   zip unzip unrar             # archives
   jq                          # json
   fzf the_silver_searcher fd  # search
-  ncdu tree                   # files & folders
+  ncdu                        # disk: du alternative
+  tree                        # files & folders
   pacman-contrib pacgraph     # arch
   man man-db man-pages        # man pages
   tldr                        # alternative to man pages
@@ -172,7 +175,7 @@ packages=(
   inkscape              # vector graphics editor
   gimp                  # raster graphics editor
 
-  # no longer used: texstudio gwenview okular dolphin feh qutebrowser
+  # no longer used: texstudio gwenview okular dolphin feh qutebrowser rofi
 )
 #pacman --noconfirm --needed -S  ${packages[@]}
 pacstrap /mnt ${packages[@]}
@@ -232,13 +235,15 @@ git clone https://aur.archlinux.org/yay.git
 aur_pkgs=(
   skypeforlinux-stable-bin
   mendeleydesktop
-  zoom
   slack-desktop
-  navi-bin
-  gcalcli
+  zoom
   direnv
+  gcalcli
   ripgrep-all
+  navi-bin
+  procs-bin       # ps replacement
   stdman
+  rusty-man
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 

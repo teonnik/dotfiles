@@ -15,20 +15,22 @@ https://ericniebler.com/feed
 https://drewdevault.com/feed.xml Blogs
 
 # python
-https://planetpython.org/rss20.xml
+#https://planetpython.org/rss20.xml
 
 # Politics
-# https://www.svobodnaevropa.bg/api/z$ipmqetjpmi
+#https://www2.capital.bg/rss/
+#https://www.svobodnaevropa.bg/api/zgmpmie_$pmm
 
 # reddit
-#http://www.reddit.com/r/cpp/.rss
-#https://www.reddit.com/r/hacking/
-https://reddit-top-rss.herokuapp.com/?subreddit=programming&averagePostsPerDay=5&view=rss
-https://reddit-top-rss.herokuapp.com/?subreddit=linux&averagePostsPerDay=5&view=rss
-https://reddit-top-rss.herokuapp.com/?subreddit=hardware&averagePostsPerDay=5&view=rss
+#http://www.reddit.com/r/cpp/top.rss?sort=top&t=day
+#http://www.reddit.com/r/hardware/top.rss?sort=top&t=day
+#http://www.reddit.com/r/linux/top.rss?sort=top&t=day
+#http://www.reddit.com/r/programming/top.rss?sort=top&t=day
+#http://www.reddit.com/r/hacking/top.rss?sort=top&t=day
 
 # Hacker News
 #https://hnrss.org/bestcomments
-https://hnrss.org/newest?points=200
+#https://hnrss.org/newest?points=200
+https://hnrss.org/best
 #https://news.ycombinator.com/rss
 
