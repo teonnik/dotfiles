@@ -4,16 +4,15 @@
 set $mod Mod4
 
 # colour of             border   background  text     indicator  child_border
-client.focused          #2f343f  #2f5491     #d8dee8  #2f343f    #2f343f
-client.focused_inactive #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.focused          #2f5491  #2f5491     #d8dee8  #2f343f    #d8dee8
+client.focused_inactive #2f5491  #2f343f     #d8dee8  #2f343f    #2f343f
 client.unfocused        #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
 client.urgent           #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
-client.placeholder      #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
-client.background       #2f343f
 
 # borders
-#default_border pixel 3
-#default_floating_border pixel 3
+default_border pixel 3
+default_floating_border pixel 3
+gaps inner 5
 
 
 # 1. lock screens after 300 seconds of inactivity

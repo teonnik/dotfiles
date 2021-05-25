@@ -155,6 +155,7 @@ packages=(
   ncdu                        # disk: du alternative
   tree                        # files & folders
   pacman-contrib pacgraph     # arch
+  asp                         # utility to retrieve PKGBUILD files
   man man-db man-pages        # man pages
   tldr                        # alternative to man pages
   pdf2svg                     # pdf to svg converter
