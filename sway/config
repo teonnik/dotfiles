@@ -3,6 +3,8 @@
 # super (modifier) key
 set $mod Mod4
 
+font pango:Roboto, FontAwesome, 10
+
 # colour of             border   background  text     indicator  child_border
 client.focused          #2f5491  #2f5491     #d8dee8  #2f343f    #d8dee8
 client.focused_inactive #2f5491  #2f343f     #d8dee8  #2f343f    #2f343f
@@ -12,7 +14,7 @@ client.urgent           #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
 # borders
 default_border pixel 3
 default_floating_border pixel 3
-gaps inner 5
+#gaps inner 5
 
 
 # 1. lock screens after 300 seconds of inactivity
@@ -232,9 +234,14 @@ bindsym $mod+p exec grim screenshot.png
 # Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`
 
 # inhibit idle when fullscreen
-for_window [class="firefox"] inhibit_idle fullscreen # xwayland
 for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
 for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 
 # set opacity for window
 for_window [app_id="Alacritty"] opacity set 0.95
+
+# fix changing tab size when emojis are present
+for_window [app_id="firefox"] title_format " Firefox"
+for_window [app_id="thunderbird"] title_format " Thunderbird"
+for_window [app_id="Alacritty"] title_format "  Alacritty"
+for_window [class="Slack"] title_format "  Slack"

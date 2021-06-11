@@ -141,7 +141,10 @@ packages=(
   pulseaudio pulseaudio-bluetooth   # sound server
   pavucontrol                       # volume control
   light                             # brightness
+
   cups                              # printing
+  foomatic-db-engine
+  foomatic-db
 
   borg          # backup
   syncthing     # sync continuously
