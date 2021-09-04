@@ -50,9 +50,11 @@ packages=(
   wl-clipboard          # clipboard
   wofi                  # app launcher
   grim                  # screenshot utility
+  slurp                 # select region on screen
   mako libnotify        # notifications
   waybar                # bar
   #wev                   # debugging Wayland events
+  xdg-desktop-portal-wlr # screen sharing
 
   lsof                  # list open files
 
@@ -165,7 +167,8 @@ packages=(
   playerctl                   # media player controller
 
 
-  firefox               # browser
+  #firefox               # browser
+  chromium              # browser
   nm-connection-editor  # network manager GUI
   keepassxc             # password manager
   konsole               # terminal emulator
@@ -267,7 +270,7 @@ git clone https://github.com/spack/spack.git ~/code
 git clone https://github.com/teonnik/dotfiles.git ~/code
 ~/code/dotfiles/setup.sh
 
-# `firefox` addons: LastPass, Bypass Paywalls, AdBlocker Ultimate
+# Add-ons: LastPass, Bypass Paywalls, Ublock Origin
 
 # ssh keys
 ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"

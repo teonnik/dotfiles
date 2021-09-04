@@ -244,4 +244,5 @@ for_window [app_id="Alacritty"] opacity set 0.95
 for_window [app_id="firefox"] title_format " Firefox"
 for_window [app_id="thunderbird"] title_format " Thunderbird"
 for_window [app_id="Alacritty"] title_format "  Alacritty"
+for_window [app_id="Chromium"] title_format " Chromium"
 for_window [class="Slack"] title_format "  Slack"

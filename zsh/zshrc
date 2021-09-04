@@ -59,6 +59,13 @@ alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
 
+# Go
+export GOPATH=~/.local/share/go
+
+alias recent='ls -ltch'
+alias month='fd $(date +%Y-%m) ~/log | xargs bat'
+
+
 # ------------------------------------------------------------------------------
 # oh-my-zsh
 

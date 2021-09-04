@@ -7,15 +7,14 @@ https://lwn.net/headlines/newrss
 https://isocpp.org/blog/rss
 
 # Blogs
-https://nitter.net/ericniebler/rss
 https://brevzin.github.io/feed.xml
 https://lukesmith.xyz/rss.xml
 https://herbsutter.com/feed
 https://ericniebler.com/feed
 https://drewdevault.com/feed.xml Blogs
+https://nitter.eu/Snowden/rss
+https://nitter.eu/ericniebler/rss
 
-# python
-#https://planetpython.org/rss20.xml
 
 # Politics
 #https://www2.capital.bg/rss/
@@ -31,6 +30,29 @@ https://drewdevault.com/feed.xml Blogs
 # Hacker News
 #https://hnrss.org/bestcomments
 #https://hnrss.org/newest?points=200
-https://hnrss.org/best
+#https://hnrss.org/best
 #https://news.ycombinator.com/rss
 
+
+https://blog.bozho.net/feed
+
+https://www.boec-bg.com/feed
+https://pravosadiezavseki.com/feed/
+https://acf.bg/bg/feed/
+https://news-bg-abroad.com/feed/
+https://chernakniga.bg/feed/
+https://spasisofia.org/bg/feed
+#
+https://bird.bg/feed
+https://bivol.bg/feed
+#
+https://nitter.eu/SegaBG/rss
+https://news.lex.bg/feed/
+#https://www.mediapool.bg/rss
+#https://www.dnevnik.bg/rss
+#https://www.clubz.bg/rss.xml
+#https://www.svobodnaevropa.bg/api/zgmpmie_$pmm
+#
+#https://www.capital.bg/rss/
+#https://www.banker.bg/rss
+https://ekipbg.com/feed/
