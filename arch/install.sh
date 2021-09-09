@@ -50,11 +50,13 @@ packages=(
   wl-clipboard          # clipboard
   wofi                  # app launcher
   grim                  # screenshot utility
+  swappy                # screenshot editting tool
   slurp                 # select region on screen
   mako libnotify        # notifications
   waybar                # bar
   #wev                   # debugging Wayland events
   xdg-desktop-portal-wlr # screen sharing
+  wf-recorder            # screen recording
 
   lsof                  # list open files
 
@@ -249,8 +251,9 @@ aur_pkgs=(
   ripgrep-all
   navi-bin
   procs-bin       # ps replacement
-  stdman
-  rusty-man
+  #stdman
+  #rusty-man
+  foot
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 

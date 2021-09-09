@@ -17,6 +17,7 @@ ln -sf ${DOTS}/msmtprc                      ${HOME}/.msmtprc
 ln -sf ${DOTS}/neomutt                      ${CONF}/neomutt
 ln -sf ${DOTS}/newsboat/urls                ${HOME}/.newsboat/urls
 ln -sf ${DOTS}/newsboat/config              ${HOME}/.newsboat/config
+ln -sf ${DOTS}/nvim                         ${CONF}/nvim
 ln -sf ${DOTS}/sway                         ${CONF}/sway
 ln -sf ${DOTS}/swaylock                     ${CONF}/swaylock
 # TODO: syncthing
