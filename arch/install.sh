@@ -279,20 +279,13 @@ git clone https://github.com/teonnik/dotfiles.git ~/code
 # ssh keys
 ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"
 
-# install (n)vim plugin manager
-vim_dir=${HOME}/.vim/autoload/plug.vim
-neovim_dir="${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
-vim_plug_link=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl -fLo ${vim_dir} --create-dirs ${vim_plug_link}
-curl -fLo ${nvim_dir} --create-dirs ${vim_plug_link}
-
-# install vim plugins
-vim +PlugInstall +qall
+# neovim
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall
 
-
-
-# install YouCompleteMe
+# vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall
 (cd ${HOME}/.vim/bundle/YouCompleteMe; python3 install.py --clangd-completer)
 
 # install bulgarian phonetic
