@@ -65,6 +65,9 @@ export GOPATH=~/.local/share/go
 alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
 
+# print env var one line at a time
+# alias lecho='tr ':' '\n' <<< "$PATH"'
+
 
 # ------------------------------------------------------------------------------
 # oh-my-zsh
