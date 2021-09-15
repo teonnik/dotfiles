@@ -36,3 +36,5 @@ ln -sf ${DOTS}/bin/scr                      ${HOME}/bin/scr
 ln -sf ${DOTS}/bin/scrmonitor               ${HOME}/bin/scrmonitor
 ln -sf ${DOTS}/bin/scrwindow                ${HOME}/bin/scrwindow
 ln -sf ${DOTS}/bin/slack                    ${HOME}/bin/slack
+ln -sf ${DOTS}/bin/pack                     ${HOME}/bin/pack
+ln -sf ${DOTS}/bin/unpack                   ${HOME}/bin/unpack
