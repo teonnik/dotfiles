@@ -1,19 +1,20 @@
 # Linux
-https://www.archlinux.org/feeds/news/
-https://bugs.archlinux.org/feed.php?feed_type=rss2&project=1
-https://lwn.net/headlines/newrss
+https://www.archlinux.org/feeds/news/    arch
+https://lwn.net/headlines/newrss         unix
 
 # cpp
-https://isocpp.org/blog/rss
+https://isocpp.org/blog/rss              cpp
 
-# Blogs
-https://brevzin.github.io/feed.xml
-https://lukesmith.xyz/rss.xml
-https://herbsutter.com/feed
-https://ericniebler.com/feed
-https://drewdevault.com/feed.xml Blogs
-https://awesomekling.github.io/feed.xml
+https://brevzin.github.io/feed.xml       cpp
+https://lukesmith.xyz/rss.xml            unix
+https://herbsutter.com/feed              cpp
+https://ericniebler.com/feed             cpp
+https://drewdevault.com/feed.xml         unix
+https://awesomekling.github.io/feed.xml  cpp tech
 https://daniel.haxx.se/blog/feed/
+https://bluz71.github.io/feed.xml        vim
+
+https://www.brandonsanderson.com/feed/
 #https://nitter.eu/Snowden/rss
 #https://nitter.eu/ericniebler/rss
 
@@ -36,20 +37,23 @@ https://daniel.haxx.se/blog/feed/
 #https://news.ycombinator.com/rss
 
 
-https://blog.bozho.net/feed
+https://blog.bozho.net/feed         bg
 
-https://www.boec-bg.com/feed
-https://pravosadiezavseki.com/feed/
-https://acf.bg/bg/feed/
-https://news-bg-abroad.com/feed/
-https://chernakniga.bg/feed/
-https://spasisofia.org/bg/feed
+https://www.boec-bg.com/feed        bg
+https://pravosadiezavseki.com/feed/ bg
+https://acf.bg/bg/feed/             bg
+https://news-bg-abroad.com/feed/    bg
+https://chernakniga.bg/feed/        bg
+https://spasisofia.org/bg/feed      bg
+https://demokrati.bg/feed/          bg
+#https://desebg.com/index.php/bg/feed
+#https://pametbg.com/index.php/bg/feed
 #
-https://bird.bg/feed
-https://bivol.bg/feed
+https://bird.bg/feed                bg
+https://bivol.bg/feed               bg
 #
-https://nitter.eu/SegaBG/rss
-https://news.lex.bg/feed/
+https://nitter.eu/SegaBG/rss        bg
+https://news.lex.bg/feed/           bg
 #https://www.mediapool.bg/rss
 #https://www.dnevnik.bg/rss
 #https://www.clubz.bg/rss.xml
@@ -57,4 +61,4 @@ https://news.lex.bg/feed/
 #
 #https://www.capital.bg/rss/
 #https://www.banker.bg/rss
-https://ekipbg.com/feed/
+https://ekipbg.com/feed/            bg
