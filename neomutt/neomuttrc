@@ -1,18 +1,22 @@
 # vim: filetype=neomuttrc
 # options info: `man neomuttrc`
 # see https://neomutt.org/guide/advancedusage.html#shortcuts for `=` and `+`
-set folder = ~/mail
+
+set folder = ~/mail                             # folder with emails
+set mbox_type = Maildir                         # storage format for email messages
 set header_cache = ~/.cache/neomutt/headers
 set message_cachedir = ~/.cache/neomutt/bodies
-set mailcap_path = ~/.config/neomutt/mailcap
+set mailcap_path = ~/.config/neomutt/mailcap    # specifies how to open different types of files
 
 # Basic
 set wait_key = no               # mutt won't ask "press key to continue"
-set mbox_type = Maildir         # use local mail
 set mail_check=0                # how often to look for mail
 set mark_old = no               # Unread mail stay unread until read
-set sort = 'threads'            # default sorting by threads
-set sort_aux = 'reverse-date'   # default sorting by date
+set quit = ask-yes              # ask for confirmation before quitting
+set abort_key = "<Esc>"         # abort prompts with <Esc>
+
+set sort = 'threads'            # default by threads
+set sort_aux = 'reverse-last-date-received'   # sort threads by date - newest last
 set beep = no                   # no beep sound
 set sleep_time = 0              # Pause 0 seconds for informational messages
 set markers = no                # Disables the `+` displayed at line wraps
@@ -23,33 +27,34 @@ set rfc2047_parameters = yes    # helps with outlook?
 set send_charset="us-ascii:utf-8"
 set mime_type_query_command = "file --mime-type -b %s"
 set query_command = "abook --mutt-query '%s'"
+set confirmappend = no          # don't prompt for confirmation when appending messages to an existing mailbox
 
 # Compose View
-set edit_headers = yes          # See the headers when editing
+set edit_headers = yes          # See the headers in vim
 set fast_reply                  # skip to compose when replying
 set fcc_attach                  # save attachments with the body
 set forward_format = "Fwd: %s"  # format of subject when forwarding
-set include                     # include message in replies
 set forward_quote               # include message in forwards
+set include                     # include message in replies
 set mime_forward = yes          # attachments are forwarded with mail
 set editor="vim"
 
 # Statusbar
 set status_chars = " *%A"
-set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
+#set status_format = "[ Folder: %f ] [%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]%>─%?p?( %p postponed )?"
 set date_format="%d/%m/%Y %I:%M%p"
 set index_format="%2C %Z %?X?A& ? %D %-15.15F %s (%-4.4c)"
+#set index_format=" %zs %zc %zt %{!%d %b} . %-28.28L  %?M?(%1M)&  ? %?X? &·? %s"
+#set index_format="%4C %Z %{%b %d %R} %-15.15L (%?l?%4l&%4c?) %s"
+
+# TODO: save attachments
+macro attach W "<save-entry><bol>~/downloads/<eol>" "Save to desktop"
 
 auto_view text/html             # automatically show html
 alternative_order text/plain text/enriched text/html
 
-# Sidebar
-set sidebar_visible = yes
-set sidebar_width = 20
-set sidebar_short_path = yes
-set sidebar_next_new_wrap = yes
-set mail_check_stats
-set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
+# Pager
+set pager_stop = yes            # don't jump to the next email at end of current one
 
 # Bindings
 source ~/.config/neomutt/bindings
@@ -67,14 +72,4 @@ folder-hook cscs/* source ~/.config/neomutt/accounts/cscs
 
 macro index <F1> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'
 macro index <F2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/cscs<enter><change-folder>!<enter>'
-
-# Mailboxes
-#named-mailboxes "gmail ========" "+gmail/inbox"
-#mailboxes +gmail/sent +gmail/archive +gmail/drafts +gmail/spam +gmail/trash
-#named-mailboxes "cscs ========" "+cscs/inbox"
-#mailboxes +cscs/sent +cscs/archive +cscs/drafts +cscs/spam +cscs/trash
-#mailboxes "+gmail"
-#mailboxes +gmail/inbox +gmail/sent +gmail/archive +gmail/drafts +gmail/spam +gmail/trash
-#mailboxes +"==================="
-#mailboxes "+cscs"
-#mailboxes +cscs/inbox +cscs/sent +cscs/archive +cscs/drafts +cscs/spam +cscs/trash
+macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"

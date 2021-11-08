@@ -15,7 +15,7 @@ set trash = "+cscs/trash"
 alternates ^teodor.nikolov@cscs.ch$
 
 macro index o \
-  "<shell-escape>mbsync cscs<enter>" \
+  "<shell-escape>mbsync cscs<enter><shell-escape>notmuch new<enter>" \
   "run mbsync to sync mail for this account"
 
 macro index,pager s \

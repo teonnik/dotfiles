@@ -12,7 +12,7 @@ set record = "+gmail/sent"
 set trash = "+gmail/trash"
 
 macro index o \
-  "<shell-escape>mbsync gmail<enter>" \
+  "<shell-escape>mbsync gmail<enter><shell-escape>notmuch new<enter>" \
   "run mbsync to sync mail for this account"
 
 macro index,pager s \
