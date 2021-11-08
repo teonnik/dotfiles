@@ -201,7 +201,8 @@ exec kanshi
 bindsym $mod+l exec swaylock
 
 # terminal
-bindsym $mod+Return exec "alacritty"
+#bindsym $mod+Return exec "alacritty"
+bindsym $mod+Return exec "foot"
 
 # launcher
 #bindsym $mod+d exec "rofi -modi drun -show drun -theme Monokai"
@@ -239,6 +240,7 @@ for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 
 # set opacity for window
 for_window [app_id="Alacritty"] opacity set 0.95
+for_window [app_id="foot"] opacity set 0.95
 
 # fix changing tab size when emojis are present
 for_window [app_id="firefox"] title_format " Firefox"
