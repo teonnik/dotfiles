@@ -8,7 +8,8 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User teodor.nikolov22@gmail.com
-PassCmd "lpass show --password \"neomutt gmail\""
+#PassCmd "lpass show --password \"neomutt gmail\""
+PassCmd "pass gmail.com/pass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -23,33 +24,33 @@ Inbox ~/mail/gmail/inbox
 
 # Inbox
 Channel gmail-inbox
-Master :gmail-remote:"INBOX"
-Slave  :gmail-local:inbox
+Far :gmail-remote:"INBOX"
+Near  :gmail-local:inbox
 
 # Sent
 Channel gmail-sent
-Master :gmail-remote:"[Gmail]/Sent Mail"
-slave  :gmail-local:sent
+Far :gmail-remote:"[Gmail]/Sent Mail"
+Near  :gmail-local:sent
 
 # Archive
 Channel gmail-archive
-Master :gmail-remote:"Archived Mail"
-slave  :gmail-local:archive
+Far :gmail-remote:"Archived Mail"
+Near  :gmail-local:archive
 
 # Drafts
 Channel gmail-drafts
-Master :gmail-remote:"[Gmail]/Drafts"
-slave  :gmail-local:drafts
+Far :gmail-remote:"[Gmail]/Drafts"
+Near  :gmail-local:drafts
 
 # Trash
 Channel gmail-trash
-Master :gmail-remote:"[Gmail]/Bin"
-slave  :gmail-local:trash
+Far :gmail-remote:"[Gmail]/Bin"
+Near  :gmail-local:trash
 
 # Spam
 Channel gmail-spam
-Master :gmail-remote:"[Gmail]/Spam"
-slave  :gmail-local:spam
+Far :gmail-remote:"[Gmail]/Spam"
+Near  :gmail-local:spam
 
 Group gmail
 Channel gmail-inbox
@@ -68,7 +69,8 @@ Channel gmail-spam
 IMAPAccount cscs
 Host mail.ethz.ch
 User tnikolov
-PassCmd "lpass show --password \"eth ldap\""
+#PassCmd "lpass show --password \"eth ldap\""
+PassCmd "pass cscs/pass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 AuthMech PLAIN
@@ -85,39 +87,40 @@ Inbox ~/mail/cscs/Inbox
 #SubFolders Verbatim
 #
 #Channel cscs
-#Master :cscs-remote:
-#Slave :cscs-local:
+#Far :cscs-remote:
+#Near :cscs-local:
 #Patterns *
 
 # Inbox
 Channel cscs-inbox
-Master :cscs-remote:"Inbox"
-Slave  :cscs-local:inbox
+#Far :cscs-remote:"Inbox"
+Far :cscs-remote:"INBOX"
+Near  :cscs-local:inbox
 
 # Sent
 Channel cscs-sent
-Master :cscs-remote:"Sent"
-Slave  :cscs-local:sent
+Far :cscs-remote:"Sent"
+Near  :cscs-local:sent
 
 # Archive
 Channel cscs-archive
-Master :cscs-remote:"Archives"
-Slave  :cscs-local:archive
+Far :cscs-remote:"Archives"
+Near  :cscs-local:archive
 
 # Drafts
 Channel cscs-drafts
-Master :cscs-remote:"Drafts"
-Slave  :cscs-local:drafts
+Far :cscs-remote:"Drafts"
+Near  :cscs-local:drafts
 
 # Trash
 Channel cscs-trash
-Master :cscs-remote:"Trash"
-Slave  :cscs-local:trash
+Far :cscs-remote:"Trash"
+Near  :cscs-local:trash
 
 # Spam
 Channel cscs-spam
-Master :cscs-remote:"Junk E-Mail"
-Slave  :cscs-local:spam
+Far :cscs-remote:"Junk E-Mail"
+Near  :cscs-local:spam
 
 Group cscs
 Channel cscs-inbox
