@@ -151,6 +151,8 @@ packages=(
   foomatic-db-engine
   foomatic-db
 
+  translate-shell  # language translation in the terminal
+
   borg          # backup
   syncthing     # sync continuously
   rclone        # sync to cloud storage
@@ -251,10 +253,11 @@ aur_pkgs=(
   gcalcli
   ripgrep-all
   navi-bin
-  procs-bin       # ps replacement
+  #procs-bin       # ps replacement
   #stdman
   #rusty-man
   foot
+  pandoc-bin
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 
