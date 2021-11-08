@@ -17,19 +17,21 @@ export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # anaconda
-export PATH=$HOME/anaconda/bin:$PATH
+#export PATH=$HOME/anaconda/bin:$PATH
 
 # spack
+SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
 source $HOME/software/spack/share/spack/setup-env.sh
-alias sps="spack spec -Il"
+alias sps="spack spec -Il --reuse"
+alias spi="spack install -v --reuse"
 alias spf="spack find -lvd"
 alias sph="spack help --all"
-alias spi="spack install -v"
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # vim
+alias vim=nvim
 alias vl='vim ~/log/$(date "+%Y-%m-%d").md'
 alias vt="vim ~/readme/todo.md"
 
@@ -66,8 +68,13 @@ alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
 
 # print env var one line at a time
-# alias lecho='tr ':' '\n' <<< "$PATH"'
+#alias lecho='tr ':' '\n' <<< '
 
+# neomutt
+alias neomutt='ESCDELAY=0 neomutt'
+
+# pacman
+alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
 
 # ------------------------------------------------------------------------------
 # oh-my-zsh
@@ -75,7 +82,7 @@ alias month='fd $(date +%Y-%m) ~/log | xargs bat'
 # theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# plugins 
+# plugins
 plugins=(zsh-autosuggestions colored-man-pages)
 
 # activate
