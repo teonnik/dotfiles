@@ -101,7 +101,6 @@ packages=(
   aria2
   youtube-dl
   newsboat
-  rtv
   github-cli
 
   # latex
@@ -143,7 +142,8 @@ packages=(
   abook   # address book for mutt
 
   bluez bluez-utils                 # bluetooth
-  pulseaudio pulseaudio-bluetooth   # sound server
+  #pulseaudio-bluetooth              # sound server
+  pipewire-pulse pipewire-alsa      # sound server - alternative to pulseaudio
   pavucontrol                       # volume control
   light                             # brightness
 
@@ -253,6 +253,7 @@ aur_pkgs=(
   gcalcli
   ripgrep-all
   navi-bin
+  #tuir fork of rtv
   #procs-bin       # ps replacement
   #stdman
   #rusty-man

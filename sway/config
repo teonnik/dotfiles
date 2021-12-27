@@ -246,5 +246,10 @@ for_window [app_id="foot"] opacity set 0.95
 for_window [app_id="firefox"] title_format " Firefox"
 for_window [app_id="thunderbird"] title_format " Thunderbird"
 for_window [app_id="Alacritty"] title_format "  Alacritty"
-for_window [app_id="Chromium"] title_format " Chromium"
+for_window [app_id="chromium"] title_format " Chromium"
 for_window [class="Slack"] title_format "  Slack"
+
+# Resolves xdg-portal issue : https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway

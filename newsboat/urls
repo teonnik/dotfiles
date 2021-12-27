@@ -6,7 +6,7 @@ https://lwn.net/headlines/newrss         unix
 https://isocpp.org/blog/rss              cpp
 
 https://brevzin.github.io/feed.xml       cpp
-https://lukesmith.xyz/rss.xml            unix
+#https://lukesmith.xyz/rss.xml            unix
 https://herbsutter.com/feed              cpp
 https://ericniebler.com/feed             cpp
 https://drewdevault.com/feed.xml         unix
