@@ -1,3 +1,11 @@
+export PATH=$HOME/bin:$PATH
+export DEFAULT_USER=`whoami`
+export LANG=en_US.UTF-8
+export EDITOR='vim'
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+#export TERM=foot # this is set in foot's config
+
+
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -14,23 +22,25 @@ export XDG_PICTURES_DIR="$HOME/pics"
 export XDG_VIDEOS_DIR="$HOME/videos"
 
 # software
-#export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/notmuch-config"
-export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
-#export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
-export WEECHAT_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/weechat"
-export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch-config"
+export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+#export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
+export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
+export MBSYNCRC="${XDG_CONFIG_HOME}/mbsync/config"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 #export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+
 
 # languages
-export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
-export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
+export GOPATH="${XDG_DATA_HOME}/go"
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
-#export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
-#export TERM=foot # this is set in foot's config
+#export HISTFILE="${XDG_DATA_HOME}/history"
 
 # sway fixes
 export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)

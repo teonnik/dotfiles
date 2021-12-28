@@ -1,21 +1,6 @@
 # ------------------------------------------------------------------------------
 # Environment variables
 
-# local bin
-export PATH=$HOME/bin:$PATH
-
-# user
-export DEFAULT_USER=`whoami`
-
-# language
-export LANG=en_US.UTF-8
-
-# editor 
-export EDITOR='vim'
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # anaconda
 #export PATH=$HOME/anaconda/bin:$PATH
 
@@ -61,9 +46,7 @@ alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
 
-# Go
-export GOPATH=~/.local/share/go
-
+# other
 alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
 
