@@ -76,6 +76,9 @@ alias neomutt='ESCDELAY=0 neomutt'
 # pacman
 alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
 
+# ls
+alias ls='ls -hN --color=auto --group-directories-first'
+
 # ------------------------------------------------------------------------------
 # oh-my-zsh
 

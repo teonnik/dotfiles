@@ -27,10 +27,15 @@ ln -sf ${DOTS}/wofi                         ${CONF}/wofi
 ln -sf ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlaut
 ln -sf ${DOTS}/zathura                      ${CONF}/zathura
 ln -sf ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
-ln -sf ${DOTS}/zsh/profile                  ${HOME}/.zprofile
+
+ln -sf ${DOTS}/mimeapps.list                ${CONF}/mimeapps.list
+ln -sf ${DOTS}/xdg_applications             ${HOME}/.local/share/applications
+ln -sf ${DOTS}/wget                         ${CONF}/wget
+
+ln -sf ${DOTS}/profile                      ${HOME}/.zprofile
+ln -sf ${DOTS}/profile                      ${HOME}/.bash_profile
 
 # -- bin
-ln -sf ${DOTS}/bin/sway-run                 ${HOME}/bin/sway-run
 ln -sf ${DOTS}/bin/colorpicker              ${HOME}/bin/colorpicker
 ln -sf ${DOTS}/bin/scr                      ${HOME}/bin/scr
 ln -sf ${DOTS}/bin/scrmonitor               ${HOME}/bin/scrmonitor

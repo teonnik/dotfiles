@@ -61,7 +61,7 @@ packages=(
   lsof                  # list open files
 
   alacritty             # terminal emulator
-  xdg-user-dirs         # user directory manager
+  xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
   at                    # schedule commands
   hexyl                 # command line hex viewer
 
@@ -306,5 +306,3 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 
 # install zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-
-# TODO: xdg-user-dirs ?
