@@ -31,6 +31,7 @@ ln -sfn ${DOTS}/zsh/zshrc                    ${HOME}/.zshrc
 ln -sfn ${DOTS}/mimeapps.list                ${CONF}/mimeapps.list
 ln -sfn ${DOTS}/xdg_applications             ${HOME}/.local/share/applications
 ln -sfn ${DOTS}/wget                         ${CONF}/wget
+ln -sfn ${DOTS}/foot                         ${CONF}/foot
 
 ln -sfn ${DOTS}/profile                      ${HOME}/.zprofile
 ln -sfn ${DOTS}/profile                      ${HOME}/.bash_profile
