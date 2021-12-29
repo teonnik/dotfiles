@@ -3,25 +3,23 @@
 DOTS=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 CONF=${HOME}/.config
 
-mkdir -p ${HOME}/.newsboat
 mkdir -p ${HOME}/.xkb/symbols
 
 ln -sfn ${DOTS}/alacritty                    ${CONF}/alacritty
-ln -sfn ${DOTS}/gdb/gdb.conf                 ${HOME}/.gdbinit
-ln -sfn ${DOTS}/git/gitconfig                ${HOME}/.gitconfig
-ln -sfn ${DOTS}/git/gitignore_global         ${HOME}/.gitignore_global
+ln -sfn ${DOTS}/gdb                          ${CONF}/gdb
+ln -sfn ${DOTS}/git                          ${CONF}/git
 ln -sfn ${DOTS}/kanshi                       ${CONF}/kanshi
 ln -sfn ${DOTS}/latex/latexmkrc.conf         ${HOME}/.latexmkrc
-ln -sfn ${DOTS}/mbsyncrc                     ${HOME}/.mbsyncrc
-ln -sfn ${DOTS}/msmtprc                      ${HOME}/.msmtprc
+ln -sfn ${DOTS}/isync                        ${CONF}/isync
+ln -sfn ${DOTS}/msmtp                        ${CONF}/msmtp
 ln -sfn ${DOTS}/neomutt                      ${CONF}/neomutt
-ln -sfn ${DOTS}/newsboat/urls                ${HOME}/.newsboat/urls
-ln -sfn ${DOTS}/newsboat/config              ${HOME}/.newsboat/config
+ln -sfn ${DOTS}/newsboat                     ${CONF}/newsboat
+ln -sfn ${DOTS}/notmuch                      ${CONF}/notmuch
 ln -sfn ${DOTS}/nvim                         ${CONF}/nvim
 ln -sfn ${DOTS}/sway                         ${CONF}/sway
 ln -sfn ${DOTS}/swaylock                     ${CONF}/swaylock
 # TODO: syncthing
-ln -sfn ${DOTS}/vim/vim.conf                 ${HOME}/.vimrc
+ln -sfn ${DOTS}/vim/vimrc                    ${HOME}/.vim/vimrc
 ln -sfn ${DOTS}/waybar                       ${CONF}/waybar
 ln -sfn ${DOTS}/wofi                         ${CONF}/wofi
 ln -sfn ${DOTS}/xkb/us-german-umlaut         ${HOME}/.xkb/symbols/us-german-umlaut
