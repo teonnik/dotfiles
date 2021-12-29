@@ -39,6 +39,5 @@ ln -sfn ${DOTS}/bin/colorpicker              ${HOME}/bin/colorpicker
 ln -sfn ${DOTS}/bin/scr                      ${HOME}/bin/scr
 ln -sfn ${DOTS}/bin/scrmonitor               ${HOME}/bin/scrmonitor
 ln -sfn ${DOTS}/bin/scrwindow                ${HOME}/bin/scrwindow
-ln -sfn ${DOTS}/bin/slack                    ${HOME}/bin/slack
 ln -sfn ${DOTS}/bin/pack                     ${HOME}/bin/pack
 ln -sfn ${DOTS}/bin/unpack                   ${HOME}/bin/unpack

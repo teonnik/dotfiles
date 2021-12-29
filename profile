@@ -13,6 +13,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # XDG user directories : https://wiki.archlinux.org/title/XDG_user_directories
@@ -52,7 +53,7 @@ export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
 export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
 export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
 
-export XDG_SESSION_TYPE=wayland       # ??
+#export XDG_SESSION_TYPE=wayland       # ??
 #export XDG_CURRENT_DESKTOP=sway
 
 # less colors in man
