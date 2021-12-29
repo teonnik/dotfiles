@@ -1,5 +1,6 @@
-# ------------------------------------------------------------------------------
-# Environment variables
+# zsh
+#compinit -d ${XDG_CACHE_HOME}/zsh/zcompdump-$ZSH_VERSION
+#export HISTFILE="${XDG_STATE_HOME}"/zsh/history
 
 # anaconda
 #export PATH=$HOME/anaconda/bin:$PATH
@@ -59,17 +60,15 @@ alias neomutt='ESCDELAY=0 neomutt'
 # pacman
 alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
 
-# ls
-alias ls='ls -hN --color=auto --group-directories-first'
 
-# ------------------------------------------------------------------------------
+# --------------
 # oh-my-zsh
 
 # theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # plugins
-plugins=(zsh-autosuggestions colored-man-pages)
+plugins=(zsh-autosuggestions)
 
 # activate
 export ZSH=~/.oh-my-zsh
