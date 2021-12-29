@@ -1,7 +1,11 @@
+# vim: filetype=sh
+
 export PATH=$HOME/bin:$PATH
 export DEFAULT_USER=`whoami`
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR=vim
+export PAGER=less
+export TERM=xterm-256color
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 #export TERM=foot # this is set in foot's config
 
@@ -23,24 +27,24 @@ export XDG_VIDEOS_DIR="$HOME/videos"
 
 # software
 #export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch-config"
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
 export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
-#export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
-export MBSYNCRC="${XDG_CONFIG_HOME}/mbsync/config"
+export MBSYNCRC="${XDG_CONFIG_HOME}/isync/mbsyncrc"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 #export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
-
+export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
 
 # languages
 export GOPATH="${XDG_DATA_HOME}/go"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-
-#export HISTFILE="${XDG_DATA_HOME}/history"
 
 # sway fixes
 export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
@@ -50,6 +54,16 @@ export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
 
 export XDG_SESSION_TYPE=wayland       # ??
 #export XDG_CURRENT_DESKTOP=sway
+
+# less colors in man
+# https://github.com/ael-code/zsh-colored-man-pages/blob/master/colored-man-pages.plugin.zsh
+export LESS_TERMCAP_md=$(tput bold; tput setaf 4)
+export LESS_TERMCAP_me=$(tput sgr0)
+export LESS_TERMCAP_mb=$(tput blink)
+export LESS_TERMCAP_us=$(tput setaf 2)
+export LESS_TERMCAP_ue=$(tput sgr0)
+export LESS_TERMCAP_so=$(tput smso)
+export LESS_TERMCAP_se=$(tput rmso)
 
 eval `ssh-agent`
 
