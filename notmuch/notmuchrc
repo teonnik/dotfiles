@@ -1,0 +1,14 @@
+[database]
+path=/home/teonnik/mail
+[user]
+name=Teodor Nikolov
+primary_email=teodor.nikolov22@gmail.com
+[new]
+tags=unread;inbox;
+ignore=.mbsyncstate;.uidvalidity
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=gpg
