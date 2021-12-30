@@ -33,6 +33,7 @@ lndot .config/zathura
 
 lndot .profile      .zprofile
 lndot .profile      .bash_profile
+lndot .stignore
 lndot .vim/vimrc
 lndot .zshrc
 
@@ -47,4 +48,3 @@ lndot bin/scrwindow
 lndot bin/pack
 lndot bin/unpack
 
-# TODO: syncthing
