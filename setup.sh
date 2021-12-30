@@ -39,6 +39,7 @@ lndot .zshrc
 lndot .xkb/symbols/us-german-umlaut
 lndot .local/share/applications
 
+lndot bin/arch_install.sh
 lndot bin/colorpicker
 lndot bin/scr
 lndot bin/scrmonitor
