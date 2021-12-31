@@ -298,11 +298,8 @@ curl -fLo ${HOME}/.vim/keymap/bulgarian-phonetic.vim --create-dirs http://www.ma
 # make zsh default shell : FIXME: doesn't work ??
 #chsh -s $(which zsh)
 
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # install powerlevel10k: `p10k configure`
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${HOME}/code/powerlevel10k
 
 # install zsh autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/code/zsh-autosuggestions

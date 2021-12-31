@@ -1,20 +1,18 @@
-# zsh
-#compinit -d ${XDG_CACHE_HOME}/zsh/zcompdump-$ZSH_VERSION
-#HISTFILE="${XDG_STATE_HOME}"/zsh/history
+# ---- aliases
 
-# anaconda
-#export PATH=$HOME/anaconda/bin:$PATH
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -vI"
+alias ls="ls -hN --color=auto --group-directories-first"
+alias ll="LC_COLLATE=C ls -al" # sort dots first
+alias grep="grep --color=auto --exclude-dir=.git"
+alias diff="diff --color=auto"
 
 # spack
-SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
-source $HOME/software/spack/share/spack/setup-env.sh
 alias sps="spack spec -Il --reuse"
 alias spi="spack install -v --reuse"
 alias spf="spack find -lvd"
 alias sph="spack help --all"
-
-# fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # vim
 alias vim=nvim
@@ -27,15 +25,6 @@ alias slc="scancel -u $(whoami)"
 alias sli="sinfo -S P -o \"%10P %6a %10A %20G %7m %z\""
 alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,AllocGRES%20,Elapsed,ExitCode,State"
 
-# lpass
-export LPASS_CLIPBOARD_COMMAND="wl-copy"
-
-# direnv
-eval "$(direnv hook zsh)"
-
-# open readme file
-rme() { fd $1 ~/readme | xargs bat }
-
 # git
 alias ga="git add --all"
 alias gb="git branch"
@@ -47,36 +36,51 @@ alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
 
-# other
+alias neomutt='ESCDELAY=0 neomutt'
 alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
-
-# print env var one line at a time
-#alias lecho='tr ':' '\n' <<< '
-
-# neomutt
-alias neomutt='ESCDELAY=0 neomutt'
-
-# pacman
 alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
+rme() { fd $1 ~/readme | xargs bat } # open readme file
 
+# ------ zsh
+#
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTFILE="${XDG_STATE_HOME}"/zsh/history
+#compinit -d ${XDG_CACHE_HOME}/zsh/zcompdump-$ZSH_VERSION
 
-# --------------
-# oh-my-zsh
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
 
-# theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# [Ctrl-Delete] - delete whole forward-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
+# [Ctrl-RightArrow] - move forward one word
+bindkey -M viins '^[[1;5C' forward-word
+bindkey -M vicmd '^[[1;5C' forward-word
+# [Ctrl-LeftArrow] - move backward one word
+bindkey -M viins '^[[1;5D' backward-word
+bindkey -M vicmd '^[[1;5D' backward-word
 
-# plugins
-plugins=(zsh-autosuggestions)
+# ------ plugins
 
-# activate
-export ZSH=~/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+# spack
+SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
+source $HOME/software/spack/share/spack/setup-env.sh
 
-# fzf (this has to go after oh-my-zsh)
+# direnv
+eval "$(direnv hook zsh)"
+
+# fzf
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# zsh-autosuggestions
+source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# p10k theme
+source ${HOME}/code/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -47,4 +47,5 @@ lndot bin/scrmonitor
 lndot bin/scrwindow
 lndot bin/pack
 lndot bin/unpack
+lndot bin/steam
 
