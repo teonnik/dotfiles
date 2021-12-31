@@ -275,8 +275,9 @@ mkdir -p ~/code ~/build ~/downloads ~/bin ~/install ~/software
 git clone https://github.com/spack/spack.git ~/code
 
 # dotfiles
-git clone https://github.com/teonnik/dotfiles.git ~/code
-~/code/dotfiles/setup.sh
+git clone --bare https://github.com/teonnik/dotfiles.git ~/code/dots
+git --git-dir=${HOME}/code/dots status.showUntrackedFiles no
+git --git-dir=${HOME}/code/dots --work-tree=${HOME} checkout -f
 
 # Add-ons: LastPass, Bypass Paywalls, Ublock Origin
 
@@ -287,13 +288,8 @@ ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall
 
-# vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall
-(cd ${HOME}/.vim/bundle/YouCompleteMe; python3 install.py --clangd-completer)
-
 # install bulgarian phonetic
-curl -fLo ${HOME}/.vim/keymap/bulgarian-phonetic.vim --create-dirs http://www.math.bas.bg/bantchev/vim/bulgarian-phonetic.vim
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/keymap/bulgarian-phonetic.vim --create-dirs http://www.math.bas.bg/bantchev/vim/bulgarian-phonetic.vim
 
 # make zsh default shell : FIXME: doesn't work ??
 #chsh -s $(which zsh)
