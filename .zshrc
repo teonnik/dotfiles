@@ -36,6 +36,7 @@ alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
 
+alias dots='git --git-dir=${HOME}/code/dots --work-tree=${HOME}'
 alias neomutt='ESCDELAY=0 neomutt'
 alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
