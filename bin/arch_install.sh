@@ -220,6 +220,8 @@ echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 
+
+
 # Set pacman's Color option
 sed -i '/Color/s/^#//g' /etc/pacman.conf
 
