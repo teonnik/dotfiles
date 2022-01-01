@@ -1,54 +1,6 @@
-# ---- aliases
-
-alias cp="cp -iv"
-alias mv="mv -iv"
-alias rm="rm -vI"
-alias ls="ls -hN --color=auto --group-directories-first"
-alias ll="LC_COLLATE=C ls -al" # sort dots first
-alias grep="grep --color=auto --exclude-dir=.git"
-alias diff="diff --color=auto"
-
-# spack
-alias sps="spack spec -Il --reuse"
-alias spi="spack install -v --reuse"
-alias spf="spack find -lvd"
-alias sph="spack help --all"
-
-# vim
-alias vim=nvim
-alias vl='vim ~/log/$(date "+%Y-%m-%d").md'
-alias vt="vim ~/readme/todo.md"
-
-# slurm
-alias slq="squeue --me -o \"%10A %10l %10L %10P %10T %6D %z\""
-alias slc="scancel -u $(whoami)"
-alias sli="sinfo -S P -o \"%10P %6a %10A %20G %7m %z\""
-alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,AllocGRES%20,Elapsed,ExitCode,State"
-
-# git
-alias ga="git add --all"
-alias gb="git branch"
-alias gc='git checkout'
-alias gd='git diff'
-alias gg='git status -sb'
-alias gl="git log --oneline --graph"
-alias gm="git commit"
-alias gpush='git push'
-alias gpull='git pull'
-
-alias dots='git --git-dir=${HOME}/code/dots --work-tree=${HOME}'
-alias neomutt='ESCDELAY=0 neomutt'
-alias recent='ls -ltch'
-alias month='fd $(date +%Y-%m) ~/log | xargs bat'
-alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
-rme() { fd $1 ~/readme | xargs bat } # open readme file
-
-# ------ zsh
-#
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
-#compinit -d ${XDG_CACHE_HOME}/zsh/zcompdump-$ZSH_VERSION
 
 # vi mode
 bindkey -v
@@ -64,7 +16,8 @@ bindkey -M vicmd '^[[1;5C' forward-word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
-# ------ plugins
+# aliases
+source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # spack
 SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
