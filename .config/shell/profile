@@ -76,10 +76,10 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # ---- exe
 #
-eval `ssh-agent`
+#eval `ssh-agent`
 
 # If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ]; then
-  exec /usr/bin/sway
-fi
+#if [ "$(tty)" = "/dev/tty1" ]; then
+#  exec /usr/bin/sway
+#fi
 

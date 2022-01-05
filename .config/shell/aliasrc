@@ -15,7 +15,7 @@ alias spf="spack find -lvd"
 alias sph="spack help --all"
 
 # vim
-alias vim=nvim
+#alias vim=nvim
 alias vl='vim ~/log/$(date "+%Y-%m-%d").md'
 alias vt="vim ~/readme/todo.md"
 
