@@ -41,7 +41,7 @@ packages=(
   grub        # boot loader
   efibootmgr  # EFI boot manager
 
-  sddm                  # display manager
+  #sddm                  # display manager
   sway                  # window manager
   xorg-server-xwayland  # wayland xorg support
   kanshi                # monitors setup manager
@@ -60,7 +60,10 @@ packages=(
 
   lsof                  # list open files
 
-  alacritty             # terminal emulator
+  # terminal emulator
+  #alacritty
+  #konsole
+
   xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
   at                    # schedule commands
   hexyl                 # command line hex viewer
@@ -86,7 +89,10 @@ packages=(
   mtr             # traceroute alternative
 
   gnupg        # encryption and signing tool
+  age
   pass         # password store
+  #passage
+  minisign
   lastpass-cli # LastPass CLI password store
   pwgen        # generate passwords from the command line
 
@@ -141,13 +147,18 @@ packages=(
   isync   # sync IMAP and Maildir mailboxes
   abook   # address book for mutt
 
-  bluez bluez-utils                 # bluetooth
-  #pulseaudio-bluetooth              # sound server
-  pipewire-pulse pipewire-alsa      # sound server - alternative to pulseaudio
+  # sound server & bluetooth
+  pipewire-pulse
+  pipewire-alsa
+  bluez
+  bluez-utils
+  #pulseaudio-bluetooth
+
   pavucontrol                       # volume control
   light                             # brightness
 
-  cups                              # printing
+  # printing
+  cups
   foomatic-db-engine
   foomatic-db
 
@@ -168,26 +179,34 @@ packages=(
   asp                         # utility to retrieve PKGBUILD files
   man man-db man-pages        # man pages
   tldr                        # alternative to man pages
-  pdf2svg                     # pdf to svg converter
   playerctl                   # media player controller
 
-
-  #firefox               # browser
-  chromium              # browser
-  nm-connection-editor  # network manager GUI
-  keepassxc             # password manager
-  konsole               # terminal emulator
+  # pdf
+  pdf2svg               # pdf to svg converter
   zathura-pdf-mupdf     # pdf viewer
   xournalpp             # pdf editor
   pdfarranger           # pdf merge/split/arrange
-  imv                   # image viewer
+  #okular
+
+  # browser
+  chromium
+  #firefox
+  #qutebrowser
+
+  # image viewer
+  imv
+  #gwenview
+  #feh
+
+  nm-connection-editor  # network manager GUI
+  keepassxc             # password manager
   vlc                   # media player
   thunderbird           # mail client
   libreoffice-still     # office suite
   inkscape              # vector graphics editor
   gimp                  # raster graphics editor
 
-  # no longer used: texstudio gwenview okular dolphin feh qutebrowser rofi
+  # no longer used: texstudio dolphin rofi
 )
 #pacman --noconfirm --needed -S  ${packages[@]}
 pacstrap /mnt ${packages[@]}
@@ -289,12 +308,11 @@ ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"
 # neovim
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall
-
-# install bulgarian phonetic
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/keymap/bulgarian-phonetic.vim --create-dirs http://www.math.bas.bg/bantchev/vim/bulgarian-phonetic.vim
 
 # make zsh default shell : FIXME: doesn't work ??
 #chsh -s $(which zsh)
+mkdir -p "${XDG_STATE_HOME:-$HOME/.local/state}"/zsh
 
 # install powerlevel10k: `p10k configure`
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${HOME}/code/powerlevel10k
