@@ -29,6 +29,7 @@ borg create                           \
     --exclude "${HOME}/build"         \
     --exclude "${HOME}/code"          \
     --exclude "${HOME}/software"      \
+    --exclude "${HOME}/downloads"      \
                                       \
     ::'{hostname}-{now}'              \
     "${HOME}"                         \

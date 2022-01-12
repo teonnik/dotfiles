@@ -245,12 +245,13 @@ grub-mkconfig -o /boot/grub/grub.cfg
 sed -i '/Color/s/^#//g' /etc/pacman.conf
 
 # Services
-systemctl enable sddm.service \
-                 NetworkManager.service \
+systemctl enable NetworkManager.service \
                  bluetooth.service \
+                 org.cups.cupsd.service \
+                 atd.service \
                  syncthing@teonnik.service \
-                 atd.service
-#                org.cups.cupsd.service
+                 borg-backup.timer
+#                sddm.service
 
 # Root password
 passwd
