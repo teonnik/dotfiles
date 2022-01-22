@@ -15,6 +15,26 @@ bindkey -M vicmd '^[[1;5C' forward-word
 # [Ctrl-LeftArrow] - move backward one word
 bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
+# [Ctrl-s] don't freez the terminal
+stty stop undef
+# [Backspace] - delete backward
+bindkey "^?" backward-delete-char
+# [Ctrl-x-e] edit the current command line in $EDITOR
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '\C-x\C-e' edit-command-line
+
+# cd - stack old directories
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+# automatically cd into typed directory
+setopt autocd
+
+# highlight selected entry from completion menu
+zstyle ':completion:*' menu select
+# case-insensitive and hiphen-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # aliases
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"

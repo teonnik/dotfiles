@@ -1,10 +1,11 @@
 # vim: filetype=sh
 
+alias ..='cd ..'
 alias cp="cp -iv"
 alias mv="mv -iv"
 alias rm="rm -vI"
 alias ls="ls -hN --color=auto --group-directories-first"
-alias ll="LC_COLLATE=C ls -al" # sort dots first
+alias l="LC_COLLATE=C ls -al" # sort dots first
 alias grep="grep --color=auto --exclude-dir=.git"
 alias diff="diff --color=auto"
 
@@ -36,6 +37,12 @@ alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
 
+# youtube-dl
+alias ytmp3='youtube-dl -ciw -o "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
+alias ytvid='youtube-dl -ciw --format mp4 -o "%(title)s.%(ext)s"'
+
+alias weather="curl wttr.in/Zurich"
+alias printpath="echo \${PATH//:/'\n'}"
 alias dots='git --git-dir=${HOME}/code/dots --work-tree=${HOME}'
 alias neomutt='ESCDELAY=0 neomutt'
 alias recent='ls -ltch'
