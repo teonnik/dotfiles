@@ -63,6 +63,7 @@ packages=(
   # terminal emulator
   #alacritty
   #konsole
+  foot
 
   xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
   at                    # schedule commands
@@ -279,7 +280,6 @@ aur_pkgs=(
   #procs-bin       # ps replacement
   #stdman
   #rusty-man
-  foot
   pandoc-bin
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
