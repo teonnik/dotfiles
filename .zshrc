@@ -1,5 +1,5 @@
 # zsh fix for FPATH
-zsh_root_dir=/apps/daint/SSL/tnikolov/spack/opt/spack/cray-cnl7-haswell/gcc-8.3.0/zsh-5.8-5q6u6m75sj4x34ofykts3cb5mwwgvpm6
+zsh_root_dir=/apps/ault/SSL/tnikolov/spack/opt/spack/linux-centos8-zen/gcc-8.4.1/zsh-5.8-xza3kwrrh7ystjxfar2oxrnxpaxbilur
 fpath=($zsh_root_dir/share/zsh/$ZSH_VERSION/functions $fpath)
 #fpath=(/usr/share/zsh/functions $fpath)
 #export FPATH="/usr/share/zsh/functions:$FPATH"
