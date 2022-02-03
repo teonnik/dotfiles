@@ -1,0 +1,8 @@
+[Unit]
+Description=Run backup daily
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/teonnik/bin/backup
