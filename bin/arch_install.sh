@@ -291,10 +291,10 @@ yay --noconfirm --needed -S ${aur_pkgs[@]}
 # Local install
 
 # Create local folders
-mkdir -p ~/code ~/build ~/downloads ~/bin ~/install ~/software
+mkdir -p ~/code ~/build ~/downloads ~/bin #~/install
 
 # spack
-git clone https://github.com/spack/spack.git ~/code
+git clone https://github.com/spack/spack.git ~/code/spack
 
 # dotfiles
 git clone --bare https://github.com/teonnik/dotfiles.git ~/code/dots
