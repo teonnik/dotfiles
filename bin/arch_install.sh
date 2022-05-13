@@ -41,6 +41,8 @@ packages=(
   grub        # boot loader
   efibootmgr  # EFI boot manager
 
+  cronie  # time-based job scheduler
+
   #sddm                  # display manager
   sway                  # window manager
   xorg-server-xwayland  # wayland xorg support
@@ -171,6 +173,8 @@ packages=(
   rsync         # sync to remote
 
   neofetch                    # system info
+  onefetch                    # git repo info
+
   zip unzip unrar             # archives
   jq                          # json
   fzf the_silver_searcher fd  # search
@@ -251,7 +255,8 @@ systemctl enable NetworkManager.service \
                  org.cups.cupsd.service \
                  atd.service \
                  syncthing@teonnik.service \
-                 borg-backup.timer
+                 borg-backup.timer \
+                 cronie.service
 #                sddm.service
 
 # Root password
@@ -281,6 +286,9 @@ aur_pkgs=(
   #stdman
   #rusty-man
   pandoc-bin
+  wlsunset   # blue light filter for night reading
+  vcal       # view .ics and calendar files
+  swayimg    # image viewer
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 

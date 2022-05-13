@@ -70,7 +70,10 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 export LESS_TERMCAP_so=$(tput smso)
 export LESS_TERMCAP_se=$(tput rmso)
 
+# lastpass
 export LPASS_CLIPBOARD_COMMAND="wl-copy"
+export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
+
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 

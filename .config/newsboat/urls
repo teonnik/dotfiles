@@ -22,18 +22,6 @@ https://www.brandonsanderson.com/feed/
 https://nitter.net/Snowden/rss
 https://nitter.net/ericniebler/rss
 
-
-# Politics
-#https://www2.capital.bg/rss/
-#https://www.svobodnaevropa.bg/api/zgmpmie_$pmm
-
-# reddit
-#http://www.reddit.com/r/cpp/top.rss?sort=top&t=day
-#http://www.reddit.com/r/hardware/top.rss?sort=top&t=day
-#http://www.reddit.com/r/linux/top.rss?sort=top&t=day
-#http://www.reddit.com/r/programming/top.rss?sort=top&t=day
-#http://www.reddit.com/r/hacking/top.rss?sort=top&t=day
-
 # Hacker News
 #https://hnrss.org/bestcomments
 #https://hnrss.org/newest?points=200
@@ -41,24 +29,25 @@ https://nitter.net/ericniebler/rss
 #https://news.ycombinator.com/rss
 #https://hn.algolia.com/latest.atom
 
-
 https://blog.bozho.net/feed         bg
-
 https://www.boec-bg.com/feed        bg
 https://pravosadiezavseki.com/feed/ bg
 https://acf.bg/bg/feed/             bg
 https://news-bg-abroad.com/feed/    bg
 https://chernakniga.bg/feed/        bg
 https://spasisofia.org/bg/feed      bg
+https://bulgarianhistory.org/feed/  bg
+https://ime.bg/bg/rss/ime/          bg
+
 https://demokrati.bg/feed/          bg
 #https://desebg.com/index.php/bg/feed
 #https://pametbg.com/index.php/bg/feed
-#
+
 https://bird.bg/feed                bg
 https://bivol.bg/feed               bg
-#
-https://nitter.net/SegaBG/rss        bg
+https://nitter.net/SegaBG/rss       bg
 https://news.lex.bg/feed/           bg
+https://ekipbg.com/feed/            bg
 #https://www.mediapool.bg/rss
 #https://www.dnevnik.bg/rss
 #https://www.clubz.bg/rss.xml
@@ -66,4 +55,3 @@ https://news.lex.bg/feed/           bg
 #
 #https://www.capital.bg/rss/
 #https://www.banker.bg/rss
-https://ekipbg.com/feed/            bg
