@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# to turn off the vpn, do `pkill openconnect`
+lpass show --password "eth network vpn" | sudo openconnect \
+                                     --user tnikolov@cscs.ethz.ch \
+                                     --usergroup cscs \
+                                     --token-secret=cscs11180 \
+                                     --passwd-on-stdin \
+                                     --background \
+                                     sslvpn.ethz.ch/cscs

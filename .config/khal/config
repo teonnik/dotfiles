@@ -1,0 +1,18 @@
+[calendars]
+
+[[private]]
+path = /home/teonnik/.local/share/khal/calendars/private
+type = calendar
+color = dark green
+
+[locale]
+timeformat = %H:%M
+dateformat = %Y-%m-%d
+longdateformat = %Y-%m-%d
+datetimeformat = %Y-%m-%d %H:%M
+longdatetimeformat = %Y-%m-%d %H:%M
+
+[default]
+default_calendar = private
+timedelta = 7d # the default timedelta that list uses
+highlight_event_days = True
