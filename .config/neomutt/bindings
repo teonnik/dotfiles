@@ -45,6 +45,7 @@ bind index,pager S sync-mailbox
 bind index,pager R group-reply
 
 bind editor <Tab> complete-query
+bind editor ^T complete
 
 # Collapsing / Uncollapsing threads
 bind index c collapse-thread

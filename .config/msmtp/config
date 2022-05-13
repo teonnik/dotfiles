@@ -19,4 +19,4 @@ port 587
 protocol smtp
 from tnikolov@cscs.ch
 user tnikolov
-passwordeval lpass show --password "eth ldap"
+passwordeval lpass show --password "eth email"

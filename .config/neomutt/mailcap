@@ -6,4 +6,8 @@ video/*; vlc %s &; copiousoutput
 audio/*; vlc %s ;
 application/pdf; zathura %s & ;
 # TODO: improve by moving to a directory
-text/calendar; calcurse import %s;
+#text/calendar; calcurse import %s;
+#application/ics; mutt-ics; copiousoutput
+text/calendar; vcal %s; copiousoutput
+application/ics; vcal %s; copiousoutput
+#text/calendar; /bin/cat; copiousoutput;

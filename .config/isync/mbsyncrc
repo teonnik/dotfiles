@@ -8,8 +8,8 @@ SyncState *
 IMAPAccount gmail
 Host imap.gmail.com
 User teodor.nikolov22@gmail.com
-#PassCmd "lpass show --password \"neomutt gmail\""
-PassCmd "pass gmail.com/pass"
+PassCmd "lpass show --password \"neomutt gmail\""
+#PassCmd "pass gmail.com/pass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -69,8 +69,8 @@ Channel gmail-spam
 IMAPAccount cscs
 Host mail.ethz.ch
 User tnikolov
-#PassCmd "lpass show --password \"eth ldap\""
-PassCmd "pass cscs/pass"
+PassCmd "lpass show --password \"eth email\""
+#PassCmd "pass cscs/pass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 AuthMech PLAIN
