@@ -11,3 +11,4 @@ application/pdf; zathura %s & ;
 text/calendar; vcal %s; copiousoutput
 application/ics; vcal %s; copiousoutput
 #text/calendar; /bin/cat; copiousoutput;
+text/x-diff; cat %s; copiousoutput

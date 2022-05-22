@@ -148,7 +148,7 @@ packages=(
   w3m     # view HTML email
   msmtp   # SMTP client
   isync   # sync IMAP and Maildir mailboxes
-  abook   # address book for mutt
+  khal    # calendar and events
 
   # sound server & bluetooth
   pipewire-pulse
@@ -289,6 +289,7 @@ aur_pkgs=(
   wlsunset   # blue light filter for night reading
   vcal       # view .ics and calendar files
   swayimg    # image viewer
+  libtree
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 
