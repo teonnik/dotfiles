@@ -41,8 +41,6 @@ packages=(
   grub        # boot loader
   efibootmgr  # EFI boot manager
 
-  cronie  # time-based job scheduler
-
   #sddm                  # display manager
   sway                  # window manager
   xorg-server-xwayland  # wayland xorg support
@@ -55,7 +53,8 @@ packages=(
   swappy                # screenshot editting tool
   slurp                 # select region on screen
   mako libnotify        # notifications
-  waybar                # bar
+  #waybar
+  i3status-rust          # bar
   #wev                   # debugging Wayland events
   xdg-desktop-portal-wlr # screen sharing
   wf-recorder            # screen recording
@@ -107,7 +106,7 @@ packages=(
   openssh # ssh
   wget
   curl
-  aria2
+  #aria2
   youtube-dl
   newsboat
   github-cli
@@ -116,7 +115,12 @@ packages=(
   texlive-bin
   texlive-core
   texlive-science
+  texlive-latexextra
   biber
+  texlab
+
+  # rust
+  rust-analyzer
 
   # fonts
   ttf-liberation
@@ -200,6 +204,8 @@ packages=(
 
   # image viewer
   imv
+  swayimg
+  viu        # in terminal
   #gwenview
   #feh
 
@@ -257,7 +263,9 @@ systemctl enable NetworkManager.service \
                  syncthing@teonnik.service \
                  borg-backup.timer \
                  cronie.service
-#                sddm.service
+
+systemctl --user enable xdg-desktop-portal.service
+                        #pipewire.service ??
 
 # Root password
 passwd
@@ -278,6 +286,7 @@ aur_pkgs=(
   slack-desktop
   #zoom
   direnv
+  bloaty
   gcalcli
   ripgrep-all
   navi-bin
@@ -288,12 +297,14 @@ aur_pkgs=(
   pandoc-bin
   wlsunset   # blue light filter for night reading
   vcal       # view .ics and calendar files
-  swayimg    # image viewer
   libtree
+  mullvad-vpn-cli
+  #yambar     # alternative to waybar
+  #wl-color-picker # HEX of color under the cursor
 )
 yay --noconfirm --needed -S ${aur_pkgs[@]}
 
-
+# TODO: chromium extensions - uBlock Origin, LastPass, BypassPaywalls, PrivacyBadger, Cookie AutoDelete
 
 
 # ------------------------------

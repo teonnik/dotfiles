@@ -1,7 +1,7 @@
 {
-    "layer": "top",        
-    "position": "bottom",  
-    "height": 25,          
+    "layer": "top",
+    "position": "top",
+    "height": 20,
 
     "modules-left": [ "memory", "cpu", "temperature",  "battery", "network"],
     "modules-center": [ "sway/workspaces",  "sway/mode" ],

@@ -12,8 +12,8 @@ client.unfocused        #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
 client.urgent           #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
 
 # borders
-default_border pixel 3
-default_floating_border pixel 3
+default_border pixel 1
+default_floating_border pixel 1
 #gaps inner 5
 
 
@@ -187,15 +187,58 @@ bindsym $mod+Mod1+Down mode "resize_bottom"
 # Apps
 
 # bar
+#bar {
+#    #swaybar_command waybar
+#    swaybar_command yambar
+#}
+
 bar {
-    swaybar_command waybar
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position top
+    status_command i3status-rs
+    colors {
+        separator #666666
+        background #282828
+        statusline #dddddd
+        #focused_workspace #0088CC #0088CC #ffffff
+        #active_workspace #333333 #333333 #ffffff
+        #inactive_workspace #333333 #333333 #888888
+        #urgent_workspace #2f343a #900000 #ffffff
+    }
 }
+
+# default bar
+#
+#set $primary #2C4B91
+#set $background #080F20
+#set $bar_background #152446
+#set $foreground #ffffff
+#set $red #900000
+#bar {
+#  status_command while date +"%A %Y-%m-%d %H:%M"; do sleep 1; done
+#  position top
+#  pango_markup disabled
+#  font DejaVu Sans Mono 10
+#  strip_workspace_numbers yes
+#  colors {
+#    background $bar_background
+#    statusline $foreground
+#    inactive_workspace $bar_background $bar_background $foreground
+#    active_workspace $bar_background $bar_background $foreground
+#    urgent_workspace $red $red $foreground
+#    focused_workspace $primary $primary $foreground
+#    urgent_workspace $red $red $foreground
+#  }
+#}
 
 # gaps
 #bindsym $mod+g gaps inner all 10
 
 # automatic output management on hot-plug/unplug
 exec kanshi
+
+# notification daemon
+exec mako
 
 # lock
 bindsym $mod+l exec swaylock
@@ -239,17 +282,12 @@ for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
 for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 
 # set opacity for window
-for_window [app_id="Alacritty"] opacity set 0.95
-for_window [app_id="foot"] opacity set 0.95
+#for_window [app_id="Alacritty"] opacity set 0.95
+#for_window [app_id="foot"] opacity set 0.95
 
 # fix changing tab size when emojis are present
-for_window [app_id="firefox"] title_format " Firefox"
-for_window [app_id="thunderbird"] title_format " Thunderbird"
-for_window [app_id="Alacritty"] title_format "  Alacritty"
-for_window [app_id="chromium"] title_format " Chromium"
-for_window [class="Slack"] title_format "  Slack"
-
-# Resolves xdg-portal issue : https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
-exec hash dbus-update-activation-environment 2>/dev/null && \
-     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
+#for_window [app_id="firefox"] title_format " Firefox"
+#for_window [app_id="thunderbird"] title_format " Thunderbird"
+#for_window [app_id="Alacritty"] title_format "  Alacritty"
+#for_window [app_id="chromium"] title_format " Chromium"
+#for_window [class="Slack"] title_format "  Slack"

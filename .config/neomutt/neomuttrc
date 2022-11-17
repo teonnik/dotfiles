@@ -29,6 +29,10 @@ set mime_type_query_command = "file --mime-type -b %s"
 set query_command = "echo '' && notmuch address from:/%s/" # use this as query command (better than abook?)
 set query_format="%4c %t %-70.70a %-70.70n %?e?(%e)?"
 set confirmappend = no          # don't prompt for confirmation when appending messages to an existing mailbox
+set recall=no                   # don't ask to recall a postponed message when hitting `m`, use `R` to do that
+
+# When in the pager (reading a message), still show a few lines of the index (list of messages) for context.
+#set pager_index_lines=10
 
 # Compose View
 set edit_headers = yes          # See the headers in vim
@@ -51,7 +55,7 @@ macro attach W "<save-entry><bol>~/downloads/<eol>" "Save to desktop"
 macro attach \Ck "<pipe-message>khal import <enter>"
 
 auto_view text/calendar application/ics text/html          # automatically show html
-alternative_order text/calendar application/ics text/plain text/enriched text/html
+alternative_order text/html text/plain                     # prefer viewing html
 
 # Pager
 set pager_stop = yes            # don't jump to the next email at end of current one
@@ -76,6 +80,8 @@ set nm_default_url = "notmuch://$HOME/mail"
 set nm_query_type = "threads"
 # Binding for notmuch search
 bind index \\ vfolder-from-query
+# Shows the entire email thread
+bind index,pager x entire-thread
 
 macro index <F1> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'
 macro index <F2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/cscs<enter><change-folder>!<enter>'

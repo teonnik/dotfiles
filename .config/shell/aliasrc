@@ -49,3 +49,4 @@ alias recent='ls -ltch'
 alias month='fd $(date +%Y-%m) ~/log | xargs bat'
 alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
 rme() { fd $1 ~/readme | xargs bat } # open readme file
+alias open='xdg-open 2>&1 >/dev/null'
