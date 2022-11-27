@@ -1,0 +1,191 @@
+# vim: set filetype=sh :
+
+linux           # linux kernel and modules
+linux-firmware  # firmware files
+
+base         # bundle: bash, file, grep, gzip, iproute2, pacman, sed, shadow, systemd, tar, util-linux
+util-linux   # bundle: chsh, cal, column, fdisk, hwclock, kill, lsblk, lscpu, mkfs, mount, su, umount
+base-devel   # bundle: autoconf, automake, binutils, make, which, gcc, sudo, pkgconf
+
+reflector   # Arch mirror list manager script for pacman
+
+grub        # boot loader
+efibootmgr  # EFI boot manager
+
+#sddm                  # display manager
+sway                  # window manager
+xorg-server-xwayland  # wayland xorg support
+kanshi                # monitors setup manager
+swaylock              # screen locker
+swayidle              # desktop dimming manager
+wl-clipboard          # clipboard
+wofi                  # app launcher
+grim                  # screenshot utility
+swappy                # screenshot editting tool
+slurp                 # select region on screen
+mako libnotify        # notifications
+#waybar
+i3status-rust          # bar
+#wev                   # debugging Wayland events
+xdg-desktop-portal-wlr # screen sharing
+wf-recorder            # screen recording
+
+lsof                  # list open files
+
+# terminal emulator
+#alacritty
+#konsole
+foot
+
+xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
+at                    # schedule commands
+hexyl                 # command line hex viewer
+
+zsh            # shell
+gvim vi        # editor
+neovim
+ninja          # alternative to make
+gdb            # debugger
+git            # version control management
+cmake          # build tool
+diff-so-fancy  # better diff
+clang          # compiler
+openmp         # clang's opnemp support
+
+# monitoring
+perf
+htop
+glances
+
+networkmanager  # network manager
+nethogs         # net top tool
+mtr             # traceroute alternative
+
+gnupg        # encryption and signing tool
+age
+pass         # password store
+#passage
+minisign
+lastpass-cli # LastPass CLI password store
+pwgen        # generate passwords from the command line
+
+# vpn
+networkmanager-openconnect
+networkmanager-openvpn
+networkmanager-vpnc
+
+openssh # ssh
+wget
+curl
+#aria2
+youtube-dl
+newsboat
+github-cli
+
+# latex
+texlive-bin
+texlive-core
+texlive-science
+texlive-latexextra
+biber
+texlab
+
+# rust
+rust-analyzer
+
+# fonts
+ttf-liberation
+ttf-font-awesome
+ttf-roboto
+powerline-fonts
+
+# qt
+qt5-wayland
+qt5ct
+
+# python
+python-black # formatting
+python-parse # the reverse of `format()`, like scanf() in `C`
+python-numpy
+python-scipy
+python-pandas
+python-matplotlib
+python-seaborn
+ipython
+
+# chat
+weechat
+weechat-matrix
+
+neomutt # email client
+notmuch # index and search mail
+w3m     # view HTML email
+msmtp   # SMTP client
+isync   # sync IMAP and Maildir mailboxes
+khal    # calendar and events
+
+# sound server & bluetooth
+pipewire-pulse
+pipewire-alsa
+wireplumber
+bluez
+bluez-utils
+#pulseaudio-bluetooth
+
+pavucontrol                       # volume control
+light                             # brightness
+
+# printing
+cups-pdf
+foomatic-db-engine
+foomatic-db
+
+translate-shell  # language translation in the terminal
+
+borg          # backup
+syncthing     # sync continuously
+rclone        # sync to cloud storage
+rsync         # sync to remote
+
+neofetch                    # system info
+onefetch                    # git repo info
+
+zip unzip unrar             # archives
+jq                          # json
+fzf the_silver_searcher fd  # search
+ncdu                        # disk: du alternative
+tree                        # files & folders
+pacman-contrib pacgraph     # arch
+asp                         # utility to retrieve PKGBUILD files
+man man-db man-pages        # man pages
+tldr                        # alternative to man pages
+playerctl                   # media player controller
+
+# pdf
+pdf2svg               # pdf to svg converter
+zathura-pdf-mupdf     # pdf viewer
+xournalpp             # pdf editor
+pdfarranger           # pdf merge/split/arrange
+#okular
+
+# browser
+chromium
+#firefox
+#qutebrowser
+
+# image viewer
+swayimg
+viu        # in terminal
+#gwenview
+#feh
+#imv
+
+nm-connection-editor  # network manager GUI
+vlc                   # media player
+libreoffice-still     # office suite
+gimp                  # raster graphics editor
+#keepassxc             # password manager
+#thunderbird           # mail client
+#inkscape              # vector graphics editor
+
+# no longer used: texstudio dolphin rofi
