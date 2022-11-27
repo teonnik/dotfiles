@@ -33,7 +33,7 @@ exec swayidle -w \
 # wallpaper
 #
 # https://github.com/swaywm/sway/issues/1269
-output * bg `find ~/pics/wallpapers -type f | shuf -n 1` fill
+#output * bg `find ~/pics/wallpapers -type f | shuf -n 1` fill
 
 # ------------------------------------------------------------------------------
 # Input configuration: `man 5 sway-input` / `swaymsg -t get_inputs`

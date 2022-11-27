@@ -32,6 +32,7 @@ wf-recorder            # screen recording
 
 lsof                  # list open files
 
+
 # terminal emulator
 #alacritty
 #konsole
@@ -46,6 +47,7 @@ gvim vi        # editor
 neovim
 ninja          # alternative to make
 gdb            # debugger
+direnv         # env per folder
 git            # version control management
 cmake          # build tool
 diff-so-fancy  # better diff
@@ -166,6 +168,7 @@ pdf2svg               # pdf to svg converter
 zathura-pdf-mupdf     # pdf viewer
 xournalpp             # pdf editor
 pdfarranger           # pdf merge/split/arrange
+ripgrep-all           # pdf grep
 #okular
 
 # browser
@@ -180,6 +183,7 @@ viu        # in terminal
 #feh
 #imv
 
+
 nm-connection-editor  # network manager GUI
 vlc                   # media player
 libreoffice-still     # office suite
@@ -187,5 +191,6 @@ gimp                  # raster graphics editor
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
+
 
 # no longer used: texstudio dolphin rofi

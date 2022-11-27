@@ -1,6 +1,7 @@
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
+setopt INC_APPEND_HISTORY_TIME
 
 # vi mode
 bindkey -v
@@ -41,7 +42,7 @@ source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # spack
 SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
-source $HOME/software/spack/share/spack/setup-env.sh
+source $HOME/code/spack/share/spack/setup-env.sh
 
 # direnv
 eval "$(direnv hook zsh)"

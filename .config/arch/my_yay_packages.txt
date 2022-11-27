@@ -2,17 +2,16 @@
 
 skypeforlinux-stable-bin
 slack-desktop
-direnv
 bloaty
-gcalcli
-ripgrep-all
-navi-bin
 pandoc-bin
 wlsunset   # blue light filter for night reading
 vcal       # view .ics and calendar files
 libtree
-mullvad-vpn-cli
 
+
+#navi-bin
+#gcalcli
+#mullvad-vpn-cli
 #zoom
 #stdman
 #rusty-man
