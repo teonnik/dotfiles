@@ -11,25 +11,25 @@ export TERM=xterm-256color
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 #export TERM=foot # this is set in foot's config
 
-
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
+# XDG user directories : https://wiki.archlinux.org/title/XDG_user_directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
-
-# XDG user directories : https://wiki.archlinux.org/title/XDG_user_directories
 export XDG_DESKTOP_DIR="$HOME/desktop"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
-export XDG_TEMPLATES_DIR="$HOME/templates"
+#export XDG_TEMPLATES_DIR="$HOME/templates"
 export XDG_PUBLICSHARE_DIR="$HOME/public"
 export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/pics"
+export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
+export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
+export XDG_SESSION_DESKTOP=sway # systemd
+export XDG_SESSION_TYPE=wayland # xdg/systemd
 
-# software
-#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+# clean dot files in home directory
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
 export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
@@ -37,7 +37,6 @@ export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
 export MBSYNCRC="${XDG_CONFIG_HOME}/isync/mbsyncrc"
 export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
-#export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
@@ -45,8 +44,10 @@ export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
 export KDEHOME="${XDG_CONFIG_HOME}/kde"
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+#export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
-# languages
+# go, rust
 export GOPATH="${XDG_DATA_HOME}/go"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
@@ -57,22 +58,7 @@ export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
 export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
 export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
 
-export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
-export XDG_SESSION_DESKTOP=sway # systemd
-export XDG_SESSION_TYPE=wayland # xdg/systemd
-
-if command -v dbus-update-activation-environment >/dev/null; then
-  dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
-fi
-if command -v systemctl >/dev/null; then
-  # without this, systemd starts xdg-desktop-portal without these environment variables,
-  # and the xdg-desktop-portal does not start xdg-desktop-portal-wrl as expected
-  # https://github.com/emersion/xdg-desktop-portal-wlr/issues/39#issuecomment-638752975
-  systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
-fi
-
-# less colors in man
-# https://github.com/ael-code/zsh-colored-man-pages/blob/master/colored-man-pages.plugin.zsh
+# less colors in man : https://github.com/ael-code/zsh-colored-man-pages/blob/master/colored-man-pages.plugin.zsh
 export LESS_TERMCAP_md=$(tput bold; tput setaf 4)
 export LESS_TERMCAP_me=$(tput sgr0)
 export LESS_TERMCAP_mb=$(tput blink)
@@ -85,11 +71,10 @@ export LESS_TERMCAP_se=$(tput rmso)
 export LPASS_CLIPBOARD_COMMAND="wl-copy"
 export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
 
+# fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-
-# ---- exe
-#
+# run the ssh agent
 eval `ssh-agent`
 
 # If running from tty1 start sway

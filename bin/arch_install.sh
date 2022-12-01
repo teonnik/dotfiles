@@ -103,7 +103,10 @@ systemctl enable NetworkManager.service \
 
 systemctl --user enable xdg-desktop-portal.service \
                         syncthing.service
-                        #pipewire-pulse.service ??
+                        #pipewire.service
+                        #pipewire-pulse.service
+                        #pipewire.socket
+                        #wireplumber.service
 
 # AUR package manager
 git clone https://aur.archlinux.org/yay.git
