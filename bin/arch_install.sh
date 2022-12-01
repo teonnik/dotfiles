@@ -92,6 +92,10 @@ systemctl enable NetworkManager.service \
 
 systemctl --user enable xdg-desktop-portal.service \
                         syncthing.service
+                        #pipewire.service
+                        #pipewire-pulse.service
+                        #pipewire.socket
+                        #wireplumber.service
 
 # 22. Reboot and login as user `teonnik`
 reboot

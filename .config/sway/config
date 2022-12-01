@@ -240,6 +240,9 @@ exec kanshi
 # notification daemon
 exec mako
 
+# enable screenshare
+exec screenshare_on_wayland
+
 # lock
 bindsym $mod+l exec swaylock
 
@@ -286,8 +289,9 @@ for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 #for_window [app_id="foot"] opacity set 0.95
 
 # fix changing tab size when emojis are present
-#for_window [app_id="firefox"] title_format " Firefox"
+#for_window [app_id="firefox"] title_format " Firefox" inhibit_idle fullscreen
 #for_window [app_id="thunderbird"] title_format " Thunderbird"
 #for_window [app_id="Alacritty"] title_format "  Alacritty"
-#for_window [app_id="chromium"] title_format " Chromium"
+#for_window [app_id="chromium"] title_format " Chromium" inhibit_idle fullscreen
 #for_window [class="Slack"] title_format "  Slack"
+#for_window [class="vlc"] inhibit_idle fullscreen
