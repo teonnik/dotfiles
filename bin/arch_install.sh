@@ -11,7 +11,7 @@ rmmod pcspkr
 # 3. Connect to WiFi : https://wiki.archlinux.org/title/Iwd#iwctl
 iwctl
 [iwd] device list
-[iwd] station <device_name> get_networks
+[iwd] station <device_name> get-networks
 [iwd] station <device_name> connect <network_name>
 
 # 4. Update the system clock

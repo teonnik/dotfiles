@@ -13,8 +13,8 @@ call plug#begin()
   Plug 'ackyshake/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
   if has('nvim')
     Plug 'neovim/nvim-lspconfig'          " neovim's built-in LSP
+    Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
     "Plug 'hrsh7th/nvim-cmp'                " autocompletion for nvim-lspconfig
-    "Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
   endif
 call plug#end()
 

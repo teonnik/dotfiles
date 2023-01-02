@@ -7,7 +7,7 @@ pandoc-bin
 wlsunset   # blue light filter for night reading
 vcal       # view .ics and calendar files
 libtree
-
+cmake-format
 
 #navi-bin
 #gcalcli

@@ -186,6 +186,7 @@ viu        # in terminal
 
 nm-connection-editor  # network manager GUI
 vlc                   # media player
+mpv
 libreoffice-still     # office suite
 gimp                  # raster graphics editor
 #keepassxc             # password manager

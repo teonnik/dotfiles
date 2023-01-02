@@ -12,6 +12,13 @@ PassCmd "lpass show --password \"neomutt gmail\""
 #PassCmd "pass gmail.com/pass"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
+# to avoid hitting gmail limits, which appear to be 
+# 10 connections, 2.5G dowmload per day, 500M upload per day
+# https://bugzilla.mozilla.org/show_bug.cgi?id=805830
+# https://support.google.com/a/answer/1071518?hl=en
+#
+PipelineDepth 1
+
 
 # Remote storage
 IMAPStore gmail-remote

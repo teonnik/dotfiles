@@ -29,7 +29,11 @@ borg create                           \
     --exclude "${HOME}/build"         \
     --exclude "${HOME}/code"          \
     --exclude "${HOME}/software"      \
-    --exclude "${HOME}/downloads"      \
+    --exclude "${HOME}/downloads"     \
+    --exclude "${HOME}/mail/gmail/trash"   \
+    --exclude "${HOME}/mail/gmail/spam"    \
+    --exclude "${HOME}/mail/cscs/trash"    \
+    --exclude "${HOME}/mail/cscs/spam"     \
                                       \
     ::'{hostname}-{now}'              \
     "${HOME}"                         \
