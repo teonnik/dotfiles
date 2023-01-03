@@ -29,15 +29,24 @@ name = "native"
 #hide_when_empty = true
 #buttons = ["play", "next"]
 
+# --- sway
+#[[block]]
+#block = "keyboard_layout"
+#driver = "sway"
+#format = "{layout}"
+
+# --- i3
 [[block]]
 block = "keyboard_layout"
-driver = "sway"
-format = "{layout}"
+driver = "setxkbmap"
+interval = 15
 
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-invert_icons = true
+# TODO: error no backlight device found
+#[[block]]
+#block = "backlight"
+#device = "intel_backlight"
+#device = "backlight"
+#invert_icons = true
 
 [[block]]
 block = "battery"
@@ -61,7 +70,8 @@ format = " {percentage}"
 
 [[block]]
 block = "networkmanager"
-on_click = "foot -e nmtui"
+#on_click = "foot -e nmtui"
+on_click = "alacritty -e nmtui"
 interface_name_exclude = ['docker\d+']
 #interface_name_include = []
 ap_format = "{ssid} {strength}"

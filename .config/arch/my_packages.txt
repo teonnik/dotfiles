@@ -12,7 +12,7 @@ reflector   # Arch mirror list manager script for pacman
 grub        # boot loader
 efibootmgr  # EFI boot manager
 
-#sddm                  # display manager
+# --- sway setup
 sway                  # window manager
 xorg-server-xwayland  # wayland xorg support
 kanshi                # monitors setup manager
@@ -24,20 +24,21 @@ grim                  # screenshot utility
 swappy                # screenshot editting tool
 slurp                 # select region on screen
 mako libnotify        # notifications
-#waybar
-i3status-rust          # bar
 #wev                   # debugging Wayland events
 xdg-desktop-portal-wlr # screen sharing
 wf-recorder            # screen recording
+foot                   # terminal emulator for Wayland
+#waybar
+i3status-rust          # bar
+
+# --- i3 setup
+i3-wm
+alacritty              # terminal emulator for i3
+rofi                   # app launcher for i3
+xorg-xinit             # X session launcher - startx (no login manager)
+xclip                  # clipboard utility
 
 lsof                  # list open files
-
-
-# terminal emulator
-#alacritty
-#konsole
-foot
-
 xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
 at                    # schedule commands
 hexyl                 # command line hex viewer
@@ -193,5 +194,4 @@ gimp                  # raster graphics editor
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
 
-
-# no longer used: texstudio dolphin rofi
+# no longer used: texstudio dolphin konsole sddm
