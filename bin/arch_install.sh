@@ -78,7 +78,7 @@ sed -i '/Color/s/^#//g' /etc/pacman.conf
 passwd
 
 # 19. Add a user
-useradd -m -a -G wheel,video -s /usr/bin/zsh teonnik
+useradd -m -G wheel,video,docker -s /usr/bin/zsh teonnik
 passwd teonnik
 
 # 20. Edit /etc/sudoers to allow for the wheel group
@@ -88,7 +88,8 @@ visudo /etc/sudoers
 systemctl enable NetworkManager.service \
                  bluetooth.service \
                  cups.service \
-                 atd.service
+                 atd.service \
+                 docker.service
 
 systemctl --user enable xdg-desktop-portal.service \
                         syncthing.service

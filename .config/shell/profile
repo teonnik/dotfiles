@@ -78,6 +78,9 @@ export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
+# ccache
+export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"
+
 # run the ssh agent
 eval `ssh-agent`
 

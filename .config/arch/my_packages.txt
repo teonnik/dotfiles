@@ -37,6 +37,7 @@ alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
 xclip                  # clipboard utility
+i3lock
 
 lsof                  # list open files
 xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
@@ -63,6 +64,7 @@ glances
 networkmanager  # network manager
 nethogs         # net top tool
 mtr             # traceroute alternative
+speedtest-cli   # measure internet speed
 
 gnupg        # encryption and signing tool
 age
@@ -184,6 +186,7 @@ viu        # in terminal
 #feh
 #imv
 
+docker
 
 nm-connection-editor  # network manager GUI
 vlc                   # media player
@@ -195,3 +198,8 @@ gimp                  # raster graphics editor
 #inkscape              # vector graphics editor
 
 # no longer used: texstudio dolphin konsole sddm
+
+# --- work: nvidia
+git-lfs
+ccache
+libxcrypt-compat

@@ -1,0 +1,269 @@
+# super (modifier) key
+set $mod Mod4
+
+font pango:Roboto, FontAwesome, 10
+
+# colour of             border   background  text     indicator  child_border
+client.focused          #2f5491  #2f5491     #d8dee8  #2f343f    #d8dee8
+client.focused_inactive #2f5491  #2f343f     #d8dee8  #2f343f    #2f343f
+client.unfocused        #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+client.urgent           #2f343f  #2f343f     #d8dee8  #2f343f    #2f343f
+
+# borders
+default_border pixel 1
+default_floating_border pixel 1
+#gaps inner 5
+
+# ------------------------------------------------------------------------------
+# Key bindings
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+floating_modifier $mod
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Move your focus around
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace
+# Note: workspaces can have any name you want, not just numbers.
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Move current workspace between monitors
+bindsym $mod+Control+Left  move workspace to output left
+bindsym $mod+Control+Down  move workspace to output down
+bindsym $mod+Control+Up    move workspace to output up
+bindsym $mod+Control+Right move workspace to output right
+
+# You can "split" the current object of your focus with
+# $mod+h or $mod+v, for horizontal and vertical splits
+# respectively.
+bindsym $mod+h splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+w focus parent
+
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# move back and forth between windows
+bindsym $mod+Tab workspace back_and_forth
+
+# assing workspace to screen
+#workspace $wrks1 output DVI-I-1-1
+
+# ------------------------------------------------------------------------------
+# Modes
+
+mode "resize_left" {
+  bindsym Left  resize grow   left 20px
+  bindsym Right resize shrink left 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+Left mode "resize_left"
+
+mode "resize_right" {
+  bindsym Left  resize shrink right 20px
+  bindsym Right resize grow   right 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+Right mode "resize_right"
+
+mode "resize_top" {
+  bindsym Up   resize grow   up 20px
+  bindsym Down resize shrink up 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+Up mode "resize_top"
+
+mode "resize_bottom" {
+  bindsym Up   resize shrink down 20px
+  bindsym Down resize grow   down 20px
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+Down mode "resize_bottom"
+
+# adapted from here https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id i3lock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id i3lock && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
+
+# ------------------------------------------------------------------------------
+# Apps
+
+bar {
+    font pango:DejaVu Sans Mono, FontAwesome 10
+    position top
+    status_command i3status-rs
+    colors {
+        separator #666666
+        background #282828
+        statusline #dddddd
+        #focused_workspace #0088CC #0088CC #ffffff
+        #active_workspace #333333 #333333 #ffffff
+        #inactive_workspace #333333 #333333 #888888
+        #urgent_workspace #2f343a #900000 #ffffff
+    }
+}
+
+# default bar
+#
+#set $primary #2C4B91
+#set $background #080F20
+#set $bar_background #152446
+#set $foreground #ffffff
+#set $red #900000
+#bar {
+#  status_command while date +"%A %Y-%m-%d %H:%M"; do sleep 1; done
+#  position top
+#  pango_markup disabled
+#  font DejaVu Sans Mono 10
+#  strip_workspace_numbers yes
+#  colors {
+#    background $bar_background
+#    statusline $foreground
+#    inactive_workspace $bar_background $bar_background $foreground
+#    active_workspace $bar_background $bar_background $foreground
+#    urgent_workspace $red $red $foreground
+#    focused_workspace $primary $primary $foreground
+#    urgent_workspace $red $red $foreground
+#  }
+#}
+
+# automatic output management on hot-plug/unplug
+#exec kanshi
+
+# notification daemon
+#exec mako
+
+# enable screenshare
+# exec screenshare_on_wayland
+
+# lock
+#bindsym $mod+l exec swaylock
+
+# terminal
+bindsym $mod+Return exec "alacritty"
+
+# launcher
+bindsym $mod+d exec "rofi -modi drun -show drun -theme Monokai"
+
+# audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+bindsym $mod+a               exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Shift+a         exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+m               exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+
+# screen brightness (not working sometimes)
+bindsym XF86MonBrightnessUp   exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym $mod+b                exec light -A 5
+bindsym $mod+Shift+b          exec light -U 5
+
+# media player
+bindsym XF86AudioPlay  exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPrev  exec playerctl previous
+
+# screenshot
+#bindsym $mod+p exec grim screenshot.png
+
+# ------------------------------------------------------------------------------
+# Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`
+
+# inhibit idle when fullscreen
+#for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
+#for_window [class="vlc"] inhibit_idle fullscreen # xwayland
+
+# set opacity for window
+#for_window [app_id="Alacritty"] opacity set 0.95
+#for_window [app_id="foot"] opacity set 0.95
+
+# fix changing tab size when emojis are present
+#for_window [app_id="firefox"] title_format " Firefox" inhibit_idle fullscreen
+#for_window [app_id="thunderbird"] title_format " Thunderbird"
+#for_window [app_id="Alacritty"] title_format "  Alacritty"
+#for_window [app_id="chromium"] title_format " Chromium" inhibit_idle fullscreen
+#for_window [class="Slack"] title_format "  Slack"
+#for_window [class="vlc"] inhibit_idle fullscreen

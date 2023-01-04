@@ -20,3 +20,6 @@ cmake-format
 #mendeleydesktop
 #yambar     # alternative to waybar
 #wl-color-picker # HEX of color under the cursor
+
+# --- work: nvidia
+openconnect-sso
