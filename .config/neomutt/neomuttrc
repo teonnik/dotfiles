@@ -84,4 +84,5 @@ bind index \\ vfolder-from-query
 bind index,pager x entire-thread
 
 macro index <F1> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/gmail<enter><change-folder>!<enter>'
-macro index <F2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/cscs<enter><change-folder>!<enter>'
+macro index <F2> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/nvidia<enter><change-folder>!<enter>'
+macro index <F3> '<sync-mailbox><enter-command>source ~/.config/neomutt/accounts/cscs<enter><change-folder>!<enter>'

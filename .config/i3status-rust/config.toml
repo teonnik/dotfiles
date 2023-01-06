@@ -48,10 +48,10 @@ interval = 15
 #device = "backlight"
 #invert_icons = true
 
-[[block]]
-block = "battery"
-interval = 10
-format = " {percentage}"
+#[[block]]
+#block = "battery"
+#interval = 10
+#format = " {percentage}"
 
 #[[block]]
 #block = "disk_space"

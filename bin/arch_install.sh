@@ -50,8 +50,11 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # 11. Change root
 arch-chroot /mnt
 
+# 11.2 Clone dotfiles repo in /root/dotfiles
+pacman -Syu git
+git clone https://github.com/teonnik/dotfiles.git /root/dotfiles
+
 # 12. Install all my pacman packages: ~/.config/arch/my_packages.txt
-wget -O my_packages.txt pastebin.com/<link> 
 pacman -Syu $(sed 's:#.*$::g' my_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 13. Time zone
@@ -91,6 +94,14 @@ systemctl enable NetworkManager.service \
                  atd.service \
                  docker.service
 
+# 22. Reboot and login as user `teonnik`
+reboot
+
+# teonnik ---------------------------------------------------------
+
+timedatectl set-ntp true
+
+# Enable user services
 systemctl --user enable xdg-desktop-portal.service \
                         syncthing.service
                         #pipewire.service
@@ -98,10 +109,7 @@ systemctl --user enable xdg-desktop-portal.service \
                         #pipewire.socket
                         #wireplumber.service
 
-# 22. Reboot and login as user `teonnik`
-reboot
 
-# teonnik ---------------------------------------------------------
 
 # 1. Chromium extensions - uBlock Origin, LastPass, BypassPaywalls, PrivacyBadger
 
@@ -130,7 +138,7 @@ git clone https://aur.archlinux.org/yay.git
 
 # 7. Install all my AUR packages: ~/config/arch/my_aur_packages.txt
 wget -O my_aur_packages.txt pastebin.com/<link> 
-yay -Syu $(sed 's:#.*$::g' my_aur_packages.txt | tr '\n' ' ' | tr -s ' ')
+yay -Syu $(sed 's:#.*$::g' my_yay_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack

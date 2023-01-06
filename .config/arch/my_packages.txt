@@ -43,6 +43,7 @@ lsof                  # list open files
 xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
 at                    # schedule commands
 hexyl                 # command line hex viewer
+nnn                   # fast terminal file manager
 
 zsh            # shell
 gvim vi        # editor
@@ -55,6 +56,8 @@ cmake          # build tool
 diff-so-fancy  # better diff
 clang          # compiler
 openmp         # clang's opnemp support
+bear           # LSP database generator for e.g. Makefile - compile_commands.json
+
 
 # monitoring
 perf
