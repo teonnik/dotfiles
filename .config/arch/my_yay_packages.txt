@@ -23,3 +23,4 @@ cmake-format
 
 # --- work: nvidia
 openconnect-sso
+nvidia-470xx-dkms

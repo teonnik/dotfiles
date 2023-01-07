@@ -206,3 +206,6 @@ gimp                  # raster graphics editor
 git-lfs
 ccache
 libxcrypt-compat
+#nvidia       # if nvidia-470xx-dkms is not used
+linux-headers
+dkms
