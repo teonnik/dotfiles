@@ -38,6 +38,7 @@ rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
 xclip                  # clipboard utility
 i3lock
+scrot maim             # screenshots
 
 lsof                  # list open files
 xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
@@ -95,6 +96,7 @@ texlive-bin
 texlive-core
 texlive-science
 texlive-latexextra
+texlive-fontsextra # needed for CV
 biber
 texlab
 
@@ -124,6 +126,7 @@ ipython
 # chat
 weechat
 weechat-matrix
+signal-desktop
 
 neomutt # email client
 notmuch # index and search mail
@@ -147,6 +150,7 @@ light                             # brightness
 cups-pdf
 foomatic-db-engine
 foomatic-db
+hplip    # more printers
 
 translate-shell  # language translation in the terminal
 
