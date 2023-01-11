@@ -39,6 +39,7 @@ name = "native"
 [[block]]
 block = "keyboard_layout"
 driver = "setxkbmap"
+format = "{layout}"
 interval = 15
 
 # TODO: error no backlight device found

@@ -189,6 +189,7 @@ chromium
 # image viewer
 swayimg
 viu        # in terminal
+imagemagick  # convert tool: png/jpg -> pdf
 #gwenview
 #feh
 #imv
@@ -213,3 +214,4 @@ libxcrypt-compat
 #nvidia       # if nvidia-470xx-dkms is not used
 linux-headers
 dkms
+webkit2gtk    # dependency of cisco-anyconnect

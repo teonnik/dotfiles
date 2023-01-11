@@ -250,8 +250,14 @@ bindsym XF86AudioPrev  exec playerctl previous
 #bindsym $mod+p exec grim screenshot.png
 bindsym Print exec maim -s -u | xclip -selection clipboard -t image/png -i
 
-exec "setxkbmap -layout us,bg -variant ,phonetic"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
+# Use Right Alt to add umlauts to `a`, `o` and `u`.
+#
+# See this: https://unix.stackexchange.com/questions/589245/german-umlauts-on-us-keybaord
+#
+# Note: loading the custom xkb keymap in ".xkb/symbols/us-german-umlaut" didn't work.
+#
+exec "setxkbmap -layout \"de(us)\",bg -variant ,phonetic -option 'grp:alt_shift_toggle'"
+#exec "setxkbmap -option 'compose:caps'"
 
 # ------------------------------------------------------------------------------
 # Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`
