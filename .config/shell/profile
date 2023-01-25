@@ -5,7 +5,7 @@
 export PATH=$HOME/bin:$PATH
 export DEFAULT_USER=`whoami`
 export LANG=en_US.UTF-8
-export EDITOR=vim
+export EDITOR=nvim
 export PAGER=less
 export TERM=xterm-256color
 #export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -77,6 +77,11 @@ export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
 
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# nnn
+#
+# https://github.com/jarun/nnn#quickstarthttps://github.com/jarun/nnn#quickstart
+#NNN_OPENER=/usr/share/nnn/plugins/nuke
 
 # ccache
 export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"

@@ -213,6 +213,7 @@ bar {
 
 # notification daemon
 #exec mako
+exec --no-startup-id dunst
 
 # enable screenshare
 # exec screenshare_on_wayland

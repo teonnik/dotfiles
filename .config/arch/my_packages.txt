@@ -11,6 +11,8 @@ reflector   # Arch mirror list manager script for pacman
 
 grub        # boot loader
 efibootmgr  # EFI boot manager
+os-prober   # detect other OS
+gptfdisk    # cgdisk TUI partitioner
 
 # --- sway setup
 sway                  # window manager
@@ -39,9 +41,12 @@ xorg-xinit             # X session launcher - startx (no login manager)
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
+dunst                  # notification daemon
 
 lsof                  # list open files
-xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
+xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
+gendesk               # utility to generate .desktop files
+
 at                    # schedule commands
 hexyl                 # command line hex viewer
 nnn                   # fast terminal file manager
@@ -108,6 +113,7 @@ ttf-liberation
 ttf-font-awesome
 ttf-roboto
 powerline-fonts
+noto-fonts
 
 # qt
 qt5-wayland
@@ -144,6 +150,7 @@ bluez-utils
 #pulseaudio-bluetooth
 
 pavucontrol                       # volume control
+pulsemixer
 light                             # brightness
 
 # printing
@@ -215,3 +222,5 @@ libxcrypt-compat
 linux-headers
 dkms
 webkit2gtk    # dependency of cisco-anyconnect
+cuda-tools    # nsight profiler
+simplescreemrecorder

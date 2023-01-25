@@ -24,3 +24,7 @@ cmake-format
 # --- work: nvidia
 openconnect-sso
 nvidia-470xx-dkms
+appimagelauncher        # for omniverse cache installation
+teams
+xkb-switch            # keyboard layout and variant switch
+realvnc-vnc-viewer

@@ -40,6 +40,9 @@ mount /dev/sdx2 /mnt
 mount --mkdir /dev/sdx1 /mnt/boot
 
 # 8. Edit pacman's mirrorlist : /etc/pacman.d/mirrorlist
+pacman -Syy archlinux-keyring
+pacman -Sy reflector
+reflector --latest 6 --sort rate --download-timeout 100 --save /etc/pacman.d/mirrorlist 
 
 # 9. Install essential packages
 pacstrap -K /mnt base linux linux-firmware
@@ -72,7 +75,9 @@ echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 
 # 16. Bootloader (!! in arch chroot)
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+# TODO: If dual boot uncomment GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
+
 
 # 17. Set pacman's Color option
 sed -i '/Color/s/^#//g' /etc/pacman.conf
@@ -99,6 +104,10 @@ reboot
 
 # teonnik ---------------------------------------------------------
 
+# Connect to network
+nmtui
+
+# Sync clock
 timedatectl set-ntp true
 
 # Enable user services
