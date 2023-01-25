@@ -40,6 +40,9 @@ mount /dev/sdx2 /mnt
 mount --mkdir /dev/sdx1 /mnt/boot
 
 # 8. Edit pacman's mirrorlist : /etc/pacman.d/mirrorlist
+pacman -Syy archlinux-keyring
+pacman -Sy reflector
+reflector --latest 6 --sort rate --download-timeout 100 --save /etc/pacman.d/mirrorlist 
 
 # 9. Install essential packages
 pacstrap -K /mnt base linux linux-firmware
@@ -50,8 +53,11 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # 11. Change root
 arch-chroot /mnt
 
+# 11.2 Clone dotfiles repo in /root/dotfiles
+pacman -Syu git
+git clone https://github.com/teonnik/dotfiles.git /root/dotfiles
+
 # 12. Install all my pacman packages: ~/.config/arch/my_packages.txt
-wget -O my_packages.txt pastebin.com/<link> 
 pacman -Syu $(sed 's:#.*$::g' my_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 13. Time zone
@@ -69,7 +75,9 @@ echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 
 # 16. Bootloader (!! in arch chroot)
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+# TODO: If dual boot uncomment GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
+
 
 # 17. Set pacman's Color option
 sed -i '/Color/s/^#//g' /etc/pacman.conf
@@ -78,7 +86,7 @@ sed -i '/Color/s/^#//g' /etc/pacman.conf
 passwd
 
 # 19. Add a user
-useradd -m -a -G wheel,video -s /usr/bin/zsh teonnik
+useradd -m -G wheel,video,docker -s /usr/bin/zsh teonnik
 passwd teonnik
 
 # 20. Edit /etc/sudoers to allow for the wheel group
@@ -88,8 +96,21 @@ visudo /etc/sudoers
 systemctl enable NetworkManager.service \
                  bluetooth.service \
                  cups.service \
-                 atd.service
+                 atd.service \
+                 docker.service
 
+# 22. Reboot and login as user `teonnik`
+reboot
+
+# teonnik ---------------------------------------------------------
+
+# Connect to network
+nmtui
+
+# Sync clock
+timedatectl set-ntp true
+
+# Enable user services
 systemctl --user enable xdg-desktop-portal.service \
                         syncthing.service
                         #pipewire.service
@@ -97,10 +118,7 @@ systemctl --user enable xdg-desktop-portal.service \
                         #pipewire.socket
                         #wireplumber.service
 
-# 22. Reboot and login as user `teonnik`
-reboot
 
-# teonnik ---------------------------------------------------------
 
 # 1. Chromium extensions - uBlock Origin, LastPass, BypassPaywalls, PrivacyBadger
 
@@ -129,7 +147,7 @@ git clone https://aur.archlinux.org/yay.git
 
 # 7. Install all my AUR packages: ~/config/arch/my_aur_packages.txt
 wget -O my_aur_packages.txt pastebin.com/<link> 
-yay -Syu $(sed 's:#.*$::g' my_aur_packages.txt | tr '\n' ' ' | tr -s ' ')
+yay -Syu $(sed 's:#.*$::g' my_yay_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack

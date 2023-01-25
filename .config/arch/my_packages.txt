@@ -11,8 +11,10 @@ reflector   # Arch mirror list manager script for pacman
 
 grub        # boot loader
 efibootmgr  # EFI boot manager
+os-prober   # detect other OS
+gptfdisk    # cgdisk TUI partitioner
 
-#sddm                  # display manager
+# --- sway setup
 sway                  # window manager
 xorg-server-xwayland  # wayland xorg support
 kanshi                # monitors setup manager
@@ -24,23 +26,30 @@ grim                  # screenshot utility
 swappy                # screenshot editting tool
 slurp                 # select region on screen
 mako libnotify        # notifications
-#waybar
-i3status-rust          # bar
 #wev                   # debugging Wayland events
 xdg-desktop-portal-wlr # screen sharing
 wf-recorder            # screen recording
+foot                   # terminal emulator for Wayland
+#waybar
+i3status-rust          # bar
+
+# --- i3 setup
+i3-wm
+alacritty              # terminal emulator for i3
+rofi                   # app launcher for i3
+xorg-xinit             # X session launcher - startx (no login manager)
+xclip                  # clipboard utility
+i3lock
+scrot maim             # screenshots
+dunst                  # notification daemon
 
 lsof                  # list open files
+xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
+gendesk               # utility to generate .desktop files
 
-
-# terminal emulator
-#alacritty
-#konsole
-foot
-
-xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
 at                    # schedule commands
 hexyl                 # command line hex viewer
+nnn                   # fast terminal file manager
 
 zsh            # shell
 gvim vi        # editor
@@ -53,6 +62,8 @@ cmake          # build tool
 diff-so-fancy  # better diff
 clang          # compiler
 openmp         # clang's opnemp support
+bear           # LSP database generator for e.g. Makefile - compile_commands.json
+
 
 # monitoring
 perf
@@ -62,6 +73,7 @@ glances
 networkmanager  # network manager
 nethogs         # net top tool
 mtr             # traceroute alternative
+speedtest-cli   # measure internet speed
 
 gnupg        # encryption and signing tool
 age
@@ -89,6 +101,7 @@ texlive-bin
 texlive-core
 texlive-science
 texlive-latexextra
+texlive-fontsextra # needed for CV
 biber
 texlab
 
@@ -100,6 +113,7 @@ ttf-liberation
 ttf-font-awesome
 ttf-roboto
 powerline-fonts
+noto-fonts
 
 # qt
 qt5-wayland
@@ -118,6 +132,7 @@ ipython
 # chat
 weechat
 weechat-matrix
+signal-desktop
 
 neomutt # email client
 notmuch # index and search mail
@@ -135,12 +150,14 @@ bluez-utils
 #pulseaudio-bluetooth
 
 pavucontrol                       # volume control
+pulsemixer
 light                             # brightness
 
 # printing
 cups-pdf
 foomatic-db-engine
 foomatic-db
+hplip    # more printers
 
 translate-shell  # language translation in the terminal
 
@@ -179,19 +196,21 @@ chromium
 # image viewer
 swayimg
 viu        # in terminal
+imagemagick  # convert tool: png/jpg -> pdf
 #gwenview
 #feh
 #imv
 
+docker
 
 nm-connection-editor  # network manager GUI
 vlc                   # media player
 mpv
 libreoffice-still     # office suite
 gimp                  # raster graphics editor
+simplescreenrecorder  # screen recorder
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
 
-
-# no longer used: texstudio dolphin rofi
+# no longer used: texstudio dolphin konsole sddm

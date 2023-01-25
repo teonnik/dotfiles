@@ -31,16 +31,13 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'clangd' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = custom_lsp_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-   filetypes = { "c", "cpp", "cu", "cuda" }
-  }
-end
+nvim_lsp['clangd'].setup {
+  on_attach = custom_lsp_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+ filetypes = { "c", "cpp", "cu", "cuda" }
+}
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -48,7 +45,7 @@ end
 -- Taken from : https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'cpp', 'cuda', 'vim', 'lua', 'python', 'help' },
+  ensure_installed = { 'cpp', 'cuda', 'vim', 'lua', 'python', 'markdown', 'help' },
 
   highlight = { enable = true },
   indent = { enable = true },
