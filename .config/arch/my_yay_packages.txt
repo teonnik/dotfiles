@@ -20,3 +20,7 @@ cmake-format
 #mendeleydesktop
 #yambar     # alternative to waybar
 #wl-color-picker # HEX of color under the cursor
+
+# NVIDIA
+realvnc-vnc-viewer
+openprinting-ppds-pxlcolor-ricoh  # ppd files for office printers

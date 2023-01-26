@@ -17,16 +17,6 @@ default_floating_border pixel 1
 #gaps inner 5
 
 
-# 1. lock screens after 300 seconds of inactivity
-# 2. turn off displays after another 300 seconds
-# 3. turn screens back on when resumed
-# 4. lock screens before computer goes to sleep
-exec swayidle -w \
-         timeout 300 'swaylock' \
-         timeout 600 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock'
-
 # ------------------------------------------------------------------------------
 # Output configuration: `man 5 sway-output` / `swaymsg -t get_outputs`
 
@@ -57,9 +47,6 @@ floating_modifier $mod normal
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
-
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # Move your focus around
 bindsym $mod+Left  focus left
@@ -182,15 +169,25 @@ mode "resize_bottom" {
 }
 bindsym $mod+Mod1+Down mode "resize_bottom"
 
+# adapted from here https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id swaylock, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id swaylock && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id swaylock && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+p mode "$mode_system"
+
 
 # ------------------------------------------------------------------------------
 # Apps
-
-# bar
-#bar {
-#    #swaybar_command waybar
-#    swaybar_command yambar
-#}
 
 bar {
     font pango:DejaVu Sans Mono, FontAwesome 10
@@ -207,33 +204,6 @@ bar {
     }
 }
 
-# default bar
-#
-#set $primary #2C4B91
-#set $background #080F20
-#set $bar_background #152446
-#set $foreground #ffffff
-#set $red #900000
-#bar {
-#  status_command while date +"%A %Y-%m-%d %H:%M"; do sleep 1; done
-#  position top
-#  pango_markup disabled
-#  font DejaVu Sans Mono 10
-#  strip_workspace_numbers yes
-#  colors {
-#    background $bar_background
-#    statusline $foreground
-#    inactive_workspace $bar_background $bar_background $foreground
-#    active_workspace $bar_background $bar_background $foreground
-#    urgent_workspace $red $red $foreground
-#    focused_workspace $primary $primary $foreground
-#    urgent_workspace $red $red $foreground
-#  }
-#}
-
-# gaps
-#bindsym $mod+g gaps inner all 10
-
 # automatic output management on hot-plug/unplug
 exec kanshi
 
@@ -243,16 +213,20 @@ exec mako
 # enable screenshare
 exec screenshare_on_wayland
 
+# lock screens before computer goes to sleep
+exec swayidle -w before-sleep 'swaylock'
+
 # lock
 bindsym $mod+l exec swaylock
 
 # terminal
-#bindsym $mod+Return exec "alacritty"
 bindsym $mod+Return exec "foot"
 
 # launcher
-#bindsym $mod+d exec "rofi -modi drun -show drun -theme Monokai"
 bindsym $mod+d exec "wofi --show=drun"
+
+# screenshot
+bindsym $mod+p exec grim screenshot.png
 
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -273,9 +247,6 @@ bindsym XF86AudioPlay  exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
-
-# screenshot
-bindsym $mod+p exec grim screenshot.png
 
 # ------------------------------------------------------------------------------
 # Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`

@@ -36,8 +36,8 @@ format = "{layout}"
 
 [[block]]
 block = "backlight"
-device = "intel_backlight"
-invert_icons = true
+#device = "intel_backlight"
+#invert_icons = true
 
 [[block]]
 block = "battery"

@@ -11,6 +11,7 @@ image/jpeg=img.desktop;
 image/gif=img.desktop;
 video/x-matroska=video.desktop
 inode/directory=file.desktop
+x-scheme-handler/msteams=teams.desktop
 
 [Added Associations]
 application/x-shellscript=vim.desktop;
