@@ -1,15 +1,8 @@
-{
-    output eDP-1 enable mode 2560x1440
-}
-{
-    output eDP-1 enable scale 2 mode 2560x1440 pos 0 1080
-    output "BenQ Corporation BenQ GW2470 Y5K00800019" enable mode 1920x1080 pos 0 0
-}
+# nvidia home office monitor setup
 {
     output eDP-1 disable
-    output "BenQ Corporation BenQ GW2470 28H01790SL0" enable mode 1920x1080
+    output "Dell Inc. DELL C2722DE 5T9B4H3" enable position 0,0
 }
 {
-    output eDP-1 disable
-    output "Dell Inc. DELL U2719D HFQH4N2" enable mode 2560x1440
+    output eDP-1 enable position 0,0
 }

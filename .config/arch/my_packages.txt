@@ -63,6 +63,7 @@ diff-so-fancy  # better diff
 clang          # compiler
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
+bat            # fancy `less`
 
 
 # monitoring

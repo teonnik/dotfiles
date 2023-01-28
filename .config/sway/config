@@ -174,8 +174,8 @@ set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) re
 mode "$mode_system" {
     bindsym l exec --no-startup-id swaylock, mode "default"
     bindsym e exec --no-startup-id swaymsg exit, mode "default"
-    bindsym s exec --no-startup-id swaylock && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id swaylock && systemctl hibernate, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
 
@@ -206,6 +206,7 @@ bar {
 
 # automatic output management on hot-plug/unplug
 exec kanshi
+exec_always kanshictl reload
 
 # notification daemon
 exec mako
