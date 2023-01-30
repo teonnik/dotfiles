@@ -4,6 +4,7 @@
 
 call plug#begin()
   Plug 'junegunn/fzf.vim'               " fuzzy search
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/vim-easy-align'        " align text on delimiters
   Plug 'tpope/vim-surround'             " surround words easily
   Plug 'tpope/vim-eunuch'               " unix shell wrappers for vim

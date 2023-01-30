@@ -8,15 +8,14 @@ export LANG=en_US.UTF-8
 export EDITOR=vim
 export PAGER=less
 export TERM=xterm-256color
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-#export TERM=foot # this is set in foot's config
+#export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
 # XDG user directories : https://wiki.archlinux.org/title/XDG_user_directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CACHE_HOME="/raid/tnikolov/.cache"
 export XDG_DESKTOP_DIR="$HOME/desktop"
 export XDG_DOWNLOAD_DIR="$HOME/downloads"
 #export XDG_TEMPLATES_DIR="$HOME/templates"
@@ -25,9 +24,7 @@ export XDG_DOCUMENTS_DIR="$HOME/documents"
 export XDG_MUSIC_DIR="$HOME/music"
 export XDG_PICTURES_DIR="$HOME/pictures"
 export XDG_VIDEOS_DIR="$HOME/videos"
-export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
-export XDG_SESSION_DESKTOP=sway # systemd
-export XDG_SESSION_TYPE=wayland # xdg/systemd
+#export XDG_SESSION_TYPE=x11
 
 # clean dot files in home directory
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
@@ -52,12 +49,6 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
-# sway fixes
-export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
-export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
-export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
-export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
-
 # less colors in man : https://github.com/ael-code/zsh-colored-man-pages/blob/master/colored-man-pages.plugin.zsh
 export LESS_TERMCAP_md=$(tput bold; tput setaf 4)
 export LESS_TERMCAP_me=$(tput sgr0)
@@ -67,18 +58,8 @@ export LESS_TERMCAP_ue=$(tput sgr0)
 export LESS_TERMCAP_so=$(tput smso)
 export LESS_TERMCAP_se=$(tput rmso)
 
-# lastpass
-export LPASS_CLIPBOARD_COMMAND="wl-copy"
-export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
-
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-# run the ssh agent
-eval `ssh-agent`
-
-# If running from tty1 start sway
-if [ "$(tty)" = "/dev/tty1" ]; then
-  exec /usr/bin/sway
-fi
-
+# ccache
+export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"

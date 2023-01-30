@@ -5,7 +5,7 @@
   default = current
 [core]
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  #pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
   ui = auto
 [commit]
@@ -27,3 +27,8 @@
   ff = only
 [interactive]
   diffFilter = diff-so-fancy --patch
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

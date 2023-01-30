@@ -14,4 +14,4 @@ inode/directory=file.desktop
 x-scheme-handler/msteams=teams.desktop
 
 [Added Associations]
-application/x-shellscript=vim.desktop;
+application/x-shellscript=exo-terminal-emulator.desktop;vim.desktop;

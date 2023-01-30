@@ -1,4 +1,4 @@
-exec i3
+#exec i3
 
 #export DESKTOP_SESSION=plasma
 #exec startplasma-x11

@@ -3,6 +3,8 @@ SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
+PATH=/home/tnikolov/code/spack/opt/spack/linux-ubuntu20.04-skylake_avx512/gcc-9.4.0/llvm-15.0.7-d6cezgxjwys55kmedmpclz3i7scvztjh/bin/:$PATH
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -45,11 +47,12 @@ SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
 source $HOME/code/spack/share/spack/setup-env.sh
 
 # direnv
-eval "$(direnv hook zsh)"
+#eval "$(direnv hook zsh)"
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+FZF_DIR=${HOME}/code/fzf/shell
+source ${FZF_DIR}/key-bindings.zsh
+source ${FZF_DIR}/completion.zsh
 
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
