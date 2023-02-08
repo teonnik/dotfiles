@@ -20,11 +20,3 @@ protocol smtp
 from tnikolov@cscs.ch
 user tnikolov
 passwordeval lpass show --password "eth email"
-
-account nvidia
-host smtp.office365.com
-port 587
-protocol smtp
-from tnikolov@nvidia.com
-user tnikolov
-passwordeval lpass show --password "nvidia sso - email"

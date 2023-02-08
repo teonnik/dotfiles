@@ -1,9 +1,6 @@
 # Global Channel configuration.
-
-# Automatically create missing mailboxes, both locally and on the server
 Create Both
 Expunge Both
-# Save the synchronization state files in the relevant directory
 SyncState *
 
 # ----- GMail -----
@@ -139,35 +136,3 @@ Channel cscs-archive
 Channel cscs-drafts
 Channel cscs-trash
 Channel cscs-spam
-
-# ----- NVidia -----
-
-IMAPAccount nvidia
-Host outlook.office365.com
-User tnikolov
-# TODO: check this for instrutions : 
-#  - https://gitlab.com/muttmua/mutt/-/blob/master/contrib/mutt_oauth2.py.README
-#  - https://cvanelteren.github.io/post/mu4e/ 
-#  - http://www.iana.org/assignments/sasl-mechanisms/sasl-mechanisms.xhtml
-#TODO: PassCmd "/path/to/script/mutt_oauth2.py ${imap_user}.tokens"
-AuthMech OAUTHBEARER
-
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-PipelineDepth 1
-
-# Remote storage
-IMAPStore nvidia-remote
-Account nvidia
-
-# Local storage
-MaildirStore nvidia-local
-Path ~/mail/nvidia/
-Inbox ~/mail/nvidia/inbox
-
-Channel nvidia
-Far :nvidia-remote:
-Near :nvidia-local:
-# Include everything
-Patterns "INBOX" "*"
-Sync All
