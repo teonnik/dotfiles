@@ -39,6 +39,10 @@ nvim_lsp['clangd'].setup {
  filetypes = { "c", "cpp", "cu", "cuda" }
 }
 
+nvim_lsp['jedi_language_server'].setup {
+  on_attach = custom_lsp_attach,
+}
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 --
