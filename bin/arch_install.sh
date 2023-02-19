@@ -154,7 +154,7 @@ yay -Syu $(sed 's:#.*$::g' my_yay_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack
-# neovim, zsh, fzf, the-silver-searcher (ag), bat
+# neovim, zsh, fzf, the-silver-searcher (ag), bat, llvm
 # NOT in spack repo: diff-so-fancy
 
 # 9. neovim

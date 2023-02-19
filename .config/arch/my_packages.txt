@@ -35,13 +35,15 @@ i3status-rust          # bar
 
 # --- i3 setup
 i3-wm
+xorg-server
+xorg-xinit             # X session launcher - startx (no login manager)
 alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
-xorg-xinit             # X session launcher - startx (no login manager)
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
 dunst                  # notification daemon
+arandr
 
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
@@ -213,5 +215,6 @@ simplescreenrecorder  # screen recorder
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
+sweethome3d            # interior design app
 
 # no longer used: texstudio dolphin konsole sddm
