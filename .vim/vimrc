@@ -11,6 +11,7 @@ call plug#begin()
   Plug 'morhetz/gruvbox'                " color scheme
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
   Plug 'ackyshake/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
+  Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
   if has('nvim')
     Plug 'neovim/nvim-lspconfig'          " neovim's built-in LSP
     Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
@@ -199,3 +200,7 @@ let g:gruvbox_contrast_dark = 'soft'
 "
 let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
+
+" --- OSC Yank
+"
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
