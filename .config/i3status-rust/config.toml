@@ -1,108 +1,68 @@
-icons = "awesome"
+[icons]
+icons = "awesome5"
 
 [theme]
-#name = "plain"
-name = "native"
-#name = "slick"
-#name = "gruvbox-dark"
-#name = "solarized-dark"
+theme = "native"
 
-[theme.overrides]
-#idle_bg = "#282a36"
-#idle_fg = "#f8f8f2"
-#info_bg = "#282a36"
-#info_fg = "#f8f8f2"
-#good_bg = "#282a36"
-#good_fg = "#f8f8f2"
-#warning_bg = "#282a36"
-#warning_fg = "#f8f8f2"
-#critical_bg = "#282a36"
-#critical_fg = "#f8f8f2"
-#separator = "\ue0b2"
-#separator_bg = "auto"
-#separator_fg = "auto"
+[[block]]
+block = "nvidia_gpu"
+gpu_id = 0
+format = " $icon ID:0 $power $memory "
 
-#[[block]]
-#block = "music"
-#player = "spotify"
-#smart_trim = true
-#hide_when_empty = true
-#buttons = ["play", "next"]
+[[block]]
+block = "nvidia_gpu"
+gpu_id = 1
+format = " $icon ID:1 $power $memory "
 
-# --- sway
 #[[block]]
 #block = "keyboard_layout"
-#driver = "sway"
-#format = "{layout}"
-
-# --- i3
-[[block]]
-block = "keyboard_layout"
-driver = "setxkbmap"
-format = "{layout}"
-interval = 15
-
-# TODO: error no backlight device found
-#[[block]]
-#block = "backlight"
-#device = "intel_backlight"
-#device = "backlight"
-#invert_icons = true
-
-#[[block]]
-#block = "battery"
-#interval = 10
-#format = " {percentage}"
-
-#[[block]]
-#block = "disk_space"
-#path = "/"
-#alias = "/"
-#info_type = "available"
-#unit = "GB"
-#format = "{icon} {used}/{total} ({available})"
-
-#[[block]]
-#block = "temperature"
-#collapsed = false
-#interval = 1
-#format = " {average}C"
-#chip = "coretemp-isa-00000"
+#driver = "setxkbmap"
+#interval = 15
 
 [[block]]
-block = "networkmanager"
-#on_click = "foot -e nmtui"
-on_click = "alacritty -e nmtui"
-interface_name_exclude = ['docker\d+']
-#interface_name_include = []
-ap_format = "{ssid} {strength}"
-device_format = "{icon} {ap}"
-#connection_format = ""
+block = "custom"
+command = ''' xkb-switch '''
+interval = 1
+format = "  $text"
 
-#[[block]]
-#block = "net"
-#device = "wlp61s0"
-#format = " {speed_down} {speed_up}"
-#interval = 1
+[[block]]
+block = "net"
+device = "wlo2"
+format = " $icon $device "
+# TODO: uncomment when bug is fixed:
+# - https://bugzilla.kernel.org/show_bug.cgi?id=216711 and kernel is updated on Arch
+# - https://github.com/greshake/i3status-rust/issues/1607
+#format = " $icon $device $ssid "
+[[block.click]]
+button = "left"
+cmd = "alacritty -e nmtui"
 
 [[block]]
 block = "memory"
-clickable = false
-display_type = "memory"
-format_mem = " {mem_used;G} /{mem_total;G}"
+format = " $icon $mem_used/$mem_total "
 
+# No solution that works well for External Monitors yet : https://wiki.archlinux.org/title/backlight
 #[[block]]
-#block = "cpu"
-#interval = 1
-#format = " {utilization} {frequency}"
+#block = "backlight"
 
 [[block]]
 block = "sound"
 driver = "pulseaudio"
-on_click = "pavucontrol"
-format = " {volume}"
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "notify"
+driver = "dunst"
+format = " $icon {($notification_count.eng(w:1)) |} "
+[[block.click]]
+button = "left"
+action = "show"
+[[block.click]]
+button = "right"
+action = "toggle_paused"
 
 [[block]]
 block = "time"
 interval = 1
-format = " %H:%M    %a %-d %b"

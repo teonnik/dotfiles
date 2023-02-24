@@ -22,6 +22,7 @@ cmake-format
 #wl-color-picker # HEX of color under the cursor
 
 # --- work: nvidia
+ttf-ubuntu-font-family
 openconnect-sso
 nvidia-470xx-dkms
 appimagelauncher        # for omniverse cache installation

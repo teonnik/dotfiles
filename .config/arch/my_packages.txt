@@ -226,3 +226,4 @@ dkms
 webkit2gtk    # dependency of cisco-anyconnect
 cuda-tools    # nsight profiler
 simplescreemrecorder
+vulkan-tools  # vulkaninfo
