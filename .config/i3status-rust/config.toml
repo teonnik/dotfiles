@@ -5,6 +5,17 @@ icons = "awesome5"
 theme = "native"
 
 [[block]]
+block = "notify"
+driver = "dunst"
+format = " $icon {($notification_count.eng(w:1)) |} "
+[[block.click]]
+button = "left"
+action = "show"
+[[block.click]]
+button = "right"
+action = "toggle_paused"
+
+[[block]]
 block = "nvidia_gpu"
 gpu_id = 0
 format = " $icon ID:0 $power $memory "
@@ -23,16 +34,12 @@ format = " $icon ID:1 $power $memory "
 block = "custom"
 command = ''' xkb-switch '''
 interval = 1
-format = "  $text"
+format = "  $text "
 
 [[block]]
 block = "net"
-device = "wlo2"
-format = " $icon $device "
-# TODO: uncomment when bug is fixed:
-# - https://bugzilla.kernel.org/show_bug.cgi?id=216711 and kernel is updated on Arch
-# - https://github.com/greshake/i3status-rust/issues/1607
-#format = " $icon $device $ssid "
+format = " $icon $device $ssid "
+
 [[block.click]]
 button = "left"
 cmd = "alacritty -e nmtui"
@@ -51,17 +58,6 @@ driver = "pulseaudio"
 [[block.click]]
 button = "left"
 cmd = "pavucontrol"
-
-[[block]]
-block = "notify"
-driver = "dunst"
-format = " $icon {($notification_count.eng(w:1)) |} "
-[[block.click]]
-button = "left"
-action = "show"
-[[block.click]]
-button = "right"
-action = "toggle_paused"
 
 [[block]]
 block = "time"

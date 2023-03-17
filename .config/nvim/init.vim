@@ -49,7 +49,7 @@ nvim_lsp['jedi_language_server'].setup {
 -- Taken from : https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'cpp', 'cuda', 'vim', 'lua', 'python', 'markdown', 'help' },
+  ensure_installed = { 'cpp', 'cuda', 'vim', 'lua', 'python', 'help' },
 
   highlight = { enable = true },
   indent = { enable = true },

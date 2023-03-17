@@ -3,6 +3,13 @@ SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
+# path to `nsys` and `ncu`
+export PATH=${HOME}/install/ncu:${HOME}/install/nsys/opt/nvidia/nsight-systems/2023.1.1/bin:$PATH
+
+# OMNI VARS
+export OMNI_USER=svc-drivesim-unit-tests
+export OMNI_PASS=9suS2PapEnsAhRn5
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
