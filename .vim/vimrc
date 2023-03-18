@@ -3,6 +3,7 @@
 " ----------------------------
 
 call plug#begin()
+  "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " fuzzy search
   Plug 'junegunn/vim-easy-align'        " align text on delimiters
   Plug 'tpope/vim-surround'             " surround words easily
@@ -10,8 +11,9 @@ call plug#begin()
   Plug 'tpope/vim-vinegar'              " improved netrw
   Plug 'tpope/vim-unimpaired'           " complementary pairs of mappings
   Plug 'tpope/vim-endwise'              " adds an end to code blocks
-  Plug 'tpope/vim-repeat'
-  Plug 'bling/vim-airline'              " status line
+  Plug 'tpope/vim-repeat'               " repeating with `.` for many plugins
+  "Plug 'bling/vim-airline'              " status line
+  Plug 'itchyny/lightline.vim'          " status line
   Plug 'morhetz/gruvbox'                " color scheme
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
   Plug 'ward/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
@@ -117,7 +119,8 @@ let mapleader=" "
 xnoremap p pgvy
 
 " list buffers and wait for selection to open
-nnoremap <leader>b :ls<cr>:b<space>
+" nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>b :Buffers<cr>
 
 " close the quickfix, location and preview windows
 nnoremap <leader>c :cclose<cr> :lclose<cr> :pclose<cr>
@@ -206,13 +209,18 @@ endfun
 
 " --- gruvbox ---
 "
-colorscheme gruvbox
-let g:gruvbox_contrast_dark = 'soft'
+"colorscheme gruvbox
+autocmd vimenter * ++nested colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'medium'
 
 " --- sneak ---
 "
 let g:sneak#label = 1
 let g:sneak#use_ic_scs = 1
+
+" --- fzf ---
+"
+let g:fzf_preview_window = ['hidden,up,50%', 'ctrl-/']
 
 " --- OSC Yank
 "
