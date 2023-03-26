@@ -22,5 +22,12 @@ cmake-format
 #wl-color-picker # HEX of color under the cursor
 
 # NVIDIA
+ttf-ubuntu-font-family
+openconnect-sso
+nvidia-470xx-dkms
+appimagelauncher        # for omniverse cache installation
+teams
+xkb-switch            # keyboard layout and variant switch
 realvnc-vnc-viewer
+nomachine
 openprinting-ppds-pxlcolor-ricoh  # ppd files for office printers

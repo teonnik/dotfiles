@@ -1,5 +1,5 @@
 [user]
-  email = teodor.nikolov22@gmail.com
+  email = tnikolov@nvidia.com
   name = Teodor Nikolov
 [push]
   default = current
@@ -28,7 +28,7 @@
 [interactive]
   diffFilter = diff-so-fancy --patch
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f

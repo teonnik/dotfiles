@@ -75,7 +75,11 @@ echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 
 # 16. Bootloader (!! in arch chroot)
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-# TODO: If dual boot uncomment GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
+# If dual boot, install `os-prober`.
+#
+# If `grub-mkconfig ...` results in "Warning...", uncomment `GRUB_DISABLE_OS_PROBER=false` in `/etc/default/grub`
+#
+# See: https://wiki.archlinux.org/title/GRUB |
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
@@ -121,6 +125,8 @@ systemctl --user enable xdg-desktop-portal.service \
 
 
 # 1. Chromium extensions - uBlock Origin, LastPass, BypassPaywalls, PrivacyBadger
+# - set the downloads folder to `downloads`
+# - save sessions : Settings > On startup > Continue where you left off
 
 # 2. Syncthing
 #
@@ -130,6 +136,7 @@ rm -rf ~/Sync
 
 # 3. ssh keys
 ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"
+# TODO: `ssh-add` to add default key to `ssh-agent`
 
 # 4. Create local folders
 mkdir -p ~/code ~/build ~/downloads ~/bin
@@ -151,6 +158,8 @@ yay -Syu $(sed 's:#.*$::g' my_yay_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack
+# neovim, zsh, fzf, the-silver-searcher (ag), bat, llvm
+# NOT in spack repo: diff-so-fancy
 
 # 9. neovim
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

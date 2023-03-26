@@ -38,6 +38,7 @@ i3-wm
 alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
+xorg-xkill             # kill unresponsive X windows
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
@@ -63,6 +64,7 @@ diff-so-fancy  # better diff
 clang          # compiler
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
+jedi-language-server        # python LSP
 
 
 # monitoring
@@ -214,3 +216,15 @@ simplescreenrecorder  # screen recorder
 #inkscape              # vector graphics editor
 
 # no longer used: texstudio dolphin konsole sddm
+
+# --- work: nvidia
+git-lfs
+ccache
+libxcrypt-compat
+#nvidia       # if nvidia-470xx-dkms is not used
+linux-headers
+dkms
+webkit2gtk    # dependency of cisco-anyconnect
+cuda-tools    # nsight profiler
+simplescreemrecorder
+vulkan-tools  # vulkaninfo
