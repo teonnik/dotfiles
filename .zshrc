@@ -4,6 +4,11 @@ HISTFILE="${XDG_STATE_HOME}"/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
 PATH=/home/tnikolov/code/spack/opt/spack/linux-ubuntu20.04-skylake_avx512/gcc-9.4.0/llvm-15.0.7-d6cezgxjwys55kmedmpclz3i7scvztjh/bin/:$PATH
+#PATH=/home/tnikolov/code/spack/opt/spack/linux-ubuntu20.04-skylake_avx512/gcc-9.4.0/cuda-11.8.0-faw3id5no26pqhg4e6uffhgzd7f3oups/bin/:$PATH
+
+# OMNI VARS
+export OMNI_USER=svc-drivesim-unit-tests
+export OMNI_PASS=9suS2PapEnsAhRn5
 
 # vi mode
 bindkey -v
