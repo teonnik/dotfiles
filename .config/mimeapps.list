@@ -1,17 +1,23 @@
-[Default Applications]
-text/x-shellscript=text.desktop;
-x-scheme-handler/magnet=torrent.desktop;
-application/x-bittorrent=torrent.desktop;
-x-scheme-handler/mailto=mail.desktop;
-text/plain=text.desktop;
-application/postscript=pdf.desktop;
-application/pdf=pdf.desktop;
-image/png=img.desktop;
-image/jpeg=img.desktop;
-image/gif=img.desktop;
-video/x-matroska=video.desktop
-inode/directory=file.desktop
-x-scheme-handler/msteams=teams.desktop
-
 [Added Associations]
 application/x-shellscript=vim.desktop;
+
+[Default Applications]
+application/json=text.desktop;
+application/pdf=pdf.desktop;
+application/postscript=pdf.desktop;
+application/schema+json=text.desktop;
+application/x-bittorrent=torrent.desktop;
+application/xhtml+xml=chromium.desktop;
+image/gif=img.desktop;
+image/jpeg=img.desktop;
+image/png=img.desktop;
+inode/directory=file.desktop;
+text/*=text.desktop;
+text/plain=text.desktop;
+text/x-msdos-batch=text.desktop;
+text/x-shellscript=text.desktop;
+x-scheme-handler/magnet=torrent.desktop;
+x-scheme-handler/mailto=chromium.desktop;
+x-scheme-handler/msteams=teams.desktop
+x-scheme-handler/omniverse-launcher=omniverse-launcher.desktop
+x-scheme-handler/omniverse=omniverse-launcher.desktop

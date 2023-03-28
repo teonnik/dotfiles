@@ -75,7 +75,11 @@ echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 
 # 16. Bootloader (!! in arch chroot)
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-# TODO: If dual boot uncomment GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
+# If dual boot, install `os-prober`.
+#
+# If `grub-mkconfig ...` results in "Warning...", uncomment `GRUB_DISABLE_OS_PROBER=false` in `/etc/default/grub`
+#
+# See: https://wiki.archlinux.org/title/GRUB |
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
