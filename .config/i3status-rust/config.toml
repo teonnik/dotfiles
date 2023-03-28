@@ -5,36 +5,13 @@ icons = "awesome5"
 theme = "native"
 
 [[block]]
-block = "notify"
-driver = "dunst"
-format = " $icon {($notification_count.eng(w:1)) |} "
-[[block.click]]
-button = "left"
-action = "show"
-[[block.click]]
-button = "right"
-action = "toggle_paused"
+block = "memory"
+format = " $icon $mem_used/$mem_total "
 
 [[block]]
-block = "nvidia_gpu"
-gpu_id = 0
-format = " $icon ID:0 $power $memory "
-
-[[block]]
-block = "nvidia_gpu"
-gpu_id = 1
-format = " $icon ID:1 $power $memory "
-
-#[[block]]
-#block = "keyboard_layout"
-#driver = "setxkbmap"
-#interval = 15
-
-[[block]]
-block = "custom"
-command = ''' xkb-switch '''
-interval = 1
-format = "  $text "
+block = "keyboard_layout"
+driver = "sway"
+format = "  $layout "
 
 [[block]]
 block = "net"
@@ -45,12 +22,12 @@ button = "left"
 cmd = "alacritty -e nmtui"
 
 [[block]]
-block = "memory"
-format = " $icon $mem_used/$mem_total "
+block = "backlight"
+device = "intel_backlight"
 
-# No solution that works well for External Monitors yet : https://wiki.archlinux.org/title/backlight
-#[[block]]
-#block = "backlight"
+[[block]]
+block = "battery"
+format = " $icon $percentage "
 
 [[block]]
 block = "sound"
