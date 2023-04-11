@@ -61,6 +61,7 @@ source ${FZF_DIR}/completion.zsh
 
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240' # fixes suggestion color in foot
 
 # p10k theme
 source ${HOME}/code/powerlevel10k/powerlevel10k.zsh-theme
