@@ -1,7 +1,7 @@
 # Disable the unlock indicator.
 #no-unlock-indicator
 
-image=~/pics/lockscreens/blurred_screenshot.png
+#image=~/pics/lockscreens/blurred_screenshot.png
 
 # Display the current xkb layout while typing.
 show-keyboard-layout
