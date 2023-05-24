@@ -62,6 +62,7 @@ git            # version control management
 cmake          # build tool
 diff-so-fancy  # better diff
 clang          # compiler
+lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
 jedi-language-server        # python LSP

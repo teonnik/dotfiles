@@ -3,6 +3,8 @@ let &packpath=&runtimepath
 source ~/.vim/vimrc
 
 lua << EOF
+
+-- [[ Configure LSPs ]]
 -- require'lspconfig'.clangd.setup{}
 local nvim_lsp = require('lspconfig')
 
@@ -39,9 +41,25 @@ nvim_lsp['clangd'].setup {
  filetypes = { "c", "cpp", "cu", "cuda" }
 }
 
-nvim_lsp['jedi_language_server'].setup {
+-- https://github.com/python-lsp/python-lsp-server/issues/120
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
+-- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
+nvim_lsp['pylsp'].setup {
   on_attach = custom_lsp_attach,
+  settings = {
+    pylsp = {
+      plugins = {
+        jedi = {
+          environment = '/home/teonnik/code/drivesim-ov/_build/linux-x86_64/release/python.sh'
+        }
+      }
+    }
+  },
 }
+
+-- nvim_lsp['texlab'].setup { 
+--   on_attach = custom_lsp_attach 
+-- }
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -64,7 +82,28 @@ require('nvim-treesitter.configs').setup {
   }
 }
 
--- nvim_lsp['texlab'].setup { 
---   on_attach = custom_lsp_attach 
--- }
+
+-- [[ Configure Debugger ]]
+--
+-- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-lldb-vscode
+--local dap = require('dap')
+--dap.adapters.cpp = {
+--  name = 'lldb'
+--  type = 'executable',
+--  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+--}
+--
+---- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process
+--dap.configurations.cpp = {
+--    {
+--      -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+--      --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+--      name = "Attach to process",
+--      type = 'cpp',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+--      request = 'attach',
+--      pid = require('dap.utils').pick_process,
+--      args = {},
+--    },
+--}
+
 EOF

@@ -12,7 +12,7 @@ call plug#begin()
   Plug 'tpope/vim-unimpaired'           " complementary pairs of mappings
   Plug 'tpope/vim-endwise'              " adds an end to code blocks
   Plug 'tpope/vim-repeat'               " repeating with `.` for many plugins
-  "Plug 'bling/vim-airline'              " status line
+  Plug 'tpope/vim-obsession'            " record vim sessions
   Plug 'itchyny/lightline.vim'          " status line
   Plug 'morhetz/gruvbox'                " color scheme
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
@@ -21,6 +21,7 @@ call plug#begin()
   if has('nvim')
     Plug 'neovim/nvim-lspconfig'          " neovim's built-in LSP
     Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
+    Plug 'mfussenegger/nvim-dap'           " debugger
 
     "Plug 'hrsh7th/cmp-nvim-lsp'
     "Plug 'hrsh7th/cmp-buffer'
@@ -209,7 +210,6 @@ endfun
 
 " --- gruvbox ---
 "
-"colorscheme gruvbox
 autocmd vimenter * ++nested colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'medium'
 
@@ -225,3 +225,7 @@ let g:fzf_preview_window = ['hidden,up,50%', 'ctrl-/']
 " --- OSC Yank
 "
 "autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '' | execute 'OSCYankReg "' | endif
+
+" --- netrw
+"
+"let g:netrw_liststyle=3

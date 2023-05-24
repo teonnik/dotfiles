@@ -232,6 +232,8 @@ exec --no-startup-id dunst
 
 
 assign [class="DRIVE Sim End To End "] 4
+# Moves the DS2 splash screen to WS 4 (Note the lowercase `t`)
+assign [class="DRIVE Sim End to End "] 4
 
 # inhibit idle when fullscreen
 #for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
