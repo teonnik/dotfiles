@@ -21,12 +21,18 @@
   # Stash any dirty changes before running rebase, and then unstashes them
   # afterwards.
   autostash = true
-[alias]
-  lg = log --oneline --graph
 [pull]
   ff = only
 [interactive]
   diffFilter = diff-so-fancy --patch
+[log]
+  abbrevCommit = true
+  decorate = short
+  date = format:%a, %Y-%m-%d %R (%z)
+  follow = true
+  graphColors = 1,2,3,4,5,6,8,166,9,10,11,12,13,14,15,208
+  showRoot = true
+  mailmap = true
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process

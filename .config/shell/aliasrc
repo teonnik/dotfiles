@@ -32,7 +32,7 @@ alias gb="git branch"
 alias gc='git checkout'
 alias gd='git diff'
 alias gg='git status -sb'
-alias gl="git log --oneline --graph"
+alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm="git commit"
 alias gpush='git push'
 alias gpull='git pull'
