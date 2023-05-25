@@ -35,10 +35,10 @@ i3status-rust          # bar
 
 # --- i3 setup
 i3-wm
-xorg-server
-xorg-xinit             # X session launcher - startx (no login manager)
 alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
+xorg-xinit             # X session launcher - startx (no login manager)
+xorg-xkill             # kill unresponsive X windows
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
@@ -63,6 +63,7 @@ git            # version control management
 cmake          # build tool
 diff-so-fancy  # better diff
 clang          # compiler
+lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
 bat            # fancy `less`
@@ -131,6 +132,8 @@ python-pandas
 python-matplotlib
 python-seaborn
 ipython
+python-lsp-server
+python-jedi
 
 # chat
 weechat
@@ -215,6 +218,6 @@ simplescreenrecorder  # screen recorder
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
-sweethome3d            # interior design app
+#sweethome3d            # interior design app
 
 # no longer used: texstudio dolphin konsole sddm
