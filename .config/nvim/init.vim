@@ -33,29 +33,39 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
+-- default configuration : https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
 nvim_lsp['clangd'].setup {
   on_attach = custom_lsp_attach,
+  cmd = {
+        "clangd",
+        "--compile-commands-dir=/raid/tnikolov/drivesim-ov/",
+        "--log=verbose",
+        --"--background-index=0",
+        "--background-index",
+        "-j=1",
+        -- "--clang-tidy=0",
+  },
   flags = {
     debounce_text_changes = 150,
   },
- filetypes = { "c", "cpp", "cu", "cuda" }
+  filetypes = { "c", "cpp", "cu", "cuda" }
 }
 
 -- https://github.com/python-lsp/python-lsp-server/issues/120
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
 -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
-nvim_lsp['pylsp'].setup {
-  on_attach = custom_lsp_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        jedi = {
-          environment = '/home/teonnik/code/drivesim-ov/_build/linux-x86_64/release/python.sh'
-        }
-      }
-    }
-  },
-}
+--nvim_lsp['pylsp'].setup {
+--  on_attach = custom_lsp_attach,
+--  settings = {
+--    pylsp = {
+--      plugins = {
+--        jedi = {
+--          environment = '/home/teonnik/code/drivesim-ov/_build/linux-x86_64/release/python.sh'
+--        }
+--      }
+--    }
+--  },
+--}
 
 -- nvim_lsp['texlab'].setup { 
 --   on_attach = custom_lsp_attach 
