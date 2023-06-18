@@ -33,12 +33,22 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
+-- default configuration : https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
 nvim_lsp['clangd'].setup {
   on_attach = custom_lsp_attach,
+  cmd = {
+        "clangd",
+        --"--compile-commands-dir=/home/tnikolov/code/drivesim-ov/",
+        "--log=verbose",
+        --"--background-index=0",
+        --"--background-index",
+        -- "-j=1",
+        -- "--clang-tidy=0",
+  },
   flags = {
     debounce_text_changes = 150,
   },
- filetypes = { "c", "cpp", "cu", "cuda" }
+  filetypes = { "c", "cpp", "cu", "cuda" }
 }
 
 -- https://github.com/python-lsp/python-lsp-server/issues/120
