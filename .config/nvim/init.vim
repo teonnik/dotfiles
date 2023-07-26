@@ -4,7 +4,66 @@ source ~/.vim/vimrc
 
 lua << EOF
 
+-- [[ Configure Completion ]]
+--
+-- https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings#no-snippet-plugin
+-- :help nvim-cmp
+--
+-- Set up nvim-cmp.
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
+end
+
+local cmp = require'cmp'
+cmp.setup({
+  completion = {
+    autocomplete = false
+  },
+  snippet = {
+    -- REQUIRED - a snippet engine must be specified as some LSPs use snippets by default
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
+    -- super-tab
+    ['<Tab>'] = function(fallback)
+      if not cmp.select_next_item() then
+        if vim.bo.buftype ~= 'prompt' and has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end
+    end,
+    ['<S-Tab>'] = function(fallback)
+      if not cmp.select_prev_item() then
+        if vim.bo.buftype ~= 'prompt' and has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end
+    end,
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'path' },
+    { name = 'buffer' },
+  }),
+})
+
+
 -- [[ Configure LSPs ]]
+--
 -- require'lspconfig'.clangd.setup{}
 local nvim_lsp = require('lspconfig')
 
@@ -38,17 +97,18 @@ nvim_lsp['clangd'].setup {
   on_attach = custom_lsp_attach,
   cmd = {
         "clangd",
-        --"--compile-commands-dir=/home/tnikolov/code/drivesim-ov/",
+        "--compile-commands-dir=/home/teonnik/code/drivesim-ov",
         "--log=verbose",
         --"--background-index=0",
-        --"--background-index",
+        "--background-index",
         -- "-j=1",
         -- "--clang-tidy=0",
   },
   flags = {
     debounce_text_changes = 150,
   },
-  filetypes = { "c", "cpp", "cu", "cuda" }
+  filetypes = { "c", "cpp", "cu", "cuda" },
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
 -- https://github.com/python-lsp/python-lsp-server/issues/120
@@ -65,10 +125,11 @@ nvim_lsp['pylsp'].setup {
       }
     }
   },
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
--- nvim_lsp['texlab'].setup { 
---   on_attach = custom_lsp_attach 
+-- nvim_lsp['texlab'].setup {
+--   on_attach = custom_lsp_attach
 -- }
 
 -- [[ Configure Treesitter ]]
@@ -91,6 +152,7 @@ require('nvim-treesitter.configs').setup {
     },
   }
 }
+
 
 
 -- [[ Configure Debugger ]]
