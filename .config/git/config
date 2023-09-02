@@ -5,7 +5,8 @@
   default = current
 [core]
   editor = nvim
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  #pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
 [color]
   ui = auto
 [commit]
@@ -17,6 +18,7 @@
   # Prettier diffs
   compactionHeuristic = true
   indentHeuristic = on
+  colorMoved = default
 [rebase]
   # Stash any dirty changes before running rebase, and then unstashes them
   # afterwards.
@@ -32,9 +34,17 @@
 [pull]
   ff = only
 [interactive]
-  diffFilter = diff-so-fancy --patch
+  #diffFilter = diff-so-fancy --patch
+  diffFilter = delta --color-only
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
+[delta]
+  #side-by-side = true
+  #line-numbers = true
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[merge]
+  conflictstyle = diff3

@@ -58,15 +58,16 @@ neovim
 ninja          # alternative to make
 gdb            # debugger
 direnv         # env per folder
+bat            # modern alternative to cat/less
 git            # version control management
 cmake          # build tool
-diff-so-fancy  # better diff
+#diff-so-fancy  # better diff
+git-delta      # better diff
 clang          # compiler
 lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
-jedi-language-server        # python LSP
-
+renameutils    # mv with $EDITOR - qmv
 
 # monitoring
 perf
@@ -130,6 +131,7 @@ python-scipy
 python-pandas
 python-matplotlib
 python-seaborn
+python-jedi    # LSP
 ipython
 
 # chat
@@ -182,6 +184,8 @@ asp                         # utility to retrieve PKGBUILD files
 man man-db man-pages        # man pages
 tldr                        # alternative to man pages
 playerctl                   # media player controller
+the_silver_searcher         # alternative to grep
+ripgrep                     # alternative to grep
 
 # pdf
 pdf2svg               # pdf to svg converter
