@@ -97,7 +97,7 @@ nvim_lsp['clangd'].setup {
   on_attach = custom_lsp_attach,
   cmd = {
         "clangd",
-        "--compile-commands-dir=/home/teonnik/code/drivesim-ov",
+        --"--compile-commands-dir=/home/teonnik/code/drivesim-ov",
         "--log=verbose",
         --"--background-index=0",
         "--background-index",

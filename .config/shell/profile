@@ -55,6 +55,10 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
+# OMNI VARS
+export OMNI_USER=svc-drivesim-unit-tests
+export OMNI_PASS=9suS2PapEnsAhRn5
+
 # sway fixes
 #export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
 #export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
