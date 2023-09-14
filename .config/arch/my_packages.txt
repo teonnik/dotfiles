@@ -206,7 +206,7 @@ viu        # in terminal
 imagemagick  # convert tool: png/jpg -> pdf
 #gwenview
 #feh
-#imv
+imv
 
 docker
 

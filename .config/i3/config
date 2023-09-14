@@ -229,11 +229,17 @@ exec --no-startup-id dunst
 
 # ------------------------------------------------------------------------------
 # Windows configuration: `swaymsg -t get_tree | grep [app_id|class]`
-
+# If on X11 : `xprop` -> click on window
 
 assign [class="DRIVE Sim End To End "] 4
 # Moves the DS2 splash screen to WS 4 (Note the lowercase `t`)
 assign [class="DRIVE Sim End to End "] 4
+
+assign [class="omniverse-launcher"] 5
+exec /home/teonnik/Applications/omniverse-launcher-linux.AppImage
+
+assign [class="com.cisco.anyconnect.gui"] 5
+#exec /home/teonnik/installs/anyconnect-linux64-4.10.06079/vpn/vpn
 
 # inhibit idle when fullscreen
 #for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
