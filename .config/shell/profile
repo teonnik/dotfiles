@@ -82,11 +82,6 @@ export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
-# nnn
-#
-# https://github.com/jarun/nnn#quickstarthttps://github.com/jarun/nnn#quickstart
-#NNN_OPENER=/usr/share/nnn/plugins/nuke
-
 # ccache
 export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"
 
