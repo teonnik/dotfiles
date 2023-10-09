@@ -33,6 +33,8 @@ foot                   # terminal emulator for Wayland
 #waybar
 i3status-rust          # bar
 
+shell-gpt             # OpenAI ChatGPT shell tool
+
 # --- i3 setup
 i3-wm
 alacritty              # terminal emulator for i3
@@ -61,7 +63,8 @@ gdb            # debugger
 direnv         # env per folder
 git            # version control management
 cmake          # build tool
-diff-so-fancy  # better diff
+#diff-so-fancy  # better diff
+git-delta  # better diff
 clang          # compiler
 lldb           # debugger
 openmp         # clang's opnemp support
@@ -177,7 +180,10 @@ onefetch                    # git repo info
 
 zip unzip unrar             # archives
 jq                          # json
-fzf the_silver_searcher fd  # search
+fzf                         # fuzzy search
+the_silver_searcher         # better grep
+ripgrep                     # better grep
+fd                          # file search
 ncdu                        # disk: du alternative
 tree                        # files & folders
 pacman-contrib pacgraph     # arch
@@ -186,6 +192,7 @@ man man-db man-pages        # man pages
 tldr                        # alternative to man pages
 playerctl                   # media player controller
 
+
 # pdf
 pdf2svg               # pdf to svg converter
 zathura-pdf-mupdf     # pdf viewer
@@ -193,6 +200,7 @@ xournalpp             # pdf editor
 pdfarranger           # pdf merge/split/arrange
 ripgrep-all           # pdf grep
 #okular
+ntfs-3g               # mount NTFS drives
 
 # browser
 chromium
