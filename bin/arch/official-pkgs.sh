@@ -1,5 +1,7 @@
 # vim: set filetype=sh :
 
+PKGS=(
+
 linux           # linux kernel and modules
 linux-firmware  # firmware files
 
@@ -47,6 +49,7 @@ dunst                  # notification daemon
 
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
+xdg-user-dirs
 gendesk               # utility to generate .desktop files
 
 at                    # schedule commands
@@ -68,14 +71,16 @@ clang          # compiler
 lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
-renameutils    # mv with $EDITOR - qmv
+# renameutils    # mv with $EDITOR - qmv
 
 # monitoring
 perf
 htop
 glances
 
-networkmanager  # network manager
+neofetch                    # system info
+onefetch                    # git repo info
+
 nethogs         # net top tool
 mtr             # traceroute alternative
 speedtest-cli   # measure internet speed
@@ -84,20 +89,23 @@ gnupg        # encryption and signing tool
 age
 pass         # password store
 #passage
-minisign
+minisign     # verify digital signatures
 lastpass-cli # LastPass CLI password store
 pwgen        # generate passwords from the command line
 
+# internet
+networkmanager         # network manager
+network-manager-applet # network manager GUI (includes nm-connection-editor)
 # vpn
-networkmanager-openconnect
-networkmanager-openvpn
-networkmanager-vpnc
+networkmanager-openconnect # cisco anyconnect vpn
+#networkmanager-openvpn
+#networkmanager-vpnc
 
 openssh # ssh
 wget
 curl
 #aria2
-youtube-dl
+yt-dlp # active fork of youtube-dl
 newsboat
 github-cli
 
@@ -136,10 +144,10 @@ python-jedi    # LSP
 ipython
 
 # chat
-weechat
-weechat-matrix
+#weechat weechat-matrix
 signal-desktop
 
+# email
 neomutt # email client
 notmuch # index and search mail
 w3m     # view HTML email
@@ -172,16 +180,13 @@ syncthing     # sync continuously
 rclone        # sync to cloud storage
 rsync         # sync to remote
 
-neofetch                    # system info
-onefetch                    # git repo info
 
 zip unzip unrar             # archives
 jq                          # json
 fzf the_silver_searcher fd  # search
 ncdu                        # disk: du alternative
 tree                        # files & folders
-pacman-contrib pacgraph     # arch
-asp                         # utility to retrieve PKGBUILD files
+pacman-contrib              # arch
 man man-db man-pages        # man pages
 tldr                        # alternative to man pages
 playerctl                   # media player controller
@@ -203,7 +208,7 @@ chromium
 
 # image viewer
 swayimg
-viu        # in terminal
+viu          # in terminal
 imagemagick  # convert tool: png/jpg -> pdf
 #gwenview
 #feh
@@ -211,7 +216,6 @@ imv
 
 docker
 
-network-manager-applet # network manager GUI (includes nm-connection-editor)
 vlc                    # media player
 mpv
 libreoffice-still     # office suite
@@ -222,14 +226,6 @@ gimp                  # raster graphics editor
 
 # no longer used: texstudio dolphin konsole sddm
 
-# --- work: nvidia
-git-lfs
-ccache
-libxcrypt-compat
-#nvidia       # if nvidia-470xx-dkms is not used
-linux-headers
-dkms
-webkit2gtk    # dependency of cisco-anyconnect
-cuda-tools    # nsight profiler
-simplescreemrecorder
-vulkan-tools  # vulkaninfo
+) # PKGS
+
+pacman -Syu --needed --noconfirm "${PKGS[@]}"

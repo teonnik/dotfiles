@@ -57,8 +57,7 @@ arch-chroot /mnt
 pacman -Syu git
 git clone https://github.com/teonnik/dotfiles.git /root/dotfiles
 
-# 12. Install all my pacman packages: ~/.config/arch/my_packages.txt
-pacman -Syu $(sed 's:#.*$::g' my_packages.txt | tr '\n' ' ' | tr -s ' ')
+# 12. Install all pacman packages:
 
 # 13. Time zone
 ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime
@@ -153,8 +152,6 @@ git clone https://aur.archlinux.org/yay.git
 (cd yay; makepkg -si)
 
 # 7. Install all my AUR packages: ~/config/arch/my_aur_packages.txt
-wget -O my_aur_packages.txt pastebin.com/<link> 
-yay -Syu $(sed 's:#.*$::g' my_yay_packages.txt | tr '\n' ' ' | tr -s ' ')
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack

@@ -1,0 +1,7 @@
+# vim: filetype=sh
+
+# OMNI VARS
+export OMNI_USER=svc-drivesim-unit-tests
+export OMNI_PASS=9suS2PapEnsAhRn5
+
+source ~/.config/shell/i3env
