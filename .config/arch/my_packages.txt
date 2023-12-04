@@ -8,6 +8,7 @@ util-linux   # bundle: chsh, cal, column, fdisk, hwclock, kill, lsblk, lscpu, mk
 base-devel   # bundle: autoconf, automake, binutils, make, which, gcc, sudo, pkgconf
 
 reflector   # Arch mirror list manager script for pacman
+pacutils    # Provides `paclog`
 
 grub        # boot loader
 efibootmgr  # EFI boot manager
@@ -210,8 +211,8 @@ imv
 
 docker
 
-nm-connection-editor  # network manager GUI
-vlc                   # media player
+network-manager-applet # network manager GUI (includes nm-connection-editor)
+vlc                    # media player
 mpv
 libreoffice-still     # office suite
 gimp                  # raster graphics editor

@@ -8,75 +8,43 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 export PAGER=less
 export TERM=xterm-256color
-#export SSH_KEY_PATH="~/.ssh/rsa_id"
-export SSH_KEY_PATH="~/.ssh/id_ed25519"
 #export TERM=foot # this is set in foot's config
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
+#export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
-# XDG user directories : https://wiki.archlinux.org/title/XDG_user_directories
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DESKTOP_DIR="$HOME/desktop"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-#export XDG_TEMPLATES_DIR="$HOME/templates"
-export XDG_PUBLICSHARE_DIR="$HOME/public"
-export XDG_DOCUMENTS_DIR="$HOME/documents"
-export XDG_MUSIC_DIR="$HOME/music"
-export XDG_PICTURES_DIR="$HOME/pictures"
-export XDG_VIDEOS_DIR="$HOME/videos"
-#export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
-#export XDG_SESSION_DESKTOP=sway # systemd
-#export XDG_SESSION_TYPE=wayland # xdg/systemd
-export XDG_CURRENT_DESKTOP=i3
-export XDG_SESSION_DESKTOP=i3
-export XDG_SESSION_TYPE=x11
 
-# clean dot files in home directory
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
-export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
-export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
-export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
-export MBSYNCRC="${XDG_CONFIG_HOME}/isync/mbsyncrc"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
-export LESSHISTFILE="-"
+# Move configuration files to the XDG_CONFIG_HOME folder
+# - https://wiki.archlinux.org/title/XDG_Base_Directory#Supported
 export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
 export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
-export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
 export KDEHOME="${XDG_CONFIG_HOME}/kde"
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export MBSYNCRC="${XDG_CONFIG_HOME}/isync/mbsyncrc"
+export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
+export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
 #export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
 
-# go, rust
-export GOPATH="${XDG_DATA_HOME}/go"
+# Move data files to the XDG_DATA_HOME folder
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export GOPATH="${XDG_DATA_HOME}/go"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
 # OMNI VARS
 export OMNI_USER=svc-drivesim-unit-tests
 export OMNI_PASS=9suS2PapEnsAhRn5
 
-# sway fixes
-#export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
-#export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
-#export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
-#export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
-
-# less colors in man : https://github.com/ael-code/zsh-colored-man-pages/blob/master/colored-man-pages.plugin.zsh
-#export LESS_TERMCAP_md=$(tput bold; tput setaf 4)
-#export LESS_TERMCAP_me=$(tput sgr0)
-#export LESS_TERMCAP_mb=$(tput blink)
-#export LESS_TERMCAP_us=$(tput setaf 2)
-#export LESS_TERMCAP_ue=$(tput sgr0)
-#export LESS_TERMCAP_so=$(tput smso)
-#export LESS_TERMCAP_se=$(tput rmso)
-
 # lastpass
-#export LPASS_CLIPBOARD_COMMAND="wl-copy"
-export LPASS_CLIPBOARD_COMMAND="xclip -selection clipboard -in -l 1"
 export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
 
 # fzf
@@ -85,15 +53,21 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 # ccache
 export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"
 
+# less : https://wiki.archlinux.org/title/Color_output_in_console#less
+export LESS='-R'
+export LESSHISTFILE="-" # no history file
+
+# man + bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'" # bat
+# man + less
+#export MANPAGER="less -R --use-color -Dd+r -Du+b"
+#export MANROFFOPT="-P -c"
+
 # run the ssh agent
 eval `ssh-agent`
 
-# If running from tty1 start sway
-#if [ "$(tty)" = "/dev/tty1" ]; then
-#  exec /usr/bin/sway
-#fi
-
-# If running from tty1 start X session (and i3)
+# If running from tty1 start sway or X session with i3
 if [ "$(tty)" = "/dev/tty1" ]; then
-  startx
+  #source ~/.config/shell/swayenv
+  source ~/.config/shell/i3env
 fi
