@@ -1,5 +1,7 @@
 # vim: set filetype=sh :
 
+PKGS=(
+
 linux           # linux kernel and modules
 linux-firmware  # firmware files
 
@@ -8,6 +10,7 @@ util-linux   # bundle: chsh, cal, column, fdisk, hwclock, kill, lsblk, lscpu, mk
 base-devel   # bundle: autoconf, automake, binutils, make, which, gcc, sudo, pkgconf
 
 reflector   # Arch mirror list manager script for pacman
+pacutils    # Provides `paclog`
 
 grub        # boot loader
 efibootmgr  # EFI boot manager
@@ -33,8 +36,6 @@ foot                   # terminal emulator for Wayland
 #waybar
 i3status-rust          # bar
 
-shell-gpt             # OpenAI ChatGPT shell tool
-
 # --- i3 setup
 i3-wm
 alacritty              # terminal emulator for i3
@@ -45,10 +46,10 @@ xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
 dunst                  # notification daemon
-arandr
 
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
+xdg-user-dirs
 gendesk               # utility to generate .desktop files
 
 at                    # schedule commands
@@ -61,23 +62,25 @@ neovim
 ninja          # alternative to make
 gdb            # debugger
 direnv         # env per folder
+bat            # modern alternative to cat/less
 git            # version control management
 cmake          # build tool
 #diff-so-fancy  # better diff
-git-delta  # better diff
+git-delta      # better diff
 clang          # compiler
 lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
-bat            # fancy `less`
-
+# renameutils    # mv with $EDITOR - qmv
 
 # monitoring
 perf
 htop
 glances
 
-networkmanager  # network manager
+neofetch                    # system info
+onefetch                    # git repo info
+
 nethogs         # net top tool
 mtr             # traceroute alternative
 speedtest-cli   # measure internet speed
@@ -86,20 +89,23 @@ gnupg        # encryption and signing tool
 age
 pass         # password store
 #passage
-minisign
+minisign     # verify digital signatures
 lastpass-cli # LastPass CLI password store
 pwgen        # generate passwords from the command line
 
+# internet
+networkmanager         # network manager
+network-manager-applet # network manager GUI (includes nm-connection-editor)
 # vpn
-networkmanager-openconnect
-networkmanager-openvpn
-networkmanager-vpnc
+networkmanager-openconnect # cisco anyconnect vpn
+#networkmanager-openvpn
+#networkmanager-vpnc
 
 openssh # ssh
 wget
 curl
 #aria2
-youtube-dl
+yt-dlp # active fork of youtube-dl
 newsboat
 github-cli
 
@@ -134,15 +140,14 @@ python-scipy
 python-pandas
 python-matplotlib
 python-seaborn
+python-jedi    # LSP
 ipython
-python-lsp-server
-python-jedi
 
 # chat
-weechat
-weechat-matrix
+#weechat weechat-matrix
 signal-desktop
 
+# email
 neomutt # email client
 notmuch # index and search mail
 w3m     # view HTML email
@@ -175,23 +180,18 @@ syncthing     # sync continuously
 rclone        # sync to cloud storage
 rsync         # sync to remote
 
-neofetch                    # system info
-onefetch                    # git repo info
 
 zip unzip unrar             # archives
 jq                          # json
-fzf                         # fuzzy search
-the_silver_searcher         # better grep
-ripgrep                     # better grep
-fd                          # file search
+fzf the_silver_searcher fd  # search
 ncdu                        # disk: du alternative
 tree                        # files & folders
-pacman-contrib pacgraph     # arch
-asp                         # utility to retrieve PKGBUILD files
+pacman-contrib              # arch
 man man-db man-pages        # man pages
 tldr                        # alternative to man pages
 playerctl                   # media player controller
-
+the_silver_searcher         # alternative to grep
+ripgrep                     # alternative to grep
 
 # pdf
 pdf2svg               # pdf to svg converter
@@ -200,7 +200,6 @@ xournalpp             # pdf editor
 pdfarranger           # pdf merge/split/arrange
 ripgrep-all           # pdf grep
 #okular
-ntfs-3g               # mount NTFS drives
 
 # browser
 chromium
@@ -209,23 +208,24 @@ chromium
 
 # image viewer
 swayimg
-viu        # in terminal
+viu          # in terminal
 imagemagick  # convert tool: png/jpg -> pdf
 #gwenview
 #feh
-#imv
+imv
 
 docker
 
-nm-connection-editor  # network manager GUI
-vlc                   # media player
+vlc                    # media player
 mpv
 libreoffice-still     # office suite
 gimp                  # raster graphics editor
-simplescreenrecorder  # screen recorder
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor
-#sweethome3d            # interior design app
 
 # no longer used: texstudio dolphin konsole sddm
+
+) # PKGS
+
+pacman -Syu --needed --noconfirm "${PKGS[@]}"
