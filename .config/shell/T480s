@@ -2,4 +2,5 @@
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-source ~/.config/shell/swayenv
+#source ~/.config/shell/swayenv
+source ~/.config/shell/i3env

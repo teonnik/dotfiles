@@ -44,6 +44,9 @@ exec "setxkbmap -layout \"de(us)\",bg -variant ,phonetic -option 'grp:alt_shift_
 # notification daemon
 exec --no-startup-id dunst
 
+# internet & vpn connections
+exec nm-applet
+
 # ------------------------------------------------------------------------------
 # Window configuration : `xprop` -> click on window
 

@@ -19,8 +19,9 @@ https://emersion.fr/blog/rss.xml               sway
 #https://matrix.org/blog/feed                   chat
 
 https://www.brandonsanderson.com/feed/
-https://nitter.net/Snowden/rss
-https://nitter.net/ericniebler/rss
+#https://nitter.net/Snowden/rss
+#https://nitter.net/ericniebler/rss
+https://nitter.1d4.us/ericniebler/rss
 
 # Hacker News
 #https://hnrss.org/bestcomments
@@ -45,7 +46,7 @@ https://acf.bg/bg/feed/             bg
 
 https://bird.bg/feed                bg
 #https://bivol.bg/feed               bg
-https://zovnews.com/feed/           bg
+#https://zovnews.com/feed/           bg
 #https://nitter.net/SegaBG/rss       bg
 https://news.lex.bg/feed/           bg
 #https://ekipbg.com/feed/            bg

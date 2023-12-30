@@ -42,6 +42,7 @@ alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
 xorg-xkill             # kill unresponsive X windows
+xorg-setxkbmap         # keyboard layout
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
