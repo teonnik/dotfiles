@@ -132,6 +132,7 @@ nvim_lsp['pylsp'].setup {
 --   on_attach = custom_lsp_attach
 -- }
 
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 --
@@ -154,28 +155,57 @@ require('nvim-treesitter.configs').setup {
 }
 
 
-
 -- [[ Configure Debugger ]]
 --
--- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-lldb-vscode
---local dap = require('dap')
---dap.adapters.cpp = {
---  name = 'lldb'
---  type = 'executable',
---  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
---}
+-- Installation: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-lldb-vscode
+-- Documentation: :help dap-{api, adapters, mappings, ...}
+-- Logging: ~/.cache/nvim/dap.log
 --
----- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process
---dap.configurations.cpp = {
---    {
---      -- If you get an "Operation not permitted" error using this, try disabling YAMA:
---      --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
---      name = "Attach to process",
---      type = 'cpp',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
---      request = 'attach',
---      pid = require('dap.utils').pick_process,
---      args = {},
---    },
---}
+-- Note: Completion in REPL seems to not be supported currently : https://github.com/rcarriga/cmp-dap
+-- Note: `lldb-vscode` is going to be renamed to `lldb-dap` https://discourse.llvm.org/t/rfc-rename-lldb-vscode-to-lldb-dap/74075/7
+local dap = require('dap')
+dap.adapters.cpp = {
+  name = 'lldb',
+  type = 'executable',
+  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+}
+
+-- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process
+dap.configurations.cpp = {
+    {
+      -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+      --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+      name = "Attach to process",
+      type = 'cpp',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+      request = 'attach',
+      pid = require('dap.utils').pick_process({ filter = "kit" }),
+      args = {},
+      -- runInTerminal=true
+    },
+}
+
+-- TODO: Fix / not working?
+-- see :help dap-terminal
+-- dap.defaults.fallback.external_terminal = {
+--   command = '/usr/bin/alacritty';
+--   -- command = '/usr/bin/foot';
+--   args = {'-e'};
+-- }
+-- dap.defaults.fallback.force_external_terminal = true
+
+vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
+vim.keymap.set('n', '<leader>dk', function() require('dap').terminate() end)
+vim.keymap.set('n', '<leader>dn', function() require('dap').step_over() end)
+vim.keymap.set('n', '<leader>ds', function() require('dap').step_into() end)
+vim.keymap.set('n', '<leader>do', function() require('dap').step_out() end)
+vim.keymap.set('n', '<leader>dff', function() require('dap').focus_frame() end)
+vim.keymap.set('n', '<leader>dfu', function() require('dap').up() end)
+vim.keymap.set('n', '<leader>dfd', function() require('dap').down() end)
+vim.keymap.set('n', '<leader>du', function() require('dap').run_to_cursor() end)
+vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end)
+-- In REPL mode LLDB commands can be run by prefixing with ` : e.g. `bt
+--
+-- https://github.com/mfussenegger/nvim-dap/discussions/381#discussioncomment-2360181
+vim.keymap.set('n', '<leader>dr', function() require('dap').repl.toggle() end)
 
 EOF

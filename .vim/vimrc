@@ -21,7 +21,7 @@ call plug#begin()
   if has('nvim')
     Plug 'neovim/nvim-lspconfig'          " neovim's built-in LSP
     Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
-    "Plug 'mfussenegger/nvim-dap'           " debugger
+    Plug 'mfussenegger/nvim-dap'           " debugger
 
     Plug 'hrsh7th/nvim-cmp'                " completion engine for nvim
     Plug 'hrsh7th/cmp-nvim-lsp'
@@ -127,7 +127,7 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>c :cclose<cr> :lclose<cr> :pclose<cr>
 
 " list buffers and wait for selection to close
-nnoremap <leader>d :bd<cr>
+nnoremap <leader>q :bd<cr>
 
 " open a file
 nnoremap <leader>e :e<space>
@@ -144,9 +144,6 @@ nnoremap <leader>n :set nu!<cr>
 
 " open netrw in the current buffer
 nnoremap <leader>o :Explore<cr>
-
-" quit vim
-nnoremap <leader>q :q!<cr>
 
 " source local .lvimrc
 nnoremap <leader>s :so .lvimrc<cr>

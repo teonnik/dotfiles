@@ -6,4 +6,5 @@ builder
 .lvimrc
 .cache
 .envrc
+.nvimrc
 session*.vim
