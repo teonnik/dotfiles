@@ -28,6 +28,7 @@ call plug#begin()
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     "Plug 'hrsh7th/cmp-cmdline'
+    "Plug 'rcarriga/cmp-dap'          " enable when support for DAP completion from lldb is available
 
     " snippets - required by some LSPs and nvim-cmp
     Plug 'L3MON4D3/LuaSnip'
@@ -123,11 +124,11 @@ xnoremap p pgvy
 " nnoremap <leader>b :ls<cr>:b<space>
 nnoremap <leader>b :Buffers<cr>
 
+" close current buffer
+nnoremap <leader>d :bd<cr>
+
 " close the quickfix, location and preview windows
 nnoremap <leader>c :cclose<cr> :lclose<cr> :pclose<cr>
-
-" list buffers and wait for selection to close
-nnoremap <leader>q :bd<cr>
 
 " open a file
 nnoremap <leader>e :e<space>

@@ -178,7 +178,7 @@ dap.configurations.cpp = {
       name = "Attach to process",
       type = 'cpp',  -- Adjust this to match your adapter name (`dap.adapters.<name>`)
       request = 'attach',
-      pid = require('dap.utils').pick_process({ filter = "kit" }),
+      pid = require('dap.utils').pick_process,
       args = {},
       -- runInTerminal=true
     },
@@ -193,19 +193,19 @@ dap.configurations.cpp = {
 -- }
 -- dap.defaults.fallback.force_external_terminal = true
 
-vim.keymap.set('n', '<leader>dc', function() require('dap').continue() end)
-vim.keymap.set('n', '<leader>dk', function() require('dap').terminate() end)
-vim.keymap.set('n', '<leader>dn', function() require('dap').step_over() end)
-vim.keymap.set('n', '<leader>ds', function() require('dap').step_into() end)
-vim.keymap.set('n', '<leader>do', function() require('dap').step_out() end)
-vim.keymap.set('n', '<leader>dff', function() require('dap').focus_frame() end)
-vim.keymap.set('n', '<leader>dfu', function() require('dap').up() end)
-vim.keymap.set('n', '<leader>dfd', function() require('dap').down() end)
-vim.keymap.set('n', '<leader>du', function() require('dap').run_to_cursor() end)
-vim.keymap.set('n', '<leader>db', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<M-c>', function() require('dap').continue() end)
+vim.keymap.set('n', '<M-t>', function() require('dap').terminate() end)
+vim.keymap.set('n', '<M-right>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<M-down>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<M-up>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<M-f>', function() require('dap').focus_frame() end)
+vim.keymap.set('n', '<M-k>', function() require('dap').up() end)
+vim.keymap.set('n', '<M-j>', function() require('dap').down() end)
+vim.keymap.set('n', '<M-u>', function() require('dap').run_to_cursor() end)
+vim.keymap.set('n', '<M-b>', function() require('dap').toggle_breakpoint() end)
 -- In REPL mode LLDB commands can be run by prefixing with ` : e.g. `bt
 --
 -- https://github.com/mfussenegger/nvim-dap/discussions/381#discussioncomment-2360181
-vim.keymap.set('n', '<leader>dr', function() require('dap').repl.toggle() end)
+vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end)
 
 EOF
