@@ -14,7 +14,6 @@ call plug#begin()
   Plug 'tpope/vim-repeat'               " repeating with `.` for many plugins
   Plug 'tpope/vim-obsession'            " record vim sessions
   Plug 'itchyny/lightline.vim'          " status line
-  Plug 'morhetz/gruvbox'                " color scheme
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
   "Plug 'ward/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
@@ -33,6 +32,13 @@ call plug#begin()
     " snippets - required by some LSPs and nvim-cmp
     Plug 'L3MON4D3/LuaSnip'
     Plug 'hrsh7th/vim-vsnip'
+
+
+    "Plug 'ellisonleao/gruvbox.nvim' " port of gruvbox with TS support
+    Plug 'JulesNP/gruvbox.nvim' , { 'branch': 'tsfix' } " fork with fixes for recent TS update (TODO: remove when it lands)
+    "Plug 'folke/tokyonight.nvim'
+  else
+    Plug 'morhetz/gruvbox'                " color scheme
   endif
 call plug#end()
 
@@ -107,7 +113,7 @@ filetype plugin on  " enable filetype plugins
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-" treat .tpp files as C++ files
+" Treat .tpp files as C++ files
 au BufEnter *.tpp :setlocal filetype=cpp
 
 " ----------------------------

@@ -136,21 +136,13 @@ nvim_lsp['pylsp'].setup {
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 --
--- Taken from : https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'cpp', 'cuda', 'vim', 'lua', 'python', 'help' },
-
+  ensure_installed = {'markdown', 'markdown_inline', 'cpp', 'cuda', 'vim', 'lua', 'python', 'help' },
   highlight = { enable = true },
-  indent = { enable = true },
   incremental_selection = {
     enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
-    },
+    additional_vim_regex_highlighting = false,
   }
 }
 
