@@ -47,6 +47,7 @@ xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
 dunst                  # notification daemon
+arandr
 
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
