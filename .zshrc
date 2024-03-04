@@ -5,13 +5,7 @@ setopt INC_APPEND_HISTORY_TIME
 
 # path to `nsys` and `ncu`
 export PATH=${HOME}/install/ncu:$PATH
-#export PATH=${HOME}/install/nsys/opt/nvidia/nsight-systems/2023.1.1/bin:$PATH
-#export PATH=${HOME}/downloads/tmp/opt/nvidia/nsight-systems/2023.2.2/bin:$PATH
-#export PATH=${HOME}/downloads/nsys-cli/nsight-systems-cli-DVS/bin:$PATH
-#export PATH=${HOME}/downloads/new-nsys-cli/nsight-systems-cli-DVS/bin:$PATH
-#export PATH=${HOME}/downloads/nsys-public/nsight-systems-linux-public-DVS/bin:$PATH
-#export PATH=${HOME}/downloads/nsys-32656314/nsight-systems-linux-public-DVS/bin:$PATH
-export PATH=${HOME}/downloads/nsight-systems-linux-public-DVS/bin:$PATH
+export PATH=${HOME}/install/nsys/opt/nvidia/nsight-systems/2023.1.1/bin:$PATH
 
 # vi mode
 bindkey -v

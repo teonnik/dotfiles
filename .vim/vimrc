@@ -6,6 +6,8 @@ call plug#begin()
   "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " fuzzy search
   Plug 'junegunn/vim-easy-align'        " align text on delimiters
+  Plug 'junegunn/vim-peekaboo'          " show contents of registers in the sidebar
+  Plug 'tpope/vim-fugitive'             " git integration
   Plug 'tpope/vim-surround'             " surround words easily
   Plug 'tpope/vim-eunuch'               " unix shell wrappers for vim
   Plug 'tpope/vim-vinegar'              " improved netrw
@@ -37,6 +39,8 @@ call plug#begin()
     "Plug 'ellisonleao/gruvbox.nvim' " port of gruvbox with TS support
     Plug 'JulesNP/gruvbox.nvim' , { 'branch': 'tsfix' } " fork with fixes for recent TS update (TODO: remove when it lands)
     "Plug 'folke/tokyonight.nvim'
+
+    "Plug 'sindrets/diffview.nvim'
   else
     Plug 'morhetz/gruvbox'                " color scheme
   endif
@@ -158,6 +162,11 @@ nnoremap <leader>s :so .lvimrc<cr>
 " execute current file
 nnoremap <leader>ue :!%:p<cr>
 
+" copy the full path of the current file
+nnoremap <Leader>uff :let @+=expand('%:p')<CR>
+" copy the filename of the current file
+nnoremap <Leader>ufn :let @+=expand('%:t')<CR>
+
 " switch to the directory of the (o)pen buffer
 map      <leader>uo :cd %:p:h<cr>:pwd<cr>
 
@@ -172,6 +181,8 @@ nnoremap <leader>ut :call TrimWhitespace()<cr>
 
 " toggle spell checking
 noremap  <leader>us :setlocal spell! spelllang=en_us<cr>
+
+
 
 " save quickly
 nmap     <leader>w :w!<cr>

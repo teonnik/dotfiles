@@ -56,6 +56,8 @@ at                    # schedule commands
 hexyl                 # command line hex viewer
 nnn                   # fast terminal file manager
 
+yubikey-manager       # YubiKey management
+
 zsh            # shell
 gvim vi        # editor
 neovim
@@ -64,6 +66,7 @@ gdb            # debugger
 direnv         # env per folder
 bat            # modern alternative to cat/less
 git            # version control management
+lazygit        # git TUI
 cmake          # build tool
 #diff-so-fancy  # better diff
 git-delta      # better diff
@@ -164,8 +167,8 @@ bluez-utils
 #pulseaudio-bluetooth
 
 pavucontrol                       # volume control
-pulsemixer
-light                             # brightness
+pulsemixer                        # TUI for PulseAudio
+brightnessctl                     # brightness
 
 # printing
 cups-pdf

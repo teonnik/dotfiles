@@ -12,6 +12,7 @@ libtree
 cmake-format
 pacgraph
 asp                         # utility to retrieve PKGBUILD files
+lazydocker-bin   # docker management TUI
 
 #navi-bin
 #gcalcli

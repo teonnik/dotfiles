@@ -101,7 +101,7 @@ nvim_lsp['clangd'].setup {
         "--log=verbose",
         --"--background-index=0",
         "--background-index",
-        -- "-j=1",
+        --"-j=1",
         -- "--clang-tidy=0",
   },
   flags = {

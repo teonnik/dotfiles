@@ -186,10 +186,10 @@ bindsym $mod+Shift+a         exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+m               exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
 
 # screen brightness (not working sometimes)
-bindsym XF86MonBrightnessUp   exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
-bindsym $mod+b                exec light -A 5
-bindsym $mod+Shift+b          exec light -U 5
+bindsym XF86MonBrightnessUp   exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym $mod+b                exec brightnessctl set +5%
+bindsym $mod+Shift+b          exec brightnessctl set 5%-
 
 # media player
 bindsym XF86AudioPlay  exec playerctl play
