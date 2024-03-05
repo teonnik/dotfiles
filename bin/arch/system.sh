@@ -100,7 +100,8 @@ systemctl enable NetworkManager.service \
                  bluetooth.service \
                  cups.service \
                  atd.service \
-                 docker.service
+                 docker.service \
+                 pcscd.service
 
 # 22. Reboot and login as user `teonnik`
 reboot

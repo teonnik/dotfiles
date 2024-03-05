@@ -7,6 +7,7 @@ theme = "native"
 [[block]]
 block = "memory"
 format = " $icon $mem_used/$mem_total "
+gpu_id = 0
 
 [[block]]
 block = "keyboard_layout"
