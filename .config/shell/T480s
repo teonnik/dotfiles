@@ -1,5 +1,7 @@
 # vim: filetype=sh
 
+export TEONNIK_PERSONAL="${HOME}"
+
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 #source ~/.config/shell/swayenv
