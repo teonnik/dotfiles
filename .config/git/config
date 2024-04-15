@@ -1,11 +1,10 @@
 [user]
-  email = teodor.nikolov22@gmail.com
   name = Teodor Nikolov
+  email = teodor.nikolov22@gmail.com
 [push]
   default = current
 [core]
   editor = nvim
-  #pager = diff-so-fancy | less --tabs=4 -RFX
   pager = delta
 [color]
   ui = auto
