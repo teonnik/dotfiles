@@ -3,10 +3,6 @@ SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
 # [Ctrl-Delete] - delete whole forward-word
 bindkey -M viins '^[[3;5~' kill-word
 bindkey -M vicmd '^[[3;5~' kill-word
@@ -41,11 +37,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # spack
-SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
-source $HOME/code/spack/share/spack/setup-env.sh
+if [ -f "${HOME}/code/spack/share/spack/setup-env.sh" ]; then
+  SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
+  source "${HOME}/code/spack/share/spack/setup-env.sh"
+fi
 
 # direnv
-eval "$(direnv hook zsh)"
+if type direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 # fzf
 source /usr/share/fzf/key-bindings.zsh
@@ -53,8 +53,9 @@ source /usr/share/fzf/completion.zsh
 
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240' # fixes suggestion color in foot
-
+if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240' # fixes suggestion color in foot
+fi
 
 # p10k theme
 source ${HOME}/code/powerlevel10k/powerlevel10k.zsh-theme

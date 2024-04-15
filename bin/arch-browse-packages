@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# https://wiki.archlinux.org/title/Pacman/Tips_and_tricks#Browsing_packages
+#
+pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'
