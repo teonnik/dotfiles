@@ -4,4 +4,8 @@
 export OMNI_USER=svc-drivesim-unit-tests
 export OMNI_PASS=9suS2PapEnsAhRn5
 
+# Path to `nsys` and `ncu`
+export PATH=${HOME}/install/ncu:$PATH
+export PATH=${HOME}/install/nsys/opt/nvidia/nsight-systems/2023.1.1/bin:$PATH
+
 source ~/.config/shell/i3env

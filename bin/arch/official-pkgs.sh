@@ -144,6 +144,7 @@ python-pandas
 python-matplotlib
 python-seaborn
 python-jedi    # LSP
+python-dotenv
 ipython
 
 # chat
