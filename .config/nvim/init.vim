@@ -101,7 +101,7 @@ nvim_lsp['clangd'].setup {
         "--log=verbose",
         --"--background-index=0",
         "--background-index",
-        --"-j=1",
+        -- "-j=1",
         -- "--clang-tidy=0",
   },
   flags = {
@@ -116,15 +116,6 @@ nvim_lsp['clangd'].setup {
 -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
 nvim_lsp['pylsp'].setup {
   on_attach = custom_lsp_attach,
-  settings = {
-    pylsp = {
-      plugins = {
-        jedi = {
-          environment = '/home/teonnik/code/drivesim-ov/_build/linux-x86_64/release/python.sh'
-        }
-      }
-    }
-  },
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 

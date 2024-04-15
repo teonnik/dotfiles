@@ -7,4 +7,3 @@ builder
 .cache
 .envrc
 .nvimrc
-session*.vim
