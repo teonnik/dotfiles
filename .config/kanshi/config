@@ -3,11 +3,16 @@
     output eDP-1 disable
     output "Dell Inc. DELL C2722DE 5T9B4H3" enable position 0,0
 }
-# nvidia Berlin office monitor setup
+# nvidia Berlin office shared room
 {
     output eDP-1 disable
     output "Dell Inc. DELL U2415 7MT0187N225S" enable position 0,0
     output "Lenovo Group Limited LEN LT2452pwC VN-387584" enable position 1920,0
+}
+# nvidia Berling office solo room
+{
+    output eDP-1 position 0,1200
+    outpput "Dell Inc. DELL U2415 7MT0187N1YWS" enable position 0,0
 }
 {
     output eDP-1 enable position 0,0

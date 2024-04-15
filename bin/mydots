@@ -1,0 +1,15 @@
+#!/bin/sh
+
+pushd "${HOME}"
+
+# Use tab to select multiple files
+FILES=$(git ls-files | fzf --multi)
+
+# Check if any files were selected
+if [[ -n $FILES ]]; then
+    vim - $FILES
+else
+    echo "No files selected."
+fi
+
+popd

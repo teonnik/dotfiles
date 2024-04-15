@@ -1,0 +1,15 @@
+#!/bin/sh
+
+pushd "${TEONNIK_PERSONAL}/readme"
+
+# Use tab to select multiple files
+FILES=$(fzf --multi)
+
+# Check if any files were selected
+if [[ -n $FILES ]]; then
+    vim - $FILES
+else
+    echo "No files selected."
+fi
+
+popd
