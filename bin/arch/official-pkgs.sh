@@ -86,6 +86,7 @@ glances
 neofetch                    # system info
 onefetch                    # git repo info
 
+inetutils       # provides `hostname`
 nethogs         # net top tool
 mtr             # traceroute alternative
 speedtest-cli   # measure internet speed
