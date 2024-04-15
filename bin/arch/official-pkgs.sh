@@ -42,10 +42,12 @@ alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
 xorg-xkill             # kill unresponsive X windows
+xorg-setxkbmap         # keyboard layout
 xclip                  # clipboard utility
 i3lock
 scrot maim             # screenshots
 dunst                  # notification daemon
+arandr
 
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)

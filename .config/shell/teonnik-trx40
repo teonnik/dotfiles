@@ -1,5 +1,9 @@
 # vim: filetype=sh
 
+export TEONNIK_PERSONAL="${HOME}/personal"
+
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
+
 # OMNI VARS
 export OMNI_USER=svc-drivesim-unit-tests
 export OMNI_PASS=9suS2PapEnsAhRn5
