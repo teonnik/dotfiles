@@ -115,19 +115,10 @@ nvim_lsp['clangd'].setup {
 -- https://github.com/python-lsp/python-lsp-server/issues/120
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#pylsp
 -- https://github.com/python-lsp/python-lsp-server/blob/develop/CONFIGURATION.md
--- nvim_lsp['pylsp'].setup {
---   on_attach = custom_lsp_attach,
---   settings = {
---     pylsp = {
---       plugins = {
---         jedi = {
---           environment = '/home/teonnik/code/drivesim-ov/_build/linux-x86_64/release/python.sh'
---         }
---       }
---     }
---   },
---   capabilities = require('cmp_nvim_lsp').default_capabilities(),
--- }
+nvim_lsp['pylsp'].setup {
+  on_attach = custom_lsp_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+}
 
 -- nvim_lsp['texlab'].setup {
 --   on_attach = custom_lsp_attach

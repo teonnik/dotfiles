@@ -20,7 +20,7 @@ call plug#begin()
   "Plug 'ward/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
   if has('nvim')
-    Plug 'neovim/nvim-lspconfig'          " neovim's built-in LSP
+    Plug 'neovim/nvim-lspconfig'           " neovim's built-in LSP
     Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
     Plug 'mfussenegger/nvim-dap'           " debugger
 
@@ -32,16 +32,11 @@ call plug#begin()
     "Plug 'hrsh7th/cmp-cmdline'
     "Plug 'rcarriga/cmp-dap'          " enable when support for DAP completion from lldb is available
 
-    " snippets - required by some LSPs and nvim-cmp
-    Plug 'L3MON4D3/LuaSnip'
+    Plug 'L3MON4D3/LuaSnip'       " snippets - required by some LSPs and nvim-cmp
     Plug 'hrsh7th/vim-vsnip'
 
-
-    "Plug 'ellisonleao/gruvbox.nvim' " port of gruvbox with TS support
-    Plug 'JulesNP/gruvbox.nvim' , { 'branch': 'tsfix' } " fork with fixes for recent TS update (TODO: remove when it lands)
+    Plug 'ellisonleao/gruvbox.nvim' " port of gruvbox with TS support
     "Plug 'folke/tokyonight.nvim'
-
-    "Plug 'sindrets/diffview.nvim'
   else
     Plug 'morhetz/gruvbox'                " color scheme
   endif
