@@ -1,0 +1,3 @@
+#!/bin/bash
+
+i3status-rs ${XDG_CONFIG_HOME}/i3status-rust/$(hostname)-config.toml

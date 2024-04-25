@@ -1,7 +1,7 @@
 # super (modifier) key
 set $mod Mod4
 
-font pango:Roboto, FontAwesome, 10
+font pango:Roboto, FontAwesome, 12
 
 # colour of             border   background  text     indicator  child_border
 client.focused          #2f5491  #2f5491     #d8dee8  #2f343f    #d8dee8
@@ -163,9 +163,9 @@ bindsym $mod+Shift+p mode "$mode_system"
 # Apps
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 10
+    font pango:DejaVu Sans Mono, FontAwesome 12
     position top
-    status_command i3status-rs
+    status_command mybar
     colors {
         separator #666666
         background #282828
