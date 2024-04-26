@@ -107,14 +107,17 @@ set wildignorecase " ignore case in wildmenu
 
 set completeopt=menu,menuone,noselect " completion menu
 
-filetype indent on  " load filetype-specific indent files
-filetype plugin on  " enable filetype plugins
+filetype plugin indent on  " enable filetype plugins and indent
 
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Treat .tpp files as C++ files
 au BufEnter *.tpp :setlocal filetype=cpp
+
+" Note: this is needed until Neovim 0.10 is out (approx 30 April) which has it
+" in `filetype.lua`
+au BufNewFile,BufRead *.usda,*.usd setf usd
 
 " ----------------------------
 " Bindings
@@ -184,7 +187,8 @@ noremap  <leader>us :setlocal spell! spelllang=en_us<cr>
 nmap     <leader>w :w!<cr>
 
 " grep the code base using the silver searcher
-nnoremap <leader>/ :Ag<space>
+" nnoremap <leader>/ :Ag<space>
+nnoremap <leader>/ :Rag<space>
 
 " remove highlighting
 map      <silent> <leader><cr> :noh<cr>
@@ -236,7 +240,8 @@ let g:fzf_preview_window = ['hidden,right,50%', 'ctrl-/']
 command! -bang -nargs=* -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--keep-right']}), <bang>0)
 command! -bar -bang -nargs=? -complete=buffer Buffers  call fzf#vim#buffers(<q-args>, fzf#vim#with_preview({ "placeholder": "{1}", 'options': ['--keep-right']}), <bang>0)
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': ['--keep-right']}), <bang>0)
-
+" https://github.com/junegunn/fzf.vim/issues/413#issuecomment-320197362
+command! -bang -nargs=+ -complete=dir Rag call fzf#vim#ag_raw(<q-args>, {'options': ['--keep-right']}, <bang>0)
 
 " --- OSC Yank
 "

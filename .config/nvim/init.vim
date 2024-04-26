@@ -130,7 +130,7 @@ nvim_lsp['pylsp'].setup {
 --
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = {'markdown', 'markdown_inline', 'cpp', 'cuda', 'vim', 'lua', 'python', 'help' },
+  ensure_installed = {'markdown', 'markdown_inline', 'cpp', 'cuda', 'vim', 'lua', 'python', 'help', 'usd' },
   highlight = { enable = true },
   incremental_selection = {
     enable = true,
