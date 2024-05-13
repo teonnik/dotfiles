@@ -155,16 +155,18 @@ nnoremap <leader>n :set nu!<cr>
 " open netrw in the current buffer
 nnoremap <leader>o :Explore<cr>
 
+" copy filepath relative to current working directory
+nnoremap <Leader>pp :let @+=expand('%')<CR>
+" copy full filepath
+nnoremap <Leader>pf :let @+=expand('%:p')<CR>
+" copy filename
+nnoremap <Leader>pn :let @+=expand('%:t')<CR>
+
 " source local .lvimrc
 nnoremap <leader>s :so .lvimrc<cr>
 
 " execute current file
 nnoremap <leader>ue :!%:p<cr>
-
-" copy the full path of the current file
-nnoremap <Leader>uff :let @+=expand('%:p')<CR>
-" copy the filename of the current file
-nnoremap <Leader>ufn :let @+=expand('%:t')<CR>
 
 " switch to the directory of the (o)pen buffer
 map      <leader>uo :cd %:p:h<cr>:pwd<cr>
@@ -180,8 +182,6 @@ nnoremap <leader>ut :call TrimWhitespace()<cr>
 
 " toggle spell checking
 noremap  <leader>us :setlocal spell! spelllang=en_us<cr>
-
-
 
 " save quickly
 nmap     <leader>w :w!<cr>
