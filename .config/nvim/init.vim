@@ -168,6 +168,7 @@ dap.configurations.cpp = {
     },
 }
 
+
 -- TODO: Fix / not working?
 -- see :help dap-terminal
 -- dap.defaults.fallback.external_terminal = {
@@ -187,9 +188,20 @@ vim.keymap.set('n', '<M-k>', function() require('dap').up() end)
 vim.keymap.set('n', '<M-j>', function() require('dap').down() end)
 vim.keymap.set('n', '<M-u>', function() require('dap').run_to_cursor() end)
 vim.keymap.set('n', '<M-b>', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<M-del>', function() require('dap').clear_breakpoints() end)
+vim.keymap.set('n', '<M-l>', function() require('dap').list_breakpoints() end)
 -- In REPL mode LLDB commands can be run by prefixing with ` : e.g. `bt
 --
 -- https://github.com/mfussenegger/nvim-dap/discussions/381#discussioncomment-2360181
 vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end)
+
+
+-- [[ Configure Debugger Virtual Text]]
+--
+require("nvim-dap-virtual-text").setup()
+
+--- [[  Configura oil.nvim ]]
+--
+require("oil").setup()
 
 EOF

@@ -133,6 +133,7 @@ ttf-font-awesome
 ttf-roboto
 powerline-fonts
 noto-fonts
+nerd-fonts
 
 # qt
 qt5-wayland

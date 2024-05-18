@@ -39,3 +39,7 @@ mods = "Control"
 action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
+
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Regular" }
