@@ -164,7 +164,7 @@ bindsym $mod+Shift+p mode "$mode_system"
 # Apps
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 12
+    font pango:FiraCode Nerd Font, FontAwesome 12
     position top
     status_command mybar
     colors {

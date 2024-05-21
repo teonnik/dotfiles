@@ -1,5 +1,5 @@
 [icons]
-icons = "awesome5"
+icons = "material-nf"
 
 [theme]
 theme = "native"
@@ -25,20 +25,15 @@ block = "nvidia_gpu"
 gpu_id = 1
 format = " $icon ID:1 $power $memory "
 
-#[[block]]
-#block = "keyboard_layout"
-#driver = "setxkbmap"
-#interval = 15
-
 [[block]]
-block = "custom"
-command = ''' xkb-switch '''
+block = "keyboard_layout"
+driver = "xkbswitch"
 interval = 1
-format = "  $text "
+format = "   $layout "
 
 [[block]]
 block = "net"
-format = " $icon $device $ssid "
+format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
 
 [[block.click]]
 button = "left"
