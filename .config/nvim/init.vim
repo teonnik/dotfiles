@@ -168,6 +168,11 @@ dap.configurations.cpp = {
     },
 }
 
+-- Use `.vscode/launch.json` for DAP configurations
+-- 
+-- :help dap-launch.json
+require('dap.ext.vscode').load_launchjs()
+
 
 -- TODO: Fix / not working?
 -- see :help dap-terminal
