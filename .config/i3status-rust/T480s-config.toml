@@ -1,24 +1,33 @@
 [icons]
-icons = "awesome5"
+icons = "material-nf"
 
 [theme]
 theme = "native"
 
 [[block]]
+block = "notify"
+driver = "dunst"
+format = " $icon {($notification_count.eng(w:1)) |} "
+[[block.click]]
+button = "left"
+action = "show"
+[[block.click]]
+button = "right"
+action = "toggle_paused"
+
+[[block]]
+block = "keyboard_layout"
+driver = "xkbswitch"
+interval = 1
+format = "   $layout "
+
+[[block]]
 block = "memory"
 format = " $icon $mem_used.eng(prefix:Mi)/$mem_total.eng(prefix:Mi) ($mem_used_percents.eng(w:2)) "
 
-#[[block]]
-#block = "keyboard_layout"
-##driver = "sway"
-#driver = "setxkbmap"
-#format = "  $layout "
-#interval = 1
-
 [[block]]
 block = "net"
-format = " $icon $device $ssid "
-
+format = " $icon {$signal_strength $ssid $frequency|Wired connection} via $device "
 [[block.click]]
 button = "left"
 cmd = "alacritty -e nmtui"
@@ -26,10 +35,12 @@ cmd = "alacritty -e nmtui"
 [[block]]
 block = "backlight"
 device = "intel_backlight"
+missing_format = ""
 
 [[block]]
 block = "battery"
 format = " $icon $percentage "
+missing_format = ""
 
 [[block]]
 block = "sound"
