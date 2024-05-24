@@ -41,6 +41,8 @@ call plug#begin()
 
     Plug 'stevearc/oil.nvim'            " improved netrw 
     Plug 'nvim-tree/nvim-web-devicons'  " icons for Oil
+
+    Plug 'ibhagwan/fzf-lua'
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'              " improved netrw

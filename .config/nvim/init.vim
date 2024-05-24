@@ -147,6 +147,7 @@ require('nvim-treesitter.configs').setup {
 -- Installation: https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-lldb-vscode
 -- Documentation: :help dap-{api, adapters, mappings, ...}
 -- Logging: ~/.cache/nvim/dap.log
+-- Extensions: https://github.com/mfussenegger/nvim-dap/wiki/Extensions
 --
 -- Note: Completion in REPL seems to not be supported currently : https://github.com/rcarriga/cmp-dap
 -- Note: `lldb-vscode` is going to be renamed to `lldb-dap` https://discourse.llvm.org/t/rfc-rename-lldb-vscode-to-lldb-dap/74075/7
@@ -171,10 +172,12 @@ dap.configurations.cpp = {
     },
 }
 
+-- dap.adapters.cppdbg = dap.adapters.cpp
+
 -- Use `.vscode/launch.json` for DAP configurations
--- 
+--
 -- :help dap-launch.json
-require('dap.ext.vscode').load_launchjs()
+-- require('dap.ext.vscode').load_launchjs(nil, { cppdbg = {'c', 'cpp'} })
 
 
 -- TODO: Fix / not working?
@@ -208,8 +211,13 @@ vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end)
 --
 require("nvim-dap-virtual-text").setup()
 
---- [[  Configura oil.nvim ]]
+-- [[ Configure fuzzy finder for DAP processes ]]
+--
+require('fzf-lua').register_ui_select()
+
+-- [[  Configura oil.nvim ]]
 --
 require("oil").setup()
+
 
 EOF
