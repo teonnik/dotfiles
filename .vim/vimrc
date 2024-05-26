@@ -10,14 +10,13 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'             " git integration
   Plug 'tpope/vim-surround'             " surround words easily
   Plug 'tpope/vim-eunuch'               " unix shell wrappers for vim
-  Plug 'tpope/vim-unimpaired'           " complementary pairs of mappings
-  Plug 'tpope/vim-endwise'              " adds an end to code blocks
   Plug 'tpope/vim-repeat'               " repeating with `.` for many plugins
   Plug 'tpope/vim-obsession'            " record vim sessions
   Plug 'itchyny/lightline.vim'          " status line
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
-  "Plug 'ward/VimCompletesMe'       " use <Tab> for vim's `ins-completion`
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
+
+  Plug 'honza/vim-snippets'                " snippets collection
   if has('nvim')
     Plug 'neovim/nvim-lspconfig'           " neovim's built-in LSP
     Plug 'nvim-treesitter/nvim-treesitter' " syntax highlighting
@@ -25,27 +24,28 @@ call plug#begin()
     Plug 'mfussenegger/nvim-dap'           " debugger
     Plug 'theHamsta/nvim-dap-virtual-text' " inlay hint when debugging values
 
-    Plug 'hrsh7th/nvim-cmp'                " completion engine for nvim
+    Plug 'hrsh7th/nvim-cmp'                " completion engine and sources
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
-    Plug 'onsails/lspkind.nvim'
-    "Plug 'hrsh7th/cmp-cmdline'
-    "Plug 'rcarriga/cmp-dap'             " enable when support for DAP completion from lldb is available
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'rcarriga/cmp-dap'             " completion in dap-repl buffer
 
-    Plug 'L3MON4D3/LuaSnip'             " snippets - required by some LSPs and nvim-cmp
-    Plug 'hrsh7th/vim-vsnip'
+    Plug 'onsails/lspkind.nvim'         " icons for the completion menu
+
+    Plug 'L3MON4D3/LuaSnip'              " snippet engine
+    Plug 'rafamadriz/friendly-snippets'  " snippets collection
 
     Plug 'ellisonleao/gruvbox.nvim'     " port of gruvbox with TS support
     "Plug 'folke/tokyonight.nvim'
 
-    Plug 'stevearc/oil.nvim'            " improved netrw 
+    Plug 'stevearc/oil.nvim'            " improved netrw
     Plug 'nvim-tree/nvim-web-devicons'  " icons for Oil
 
     Plug 'ibhagwan/fzf-lua'
   else
     Plug 'morhetz/gruvbox'              " color scheme
-    Plug 'tpope/vim-vinegar'              " improved netrw
+    Plug 'tpope/vim-vinegar'            " improved netrw
   endif
 call plug#end()
 

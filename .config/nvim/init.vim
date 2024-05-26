@@ -17,7 +17,10 @@ local has_words_before = function()
 end
 
 -- Icons for LSP completion menu
-require('lspkind').init({})
+local lspkind = require('lspkind')
+lspkind.init({}) -- integration with omni menu
+
+local luasnip = require('luasnip')
 
 local cmp = require'cmp'
 cmp.setup({
@@ -30,40 +33,63 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+  mapping = {
+    ["<CR>"] = cmp.mapping.confirm { select = true },
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-
     -- super-tab
-    ['<Tab>'] = function(fallback)
-      if not cmp.select_next_item() then
-        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
       end
-    end,
-    ['<S-Tab>'] = function(fallback)
-      if not cmp.select_prev_item() then
-        if vim.bo.buftype ~= 'prompt' and has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
       end
-    end,
-  }),
+    end, { "i", "s" }),
+  },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
-    { name = 'omni' },
+    { name = 'luasnip' },
   }),
+  formatting = {
+    format = lspkind.cmp_format()
+  }
 })
+
+cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
+})
+
+
+-- [[ Configure LuaSnip ]]
+--
+vim.keymap.set({"i", "s"}, "<C-k>", function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end, { silent = true })
+
+vim.keymap.set({"i", "s"}, "<C-j>", function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end, { silent = true })
+
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 
 -- [[ Configure LSPs ]]
