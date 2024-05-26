@@ -58,7 +58,7 @@ export MANROFFOPT="-P -c"
 # run the ssh agent
 eval `ssh-agent`
 
-# If running from tty1 start sway or X session with i3
-if [ "$(tty)" = "/dev/tty1" ]; then
+# If running from login shell locally or remotely, run the system specific startup file
+if [ "$(tty)" = "/dev/tty1" ] || [ -n "${SSH_CONNECTION}" ]; then
   source ~/.config/shell/$(hostname)
 fi
