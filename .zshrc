@@ -3,15 +3,14 @@ SAVEHIST=1000000
 HISTFILE="${XDG_STATE_HOME}"/zsh/history
 setopt INC_APPEND_HISTORY_TIME
 
+# Make sure `vi`-bindings are not used
+bindkey -e
 # [Ctrl-Delete] - delete whole forward-word
-bindkey -M viins '^[[3;5~' kill-word
-bindkey -M vicmd '^[[3;5~' kill-word
+bindkey '^[[3;5~' kill-word
 # [Ctrl-RightArrow] - move forward one word
-bindkey -M viins '^[[1;5C' forward-word
-bindkey -M vicmd '^[[1;5C' forward-word
+bindkey '^[[1;5C' forward-word
 # [Ctrl-LeftArrow] - move backward one word
-bindkey -M viins '^[[1;5D' backward-word
-bindkey -M vicmd '^[[1;5D' backward-word
+bindkey '^[[1;5D' backward-word
 # [Ctrl-s] don't freez the terminal
 stty stop undef
 # [Backspace] - delete backward
