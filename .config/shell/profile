@@ -55,8 +55,10 @@ export LESSHISTFILE="-" # no history file
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 
-# run the ssh agent
-eval `ssh-agent`
+# run ssh-agent if not already running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+  eval `ssh-agent`
+fi
 
 # If running from login shell locally or remotely, run the system specific startup file
 if [ "$(tty)" = "/dev/tty1" ] || [ -n "${SSH_CONNECTION}" ]; then
