@@ -245,5 +245,8 @@ require('fzf-lua').register_ui_select()
 --
 require("oil").setup()
 
+-- [[  Toggle terminal ]]
+--
+require("toggleterm").setup{}
 
 EOF

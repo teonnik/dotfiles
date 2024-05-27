@@ -3,7 +3,7 @@
 " ----------------------------
 
 call plug#begin()
-  "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'               " fuzzy search
   Plug 'junegunn/vim-easy-align'        " align text on delimiters
   Plug 'junegunn/vim-peekaboo'          " show contents of registers in the sidebar
@@ -43,6 +43,8 @@ call plug#begin()
     Plug 'nvim-tree/nvim-web-devicons'  " icons for Oil
 
     Plug 'ibhagwan/fzf-lua'
+
+    Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}  " toggle terminal
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'            " improved netrw
@@ -201,11 +203,26 @@ nnoremap <leader>/ :Rag<space>
 " remove highlighting
 map      <silent> <leader><cr> :noh<cr>
 
+" Remap window navigation keys to Ctrl+Arrows
+nnoremap <C-Left> <C-w>h
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Right> <C-w>l
+
 " Disable Ex mode
 nnoremap Q <Nop>
 
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" ToggleTerm
+"
+" By applying the mappings this way you can pass a count to your mapping to open a specific window.
+"
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+tnoremap <leader><Esc> <C-\><C-n>
 
 
 " ----------------------------
