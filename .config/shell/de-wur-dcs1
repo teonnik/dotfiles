@@ -1,5 +1,6 @@
 # vim: filetype=sh
 
-export OMNI_USER=svc-drivesim-unit-tests
+# export OMNI_USER=svc-drivesim-unit-tests
+export OMNI_USER=tnikolov_nucleus_ds-rel
 export OMNI_PASS=$(pass omni_pass)
 export NVM_GTLAPI_TOKEN=$(pass gtl_token)
