@@ -49,6 +49,8 @@ scrot maim             # screenshots
 dunst                  # notification daemon
 arandr
 
+ly                    # login manager
+
 lsof                  # list open files
 xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
 xdg-user-dirs

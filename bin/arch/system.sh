@@ -101,7 +101,8 @@ systemctl enable NetworkManager.service \
                  cups.service \
                  atd.service \
                  docker.service \
-                 pcscd.service
+                 pcscd.service \
+                 ly.service
 
 # 22. Reboot and login as user `teonnik`
 reboot

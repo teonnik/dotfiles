@@ -14,5 +14,3 @@ export NVM_GTLAPI_TOKEN="$(lpass show --notes NVM_GTLAPI_TOKEN)"
 # Path to `nsys` and `ncu`
 export PATH=${HOME}/install/ncu:$PATH
 export PATH=${HOME}/install/nsys/opt/nvidia/nsight-systems/2023.1.1/bin:$PATH
-
-source ~/.config/shell/i3env

@@ -4,3 +4,7 @@
 export OMNI_USER=tnikolov_nucleus_ds-rel
 export OMNI_PASS=$(pass omni_pass)
 export NVM_GTLAPI_TOKEN=$(pass gtl_token)
+
+export XDG_CACHE_HOME="/raid/tnikolov/.cache"
+export XDG_DATA_HOME="/raid/tnikolov/.local/share"
+export XDG_STATE_HOME="/raid/tnikolov/.local/state"
