@@ -47,8 +47,8 @@ if type direnv > /dev/null; then
 fi
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/key-bindings.zsh"
+source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/completion.zsh"
 
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh

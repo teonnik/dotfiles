@@ -1,10 +1,15 @@
 # vim: filetype=sh
 
-# export OMNI_USER=svc-drivesim-unit-tests
-export OMNI_USER=tnikolov_nucleus_ds-rel
-export OMNI_PASS=$(pass omni_pass)
-export NVM_GTLAPI_TOKEN=$(pass gtl_token)
+export OMNI_USER="\$omni-api-token"
+if [ -z "${OMNI_PASS}" ]; then
+  export OMNI_PASS=$(pass omni_pass)
+fi
+if [ -z "${NVM_GTLAPI_TOKEN}" ]; then
+  export NVM_GTLAPI_TOKEN=$(pass gtl_token)
+fi
 
 export XDG_CACHE_HOME="/raid/tnikolov/.cache"
 export XDG_DATA_HOME="/raid/tnikolov/.local/share"
 export XDG_STATE_HOME="/raid/tnikolov/.local/state"
+
+export FZF_SHELL_COMPLETION_DIR="${HOME}/code/fzf/shell"
