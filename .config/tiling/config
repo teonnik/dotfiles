@@ -192,8 +192,13 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym $mod+b                exec brightnessctl set +5%
 bindsym $mod+Shift+b          exec brightnessctl set 5%-
 
+# keyboard backlight
+bindsym $mod+k exec brightnessctl --device='tpacpi::kbd_backlight' set 2
+bindsym $mod+Shift+k exec brightnessctl --device='tpacpi::kbd_backlight' set 0
+
 # media player
 bindsym XF86AudioPlay  exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
+

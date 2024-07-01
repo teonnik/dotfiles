@@ -12,10 +12,10 @@ base-devel   # bundle: autoconf, automake, binutils, make, which, gcc, sudo, pkg
 reflector   # Arch mirror list manager script for pacman
 pacutils    # Provides `paclog`
 
-grub        # boot loader
+#grub        # boot loader
+#os-prober   # detect other OS
 efibootmgr  # EFI boot manager
-os-prober   # detect other OS
-gptfdisk    # cgdisk TUI partitioner
+#gptfdisk    # cgdisk TUI partitioner
 
 # --- sway setup
 sway                  # window manager
@@ -35,6 +35,7 @@ wf-recorder            # screen recording
 foot                   # terminal emulator for Wayland
 #waybar
 i3status-rust          # bar
+wlsunset
 
 # --- i3 setup
 i3-wm
@@ -48,6 +49,7 @@ i3lock
 scrot maim             # screenshots
 dunst                  # notification daemon
 arandr
+redshift
 
 ly                    # login manager
 

@@ -29,7 +29,8 @@ timedatectl set-ntp true
 # - size: remaining
 # - type: Linux Filesystem
 fdisk -l /dev/sdx
-fdisk /dev/sdx
+# Note: `cfdisk` is much easier to use
+cfdisk /dev/sdx
 
 # 6. Format the partitions
 mkfs.fat -F32 /dev/sdx1
@@ -48,7 +49,7 @@ reflector --latest 6 --sort rate --download-timeout 100 --save /etc/pacman.d/mir
 pacstrap -K /mnt base linux linux-firmware
 
 # 10. Generate the fstab file
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U /mnt > /mnt/etc/fstab
 
 # 11. Change root
 arch-chroot /mnt
@@ -72,15 +73,10 @@ echo "LANG=en_US.UTF-8" >> /etc/locale.conf
 echo "teonnik" >> /etc/hostname
 echo "127.0.1.1 teonnik.localdomain teonnik" >> /etc/hosts
 
-# 16. Bootloader (!! in arch chroot)
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-# If dual boot, install `os-prober`.
-#
-# If `grub-mkconfig ...` results in "Warning...", uncomment `GRUB_DISABLE_OS_PROBER=false` in `/etc/default/grub`
-#
-# See: https://wiki.archlinux.org/title/GRUB |
-grub-mkconfig -o /boot/grub/grub.cfg
-
+# 16. Bootloader (!! in arch chroot) : systemd-boot
+# 
+bootctl install
+# TODO: Copy required configuration files: https://wiki.archlinux.org/title/systemd-boot#Configuration
 
 # 17. Set pacman's Color option
 sed -i '/Color/s/^#//g' /etc/pacman.conf
@@ -102,7 +98,8 @@ systemctl enable NetworkManager.service \
                  atd.service \
                  docker.service \
                  pcscd.service \
-                 ly.service
+                 ly.service \
+                 systemd-boot-update.service
 
 # 22. Reboot and login as user `teonnik`
 reboot
