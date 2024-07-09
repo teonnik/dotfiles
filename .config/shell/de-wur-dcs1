@@ -12,4 +12,6 @@ export XDG_CACHE_HOME="/raid/tnikolov/.cache"
 export XDG_DATA_HOME="/raid/tnikolov/.local/share"
 export XDG_STATE_HOME="/raid/tnikolov/.local/state"
 
+export PM_PACKAGES_ROOT="${XDG_CACHE_HOME}/packman"
+
 export FZF_SHELL_COMPLETION_DIR="${HOME}/code/fzf/shell"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pushd "${TEONNIK_PERSONAL}/readme"
+pushd "${HOME}/personal/readme"
 
 # Use tab to select multiple files
 FILES=$(fzf --multi)

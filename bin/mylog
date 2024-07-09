@@ -7,7 +7,7 @@ dates=""
 for n in $(seq ${1} -1 0)
 do
   currdate_s=$((today_s - n * day_s))
-  dates="${TEONNIK_PERSONAL}/log/$(date +%Y-%m-%d -d @${currdate_s}).md ${dates}"
+  dates="${HOME}/personal/log/$(date +%Y-%m-%d -d @${currdate_s}).md ${dates}"
 done
 
 bat ${dates}
