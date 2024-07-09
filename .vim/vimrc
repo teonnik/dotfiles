@@ -15,6 +15,7 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'          " status line
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
   Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
+  " Plug 'mechatroner/rainbow_csv'
 
   Plug 'honza/vim-snippets'                " snippets collection
   if has('nvim')
