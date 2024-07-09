@@ -134,6 +134,7 @@ rm -rf ~/Sync
 
 # 3. ssh keys
 ssh-keygen -t ed25519 -C "teodor.nikolov22@gmail.com"
+ssh-copy-id -i ~/.ssh/id_ed25519.pub user@remote_server
 # TODO: `ssh-add` to add default key to `ssh-agent`
 
 # 4. Create local folders
@@ -141,21 +142,19 @@ mkdir -p ~/code ~/build ~/downloads ~/bin
 
 # 5. dotfiles in $HOME directory
 git init
-git remote add origin git@github.com:teonnik/dotfiles.git
+git remote add origin https://github.com/teonnik/dotfiles.git
 git config status.showUntrackedFiles no
 git fetch
 git checkout -f master
 
 # 6. AUR package manager
-git clone https://aur.archlinux.org/yay.git
-(cd yay; makepkg -si)
+git clone https://aur.archlinux.org/yay.git ~/code/yay
+(cd ~/code/yay; makepkg -si)
 
 # 7. Install all my AUR packages: ~/config/arch/my_aur_packages.txt
 
 # 8. Install spack
 git clone https://github.com/spack/spack.git ~/code/spack
-# neovim, zsh, fzf, the-silver-searcher (ag), bat, llvm
-# NOT in spack repo: diff-so-fancy
 
 # 9. neovim
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

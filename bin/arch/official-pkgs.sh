@@ -39,6 +39,7 @@ wlsunset
 
 # --- i3 setup
 i3-wm
+xorg-server
 alacritty              # terminal emulator for i3
 rofi                   # app launcher for i3
 xorg-xinit             # X session launcher - startx (no login manager)
@@ -137,7 +138,7 @@ ttf-font-awesome
 ttf-roboto
 powerline-fonts
 noto-fonts
-nerd-fonts
+ttf-firacode-nerd
 
 # qt
 qt5-wayland

@@ -13,6 +13,8 @@ cmake-format
 pacgraph
 asp                         # utility to retrieve PKGBUILD files
 lazydocker-bin   # docker management TUI
+xkb-switch
+simplescreenrecorder # moved to AUR from official
 
 #navi-bin
 #gcalcli
@@ -28,4 +30,4 @@ lazydocker-bin   # docker management TUI
 
 ) # PKGS
 
-yay -Syu --nonconfirm --needed "${PKGS[@]}"
+yay -Syu --noconfirm --needed "${PKGS[@]}"
