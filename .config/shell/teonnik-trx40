@@ -6,11 +6,11 @@ export SSH_KEY_PATH="~/.ssh/id_ed25519"
 #export OMNI_USER=svc-drivesim-unit-tests
 #export OMNI_PASS="$(lpass show --password omni-env)"
 export OMNI_USER="\$omni-api-token"
-export OMNI_PASS="$(lpass show --notes tnikolov_nucleus_ds-rel)"
+#export OMNI_PASS="$(lpass show --notes tnikolov_nucleus_ds-rel)"
 
 
 # DRIVE Sim prerequisite for building
-export NVM_GTLAPI_TOKEN="$(lpass show --notes NVM_GTLAPI_TOKEN)"
+#export NVM_GTLAPI_TOKEN="$(lpass show --notes NVM_GTLAPI_TOKEN)"
 
 # Path to `nsys` and `ncu`
 export PATH=${HOME}/install/ncu:$PATH

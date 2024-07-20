@@ -181,7 +181,8 @@ local dap = require('dap')
 dap.adapters.cpp = {
   name = 'lldb',
   type = 'executable',
-  command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+  -- command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+  command = '/usr/bin/lldb-dap',
 }
 
 -- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process

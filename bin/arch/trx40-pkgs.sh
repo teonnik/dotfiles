@@ -14,6 +14,7 @@ webkit2gtk-4.1    # dependency of nm-applet for nvidia VPN
 gcr  # dependency of nm-applet for nvidia VPN
 #cuda-tools    # nsight profiler
 vulkan-tools  # vulkaninfo
+fuse2 # required for running `appimage`
 
 ) # PKGS
 

@@ -152,8 +152,8 @@ python-scipy
 python-pandas
 python-matplotlib
 python-seaborn
-python-jedi    # LSP
 python-dotenv
+python-lsp-server # LSP
 ipython
 
 # chat
@@ -233,6 +233,7 @@ vlc                    # media player
 mpv
 libreoffice-still     # office suite
 gimp                  # raster graphics editor
+qbittorrent           # torrent client
 #keepassxc             # password manager
 #thunderbird           # mail client
 #inkscape              # vector graphics editor

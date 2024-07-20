@@ -46,6 +46,8 @@ call plug#begin()
     Plug 'ibhagwan/fzf-lua'
 
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}  " toggle terminal
+
+    Plug 'famiu/bufdelete.nvim'   " preserves window layout when deleting buffers
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'            " improved netrw
@@ -144,7 +146,8 @@ xnoremap p pgvy
 nnoremap <leader>b :Buffers<cr>
 
 " close current buffer
-nnoremap <leader>d :bd<cr>
+"nnoremap <leader>d :bd<cr>
+nnoremap <leader>d :Bdelete<CR>
 
 " close the quickfix, location and preview windows
 nnoremap <leader>c :cclose<cr> :lclose<cr> :pclose<cr>
