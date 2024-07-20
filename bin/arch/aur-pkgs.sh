@@ -15,6 +15,7 @@ asp                         # utility to retrieve PKGBUILD files
 lazydocker-bin   # docker management TUI
 xkb-switch
 simplescreenrecorder # moved to AUR from official
+mullvad-vpn-bin
 
 #navi-bin
 #gcalcli
