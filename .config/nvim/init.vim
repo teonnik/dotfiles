@@ -115,7 +115,7 @@ local custom_lsp_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>yt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>yr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   -- buf_set_keymap('n', '<leader>yl', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader>yd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<leader>yd', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '<leader>yf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
@@ -245,6 +245,8 @@ require('fzf-lua').register_ui_select()
 vim.keymap.set('n', '<leader>ya', [[<CMD>lua require('fzf-lua').lsp_code_actions()<CR>]])
 vim.keymap.set('n', '<leader>yl', [[<CMD>lua require('fzf-lua').lsp_references()<CR>]])
 vim.keymap.set('n', '<leader>yg', [[<CMD>lua require('fzf-lua').lsp_definitions()<CR>]])
+vim.keymap.set('n', '<leader>ye', [[<CMD>lua require('fzf-lua').lsp_document_diagnostics()<CR>]])
+vim.keymap.set('n', '<leader>ys', [[<CMD>lua require('fzf-lua').lsp_document_symbols()<CR>]])
 
 -- [[  Configura oil.nvim ]]
 --
