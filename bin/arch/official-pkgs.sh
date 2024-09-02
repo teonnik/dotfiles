@@ -156,6 +156,9 @@ python-dotenv
 python-lsp-server # LSP
 ipython
 
+# ai
+nodejs # copilot dependency
+
 # chat
 #weechat weechat-matrix
 signal-desktop

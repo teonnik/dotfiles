@@ -48,6 +48,11 @@ call plug#begin()
     Plug 'akinsho/toggleterm.nvim', {'tag' : '*'}  " toggle terminal
 
     Plug 'famiu/bufdelete.nvim'   " preserves window layout when deleting buffers
+
+    " Copilot
+    Plug 'zbirenbaum/copilot.lua'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'            " improved netrw

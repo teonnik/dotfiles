@@ -256,4 +256,15 @@ require("oil").setup()
 --
 require("toggleterm").setup{}
 
+-- [[ copilot.lua ]]
+--
+require("copilot").setup{}
+
+-- [[ Copilot Chat ]]
+--
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+
 EOF
