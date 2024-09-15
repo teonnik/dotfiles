@@ -53,6 +53,10 @@ call plug#begin()
     Plug 'zbirenbaum/copilot.lua'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
+    " Folding
+    Plug 'kevinhwang91/nvim-ufo'
+    Plug 'kevinhwang91/promise-async'
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'            " improved netrw
@@ -231,7 +235,7 @@ nmap ga <Plug>(EasyAlign)
 " For example: 2<C-t> will open terminal 2
 nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
-tnoremap <Esc> <C-\><C-n>
+tnoremap <C-n> <C-\><C-n>
 
 
 " ----------------------------

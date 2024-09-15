@@ -110,7 +110,7 @@ local custom_lsp_attach = function(client, bufnr)
   local opts = { noremap=true, silent=true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- buf_set_keymap('n', '<leader>yg', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>yg', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', '<leader>yh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
   buf_set_keymap('n', '<leader>yt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<leader>yr', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
@@ -133,6 +133,7 @@ nvim_lsp['clangd'].setup {
         "--background-index",
         -- "-j=1",
         -- "--clang-tidy=0",
+        "--offset-encoding=utf-16", -- https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
   },
   flags = {
     debounce_text_changes = 150,
@@ -244,7 +245,7 @@ require('fzf-lua').register_ui_select()
 
 vim.keymap.set('n', '<leader>ya', [[<CMD>lua require('fzf-lua').lsp_code_actions()<CR>]])
 vim.keymap.set('n', '<leader>yl', [[<CMD>lua require('fzf-lua').lsp_references()<CR>]])
-vim.keymap.set('n', '<leader>yg', [[<CMD>lua require('fzf-lua').lsp_definitions()<CR>]])
+-- vim.keymap.set('n', '<leader>yg', [[<CMD>lua require('fzf-lua').lsp_definitions()<CR>]])
 vim.keymap.set('n', '<leader>ye', [[<CMD>lua require('fzf-lua').lsp_document_diagnostics()<CR>]])
 vim.keymap.set('n', '<leader>ys', [[<CMD>lua require('fzf-lua').lsp_document_symbols()<CR>]])
 
@@ -266,5 +267,31 @@ require("CopilotChat").setup {
   debug = true, -- Enable debugging
   -- See Configuration section for rest
 }
+
+-- [[ Folding: nvim-ufo ]]
+vim.o.foldcolumn = '0'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.opt.foldnestmax = 7
+
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+-- Tell the server the capability of foldingRange,
+-- Neovim hasn't added foldingRange to default capabilities, users must add it manually
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.foldingRange = {
+--     dynamicRegistration = false,
+--     lineFoldingOnly = true
+-- }
+-- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
+-- for _, ls in ipairs(language_servers) do
+--     require('lspconfig')[ls].setup({
+--         capabilities = capabilities
+--     })
+-- end
+require('ufo').setup()
 
 EOF
