@@ -111,7 +111,7 @@ set autoindent      " on new lines, match indent of previous line
 set list
 set listchars=tab:-.,trail:.
 
-set wrap                         " wrap lines
+set nowrap                       " don't wrap lines by default
 set whichwrap+=<,>,h,l           " wrap left and right when at the end
 set ruler                        " always show current position
 set number                       " show line numbers
@@ -127,6 +127,13 @@ set wildmenu       " visual autocomplete for command menu
 set wildignorecase " ignore case in wildmenu
 
 set completeopt=menu,menuone,noselect " completion menu
+
+set virtualedit=block " improve the Viusaul Block mode (C-v)
+
+set splitbelow
+set splitright
+set termguicolors
+
 
 filetype plugin indent on  " enable filetype plugins and indent
 
