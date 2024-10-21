@@ -271,15 +271,15 @@ require("CopilotChat").setup {
 }
 
 -- [[ Folding: nvim-ufo ]]
-vim.o.foldcolumn = '0'
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.opt.foldnestmax = 7
+-- vim.o.foldcolumn = '0'
+-- vim.o.foldlevel = 99
+-- vim.o.foldlevelstart = 99
+-- vim.o.foldenable = true
+-- vim.opt.foldnestmax = 7
 
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+-- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+-- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
 -- Tell the server the capability of foldingRange,
 -- Neovim hasn't added foldingRange to default capabilities, users must add it manually
@@ -294,7 +294,7 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 --         capabilities = capabilities
 --     })
 -- end
-require('ufo').setup()
+-- require('ufo').setup()
 
 
 -- AUTOCOMMANDS taken from LazyVim
