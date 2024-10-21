@@ -14,7 +14,7 @@ call plug#begin()
   Plug 'tpope/vim-obsession'            " record vim sessions
   Plug 'itchyny/lightline.vim'          " status line
   Plug 'justinmk/vim-sneak'             " jump to locations quickly
-  Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
+  " Plug 'ojroques/vim-oscyank', {'branch': 'main'}     " copy text to the system clipboard from anywhere
   " Plug 'mechatroner/rainbow_csv'
 
   Plug 'honza/vim-snippets'                " snippets collection

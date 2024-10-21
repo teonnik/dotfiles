@@ -243,6 +243,7 @@ require("nvim-dap-virtual-text").setup()
 -- [[ Configure fuzzy finder for DAP processes ]]
 --
 require('fzf-lua').register_ui_select()
+vim.keymap.set('n', '<leader>k', "<cmd>FzfLua keymaps<cr>")
 
 vim.keymap.set('n', '<leader>ya', [[<CMD>lua require('fzf-lua').lsp_code_actions()<CR>]])
 vim.keymap.set('n', '<leader>yl', [[<CMD>lua require('fzf-lua').lsp_references()<CR>]])
@@ -294,5 +295,40 @@ vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 --     })
 -- end
 require('ufo').setup()
+
+
+-- AUTOCOMMANDS taken from LazyVim
+
+-- wrap and check for spell in text filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
+})
+
+-- resize splits if window got resized
+vim.api.nvim_create_autocmd({ "VimResized" }, {
+  callback = function()
+    local current_tab = vim.fn.tabpagenr()
+    vim.cmd("tabdo wincmd =")
+    vim.cmd("tabnext " .. current_tab)
+  end,
+})
+
+-- OPTIONS taken from LazyVim
+
+-- Set filetype to `bigfile` for files larger than 1.5 MB
+-- Only vim syntax will be enabled (with the correct filetype)
+-- LSP, treesitter and other ft plugins will be disabled.
+-- mini.animate will also be disabled.
+vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+
+-- only set clipboard if not in ssh, to make sure the OSC 52
+-- integration works automatically. Requires Neovim >= 0.10.0
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+vim.opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
+vim.opt.winminwidth = 5 -- Minimum window width
 
 EOF
