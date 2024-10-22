@@ -296,6 +296,13 @@ require("CopilotChat").setup {
 -- end
 -- require('ufo').setup()
 
+-- [[ Indent guides ]]
+--
+require("ibl").setup()
+
+-- [[ Autopairs ]]
+--
+require("nvim-autopairs").setup()
 
 -- AUTOCOMMANDS taken from LazyVim
 

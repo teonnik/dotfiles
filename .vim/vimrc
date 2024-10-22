@@ -57,6 +57,12 @@ call plug#begin()
     " Folding
     " Plug 'kevinhwang91/nvim-ufo'
     " Plug 'kevinhwang91/promise-async'
+
+    " indent guides
+    Plug 'lukas-reineke/indent-blankline.nvim'
+
+    " autopairs
+    Plug 'windwp/nvim-autopairs'
   else
     Plug 'morhetz/gruvbox'              " color scheme
     Plug 'tpope/vim-vinegar'            " improved netrw
