@@ -271,30 +271,17 @@ require("CopilotChat").setup {
 }
 
 -- [[ Folding: nvim-ufo ]]
--- vim.o.foldcolumn = '0'
--- vim.o.foldlevel = 99
--- vim.o.foldlevelstart = 99
--- vim.o.foldenable = true
--- vim.opt.foldnestmax = 7
+--
+-- Note: `lsp` mode provides folding for comments
+vim.o.foldcolumn = '0'   -- don't use a fold column
+vim.o.foldlevel = 99     -- higher number keeps all folds open
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
--- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
--- vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
--- vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
 
--- Tell the server the capability of foldingRange,
--- Neovim hasn't added foldingRange to default capabilities, users must add it manually
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.foldingRange = {
---     dynamicRegistration = false,
---     lineFoldingOnly = true
--- }
--- local language_servers = require("lspconfig").util.available_servers() -- or list servers manually like {'gopls', 'clangd'}
--- for _, ls in ipairs(language_servers) do
---     require('lspconfig')[ls].setup({
---         capabilities = capabilities
---     })
--- end
--- require('ufo').setup()
+require('ufo').setup()
 
 -- [[ Indent guides ]]
 --

@@ -55,8 +55,8 @@ call plug#begin()
     Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 
     " Folding
-    " Plug 'kevinhwang91/nvim-ufo'
-    " Plug 'kevinhwang91/promise-async'
+    Plug 'kevinhwang91/nvim-ufo'
+    Plug 'kevinhwang91/promise-async'
 
     " indent guides
     Plug 'lukas-reineke/indent-blankline.nvim'
