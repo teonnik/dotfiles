@@ -177,6 +177,7 @@ pipewire-alsa
 wireplumber
 bluez
 bluez-utils
+blueman     # bluetooth applet
 #pulseaudio-bluetooth
 
 pavucontrol                       # volume control
