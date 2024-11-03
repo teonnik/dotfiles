@@ -198,9 +198,6 @@ nnoremap <Leader>pf :let @+=expand('%:p')<CR>
 " copy filename
 nnoremap <Leader>pn :let @+=expand('%:t')<CR>
 
-" source local .lvimrc
-nnoremap <leader>s :so .lvimrc<cr>
-
 " execute current file
 nnoremap <leader>ue :!%:p<cr>
 
