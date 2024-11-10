@@ -28,7 +28,14 @@ exec "setxkbmap -layout us,bg -variant ,phonetic -option 'grp:alt_shift_toggle'"
 # notification daemon
 exec --no-startup-id dunst
 
+# internet
 exec nm-applet
+
+# bluetooth
+exec blueman-applet
+
+# messaging app
+exec signal-desktop --use-tray-icon
 
 # ------------------------------------------------------------------------------
 # Window configuration : `xprop` -> click on window
