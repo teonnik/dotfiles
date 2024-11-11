@@ -165,7 +165,7 @@ xnoremap p pgvy
 
 " list buffers and wait for selection to open
 " nnoremap <leader>b :ls<cr>:b<space>
-nnoremap <leader>b :Buffers<cr>
+" nnoremap <leader>b :Buffers<cr>
 
 " close current buffer
 "nnoremap <leader>d :bd<cr>
@@ -178,7 +178,7 @@ nnoremap <leader>c :cclose<cr> :lclose<cr> :pclose<cr>
 nnoremap <leader>e :e<space>
 
 " Search for files with fzf and ag
-nnoremap <leader>f :Files<cr>
+" nnoremap <leader>f :Files<cr>
 
 " set language
 nnoremap <leader>lbg :set keymap=bulgarian-phonetic<cr>
@@ -221,7 +221,7 @@ nmap     <leader>w :w!<cr>
 
 " grep the code base using the silver searcher
 " nnoremap <leader>/ :Ag<space>
-nnoremap <leader>/ :Rag<space>
+" nnoremap <leader>/ :Rag<space>
 
 " remove highlighting
 map      <silent> <leader><cr> :noh<cr>

@@ -243,10 +243,15 @@ require("nvim-dap-virtual-text").setup()
 -- [[ Configure fuzzy finder for DAP processes ]]
 --
 require('fzf-lua').register_ui_select()
+-- Core
+vim.keymap.set('n', '<leader>/', "<cmd>FzfLua live_grep<cr>")
+vim.keymap.set('n', '<leader>.', "<cmd>FzfLua grep_cword<cr>")
+vim.keymap.set('n', '<leader>f', "<cmd>FzfLua files<cr>")
+vim.keymap.set('n', '<leader>b', "<cmd>FzfLua buffers<cr>")
+
 vim.keymap.set('n', '<leader>k', "<cmd>FzfLua keymaps<cr>")
 vim.keymap.set('n', '<leader>sc', "<cmd>FzfLua command_history<cr>")
 vim.keymap.set('n', '<leader>sr', "<cmd>FzfLua registers<cr>")
-vim.keymap.set('n', '<leader>ss', "<cmd>FzfLua live_grep<cr>")
 
 vim.keymap.set('n', '<leader>ya', [[<CMD>lua require('fzf-lua').lsp_code_actions()<CR>]])
 vim.keymap.set('n', '<leader>yl', [[<CMD>lua require('fzf-lua').lsp_references()<CR>]])

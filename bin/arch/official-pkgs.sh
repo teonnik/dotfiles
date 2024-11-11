@@ -232,6 +232,7 @@ imagemagick  # convert tool: png/jpg -> pdf
 imv
 
 docker
+docker-buildx
 
 vlc                    # media player
 mpv
