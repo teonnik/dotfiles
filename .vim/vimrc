@@ -192,11 +192,11 @@ nnoremap <leader>n :set nu!<cr>
 nnoremap <leader>o :Oil<cr>
 
 " copy filepath relative to current working directory
-nnoremap <Leader>pp :let @+=expand('%')<CR>
+nnoremap <leader>pp :let @+=expand('%')<CR>
 " copy full filepath
-nnoremap <Leader>pf :let @+=expand('%:p')<CR>
+nnoremap <leader>pf :let @+=expand('%:p')<CR>
 " copy filename
-nnoremap <Leader>pn :let @+=expand('%:t')<CR>
+nnoremap <leader>pn :let @+=expand('%:t')<CR>
 
 " execute current file
 nnoremap <leader>ue :!%:p<cr>

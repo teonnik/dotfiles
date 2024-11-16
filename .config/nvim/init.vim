@@ -24,9 +24,9 @@ local luasnip = require('luasnip')
 
 local cmp = require'cmp'
 cmp.setup({
-  completion = {
-    autocomplete = false
-  },
+  --completion = {
+  --  autocomplete = false
+  --},
   snippet = {
     -- REQUIRED - a snippet engine must be specified as some LSPs use snippets by default
     expand = function(args)
@@ -58,6 +58,8 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'path' },
+  },
+  {
     { name = 'buffer' },
     { name = 'luasnip' },
   }),
