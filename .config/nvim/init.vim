@@ -298,7 +298,11 @@ require('ufo').setup()
 
 -- [[ Indent guides ]]
 --
-require("ibl").setup()
+require("ibl").setup({
+  scope = {
+    enabled = false, -- don't underline outer scope
+  }
+})
 
 -- [[ Autopairs ]]
 --
