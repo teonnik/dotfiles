@@ -170,3 +170,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${HOME}/code/po
 # install zsh autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${HOME}/code/zsh-autosuggestions
 
+# install fzf-tab
+git clone https://github.com/Aloxaf/fzf-tab ${HOME}/code/fzf-tab
+
+# zsh syntax highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ${HOME}/code/zsh-syntax-highlighting

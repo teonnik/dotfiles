@@ -50,6 +50,10 @@ fi
 source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/key-bindings.zsh"
 source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/completion.zsh"
 
+# fzf-tab
+autoload -U compinit; compinit
+source ${HOME}/code/fzf-tab/fzf-tab.plugin.zsh
+
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
@@ -66,3 +70,6 @@ eval "$(pyenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# zsh syntax highlighting
+source ${HOME}/code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

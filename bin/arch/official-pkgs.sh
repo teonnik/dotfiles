@@ -9,6 +9,8 @@ base         # bundle: bash, file, grep, gzip, iproute2, pacman, sed, shadow, sy
 util-linux   # bundle: chsh, cal, column, fdisk, hwclock, kill, lsblk, lscpu, mkfs, mount, su, umount
 base-devel   # bundle: autoconf, automake, binutils, make, which, gcc, sudo, pkgconf
 
+binsider     # Elf binary analysis
+
 reflector   # Arch mirror list manager script for pacman
 pacutils    # Provides `paclog`
 
