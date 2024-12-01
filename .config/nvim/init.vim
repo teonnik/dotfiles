@@ -308,6 +308,10 @@ require("ibl").setup({
 --
 require("nvim-autopairs").setup()
 
+-- [[ LSP Signature ]]
+--
+require("lsp_signature").setup()
+
 -- AUTOCOMMANDS taken from LazyVim
 
 -- wrap and check for spell in text filetypes

@@ -43,3 +43,6 @@ exec signal-desktop --use-tray-icon
 assign [class="DRIVE Sim End To End "] 4
 # Moves the DS2 splash screen to WS 4 (Note the lowercase `t`)
 assign [class="DRIVE Sim End to End "] 4
+
+# WAR for Slack screen sharing problem in tabbed or stacking mode : https://github.com/i3/i3/discussions/6007
+for_window [title="Huddle: .*"] floating enable, fullscreen enable

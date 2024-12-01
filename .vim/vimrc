@@ -32,6 +32,8 @@ call plug#begin()
     Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'rcarriga/cmp-dap'             " completion in dap-repl buffer
 
+    Plug 'ray-x/lsp_signature.nvim'     " LSP function signature while typing
+
     Plug 'onsails/lspkind.nvim'         " icons for the completion menu
 
     Plug 'L3MON4D3/LuaSnip'              " snippet engine
