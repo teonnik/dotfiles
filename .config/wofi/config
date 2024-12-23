@@ -1,7 +1,8 @@
 # vim: ft=config
 width=800
 height=400
-mode=drun
+#mode=drun
+mode=run
 colors=colors
 filter_rate=100
 insensitive=true

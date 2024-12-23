@@ -104,6 +104,7 @@ bindsym $mod+minus scratchpad show
 # move back and forth between windows
 bindsym $mod+Tab workspace back_and_forth
 
+
 # ------------------------------------------------------------------------------
 # Modes
 
@@ -143,40 +144,9 @@ mode "resize_bottom" {
 }
 bindsym $mod+Mod1+Down mode "resize_bottom"
 
-# adapted from here https://faq.i3wm.org/question/239/how-do-i-suspendlockscreen-and-logout.1.html
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id i3lock && systemctl suspend, mode "default"
-    bindsym h exec --no-startup-id i3lock && systemctl hibernate, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+p mode "$mode_system"
-
 
 # ------------------------------------------------------------------------------
 # Apps
-
-bar {
-    font pango:FiraCode Nerd Font, FontAwesome 12
-    position top
-    status_command mybar
-    colors {
-        separator #666666
-        background #282828
-        statusline #dddddd
-        #focused_workspace #0088CC #0088CC #ffffff
-        #active_workspace #333333 #333333 #ffffff
-        #inactive_workspace #333333 #333333 #888888
-        #urgent_workspace #2f343a #900000 #ffffff
-    }
-}
 
 # audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%

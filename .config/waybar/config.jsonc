@@ -1,31 +1,52 @@
 {
+    // Spacing between modules is added to module margins
     "layer": "top",
     "position": "top",
-    "height": 20,
-
-    "modules-left": [ "memory", "cpu", "temperature",  "battery", "network"],
-    "modules-center": [ "sway/workspaces",  "sway/mode" ],
-    "modules-right": [ "custom/layout", "idle_inhibitor", "backlight", "pulseaudio",  "clock#date", "clock#time" ],
-
+    "modules-left": [
+        "idle_inhibitor",
+        "sway/scratchpad",
+        "sway/mode",
+        "sway/window"
+    ],
+    "modules-center": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "battery",
+        "temperature",
+        "custom/layout",
+        "backlight",
+        "pulseaudio",
+        "clock",
+        "tray"
+    ],
+    "sway/workspaces": {
+        "format": "{icon}"
+    },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        // For example the custom "resize" mode in my tiling config
+        "format": " {}",
+        "max-length": 70
     },
-    "clock#date": {
-        "format": " {:%Y-%m-%d}"
+    "sway/scratchpad": {
+        "format": " {count}",
+        "show-empty": true,
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
     },
-    "clock#time": {
-        "format": " {:%H:%M}   "
+    "sway/window": {
+        "format": "  [{shell}] {title}",
+        "max-length": 50
     },
-    "cpu": {
-        "format": " {usage}",
-        "tooltip": false
-    },
-    "memory": {
-      "format": " {used:0.1f}Gb"
+    "clock": {
+        "interval": 60,
+        "tooltip": true,
+        "format": "{:%H:%M}",
+        "tooltip-format": "{:%Y-%m-%d}"
     },
     "temperature": {
         "critical-threshold": 80,
-        "format": "{icon} {temperatureC}",
+        "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""]
     },
     "backlight": {
@@ -37,18 +58,11 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}",
-        "format-charging": " {capacity}",
-        "format-plugged": " {capacity}",
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format-wifi": " {essid}",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-linked": " {ifname} (No IP)",
-        "format-disconnected": "⚠ Disconnected",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         "format": "{icon} {volume}",
@@ -76,10 +90,14 @@
         "tooltip": false
     },
     "idle_inhibitor": {
-        "format": "{icon}",
+        "format": "{icon} ",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         }
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
     }
 }

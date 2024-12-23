@@ -1,20 +1,17 @@
 * {
     border: none;
-    border-radius: 0;
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    border-radius: 5px;
+    font-family: "FiraCode Nerd Font", "monospace";
     font-size: 15px;
-    min-height: 0;
 }
 
 window#waybar {
-    background-color: #2F343F;
     color: #d8dee8;
-    transition-property: background-color;
+    background-color: transparent;
 }
 
-
 #workspaces button {
-    padding: 0 10px;
+    padding: 0 5px;
     color: #d8dee8;
 }
 
@@ -30,7 +27,11 @@ window#waybar {
     background-color: #eb4d4b;
 }
 
+#workspaces,
+#mode,
 #idle_inhibitor,
+#scratchpad,
+#window,
 #custom-layout,
 #clock,
 #battery,
@@ -39,10 +40,13 @@ window#waybar {
 #temperature,
 #backlight,
 #network,
-#pulseaudio {
-  margin: 0 10px;
+#pulseaudio,
+#tray {
+  margin: 5px 3px;
+  background-color: #2F343F;
+  padding: 2px;
+  /*padding: 0 10px;*/
 }
-
 
 @keyframes blink {
     to {

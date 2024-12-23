@@ -54,7 +54,7 @@ call plug#begin()
     " Copilot
     Plug 'zbirenbaum/copilot.lua'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'main' }
 
     " Folding
     Plug 'kevinhwang91/nvim-ufo'

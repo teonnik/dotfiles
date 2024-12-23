@@ -21,10 +21,12 @@ efibootmgr  # EFI boot manager
 
 # --- sway setup
 sway                  # window manager
-xorg-server-xwayland  # wayland xorg support
-kanshi                # monitors setup manager
 swaylock              # screen locker
 swayidle              # desktop dimming manager
+swaybg                # wallpapers
+xorg-server-xwayland  # wayland xorg support
+wlr-randr             # monitor configuration tool
+kanshi                # dynamic monitor setup on hotplug
 wl-clipboard          # clipboard
 wofi                  # app launcher
 grim                  # screenshot utility
@@ -35,8 +37,7 @@ mako libnotify        # notifications
 xdg-desktop-portal-wlr # screen sharing
 wf-recorder            # screen recording
 foot                   # terminal emulator for Wayland
-#waybar
-i3status-rust          # bar
+waybar                 # bar
 wlsunset
 
 # --- i3 setup
@@ -53,6 +54,7 @@ scrot maim             # screenshots
 dunst                  # notification daemon
 arandr
 redshift
+i3status-rust          # bar
 
 ly                    # login manager
 
