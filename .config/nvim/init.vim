@@ -162,6 +162,7 @@ nvim_lsp['rust_analyzer'].setup {
 --   on_attach = custom_lsp_attach
 -- }
 
+nvim_lsp['bashls'].setup{}
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -268,7 +269,12 @@ vim.keymap.set('n', '<leader>ys', [[<CMD>lua require('fzf-lua').lsp_document_sym
 
 -- [[  Configura oil.nvim ]]
 --
-require("oil").setup()
+require("oil").setup{
+  view_options = {
+    -- Show files and directories that start with "."
+    show_hidden = false,
+  }
+}
 
 -- [[  Toggle terminal ]]
 --

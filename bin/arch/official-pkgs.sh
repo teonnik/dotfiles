@@ -141,6 +141,9 @@ texlive-fontsextra # needed for CV
 biber
 texlab
 
+# bash
+bash-language-server
+
 # rust
 rust-analyzer
 
