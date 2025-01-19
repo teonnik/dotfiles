@@ -1,7 +1,0 @@
-#!/bin/bash
-
-for subreddit in swaywm archlinux neovim cpp programming hardware linux commandline privacyguides privacy YouShouldKnow android Futurology
-do
-  printf "\n\n--- r/${subreddit} --- \n\n"
-  reddio print -l 5 -t day r/${subreddit}/top
-done

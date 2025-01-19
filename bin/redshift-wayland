@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Zurich longitude and latitude
-wlsunset -t 200 -l 47.3 -L 8.5 &

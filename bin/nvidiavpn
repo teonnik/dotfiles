@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# VPN gateways: https://ngvpn.nvidia.com/
-#
-# Wurselen (DE) - ngvpn11.vpn.nvidia.com
-# Berlin (DE) - ngvpn13.vpn.nvidia.com
-# Munich (DE) - ngvpn14.vpn.nvidia.com
-#
-QTWEBENGINE_DISABLE_SANDBOX=1 OPENSSL_CONF=~/.config/openssl/nvidia_vpn_ssl_fix.conf openconnect-sso --server "ngvpn13.vpn.nvidia.com/SAML" --user "tnikolov@nvidia.com"
