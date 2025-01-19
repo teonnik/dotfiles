@@ -153,6 +153,11 @@ nvim_lsp['pylsp'].setup {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
+nvim_lsp['rust_analyzer'].setup {
+  on_attach = custom_lsp_attach,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+}
+
 -- nvim_lsp['texlab'].setup {
 --   on_attach = custom_lsp_attach
 -- }

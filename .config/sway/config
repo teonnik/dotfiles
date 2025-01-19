@@ -84,7 +84,7 @@ for_window [class="vlc"] inhibit_idle fullscreen # xwayland
 
 
 # set opacity for window
-for_window [app_id="foot"] opacity set 0.90
+for_window [app_id="foot"] opacity set 0.70
 
 # fix changing tab size when emojis are present
 #for_window [app_id="firefox"] title_format " Firefox" inhibit_idle fullscreen
