@@ -29,6 +29,7 @@ if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
   export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
   export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
   export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
+  export ELECTRON_OZONE_PLATFORM_HINT="auto" # Wayland mode for `Electron` apps
 fi
 
 # -- Dotfiles
