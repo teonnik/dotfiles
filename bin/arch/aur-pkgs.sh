@@ -4,9 +4,8 @@ PKGS=(
 
 skypeforlinux-stable-bin
 slack-desktop
-bloaty
 pandoc-bin
-wlsunset   # blue light filter for night reading
+wdisplays  # GUI for managing sway monitors similar to `arandr`
 vcal       # view .ics and calendar files
 libtree
 cmake-format
@@ -16,7 +15,6 @@ lazydocker-bin   # docker management TUI
 xkb-switch
 simplescreenrecorder # moved to AUR from official
 mullvad-vpn-bin
-brightness-controller-git
 
 #navi-bin
 #gcalcli

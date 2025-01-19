@@ -95,6 +95,7 @@ visudo /etc/sudoers
 systemctl enable NetworkManager.service \
                  bluetooth.service \
                  cups.service \
+                 avahi-daemon \
                  atd.service \
                  docker.service \
                  pcscd.service \
@@ -114,7 +115,7 @@ timedatectl set-ntp true
 
 # Enable user services
 systemctl --user enable xdg-desktop-portal.service \
-                        syncthing.service
+                        syncthing.service \
                         #pipewire.service
                         #pipewire-pulse.service
                         #pipewire.socket
@@ -123,8 +124,10 @@ systemctl --user enable xdg-desktop-portal.service \
 
 
 # 1. Chromium extensions - uBlock Origin, LastPass, BypassPaywalls, PrivacyBadger
-# - set the downloads folder to `downloads`
-# - save sessions : Settings > On startup > Continue where you left off
+#   - set the downloads folder to `downloads`
+#   - save sessions : Settings > On startup > Continue where you left off
+#   - Settings > Appearance > Mode > Dark
+#   - Settings > Appearance > "Use system title bar and borders"
 
 # 2. Syncthing
 #

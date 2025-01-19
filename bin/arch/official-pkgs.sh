@@ -38,7 +38,9 @@ xdg-desktop-portal-wlr # screen sharing
 wf-recorder            # screen recording
 foot                   # terminal emulator for Wayland
 waybar                 # bar
-wlsunset
+wlsunset               # day/night gamma adjustments (redshift)
+nwg-look               # gtk 3 theme configuration tool
+
 
 # --- i3 setup
 i3-wm
@@ -59,15 +61,20 @@ i3status-rust          # bar
 ly                    # login manager
 
 lsof                  # list open files
-xdg-utils handlr      # provides default applications (xdg-open, xdg-mime, ...)
+xdg-utils             # provides default applications (xdg-open, xdg-mime, ...)
+handlr-regex          # new alternative to xdg-open
 xdg-user-dirs
-gendesk               # utility to generate .desktop files
+# gendesk             # utility to generate .desktop files
 
 at                    # schedule commands
 hexyl                 # command line hex viewer
 nnn                   # fast terminal file manager
 
-yubikey-manager       # YubiKey management
+# smart cards (electronic identification)
+pcsclite              # PC/SC smart card daemon serving as middleware between apps and smart cards
+ccid                  # generic driver for smart cards (CCID protocol - USB standard)
+opensc
+yubikey-manager       # YubiKey management (pcscd.service)
 
 zsh            # shell
 gvim vi        # editor
@@ -86,6 +93,7 @@ lldb           # debugger
 openmp         # clang's opnemp support
 bear           # LSP database generator for e.g. Makefile - compile_commands.json
 # renameutils    # mv with $EDITOR - qmv
+bloaty         # Size profiler for binaries
 
 # monitoring
 perf
@@ -190,9 +198,11 @@ brightnessctl                     # brightness
 
 # printing
 cups-pdf
+avahi     # printer discovery
+nss-mdns  # printer discovery
 foomatic-db-engine
 foomatic-db
-hplip    # more printers
+# hplip    # more printers
 
 translate-shell  # language translation in the terminal
 
