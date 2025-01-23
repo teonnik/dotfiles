@@ -85,6 +85,7 @@ direnv         # env per folder
 bat            # modern alternative to cat/less
 git            # version control management
 lazygit        # git TUI
+k9s            # Kubernetes TUI
 cmake          # build tool
 #diff-so-fancy  # better diff
 git-delta      # better diff
