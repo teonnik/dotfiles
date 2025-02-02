@@ -22,6 +22,7 @@ lspkind.init({}) -- integration with omni menu
 
 local luasnip = require('luasnip')
 
+-- Disable nvim-cmp on specific buffer : `lua require('cmp').setup.buffer { enabled = false }`
 local cmp = require'cmp'
 cmp.setup({
   --completion = {
@@ -153,6 +154,7 @@ nvim_lsp['pylsp'].setup {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
 
+-- Invalid offset issue FIXED in neovim 0.11: https://github.com/rust-lang/rust-analyzer/issues/17289
 nvim_lsp['rust_analyzer'].setup {
   on_attach = custom_lsp_attach,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
