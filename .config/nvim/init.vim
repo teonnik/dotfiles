@@ -35,7 +35,7 @@ cmp.setup({
     end,
   },
   mapping = {
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    -- ["<CR>"] = cmp.mapping.confirm { select = true },
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     -- super-tab
