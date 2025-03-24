@@ -145,6 +145,10 @@ texlab
 # bash
 bash-language-server
 
+# lua
+lua-language-server
+stylua
+
 # rust
 rust-analyzer
 
