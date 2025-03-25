@@ -90,7 +90,23 @@ vim.keymap.set('n', '<leader>w', ':w!<CR>', { desc = 'Save quickly' })
 
 require('lazy').setup({
   'nvim-tree/nvim-web-devicons', -- icons for `fzf-lua`, `oil` and `lualine`
-  'nvim-lualine/lualine.nvim', -- statusline
+  -- 'tpope/vim-surround', -- (disabled until clash with `nvim.leap` is resolved) surround words easily
+  'tpope/vim-repeat', -- repeating with `.` for many plugins
+  'tpope/vim-eunuch', -- unix shell wrappers for vim
+  'tpope/vim-obsession', -- record vim sessions
+  'tpope/vim-fugitive', -- git integration
+  'junegunn/vim-easy-align', -- align text on delimiters
+
+  { -- statusline
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      options = {
+        theme = "catppuccin",
+        globalstatus = true,
+      }
+    }
+  },
   { -- colorscheme
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -106,6 +122,7 @@ require('lazy').setup({
   },
   { -- fuzzy finder
     'ibhagwan/fzf-lua',
+    lazy = false,
     keys = {
       { '<leader>/', '<cmd>FzfLua live_grep<cr>', desc = 'FZF: live grep' },
       { '<leader>.', '<cmd>FzfLua grep_cword<cr>', desc = 'FZF: grep current word' },
@@ -307,8 +324,8 @@ require('lazy').setup({
       { '<leader>d', ':Bdelete<cr>', desc = 'Close current buffer' },
     },
   },
-  {
-    'lukas-reineke/indent-blankline.nvim', -- indent guides
+  { -- indent guides
+    'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {
       scope = {
@@ -316,18 +333,12 @@ require('lazy').setup({
       },
     },
   },
-  {
-    'windwp/nvim-autopairs', -- autopairs
+  { -- autopairs
+    'windwp/nvim-autopairs',
     event = 'InsertEnter',
     config = true,
   },
 
-  'tpope/vim-surround', -- surround words easily
-  'tpope/vim-repeat', -- repeating with `.` for many plugins
-  'tpope/vim-eunuch', -- unix shell wrappers for vim
-  'tpope/vim-obsession', -- record vim sessions
-  'tpope/vim-fugitive', -- git integration
-  'junegunn/vim-easy-align', -- align text on delimiters
   { -- navigation
     'ggandor/leap.nvim',
     config = function()
@@ -336,6 +347,7 @@ require('lazy').setup({
   },
   { -- AI
     'olimorris/codecompanion.nvim',
+    lazy = false,
     config = function()
       require('codecompanion').setup({
         strategies = {
@@ -348,6 +360,9 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+    },
+    keys = {
+      { '<leader>a', '<cmd>CodeCompanionChat Toggle<cr>', desc = 'Toggle AI' },
     },
   },
 })
