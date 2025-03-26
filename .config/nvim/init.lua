@@ -90,7 +90,7 @@ vim.keymap.set('n', '<leader>w', ':w!<CR>', { desc = 'Save quickly' })
 
 require('lazy').setup({
   'nvim-tree/nvim-web-devicons', -- icons for `fzf-lua`, `oil` and `lualine`
-  -- 'tpope/vim-surround', -- (disabled until clash with `nvim.leap` is resolved) surround words easily
+  'tpope/vim-surround', -- surround words easily
   'tpope/vim-repeat', -- repeating with `.` for many plugins
   'tpope/vim-eunuch', -- unix shell wrappers for vim
   'tpope/vim-obsession', -- record vim sessions
@@ -342,7 +342,8 @@ require('lazy').setup({
   { -- navigation
     'ggandor/leap.nvim',
     config = function()
-      require('leap').add_default_mappings()
+      -- Mappings for `x` and `o` modes conflict with `surround` and are unused
+      vim.keymap.set('n', 's', '<Plug>(leap-anywhere)')
     end,
   },
   { -- AI
