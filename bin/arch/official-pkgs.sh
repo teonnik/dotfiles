@@ -99,7 +99,7 @@ bloaty         # Size profiler for binaries
 # monitoring
 perf
 htop
-glances
+btop
 
 neofetch                    # system info
 onefetch                    # git repo info
