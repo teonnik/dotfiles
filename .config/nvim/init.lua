@@ -32,10 +32,12 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- completion menu
 vim.opt.conceallevel = 2 -- hide * markup for bold and italic, but not markers with substitutions
 vim.opt.cursorline = true -- highlight the text line of the cursor
 vim.opt.expandtab = true -- turn a tab into spaces
+vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
 vim.opt.foldcolumn = '0' -- don't use a fold column
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
 vim.opt.foldlevel = 99 -- higher number keeps all folds open
 vim.opt.foldlevelstart = 99
-vim.opt.foldenable = true
 vim.opt.hidden = true -- hide buffers even with unsaved changes
 vim.opt.history = 500 -- set number of lines to remember
 vim.opt.hlsearch = true -- highlight search results
@@ -47,9 +49,10 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a' -- enable mouse mode
 vim.opt.number = true -- show line numbers
 vim.opt.relativenumber = true
-vim.opt.scrolloff = 10 -- " set 10 lines to the cursor when moving vertically
-vim.opt.shiftwidth = 4 -- " spaces for autoindents
-vim.opt.showmatch = true -- " show matching brackets
+vim.opt.scrolloff = 10 -- set 10 lines to the cursor when moving vertically
+vim.opt.shiftwidth = 4 -- spaces for autoindents
+vim.opt.showmatch = true -- show matching brackets
+vim.opt.showmode = false -- the mode is shown in the statusline already
 vim.opt.signcolumn = 'yes' -- keep signcolumn on by default
 vim.opt.smartcase = true -- be case sensitive when typing uppercase
 vim.opt.splitbelow = true
@@ -102,10 +105,10 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       options = {
-        theme = "catppuccin",
+        theme = 'catppuccin',
         globalstatus = true,
-      }
-    }
+      },
+    },
   },
   { -- colorscheme
     'catppuccin/nvim',
@@ -400,6 +403,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set( 'n', '<leader>yd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = 'LSP: Open diagnostic', buffer = bufnr })
     vim.keymap.set( 'n', '<leader>yf', '<cmd>lua vim.lsp.buf.format()<CR>', { desc = 'LSP: format', buffer = bufnr })
     -- stylua: ignore end
+
+    -- use LSP folding is supported by server
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client ~= nil and client:supports_method('textDocument/foldingRange') then
+      vim.wo.foldmethod = 'expr'
+      vim.wo.foldexpr = 'v:lua.vim.lsp.foldexpr()'
+    end
   end,
 })
 
