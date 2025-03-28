@@ -20,12 +20,17 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
 
+
+# -- man `zshoptions` for details
 # cd - stack old directories
 setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 # automatically cd into typed directory
 setopt autocd
+# auto insert first match when completing with <TAB>
+setopt menu_complete
+setopt list_packed
 
 # highlight selected entry from completion menu
 zstyle ':completion:*' menu select
@@ -52,7 +57,7 @@ source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/completion.zsh"
 
 # fzf-tab
 autoload -U compinit; compinit
-source ${HOME}/code/fzf-tab/fzf-tab.plugin.zsh
+#source ${HOME}/code/fzf-tab/fzf-tab.plugin.zsh
 
 # zsh-autosuggestions
 source ${HOME}/code/zsh-autosuggestions/zsh-autosuggestions.zsh
