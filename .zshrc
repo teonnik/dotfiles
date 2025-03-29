@@ -19,7 +19,11 @@ bindkey "^?" backward-delete-char
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\C-x\C-e' edit-command-line
+# [Ctrl-e] dismiss completion menu
+bindkey '^E' send-break
 
+# Enable completion
+autoload -U compinit; compinit
 
 # -- man `zshoptions` for details
 # cd - stack old directories
@@ -56,7 +60,6 @@ source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/key-bindings.zsh"
 source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/completion.zsh"
 
 # fzf-tab
-autoload -U compinit; compinit
 #source ${HOME}/code/fzf-tab/fzf-tab.plugin.zsh
 
 # zsh-autosuggestions
@@ -67,11 +70,6 @@ fi
 
 # p10k theme
 source ${HOME}/code/powerlevel10k/powerlevel10k.zsh-theme
-
-# setup pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
