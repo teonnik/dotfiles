@@ -34,7 +34,7 @@ vim.opt.cursorline = true -- highlight the text line of the cursor
 vim.opt.expandtab = true -- turn a tab into spaces
 vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
 vim.opt.foldcolumn = '0' -- don't use a fold column
-vim.opt.foldmethod = "indent"
+vim.opt.foldmethod = 'indent'
 vim.opt.foldenable = true
 vim.opt.foldlevelstart = 99 -- keep all folds open at the start
 vim.opt.hidden = true -- hide buffers even with unsaved changes
@@ -52,7 +52,7 @@ vim.opt.scrolloff = 10 -- set 10 lines to the cursor when moving vertically
 vim.opt.shiftwidth = 4 -- spaces for autoindents
 vim.opt.showmatch = true -- show matching brackets
 vim.opt.showmode = false -- the mode is shown in the statusline already
-vim.opt.signcolumn = 'yes' -- keep signcolumn on by default
+vim.opt.signcolumn = 'yes' -- keep signcolumn on by default for diagnostics, breakpoints and VCS changes
 vim.opt.smartcase = true -- be case sensitive when typing uppercase
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -96,7 +96,6 @@ require('lazy').setup({
   'tpope/vim-repeat', -- repeating with `.` for many plugins
   'tpope/vim-eunuch', -- unix shell wrappers for vim
   'tpope/vim-obsession', -- record vim sessions
-  'tpope/vim-fugitive', -- git integration
   'junegunn/vim-easy-align', -- align text on delimiters
 
   { -- statusline
@@ -319,6 +318,65 @@ require('lazy').setup({
       vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end)
       -- stylua: ignore end
     end,
+  },
+  { -- git integration
+    'lewis6991/gitsigns.nvim',
+    -- event = 'LazyFile',
+    opts = {
+      on_attach = function(bufnr)
+        local gitsigns = require('gitsigns')
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map('n', ']c', function()
+          if vim.wo.diff then
+            vim.cmd.normal({ ']c', bang = true })
+          else
+            gitsigns.nav_hunk('next')
+          end
+        end)
+
+        map('n', '[c', function()
+          if vim.wo.diff then
+            vim.cmd.normal({ '[c', bang = true })
+          else
+            gitsigns.nav_hunk('prev')
+          end
+        end)
+
+        -- Actions
+        map('n', '<leader>hs', gitsigns.stage_hunk)
+        map('n', '<leader>hr', gitsigns.reset_hunk)
+
+        map('v', '<leader>hs', function()
+          gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end)
+
+        map('v', '<leader>hr', function()
+          gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+        end)
+
+        map('n', '<leader>hS', gitsigns.stage_buffer)
+        map('n', '<leader>hR', gitsigns.reset_buffer)
+        map('n', '<leader>hp', gitsigns.preview_hunk)
+        map('n', '<leader>hi', gitsigns.preview_hunk_inline)
+
+        map('n', '<leader>hb', function()
+          gitsigns.blame_line({ full = true })
+        end)
+        map('n', '<leader>hB', gitsigns.blame)
+
+        map('n', '<leader>hd', gitsigns.diffthis)
+
+        -- Text object
+        map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
+      end,
+    },
   },
   {
     'famiu/bufdelete.nvim', -- (archived) preserves window layout when deleting buffers
