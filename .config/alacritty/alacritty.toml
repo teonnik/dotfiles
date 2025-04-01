@@ -1,3 +1,5 @@
+# Docs: `man 5 alacritty`
+
 [colors.bright]
 black = "#928374"
 blue = "#83a598"
@@ -22,6 +24,11 @@ yellow = "#d79921"
 background = "#282828"
 foreground = "#ebdbb2"
 
+# Fix disappearing cursor in `neovim` - use the same color irrespective of foreground and background
+[colors.cursor]
+text = "0x000000"
+cursor = "0x00ff00"
+
 [env]
 TERM = "xterm-256color"
 
@@ -39,7 +46,6 @@ mods = "Control"
 action = "DecreaseFontSize"
 key = "Minus"
 mods = "Control"
-
 
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Regular" }
