@@ -47,7 +47,7 @@ vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.mouse = 'a' -- enable mouse mode
 vim.opt.number = true -- show line numbers
-vim.opt.relativenumber = true
+-- vim.opt.relativenumber = true
 vim.opt.scrolloff = 10 -- set 10 lines to the cursor when moving vertically
 vim.opt.shiftwidth = 4 -- spaces for autoindents
 vim.opt.showmatch = true -- show matching brackets
@@ -60,7 +60,7 @@ vim.opt.softtabstop = 4
 vim.opt.swapfile = false -- don't create swap files
 vim.opt.tabstop = 4 -- " make tabs 4 spaces
 vim.opt.termguicolors = true
-vim.opt.textwidth = 80 -- set max inserted text width
+-- vim.opt.textwidth = 80 -- set max inserted text width
 vim.opt.undofile = true -- save undo history
 vim.opt.virtualedit = 'block' -- improve the Viusaul Block mode (C-v)
 vim.opt.whichwrap:append('<,>,h,l') -- wrap left and right when at the end
@@ -148,9 +148,9 @@ require('lazy').setup({
       view_options = {
         show_hidden = true,
       },
-      keymaps = {
-        ['y'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
-      },
+      -- keymaps = {
+      --   ['y'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
+      -- },
     },
     keys = {
       { '<leader>o', '<cmd>Oil<cr>', desc = 'Open file explorer' },
@@ -254,6 +254,9 @@ require('lazy').setup({
       })
       nvim_lsp['pylsp'].setup({
         -- Invalid offset issue FIXED in neovim 0.11: https://github.com/rust-lang/rust-analyzer/issues/17289
+        capabilities = capabilities,
+      })
+      nvim_lsp['ruff'].setup({
         capabilities = capabilities,
       })
       nvim_lsp['rust_analyzer'].setup({
