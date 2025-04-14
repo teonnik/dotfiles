@@ -96,9 +96,20 @@ require('lazy').setup({
   'tpope/vim-surround', -- surround words easily
   'tpope/vim-repeat', -- repeating with `.` for many plugins
   'tpope/vim-eunuch', -- unix shell wrappers for vim
-  'tpope/vim-obsession', -- record vim sessions
   'junegunn/vim-easy-align', -- align text on delimiters
 
+  { -- session management
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>qS", function() require("persistence").select() end,desc = "Select Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+    },
+  },
   { -- statusline
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
