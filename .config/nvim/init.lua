@@ -83,10 +83,11 @@ vim.keymap.set(
   { desc = 'Close current buffer' }
 )
 vim.keymap.set('n', '<leader>e', ':e<space>', { desc = 'Open a file' })
+vim.keymap.set('n', '<leader>l', '<cmd>TNNToggleKeymap<cr>', { desc = 'Toggle the Bulgarian phonetic keymap' })
 vim.keymap.set('n', '<leader>pp', '<cmd>TNNCopyPath %<cr>', { desc = 'Copy relative file path' })
 vim.keymap.set('n', '<leader>pf', '<cmd>TNNCopyPath %:p<cr>', { desc = 'Copy full file path' })
 vim.keymap.set('n', '<leader>pn', '<cmd>TNNCopyPath %:t<cr>', { desc = 'Copy filename' })
-vim.keymap.set('n', '<leader>w', ':w!<CR>', { desc = 'Save quickly' })
+vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
 
 ------- PLUGINS
 
@@ -106,6 +107,19 @@ require('lazy').setup({
         theme = 'catppuccin',
         globalstatus = true,
       },
+      sections = {
+        lualine_x = {
+          { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
+            function ()
+              if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
+                return '⌨ ' .. vim.b.keymap_name
+              end
+              return ''
+            end
+          },
+          'encoding', 'fileformat', 'filetype'
+        },
+      }
     },
   },
   { -- colorscheme
@@ -439,6 +453,12 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+    -- [List of spelled languages](https://ftp.nluug.nl/pub/vim/runtime/spell)
+    --   * [Alternative mirrors](https://www.vim.org/mirrors.php)
+    -- Installation directory for spell files : `~/.local/share/nvim/site/spell/`
+    -- Issue: [How to deal with "Cannot find word list bg.utf-8.spl or bg.ascii.spl" warning](https://github.com/neovim/neovim/issues/2102)
+    --   * Run `nvim -u NORC -c "set spelllang=bg spell"`
+    vim.opt_local.spelllang = { "en", "bg" }
   end,
 })
 
@@ -484,3 +504,14 @@ end, {
   nargs = 1, -- require one argument
   desc = 'Copy a file path based on expand() expression',
 })
+
+-- Define a command to toggle the keymap
+--
+-- Note: use `C-v` to insert mapped characters like `[`, `]`, `~`, etc.
+vim.api.nvim_create_user_command('TNNToggleKeymap', function()
+  if vim.o.iminsert == 1 then
+    vim.o.keymap = ""
+  else
+    vim.o.keymap = "bulgarian-phonetic"
+  end
+end, {})
