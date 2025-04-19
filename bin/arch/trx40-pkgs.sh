@@ -5,7 +5,7 @@ PKGS=(
 # --- work: nvidia
 git-lfs
 ccache
-libxcrypt-compat
+libxcrypt-compat # `ngc` dependency
 nvidia       # if nvidia-470xx-dkms is not used
 linux-headers
 dkms

@@ -76,7 +76,7 @@ bindsym $mod+Return exec foot
 bindsym $mod+d exec wofi
 
 # screenshot
-bindsym $mod+p exec grim screenshot.png
+bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy
 
 # inhibit idle when fullscreen
 for_window [app_id="firefox"] inhibit_idle fullscreen # wayland
