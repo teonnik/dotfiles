@@ -1,0 +1,58 @@
+* {
+    font-family: "FiraCode Nerd Font", "monospace";
+    font-size: 15px;
+}
+
+window#waybar {
+    color: #d8dee8;
+    background-color: transparent;
+}
+
+#workspaces button {
+    color: #d8dee8;
+}
+
+/*Both selectors are needed to avoid overriding `active`*/
+#workspaces button.active.visible {
+    color: #cc393a;
+    font-weight: bold;
+}
+
+#workspaces button.visible {
+    color: #d8dee8;
+    font-weight: bold;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4b98;
+    font-weight: bold;
+}
+
+#workspaces,
+#idle_inhibitor,
+#window,
+#language,
+#clock,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+  /*background-color: #1e1e2e;*/
+  background-color: rgba(30, 30, 46, 0.85);
+  /*background-color: transparent;*/
+  /*border: 1px solid #33ccff;*/
+  border-radius: 5px;
+  margin: 5px 3px;
+  padding: 2px 8px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+label:focus {
+    background-color: #000000;
+}
