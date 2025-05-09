@@ -116,7 +116,7 @@ require('lazy').setup({
     opts = {
       options = {
         theme = 'catppuccin',
-        globalstatus = true,
+        -- globalstatus = true,
       },
       sections = {
         lualine_x = {
@@ -238,6 +238,7 @@ require('lazy').setup({
         enable = true,
         additional_vim_regex_highlighting = false,
       },
+      indent = { enable = true },
     },
   },
   { -- language servers
