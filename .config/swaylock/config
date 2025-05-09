@@ -16,7 +16,7 @@ indicator-caps-lock
 #tiling
 
 # Turn the screen into the given color instead of white. If -i is used, this sets the background of the image to the given color. Defaults to white (FFFFFF).
-color=2828287F
+color=9a9b9bFF
 
 # Sets the color of backspace highlight segments.
 bs-hl-color=cc241d

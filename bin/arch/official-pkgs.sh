@@ -58,6 +58,12 @@ arandr
 redshift
 i3status-rust          # bar
 
+
+# -- hyprland setup
+hyprland
+hyprpaper             # wallpapers
+hyprpicker            # color picker
+
 ly                    # login manager
 
 lsof                  # list open files
