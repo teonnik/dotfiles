@@ -116,12 +116,14 @@ mtr             # traceroute alternative
 speedtest-cli   # measure internet speed
 
 gnupg        # encryption and signing tool
-age
+# age
 pass         # password store
 #passage
 minisign     # verify digital signatures
-lastpass-cli # LastPass CLI password store
-pwgen        # generate passwords from the command line
+# lastpass-cli # LastPass CLI password store
+# pwgen        # generate passwords from the command line
+rbw            # Unofficial Bitwarden cli
+rofi-rbw
 
 # internet
 networkmanager         # network manager
