@@ -70,24 +70,21 @@ vim.opt.wrap = false -- don't wrap lines by default
 
 -------- KEYMAPS
 
+-- stylua: ignore start
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlights' })
 vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Left window' })
 vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Right window' })
 vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Down window' })
 vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Up window' })
 vim.keymap.set('t', '<C-n>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
-vim.keymap.set(
-  'n',
-  '<leader>c',
-  ':cclose<cr> :lclose<cr> :pclose<cr>',
-  { desc = 'Close current buffer' }
-)
+vim.keymap.set('n', '<leader>c', ':cclose<cr> :lclose<cr> :pclose<cr>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<leader>e', ':e<space>', { desc = 'Open a file' })
 vim.keymap.set('n', '<leader>l', '<cmd>TNNToggleKeymap<cr>', { desc = 'Toggle the Bulgarian phonetic keymap' })
 vim.keymap.set('n', '<leader>pp', '<cmd>TNNCopyPath %<cr>', { desc = 'Copy relative file path' })
 vim.keymap.set('n', '<leader>pf', '<cmd>TNNCopyPath %:p<cr>', { desc = 'Copy full file path' })
 vim.keymap.set('n', '<leader>pn', '<cmd>TNNCopyPath %:t<cr>', { desc = 'Copy filename' })
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
+-- stylua: ignore end
 
 ------- PLUGINS
 
@@ -99,8 +96,8 @@ require('lazy').setup({
   'junegunn/vim-easy-align', -- align text on delimiters
 
   { -- session management
-    "folke/persistence.nvim",
-    event = "BufReadPre",
+    'folke/persistence.nvim',
+    event = 'BufReadPre',
     opts = {},
     -- stylua: ignore
     keys = {
@@ -121,16 +118,18 @@ require('lazy').setup({
       sections = {
         lualine_x = {
           { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
-            function ()
+            function()
               if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
                 return '⌨ ' .. vim.b.keymap_name
               end
               return ''
-            end
+            end,
           },
-          'encoding', 'fileformat', 'filetype'
+          'encoding',
+          'fileformat',
+          'filetype',
         },
-      }
+      },
     },
   },
   { -- colorscheme
@@ -164,6 +163,7 @@ require('lazy').setup({
       { '<leader>ys', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'FZF-LSP: document symbols' },
     },
     config = function()
+      -- use `fzf-lua` for replace vim.ui.select
       require('fzf-lua').register_ui_select()
     end,
   },
@@ -459,6 +459,29 @@ require('lazy').setup({
       { '<leader>a', '<cmd>CodeCompanionChat Toggle<cr>', desc = 'Toggle AI' },
     },
   },
+  {
+    'gbprod/yanky.nvim',
+    -- Non-empty `opts`: https://github.com/gbprod/yanky.nvim/issues/75
+    opts = {
+      highlight = { timer = 150 },
+    },
+    keys = {
+      -- stylua: ignore start
+      { '<leader>sy', '<cmd>YankyRingHistory<cr>', mode = { 'n', 'x' }, desc = 'Search Yank History', },
+      { 'y', '<Plug>(YankyYank)', mode = { 'n', 'x' }, desc = 'Yank Text' },
+      { 'p', '<Plug>(YankyPutAfter)', mode = 'n', desc = 'Put Text After Cursor' },
+
+      -- https://github.com/gbprod/yanky.nvim/issues/155
+      --
+      -- same as `P` in visual mode
+      { 'p', '<Plug>(YankyPutBefore)', mode = 'x', desc = 'Paste without copying replaced text' },
+
+      { 'P', '<Plug>(YankyPutBefore)', mode = { 'n', 'x' }, desc = 'Put Text Before Cursor' },
+      { '[y', '<Plug>(YankyPreviousEntry)', desc = 'Yank Previous Entry' },
+      { ']y', '<Plug>(YankyNextEntry)', desc = 'Yank Next Entry' },
+      -- stylua: ignore end
+    },
+  },
 })
 
 -------- AUTOCOMMANDS
@@ -474,7 +497,7 @@ vim.api.nvim_create_autocmd('FileType', {
     -- Installation directory for spell files : `~/.local/share/nvim/site/spell/`
     -- Issue: [How to deal with "Cannot find word list bg.utf-8.spl or bg.ascii.spl" warning](https://github.com/neovim/neovim/issues/2102)
     --   * Run `nvim -u NORC -c "set spelllang=bg spell"`
-    vim.opt_local.spelllang = { "en", "bg" }
+    vim.opt_local.spelllang = { 'en', 'bg' }
   end,
 })
 
@@ -526,8 +549,8 @@ end, {
 -- Note: use `C-v` to insert mapped characters like `[`, `]`, `~`, etc.
 vim.api.nvim_create_user_command('TNNToggleKeymap', function()
   if vim.o.iminsert == 1 then
-    vim.o.keymap = ""
+    vim.o.keymap = ''
   else
-    vim.o.keymap = "bulgarian-phonetic"
+    vim.o.keymap = 'bulgarian-phonetic'
   end
 end, {})
