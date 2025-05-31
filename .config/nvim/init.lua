@@ -433,6 +433,10 @@ require('lazy').setup({
     config = function()
       -- Mappings for `x` and `o` modes conflict with `surround` and are unused
       vim.keymap.set('n', 's', '<Plug>(leap-anywhere)')
+      -- Disable preview labels
+      require('leap').opts.preview_filter = function()
+        return false
+      end
     end,
   },
   { -- AI
