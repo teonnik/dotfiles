@@ -89,12 +89,19 @@ vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
 ------- PLUGINS
 
 require('lazy').setup({
-  'nvim-tree/nvim-web-devicons', -- icons for `fzf-lua`, `oil` and `lualine`
-  'tpope/vim-surround', -- surround words easily
-  'tpope/vim-repeat', -- repeating with `.` for many plugins
   'tpope/vim-eunuch', -- unix shell wrappers for vim
   'junegunn/vim-easy-align', -- align text on delimiters
 
+  { -- icons for `fzf-lua`, `oil` and `lualine`
+    'nvim-tree/nvim-web-devicons',
+  },
+  { -- surround selections
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
+    config = function()
+      require("nvim-surround").setup({})
+    end,
+  },
   { -- session management
     'folke/persistence.nvim',
     event = 'BufReadPre',
