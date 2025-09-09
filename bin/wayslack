@@ -1,3 +1,6 @@
 #!/bin/sh
 
-/usr/bin/slack --enable-features=WebRTCPipeWireCapturer
+# `--disable-gpu-compositing`
+# 
+# https://github.com/hyprwm/Hyprland/discussions/192 
+/usr/bin/slack --enable-features=WebRTCPipeWireCapturer --disable-gpu-compositing
