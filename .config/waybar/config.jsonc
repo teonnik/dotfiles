@@ -13,7 +13,6 @@
     ],
     "modules-right": [
         "battery",
-        "temperature",
         "custom/layout",
         "backlight",
         "pulseaudio",
@@ -39,15 +38,16 @@
         "max-length": 50
     },
     "clock": {
-        "interval": 60,
-        "tooltip": true,
-        "format": "{:%H:%M}",
-        "tooltip-format": "{:%Y-%m-%d}"
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format": " {:%H:%M %Y-%m-%d (%Z)}",
+        "tooltip-format": "{tz_list}",
+        "timezones": [
+            "Europe/London",
+            "Europe/Berlin",
+            "Europe/Sofia",
+            "America/New_York",
+            "America/Chicago",
+            "America/Los_Angeles"
+        ]
     },
     "backlight": {
         "format": "{icon} {percent}",
