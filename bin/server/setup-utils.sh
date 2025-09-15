@@ -1,7 +1,7 @@
 set -e
 
-DOWNLOAD_DIR="$HOME/downloads/d-tmp"
-INSTALL_DIR="$HOME/downloads/i-tmp"
+DOWNLOAD_DIR="$HOME/downloads"
+INSTALL_DIR="$HOME/installs"
 
 mkdir -p "$DOWNLOAD_DIR"
 mkdir -p "$INSTALL_DIR"
@@ -20,15 +20,15 @@ get_latest_asset_url() {
 # Define tools: repo and asset identifier
 declare -A tools
 tools[neovim]="neovim/neovim nvim-linux-x86_64.tar.gz"
-tools[fd]="sharkdp/fd linux-gnu.tar.gz"
+tools[fd]="sharkdp/fd x86_64-unknown-linux-musl.tar.gz"
 tools[fzf]="junegunn/fzf linux_amd64.tar.gz"
-tools[ripgrep]="BurntSushi/ripgrep linux-musl.tar.gz"
+tools[ripgrep]="BurntSushi/ripgrep x86_64-unknown-linux-musl.tar.gz"
 tools[fastfetch]="fastfetch-cli/fastfetch linux-amd64.tar.gz"
 tools[lazygit]="jesseduffield/lazygit linux_x86_64.tar.gz"
 tools[btop]="aristocratos/btop linux-musl.tbz"
-tools[yazi]="sxyazi/yazi unknown-linux-musl.zip"
-tools[bat]="sharkdp/bat unknown-linux-gnu.tar.gz"
-tools[delta]="dandavison/delta unknown-linux-gnu.tar.gz"
+tools[yazi]="sxyazi/yazi x86_64-unknown-linux-musl.zip"
+tools[bat]="sharkdp/bat x86_64-unknown-linux-musl.tar.gz"
+tools[delta]="dandavison/delta x86_64-unknown-linux-musl.tar.gz"
 
 for tool in "${!tools[@]}"; do
   repo=$(echo "${tools[$tool]}" | awk '{print $1}')
