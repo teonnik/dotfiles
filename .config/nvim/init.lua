@@ -27,7 +27,8 @@ vim.g.maplocalleader = ' '
 
 vim.opt.backup = false -- don't create a backup file
 vim.opt.breakindent = true -- indent wrapped lines
-vim.opt.clipboard = vim.env.SSH_TTY and '' or 'unnamedplus' -- only set clipboard if not in ssh, to make sure the OSC 52 (Neovim >= 0.10.0)
+-- vim.opt.clipboard = 'unnamedplus' -- copy from/into the system clipboard (i.e. register "+)
+-- vim.g.clipboard = 'osc52' -- set in `ssh` sessions to enable copying - `:checkhealth`
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' } -- completion menu
 vim.opt.conceallevel = 2 -- hide * markup for bold and italic, but not markers with substitutions
 vim.opt.cursorline = true -- highlight the text line of the cursor
@@ -85,6 +86,10 @@ vim.keymap.set('n', '<leader>up', '<cmd>TNNCopyPath %<cr>', { desc = 'Copy relat
 vim.keymap.set('n', '<leader>uf', '<cmd>TNNCopyPath %:p<cr>', { desc = 'Copy full file path' })
 vim.keymap.set('n', '<leader>un', '<cmd>TNNCopyPath %:t<cr>', { desc = 'Copy filename' })
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
+-- Check clipboard support and provider with `:checkhealth`
+vim.keymap.set({'n', 'x'}, ',y', '"+y', { desc = 'Copy into clipboard' })
+vim.keymap.set({'n', 'x'}, ',p', '"+p', { desc = 'Paste from clipboard' })
+vim.keymap.set({'n', 'x'}, ',d', '"+d', { desc = 'Cut into clipboard' })
 -- stylua: ignore end
 
 ------- PLUGINS
