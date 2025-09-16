@@ -13,6 +13,8 @@
     ],
     "modules-right": [
      //   "temperature",
+        "battery",
+        "backlight",
         "hyprland/language",
         "pulseaudio",
         "tray"
@@ -82,5 +84,20 @@
     "tray": {
         "icon-size": 15,
         "spacing": 10
-    }
+    },
+    "backlight": {
+        "format": "{icon} {percent}",
+        "format-icons": ""
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
 }
