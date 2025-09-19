@@ -25,10 +25,12 @@ tools[fzf]="junegunn/fzf linux_amd64.tar.gz"
 tools[ripgrep]="BurntSushi/ripgrep x86_64-unknown-linux-musl.tar.gz"
 tools[fastfetch]="fastfetch-cli/fastfetch linux-amd64.tar.gz"
 tools[lazygit]="jesseduffield/lazygit linux_x86_64.tar.gz"
+tools[lazydocker]="jesseduffield/lazydocker Linux_x86_64.tar.gz"
 tools[btop]="aristocratos/btop linux-musl.tbz"
 tools[yazi]="sxyazi/yazi x86_64-unknown-linux-musl.zip"
 tools[bat]="sharkdp/bat x86_64-unknown-linux-musl.tar.gz"
 tools[delta]="dandavison/delta x86_64-unknown-linux-musl.tar.gz"
+tools[direnv]="direnv/direnv direnv.linux.amd64"
 
 for tool in "${!tools[@]}"; do
   repo=$(echo "${tools[$tool]}" | awk '{print $1}')
