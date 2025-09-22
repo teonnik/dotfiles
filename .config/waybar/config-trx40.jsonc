@@ -36,7 +36,7 @@
     //    "tooltip": false
     //},
     "clock": {
-        "format": "󰸗 {:%A - %d %B %Y - %H:%M (%Z)}",
+        "format": " {:%A - %d %B %Y - %H:%M (%Z)}",
         "tooltip-format": "{tz_list}",
         "timezones": [
             "Europe/London",
@@ -55,8 +55,8 @@
     "pulseaudio": {
         "format": "{icon} {volume}",
         "format-bluetooth": "{icon} {volume}",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": " ",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
