@@ -269,12 +269,10 @@ require('lazy').setup({
       },
     },
     config = function()
-      local nvim_lsp = require('lspconfig')
-
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       -- LSP servers
-      nvim_lsp['clangd'].setup({
+      vim.lsp.config('clangd', {
         capabilities = capabilities,
         cmd = {
           'clangd',
@@ -291,22 +289,20 @@ require('lazy').setup({
         },
         filetypes = { 'c', 'cpp', 'cu', 'cuda' },
       })
-      nvim_lsp['pylsp'].setup({
-        -- Invalid offset issue FIXED in neovim 0.11: https://github.com/rust-lang/rust-analyzer/issues/17289
-        capabilities = capabilities,
-      })
-      nvim_lsp['ruff'].setup({
-        capabilities = capabilities,
-      })
-      nvim_lsp['rust_analyzer'].setup({
-        capabilities = capabilities,
-      })
-      nvim_lsp['bashls'].setup({
-        capabilities = capabilities,
-      })
-      nvim_lsp['lua_ls'].setup({
-        capabilities = capabilities,
-      })
+      vim.lsp.enable('clangd')
+
+      for _, server in ipairs({
+        'pylsp',
+        'ruff',
+        'rust_analyzer',
+        'bashls',
+        'lua_ls',
+      }) do
+        vim.lsp.config(server, {
+          capabilities = capabilities,
+        })
+        vim.lsp.enable(server)
+      end
     end,
   },
   { -- debugging
