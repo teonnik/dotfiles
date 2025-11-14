@@ -452,26 +452,6 @@ require('lazy').setup({
       end
     end,
   },
-  { -- AI
-    'olimorris/codecompanion.nvim',
-    lazy = false,
-    config = function()
-      require('codecompanion').setup({
-        strategies = {
-          chat = { adapter = 'copilot' },
-          inline = { adapter = 'copilot' },
-          agent = { adapter = 'copilot' },
-        },
-      })
-    end,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    keys = {
-      { '<leader>a', '<cmd>CodeCompanionChat Toggle<cr>', desc = 'Toggle AI' },
-    },
-  },
 })
 
 -------- AUTOCOMMANDS
