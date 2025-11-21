@@ -84,6 +84,10 @@ vim.keymap.set('n', '<leader>l', '<cmd>TNNToggleKeymap<cr>', { desc = 'Toggle th
 vim.keymap.set({'n', 'x'}, '<leader>p', '"0p', { desc = 'Paste the last yanked text' })
 vim.keymap.set('n', '<leader>up', '<cmd>TNNCopyPath %<cr>', { desc = 'Copy relative file path' })
 vim.keymap.set('n', '<leader>uf', '<cmd>TNNCopyPath %:p<cr>', { desc = 'Copy full file path' })
+vim.keymap.set("n", "<leader>uw", function()
+  vim.o.wrap = not vim.o.wrap
+  print("Wrap " .. (vim.o.wrap and "enabled" or "disabled"))
+end, { desc = "Toggle line wrapping" })
 vim.keymap.set('n', '<leader>un', '<cmd>TNNCopyPath %:t<cr>', { desc = 'Copy filename' })
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
 -- Check clipboard support and provider with `:checkhealth`
