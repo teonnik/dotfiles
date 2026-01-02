@@ -99,8 +99,10 @@ systemctl enable NetworkManager.service \
                  atd.service \
                  docker.service \
                  pcscd.service \
-                 ly.service \
                  systemd-boot-update.service
+
+systemctl disable getty@tty2.service
+systemctl enable ly@tty2.service
 
 # 22. Reboot and login as user `teonnik`
 reboot
