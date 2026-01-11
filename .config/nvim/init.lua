@@ -236,29 +236,45 @@ require("lazy").setup({
         },
     },
     { -- syntax and navigation
+      --
+      -- * Requires `tree-sitter-cli`)
+      -- * Check status with `:checkhealth nvim-treesitter`
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        main = "nvim-treesitter.configs", -- Sets main module to use for opts
-        opts = {
-            ensure_installed = {
+        branch = "main",
+        lazy = false,
+        config = function()
+            local ts = require('nvim-treesitter')
+            ts.install({
                 "bash",
                 "diff",
                 "markdown",
                 "markdown_inline",
                 "cpp",
                 "cuda",
+                "cmake",
                 "vim",
                 "lua",
                 "python",
                 "usd",
-            },
-            highlight = { enable = true },
-            incremental_selection = {
-                enable = true,
-                additional_vim_regex_highlighting = false,
-            },
-            indent = { enable = true },
-        },
+            })
+
+            -- enable highlighting (Neovim-side)
+            vim.api.nvim_create_autocmd("FileType", {
+              callback = function()
+                -- This is a no-op if there is no parser for the buffer,
+                -- vim's default regex-based syntax highlighting is active
+                pcall(vim.treesitter.start)
+              end,
+            })
+
+            -- enable indentation (plugin-side)
+            vim.api.nvim_create_autocmd("FileType", {
+              callback = function()
+                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              end,
+            })
+        end,
     },
     { -- language servers
         "neovim/nvim-lspconfig",
