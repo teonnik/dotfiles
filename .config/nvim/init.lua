@@ -236,15 +236,16 @@ require("lazy").setup({
         },
     },
     { -- syntax and navigation
-      --
-      -- * Requires `tree-sitter-cli`)
-      -- * Check status with `:checkhealth nvim-treesitter`
+
+        -- * Requires `tree-sitter-cli`
+        -- * Check status with `:checkhealth nvim-treesitter`
+        --
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         branch = "main",
         lazy = false,
         config = function()
-            local ts = require('nvim-treesitter')
+            local ts = require("nvim-treesitter")
             ts.install({
                 "bash",
                 "diff",
@@ -261,18 +262,18 @@ require("lazy").setup({
 
             -- enable highlighting (Neovim-side)
             vim.api.nvim_create_autocmd("FileType", {
-              callback = function()
-                -- This is a no-op if there is no parser for the buffer,
-                -- vim's default regex-based syntax highlighting is active
-                pcall(vim.treesitter.start)
-              end,
+                callback = function()
+                    -- This is a no-op if there is no parser for the buffer,
+                    -- vim's default regex-based syntax highlighting is active
+                    pcall(vim.treesitter.start)
+                end,
             })
 
             -- enable indentation (plugin-side)
             vim.api.nvim_create_autocmd("FileType", {
-              callback = function()
-                vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-              end,
+                callback = function()
+                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                end,
             })
         end,
     },
@@ -509,7 +510,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set( 'n', '<leader>yr', '<cmd>lua vim.lsp.buf.rename()<CR>', { desc = 'LSP: Rename', buffer = bufnr })
     vim.keymap.set( 'n', '<leader>yd', '<cmd>lua vim.diagnostic.open_float()<CR>', { desc = 'LSP: Open diagnostic', buffer = bufnr })
     vim.keymap.set( 'n', '<leader>yf', '<cmd>lua vim.lsp.buf.format()<CR>', { desc = 'LSP: format', buffer = bufnr })
-    -- stylua: ignore end
+        -- stylua: ignore end
 
         -- use LSP folding is supported by server
         local client = vim.lsp.get_client_by_id(args.data.client_id)
