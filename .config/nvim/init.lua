@@ -91,6 +91,14 @@ vim.keymap.set("n", "<leader>uw",
     { desc = "Toggle line wrapping" }
 )
 vim.keymap.set('n', '<leader>un', '<cmd>TNNCopyPath %:t<cr>', { desc = 'Copy filename' })
+vim.keymap.set("n", "<leader>ut",
+    function()
+        local view = vim.fn.winsaveview()
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.winrestview(view)
+    end,
+    { desc = "Remove trailing whitespace (keep cursor)" }
+)
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
 -- Check clipboard support and provider with `:checkhealth`
 vim.keymap.set({'n', 'x'}, ',y', '"+y', { desc = 'Copy into clipboard' })
