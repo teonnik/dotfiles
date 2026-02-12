@@ -469,7 +469,7 @@ require("lazy").setup({
     },
 
     { -- navigation
-        "ggandor/leap.nvim",
+        url = "https://codeberg.org/andyg/leap.nvim",
         config = function()
             -- Mappings for `x` and `o` modes conflict with `surround` and are unused
             vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
