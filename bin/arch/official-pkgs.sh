@@ -82,6 +82,7 @@ zsh
 # editor
 gvim vi
 neovim
+tree-sitter-cli
 
 # build tools
 ninja          # alternative to make

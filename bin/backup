@@ -1,55 +1,31 @@
 #!/bin/sh
 
-# Setting this, so the repo does not need to be given on the commandline:
-#export BORG_REPO="${HOME}/.backup"
 export BORG_REPO="jc5t6ye3@jc5t6ye3.repo.borgbase.com:repo"
-
-# See the section "Passphrase notes" for more infos.
 export BORG_PASSCOMMAND='pass show borg/pass'
 
-# some helpers and error handling:
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
 trap 'echo $( date ) Backup interrupted >&2; exit 2' INT TERM
 
 info "Starting backup"
 
-# Backup the most important directories into an archive named after
-# the machine this script is currently running on:
-
 borg create                           \
-    --verbose                         \
     --filter AME                      \
     --list                            \
     --stats                           \
     --show-rc                         \
-    --compression lz4                 \
+    --compression zstd                \
     --exclude-caches                  \
-    --exclude "${HOME}/.*"            \
-    --exclude "${HOME}/bin"           \
-    --exclude "${HOME}/build"         \
-    --exclude "${HOME}/code"          \
-    --exclude "${HOME}/software"      \
-    --exclude "${HOME}/downloads"     \
-    --exclude "${HOME}/mail/gmail/trash"   \
-    --exclude "${HOME}/mail/gmail/spam"    \
-    --exclude "${HOME}/mail/cscs/trash"    \
-    --exclude "${HOME}/mail/cscs/spam"     \
-                                      \
-    ::'{hostname}-{now}'              \
-    "${HOME}"                         \
+    --one-file-system                 \
+    --lock-wait 300                   \
+    ::'{now}'                         \
+    "${HOME}/personal"                \
 
 backup_exit=$?
 
 info "Pruning repository"
 
-# Use the `prune` subcommand to keep 7 end of day, 4 end of week and an end of
-# month archive for every month of THIS machine. The 'hostname-' prefix is very
-# important to limit prune's operation to this machine's archives and not apply
-# to other machines' archives also:
-
 borg prune                          \
     --list                          \
-    --prefix  '{hostname}-'         \
     --show-rc                       \
     --keep-daily    7               \
     --keep-weekly   4               \
@@ -57,15 +33,21 @@ borg prune                          \
 
 prune_exit=$?
 
-# use highest exit code as global exit code
+info "Compacting repository"
+
+borg compact
+
+compact_exit=$?
+
 global_exit=$(( backup_exit > prune_exit ? backup_exit : prune_exit ))
+global_exit=$(( global_exit > compact_exit ? global_exit : compact_exit ))
 
 if [ ${global_exit} -eq 0 ]; then
-    info "Backup and Prune finished successfully"
+    info "Backup, Prune, and Compact finished successfully"
 elif [ ${global_exit} -eq 1 ]; then
-    info "Backup and/or Prune finished with warnings"
+    info "Backup, Prune, and/or Compact finished with warnings"
 else
-    info "Backup and/or Prune finished with errors"
+    info "Backup, Prune, and/or Compact finished with errors"
 fi
 
 exit ${global_exit}
