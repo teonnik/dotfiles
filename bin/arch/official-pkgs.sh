@@ -174,6 +174,7 @@ qt5ct
 # python
 uv           # fast `pip` alternative
 ruff         # linter
+ty           # lsp
 python-black # formatting
 python-parse # the reverse of `format()`, like scanf() in `C`
 python-numpy
@@ -182,7 +183,7 @@ python-pandas
 python-matplotlib
 python-seaborn
 python-dotenv
-python-lsp-server # LSP
+# python-lsp-server # LSP
 python-pytest
 ipython
 

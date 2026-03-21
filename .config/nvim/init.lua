@@ -323,7 +323,7 @@ require("lazy").setup({
             vim.lsp.enable("clangd")
 
             for _, server in ipairs({
-                "pylsp",
+                "ty",
                 "ruff",
                 "rust_analyzer",
                 "bashls",
