@@ -123,25 +123,21 @@ require("lazy").setup({
         end,
     },
     { -- session management
-        "folke/persistence.nvim",
-        event = "BufReadPre",
-        opts = {},
-    -- stylua: ignore
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>qS", function() require("persistence").select() end,desc = "Select Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
-    },
+        "stevearc/resession.nvim",
+        opts = {
+            autosave = { enabled = true, interval = 60, notify = false },
+        },
+        -- stylua: ignore
+        keys = {
+            { "<leader>qs", function() require("resession").load() end, desc = "Restore Session" },
+            { "<leader>qw", function() require("resession").save() end, desc = "Save Session" },
+            { "<leader>qd", function() require("resession").delete() end, desc = "Delete Session" },
+        },
     },
     { -- statusline
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
-            options = {
-                theme = "catppuccin",
-                -- globalstatus = true,
-            },
             sections = {
                 lualine_x = {
                     { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
