@@ -13,10 +13,18 @@
     ],
     "modules-right": [
      //   "temperature",
+        "custom/gp",
         "hyprland/language",
         "pulseaudio",
         "tray"
     ],
+    "custom/gp": {
+        "format": "{}",
+        "exec": "~/.config/waybar/modules/gp-status",
+        "return-type": "json",
+        "interval": 5,
+        "tooltip": true
+    },
     "hyprland/workspaces": {
          "format": "{icon}",
          "on-scroll-up": "hyprctl dispatch workspace e+1",

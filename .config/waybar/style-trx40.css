@@ -36,7 +36,9 @@ window#waybar {
 #temperature,
 #network,
 #pulseaudio,
-#tray {
+#tray,
+#custom-gp.connected,
+#custom-gp.disconnected {
   /*background-color: #1e1e2e;*/
   background-color: rgba(30, 30, 46, 0.85);
   /*background-color: transparent;*/
@@ -44,6 +46,14 @@ window#waybar {
   border-radius: 5px;
   margin: 5px 3px;
   padding: 2px 8px;
+}
+
+#custom-gp.connected {
+    color: #a6e3a1;
+}
+
+#custom-gp.disconnected {
+    color: #6c7086;
 }
 
 @keyframes blink {
