@@ -138,7 +138,12 @@ require("lazy").setup({
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
+            options = {
+                section_separators = "",
+                component_separators = "|",
+            },
             sections = {
+                lualine_b = { "diagnostics" },
                 lualine_x = {
                     { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
                         function()
@@ -148,8 +153,10 @@ require("lazy").setup({
                             return ""
                         end,
                     },
-                    "encoding",
-                    "fileformat",
+                    {
+                        function() return "󰃃" .. require("resession").get_current() end,
+                        cond = function() return require("resession").get_current() ~= nil end,
+                    },
                     "filetype",
                 },
             },
