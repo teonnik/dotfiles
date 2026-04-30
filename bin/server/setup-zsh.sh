@@ -12,7 +12,16 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting ${HOME}/.local/sh
 
 # fzf history search
 git clone https://github.com/junegunn/fzf ${HOME}/.local/share/zsh/fzf
-echo 'export FZF_SHELL_COMPLETION_DIR="$HOME/.local/share/zsh/fzf/shell"' >> ~/.zprofile
+
+# XDG base directories and other env vars
+cat >> ~/.zprofile <<'EOF'
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export FZF_SHELL_COMPLETION_DIR="$HOME/.local/share/zsh/fzf/shell"
+EOF
 
 # make `zsh` the default shell for the user (requires password; updates `/etc/passwd`)
 # chsh -s /usr/bin/zsh

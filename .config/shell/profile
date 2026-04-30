@@ -10,6 +10,8 @@ export PAGER=less
 export TERM=xterm-256color
 #export TERM=foot # this is set in foot's config
 
+# -- XDG
+#
 # XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -23,7 +25,24 @@ if [ -z "${XDG_CURRENT_DESKTOP}" ]; then
   XDG_CURRENT_DESKTOP="${XDG_SESSION_DESKTOP}"
 fi
 
-# Wayland / sway specific env variables
+# XDG config
+export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
+export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
+export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
+#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+# XDG data
+export CARGO_HOME="${XDG_DATA_HOME}/cargo"
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+export GOPATH="${XDG_DATA_HOME}/go"
+export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
+export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
+
+# XDG cache
+export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"
+
+# -- Wayland
+#
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
   export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
   export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
@@ -32,44 +51,8 @@ if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
   export ELECTRON_OZONE_PLATFORM_HINT="auto" # Wayland mode for `Electron` apps
 fi
 
-# -- Dotfiles
-#
-# Move configuration files to the XDG_CONFIG_HOME folder
-# - https://wiki.archlinux.org/title/XDG_Base_Directory#Supported
-export ANDROID_SDK_HOME="${XDG_CONFIG_HOME}/android"
-export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME}/gtk-2.0/gtkrc-2.0"
-export IPYTHONDIR="${XDG_CONFIG_HOME}/ipython"
-export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME}/jupyter"
-export KDEHOME="${XDG_CONFIG_HOME}/kde"
-export MBSYNCRC="${XDG_CONFIG_HOME}/isync/mbsyncrc"
-export NOTMUCH_CONFIG="${XDG_CONFIG_HOME}/notmuch/notmuchrc"
-export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
-export WEECHAT_HOME="${XDG_CONFIG_HOME}/weechat"
-#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME}/java"
-
-# Move data files to the XDG_DATA_HOME folder
-export CARGO_HOME="${XDG_DATA_HOME}/cargo"
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
-export GOPATH="${XDG_DATA_HOME}/go"
-export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
-export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
-
-# lpass
-#
-export LPASS_AGENT_TIMEOUT=86400 # ~1 day, default was 1h
-# Set the default clipboard for `lpass`
-export LPASS_CLIPBOARD_COMMAND="xclip -selection clipboard -in -l 1"
-if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-  export LPASS_CLIPBOARD_COMMAND="wl-copy"
-fi
-
 # fzf
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-
-# ccache
-export CCACHE_DIR="${XDG_CACHE_HOME}/ccache"
 
 # less : https://wiki.archlinux.org/title/Color_output_in_console#less
 export LESS='-R'
