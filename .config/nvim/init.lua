@@ -100,6 +100,7 @@ vim.keymap.set("n", "<leader>ut",
     { desc = "Remove trailing whitespace (keep cursor)" }
 )
 vim.keymap.set('n', '<leader>w', ':w!<cr>', { desc = 'Save quickly' })
+vim.keymap.set('n', '<leader>rw', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Replace word under cursor' })
 -- Check clipboard support and provider with `:checkhealth`
 vim.keymap.set({'n', 'x'}, ',y', '"+y', { desc = 'Copy into clipboard' })
 vim.keymap.set({'n', 'x'}, ',p', '"+p', { desc = 'Paste from clipboard' })
