@@ -205,8 +205,9 @@ signal-desktop
 pipewire-pulse
 pipewire-alsa
 wireplumber
-pavucontrol                       # volume control
-pulsemixer                        # TUI for PulseAudio
+wiremix                            # TUI for pipewire
+#pavucontrol                       # volume control
+#pulsemixer                        # TUI for PulseAudio
 
 # bluetooth
 bluez
