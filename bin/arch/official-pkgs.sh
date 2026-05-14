@@ -18,7 +18,7 @@ pacman-contrib  # Provides `pactree`
 efibootmgr  # EFI boot manager
 #gptfdisk    # cgdisk TUI partitioner
 
-systemd-tui
+systemctl-tui
 
 # login manager
 ly
@@ -34,7 +34,7 @@ kanshi                # dynamic monitor setup on hotplug
 xorg-server-xwayland  # wayland xorg support
 wlr-randr             # monitor configuration tool
 wl-clipboard          # clipboard
-wofi                  # app launcher
+fuzzel
 grim                  # screenshot utility
 swappy                # screenshot editting tool
 slurp                 # select region on screen
