@@ -1,0 +1,56 @@
+# shikane(5) for full syntax reference.
+#
+# Profile match-string conventions:
+#   n=NAME       — match output name (e.g. eDP-1, DP-5) by full text
+#   n/REGEX      — match output name by regex
+#   m=MODEL      — match model by full text
+#   s=SERIAL     — match serial by full text
+#   v=VENDOR     — match vendor by full text (kanshi's "make")
+#
+# Profiles are ranked by exactness. A profile matches only if every connected
+# display is bound to exactly one of its [[profile.output]] entries.
+
+# --- Harwell agile room (captured from live monitors) ---------------------
+
+[[profile]]
+name = "harwell_agile"
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+
+    [[profile.output]]
+    search = "n=eDP-1"
+    enable = true
+    position = "960,1080"
+    scale = 1.0
+
+    [[profile.output]]
+    search = ["m=DELL P2422H", "s=8JL6BJ3"]
+    enable = true
+    position = "0,0"
+
+    [[profile.output]]
+    search = ["m=DELL U2419H", "s=C208TS2"]
+    enable = true
+    position = "1920,0"
+
+
+# --- Harwell R89.2.4 (two identical Dell SE2422HX; DP-8 left, DP-7 right) -
+
+[[profile]]
+name = "harwell_R89.2.4"
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+
+    [[profile.output]]
+    search = "n=eDP-1"
+    enable = true
+    position = "960,1080"
+    scale = 1.0
+
+    [[profile.output]]
+    search = ["m=DELL SE2422HX", "s=CJ0DWB3"]
+    enable = true
+    position = "1920,0"
+
+    [[profile.output]]
+    search = ["m=DELL SE2422HX", "s=GW1DWB3"]
+    enable = true
+    position = "0,0"
