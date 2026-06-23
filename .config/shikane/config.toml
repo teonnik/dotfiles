@@ -54,3 +54,16 @@ exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hy
     search = ["m=DELL SE2422HX", "s=GW1DWB3"]
     enable = true
     position = "0,0"
+
+
+# --- Laptop only (no externals; pin scale so Hyprland auto-DPI doesn't kick in)
+
+[[profile]]
+name = "laptop_only"
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+
+    [[profile.output]]
+    search = "n=eDP-1"
+    enable = true
+    position = "0,0"
+    scale = 1.0
