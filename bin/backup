@@ -1,6 +1,7 @@
 #!/bin/sh
 
-export BORG_REPO="jc5t6ye3@jc5t6ye3.repo.borgbase.com:repo"
+# export BORG_REPO="jc5t6ye3@jc5t6ye3.repo.borgbase.com:repo"
+export BORG_REPO="ssh://ld6i9mst@ld6i9mst.repo.borgbase.com/./repo"
 export BORG_PASSCOMMAND='pass show borg/pass'
 
 info() { printf "\n%s %s\n\n" "$( date )" "$*" >&2; }
