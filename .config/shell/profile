@@ -62,9 +62,15 @@ export LESSHISTFILE="-" # no history file
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 
-# run ssh-agent if not already running
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-  eval `ssh-agent`
+# run ssh-agent if not already running, reuse socket across sessions
+if [[ -z "$SSH_AUTH_SOCK" || ! -S "$SSH_AUTH_SOCK" ]]; then
+    _sock="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+    SSH_AUTH_SOCK="$_sock" ssh-add -l &>/dev/null
+    if [[ $? -eq 2 ]]; then
+        rm -f "$_sock"
+        ssh-agent -a "$_sock" > /dev/null
+    fi
+    export SSH_AUTH_SOCK="$_sock"
 fi
 
 # source system-specific env variables
