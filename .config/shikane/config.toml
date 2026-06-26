@@ -56,6 +56,23 @@ exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hy
     position = "0,0"
 
 
+# --- Home PC (Dell U2722D + P2724DEB; P2724DEB left, U2722D right) -------
+
+[[profile]]
+name = "home_pc"
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+
+    [[profile.output]]
+    search = ["m=DELL P2724DEB", "s=CC8BFP3"]
+    enable = true
+    position = "0,0"
+
+    [[profile.output]]
+    search = ["m=DELL U2722D", "s=CN86YG3"]
+    enable = true
+    position = "2560,0"
+
+
 # --- Laptop only (no externals; pin scale so Hyprland auto-DPI doesn't kick in)
 
 [[profile]]
