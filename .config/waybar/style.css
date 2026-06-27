@@ -39,10 +39,7 @@ window#waybar {
 #tray,
 #battery,
 #backlight {
-  /*background-color: #1e1e2e;*/
   background-color: rgba(30, 30, 46, 0.85);
-  /*background-color: transparent;*/
-  /*border: 1px solid #33ccff;*/
   border-radius: 5px;
   margin: 5px 3px;
   padding: 2px 8px;
