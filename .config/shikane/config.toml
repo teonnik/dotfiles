@@ -14,7 +14,7 @@
 
 [[profile]]
 name = "harwell_agile"
-exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css &"]
 
     [[profile.output]]
     search = "n=eDP-1"
@@ -37,7 +37,7 @@ exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hy
 
 [[profile]]
 name = "harwell_R89.2.4"
-exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css &"]
 
     [[profile.output]]
     search = "n=eDP-1"
@@ -60,7 +60,7 @@ exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hy
 
 [[profile]]
 name = "home_pc"
-exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css &"]
 
     [[profile.output]]
     search = ["m=DELL P2724DEB", "s=CC8BFP3"]
@@ -77,7 +77,7 @@ exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hy
 
 [[profile]]
 name = "laptop_only"
-exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop-hypr.jsonc -s ~/.config/waybar/style-laptop-hypr.css &"]
+exec = ["pkill -x waybar; sleep 0.3; waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css &"]
 
     [[profile.output]]
     search = "n=eDP-1"
