@@ -50,6 +50,7 @@ vim.opt.number = true -- show line numbers
 -- vim.opt.relativenumber = true
 vim.opt.scrolloff = 10 -- set 10 lines to the cursor when moving vertically
 vim.opt.shiftwidth = 4 -- spaces for autoindents
+vim.opt.showcmdloc = "statusline" -- render the pending command (`showcmd`) in the statusline via `%S`
 vim.opt.showmatch = true -- show matching brackets
 vim.opt.showmode = false -- the mode is shown in the statusline already
 vim.opt.signcolumn = "yes" -- keep signcolumn on by default for diagnostics, breakpoints and VCS changes
@@ -76,7 +77,7 @@ vim.keymap.set('n', '<C-Left>', '<C-w>h', { desc = 'Left window' })
 vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Right window' })
 vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Down window' })
 vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Up window' })
-vim.keymap.set('t', '<C-n>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
 vim.keymap.set('n', '<leader>c', ':cclose<cr> :lclose<cr> :pclose<cr>', { desc = 'Close current buffer' })
 vim.keymap.set('n', '<leader>e', ':e<space>', { desc = 'Open a file' })
 vim.keymap.set('n', '<leader>l', '<cmd>TNNToggleKeymap<cr>', { desc = 'Toggle the Bulgarian phonetic keymap' })
@@ -119,8 +120,16 @@ require("lazy").setup({
     { -- surround selections
         "kylechui/nvim-surround",
         event = "VeryLazy",
+        -- Drop the normal mode defaults (`ys`, `ds`, `cs`, ...) to free `s` for `leap`, visual `S` and insert `C-g s` are kept
+        init = function()
+            vim.g.nvim_surround_no_normal_mappings = true
+        end,
         config = function()
             require("nvim-surround").setup({})
+
+            vim.keymap.set("n", "gz", "<Plug>(nvim-surround-normal)", { desc = "Surround a motion" })
+            -- The trailing `s` is the `aliases` entry for any delimiter, `nvim-surround` then picks the nearest one
+            vim.keymap.set("n", "gzd", "<Plug>(nvim-surround-delete)s", { remap = true, desc = "Delete the nearest surrounding pair" })
         end,
     },
     { -- session management
@@ -146,6 +155,7 @@ require("lazy").setup({
             sections = {
                 lualine_b = { "diagnostics" },
                 lualine_x = {
+                    "%S", -- pending command, needs `showcmdloc`
                     { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
                         function()
                             if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
@@ -224,27 +234,33 @@ require("lazy").setup({
     },
     { -- (Auto)-Completion
         "saghen/blink.cmp",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            "onsails/lspkind.nvim", -- LSP icons
-        },
+        dependencies = { "rafamadriz/friendly-snippets" },
         version = "*",
         lazy = false,
         opts = {
+            -- VS Code convention: `Tab` accepts the completion and jumps between snippet placeholders, `C-n`/`C-p` move through the menu
             keymap = {
-                -- Discussion on different "supertab" completion defnitionios [1]
-                -- [1]: https://github.com/LazyVim/LazyVim/discussions/250#discussioncomment-11882952
-                ["<Tab>"] = { "select_next", "fallback" },
-                ["<S-Tab>"] = { "select_prev", "fallback" },
-                -- Use default: `C-y` to accept and `C-e` to exit menu
+                preset = "super-tab",
+                ["<Esc>"] = { "cancel", "fallback" }, -- dismiss the menu, else leave insert mode
             },
             completion = {
-                list = { selection = { preselect = false } },
-                ghost_text = { enabled = true }, -- useful for previewing snippets
+                menu = { auto_show_delay_ms = 300 },
+                documentation = { auto_show = true },
+                ghost_text = { enabled = true, show_without_menu = false },
             },
-            fuzzy = { implementation = "rust" },
+            sources = { min_keyword_length = 2 },
+            -- `max_typos = 0` requires every typed character to be present in the match, the default allows 1 missing char per 4 typed
+            fuzzy = { implementation = "rust", max_typos = 0 },
             signature = { enabled = true },
-            cmdline = { enabled = false }, -- disable for now as the completion ranking is very weird...
+            cmdline = {
+                enabled = true,
+                -- `inherit` reuses the keymap above instead of the cmdline default where `Tab` cycles the menu
+                keymap = {
+                    preset = "inherit",
+                    ["<Tab>"] = { "show", "accept", "fallback" },
+                },
+                completion = { menu = { auto_show = true } },
+            },
         },
     },
     { -- syntax and navigation
@@ -291,42 +307,13 @@ require("lazy").setup({
     },
     { -- language servers
         "neovim/nvim-lspconfig",
-        dependencies = {
-            {
-                "folke/lazydev.nvim",
-                ft = "lua", -- only load on lua files
-                opts = {
-                    library = {
-                        -- Load luvit types when the `vim.uv` word is found
-                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-                    },
-                },
-            },
-        },
         config = function()
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             -- LSP servers
-            vim.lsp.config("clangd", {
-                capabilities = capabilities,
-                cmd = {
-                    "clangd",
-                    --"--compile-commands-dir=/home/teonnik/code/drivesim-ov",
-                    "--log=verbose",
-                    --"--background-index=0",
-                    "--background-index",
-                    -- "-j=1",
-                    -- "--clang-tidy=0",
-                    "--offset-encoding=utf-16", -- https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
-                },
-                flags = {
-                    debounce_text_changes = 150,
-                },
-                filetypes = { "c", "cpp", "cu", "cuda" },
-            })
-            vim.lsp.enable("clangd")
-
+            -- Per-project settings belong in a `.clangd` at the repo root, which is also a `root_marker`
             for _, server in ipairs({
+                "clangd",
                 "ty",
                 "ruff",
                 "rust_analyzer",
@@ -475,8 +462,9 @@ require("lazy").setup({
     { -- navigation
         url = "https://codeberg.org/andyg/leap.nvim",
         config = function()
-            -- Mappings for `x` and `o` modes conflict with `surround` and are unused
             vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
+            -- `(leap)` searches the current window only, which is what an operator needs
+            vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
             -- Disable preview labels
             require("leap").opts.preview_filter = function()
                 return false
