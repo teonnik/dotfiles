@@ -112,15 +112,28 @@ local gh = function(repo)
 end
 
 vim.pack.add({
+    -- ui
     { src = gh("catppuccin/nvim"), name = "catppuccin" }, -- colorscheme
-    gh("echasnovski/mini.align"), -- align text on delimiters
     gh("nvim-tree/nvim-web-devicons"), -- icons for `fzf-lua`, `oil` and `lualine`
-    gh("kylechui/nvim-surround"), -- surround selections
-    gh("stevearc/resession.nvim"), -- session management
     gh("nvim-lualine/lualine.nvim"), -- statusline
+    gh("lukas-reineke/indent-blankline.nvim"), -- indent guides
+
+    -- editing
+    gh("kylechui/nvim-surround"), -- surround selections
+    gh("echasnovski/mini.align"), -- align text on delimiters
+    gh("windwp/nvim-autopairs"), -- autopairs
+    gh("echasnovski/mini.bufremove"), -- preserves the window layout when deleting buffers
+    "https://codeberg.org/andyg/leap.nvim", -- navigation
+
+    -- files
     gh("ibhagwan/fzf-lua"), -- fuzzy finder
     gh("stevearc/oil.nvim"), -- file explorer
+
+    -- session and terminal
+    gh("stevearc/resession.nvim"), -- session management
     gh("akinsho/toggleterm.nvim"), -- terminal utils
+
+    -- language
     gh("rafamadriz/friendly-snippets"), -- snippet collection for `blink.cmp`
     -- `range("1")` follows the latest `v1` tag, `v2` brings breaking changes
     { src = gh("saghen/blink.cmp"), version = vim.version.range("1") }, -- (auto)-completion
@@ -129,11 +142,9 @@ vim.pack.add({
     gh("neovim/nvim-lspconfig"), -- language servers
     gh("mfussenegger/nvim-dap"), -- debugging
     gh("theHamsta/nvim-dap-virtual-text"), -- inline debugging info
+
+    -- git
     gh("lewis6991/gitsigns.nvim"), -- git integration
-    gh("echasnovski/mini.bufremove"), -- preserves the window layout when deleting buffers
-    gh("lukas-reineke/indent-blankline.nvim"), -- indent guides
-    gh("windwp/nvim-autopairs"), -- autopairs
-    "https://codeberg.org/andyg/leap.nvim", -- navigation
 })
 
 ------- PLUGIN SETUP
@@ -143,35 +154,6 @@ require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
 })
 vim.cmd.colorscheme("catppuccin")
-
--- align text on delimiters
-require("mini.align").setup({
-    mappings = { start = "", start_with_preview = "ga" },
-})
-
--- surround selections
---
--- Drop the normal mode defaults (`ys`, `ds`, `cs`, ...) to free `s` for `leap`, visual `S` and insert `C-g s` are kept
-vim.g.nvim_surround_no_normal_mappings = true
-require("nvim-surround").setup({})
-vim.keymap.set("n", "gz", "<Plug>(nvim-surround-normal)", { desc = "Surround a motion" })
--- The trailing `s` is the `aliases` entry for any delimiter, `nvim-surround` then picks the nearest one
-vim.keymap.set(
-    "n",
-    "gzd",
-    "<Plug>(nvim-surround-delete)s",
-    { remap = true, desc = "Delete the nearest surrounding pair" }
-)
-
--- session management
-require("resession").setup({
-    autosave = { enabled = true, interval = 60, notify = false },
-})
--- stylua: ignore start
-vim.keymap.set('n', '<leader>qs', function() require('resession').load() end, { desc = 'Restore Session' })
-vim.keymap.set('n', '<leader>qw', function() require('resession').save() end, { desc = 'Save Session' })
-vim.keymap.set('n', '<leader>qd', function() require('resession').delete() end, { desc = 'Delete Session' })
--- stylua: ignore end
 
 -- statusline
 require("lualine").setup({
@@ -204,6 +186,51 @@ require("lualine").setup({
     },
 })
 
+-- indent guides
+require("ibl").setup({
+    scope = {
+        enabled = false, -- don't underline outer scope
+    },
+})
+
+-- surround selections
+--
+-- Drop the normal mode defaults (`ys`, `ds`, `cs`, ...) to free `s` for `leap`, visual `S` and insert `C-g s` are kept
+vim.g.nvim_surround_no_normal_mappings = true
+require("nvim-surround").setup({})
+vim.keymap.set("n", "gz", "<Plug>(nvim-surround-normal)", { desc = "Surround a motion" })
+-- The trailing `s` is the `aliases` entry for any delimiter, `nvim-surround` then picks the nearest one
+vim.keymap.set(
+    "n",
+    "gzd",
+    "<Plug>(nvim-surround-delete)s",
+    { remap = true, desc = "Delete the nearest surrounding pair" }
+)
+
+-- align text on delimiters
+require("mini.align").setup({
+    mappings = { start = "", start_with_preview = "ga" },
+})
+
+-- autopairs
+require("nvim-autopairs").setup({})
+
+-- preserve the window layout when deleting buffers, plain `:bdelete` closes
+-- every window showing the buffer
+require("mini.bufremove").setup({})
+vim.keymap.set("n", "<leader>d", function()
+    require("mini.bufremove").delete()
+end, { desc = "Close current buffer" })
+
+-- navigation
+vim.keymap.set("n", "s", "<Plug>(leap-anywhere)", { desc = "Leap: jump to a match in any window" })
+-- `(leap)` searches the current window only, which is what an operator needs
+vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap: jump to a match in this window" })
+-- Disable preview labels
+require("leap").opts.preview_filter = function()
+    return false
+end
+
 -- fuzzy finder
 require("fzf-lua").register_ui_select() -- use `fzf-lua` to replace vim.ui.select
 -- stylua: ignore start
@@ -231,6 +258,16 @@ require("oil").setup({
     -- },
 })
 vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Open file explorer" })
+
+-- session management
+require("resession").setup({
+    autosave = { enabled = true, interval = 60, notify = false },
+})
+-- stylua: ignore start
+vim.keymap.set('n', '<leader>qs', function() require('resession').load() end, { desc = 'Restore Session' })
+vim.keymap.set('n', '<leader>qw', function() require('resession').save() end, { desc = 'Save Session' })
+vim.keymap.set('n', '<leader>qd', function() require('resession').delete() end, { desc = 'Delete Session' })
+-- stylua: ignore end
 
 -- terminal utils
 require("toggleterm").setup({})
@@ -405,32 +442,6 @@ require("gitsigns").setup({
         vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "Git: select hunk" })
     end,
 })
-
--- preserve the window layout when deleting buffers, plain `:bdelete` closes
--- every window showing the buffer
-require("mini.bufremove").setup({})
-vim.keymap.set("n", "<leader>d", function()
-    require("mini.bufremove").delete()
-end, { desc = "Close current buffer" })
-
--- indent guides
-require("ibl").setup({
-    scope = {
-        enabled = false, -- don't underline outer scope
-    },
-})
-
--- autopairs
-require("nvim-autopairs").setup({})
-
--- navigation
-vim.keymap.set("n", "s", "<Plug>(leap-anywhere)", { desc = "Leap: jump to a match in any window" })
--- `(leap)` searches the current window only, which is what an operator needs
-vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap: jump to a match in this window" })
--- Disable preview labels
-require("leap").opts.preview_filter = function()
-    return false
-end
 
 -------- AUTOCOMMANDS
 
