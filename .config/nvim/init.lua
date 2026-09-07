@@ -155,6 +155,10 @@ require("catppuccin").setup({
 })
 vim.cmd.colorscheme("catppuccin")
 
+-- icons, `fzf-lua` and `oil` look it up via `package.loaded` so it has to be
+-- required explicitly rather than left on the runtimepath
+require("nvim-web-devicons").setup({})
+
 -- statusline
 require("lualine").setup({
     options = {
