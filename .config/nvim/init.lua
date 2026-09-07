@@ -1,22 +1,3 @@
--------- PLUGIN MANAGER
-
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-    if vim.v.shell_error ~= 0 then
-        vim.api.nvim_echo({
-            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-            { out, "WarningMsg" },
-            { "\nPress any key to exit..." },
-        }, true, {})
-        vim.fn.getchar()
-        os.exit(1)
-    end
-end
-vim.opt.rtp:prepend(lazypath)
-
 -------- LEADER
 
 vim.g.mapleader = " "
@@ -78,7 +59,7 @@ vim.keymap.set('n', '<C-Right>', '<C-w>l', { desc = 'Right window' })
 vim.keymap.set('n', '<C-Down>', '<C-w>j', { desc = 'Down window' })
 vim.keymap.set('n', '<C-Up>', '<C-w>k', { desc = 'Up window' })
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal normal mode' })
-vim.keymap.set('n', '<leader>c', ':cclose<cr> :lclose<cr> :pclose<cr>', { desc = 'Close current buffer' })
+vim.keymap.set('n', '<leader>c', ':cclose<cr> :lclose<cr> :pclose<cr>', { desc = 'Close quickfix, location and preview windows' })
 vim.keymap.set('n', '<leader>e', ':e<space>', { desc = 'Open a file' })
 vim.keymap.set('n', '<leader>l', '<cmd>TNNToggleKeymap<cr>', { desc = 'Toggle the Bulgarian phonetic keymap' })
 vim.keymap.set({'n', 'x'}, '<leader>p', '"0p', { desc = 'Paste the last yanked text' })
@@ -110,368 +91,346 @@ vim.keymap.set({'n', 'x'}, ',d', '"+d', { desc = 'Cut into clipboard' })
 
 ------- PLUGINS
 
-require("lazy").setup({
-    "tpope/vim-eunuch", -- unix shell wrappers for vim
-    "junegunn/vim-easy-align", -- align text on delimiters
+-- Rebuild the parsers whenever `nvim-treesitter` itself changes. Has to be
+-- registered before `add()` to also fire on the initial install.
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        if ev.data.spec.name ~= "nvim-treesitter" or ev.data.kind == "delete" then
+            return
+        end
+        if not ev.data.active then
+            vim.cmd.packadd("nvim-treesitter")
+        end
+        vim.schedule(function()
+            vim.cmd("TSUpdate")
+        end)
+    end,
+})
 
-    { -- icons for `fzf-lua`, `oil` and `lualine`
-        "nvim-tree/nvim-web-devicons",
-    },
-    { -- surround selections
-        "kylechui/nvim-surround",
-        event = "VeryLazy",
-        -- Drop the normal mode defaults (`ys`, `ds`, `cs`, ...) to free `s` for `leap`, visual `S` and insert `C-g s` are kept
-        init = function()
-            vim.g.nvim_surround_no_normal_mappings = true
-        end,
-        config = function()
-            require("nvim-surround").setup({})
+local gh = function(repo)
+    return "https://github.com/" .. repo
+end
 
-            vim.keymap.set("n", "gz", "<Plug>(nvim-surround-normal)", { desc = "Surround a motion" })
-            -- The trailing `s` is the `aliases` entry for any delimiter, `nvim-surround` then picks the nearest one
-            vim.keymap.set("n", "gzd", "<Plug>(nvim-surround-delete)s", { remap = true, desc = "Delete the nearest surrounding pair" })
-        end,
-    },
-    { -- session management
-        "stevearc/resession.nvim",
-        opts = {
-            autosave = { enabled = true, interval = 60, notify = false },
-        },
-        -- stylua: ignore
-        keys = {
-            { "<leader>qs", function() require("resession").load() end, desc = "Restore Session" },
-            { "<leader>qw", function() require("resession").save() end, desc = "Save Session" },
-            { "<leader>qd", function() require("resession").delete() end, desc = "Delete Session" },
-        },
-    },
-    { -- statusline
-        "nvim-lualine/lualine.nvim",
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        opts = {
-            options = {
-                section_separators = "",
-                component_separators = "|",
-            },
-            sections = {
-                lualine_b = { "diagnostics" },
-                lualine_x = {
-                    "%S", -- pending command, needs `showcmdloc`
-                    { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
-                        function()
-                            if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
-                                return "⌨ " .. vim.b.keymap_name
-                            end
-                            return ""
-                        end,
-                    },
-                    {
-                        function() return "󰃃" .. require("resession").get_current() end,
-                        cond = function() return require("resession").get_current() ~= nil end,
-                    },
-                    "filetype",
-                },
-            },
-        },
-    },
-    { -- colorscheme
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        config = function()
-            require("catppuccin").setup({
-                flavour = "mocha", -- latte, frappe, macchiato, mocha
-            })
+vim.pack.add({
+    { src = gh("catppuccin/nvim"), name = "catppuccin" }, -- colorscheme
+    gh("echasnovski/mini.align"), -- align text on delimiters
+    gh("nvim-tree/nvim-web-devicons"), -- icons for `fzf-lua`, `oil` and `lualine`
+    gh("kylechui/nvim-surround"), -- surround selections
+    gh("stevearc/resession.nvim"), -- session management
+    gh("nvim-lualine/lualine.nvim"), -- statusline
+    gh("ibhagwan/fzf-lua"), -- fuzzy finder
+    gh("stevearc/oil.nvim"), -- file explorer
+    gh("akinsho/toggleterm.nvim"), -- terminal utils
+    gh("rafamadriz/friendly-snippets"), -- snippet collection for `blink.cmp`
+    -- `range("1")` follows the latest `v1` tag, `v2` brings breaking changes
+    { src = gh("saghen/blink.cmp"), version = vim.version.range("1") }, -- (auto)-completion
+    -- Requires `tree-sitter-cli`, check the status with `:checkhealth nvim-treesitter`
+    { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" }, -- syntax and navigation
+    gh("neovim/nvim-lspconfig"), -- language servers
+    gh("mfussenegger/nvim-dap"), -- debugging
+    gh("theHamsta/nvim-dap-virtual-text"), -- inline debugging info
+    gh("lewis6991/gitsigns.nvim"), -- git integration
+    gh("echasnovski/mini.bufremove"), -- preserves the window layout when deleting buffers
+    gh("lukas-reineke/indent-blankline.nvim"), -- indent guides
+    gh("windwp/nvim-autopairs"), -- autopairs
+    "https://codeberg.org/andyg/leap.nvim", -- navigation
+})
 
-            -- Apply the colorscheme
-            vim.cmd.colorscheme("catppuccin")
-        end,
-    },
-    { -- fuzzy finder
-        "ibhagwan/fzf-lua",
-        lazy = false,
-        keys = {
-            { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "FZF: live grep" },
-            { "<leader>.", "<cmd>FzfLua grep_cword<cr>", desc = "FZF: grep current word" },
-            { "<leader>f", "<cmd>FzfLua files<cr>", desc = "FZF: find files" },
-            { "<leader>b", "<cmd>FzfLua buffers<cr>", desc = "FZF: list buffers" },
-            { "<leader>k", "<cmd>FzfLua keymaps<cr>", desc = "FZF: list keymaps" },
-            { "<leader>sc", "<cmd>FzfLua command_history<cr>", desc = "FZF: command history" },
-            { "<leader>sr", "<cmd>FzfLua registers<cr>", desc = "FZF: list registers" },
-            { "<leader>ya", "<cmd>FzfLua lsp_code_actions<cr>", desc = "FZF-LSP: code actions" },
-            { "<leader>yl", "<cmd>FzfLua lsp_references<cr>", desc = "FZF-LSP: references" },
-            { "<leader>yg", "<cmd>FzfLua lsp_definitions<cr>", desc = "FZF-LSP: definitions" },
-            { "<leader>ye", "<cmd>FzfLua lsp_document_diagnostics<cr>", desc = "FZF-LSP: diagnostics" },
-            { "<leader>ys", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "FZF-LSP: document symbols" },
-        },
-        config = function()
-            -- use `fzf-lua` for replace vim.ui.select
-            require("fzf-lua").register_ui_select()
-        end,
-    },
-    { -- file explorer
-        "stevearc/oil.nvim",
-        opts = {
-            view_options = {
-                show_hidden = true,
-            },
-            -- keymaps = {
-            --   ['y'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
-            -- },
-        },
-        keys = {
-            { "<leader>o", "<cmd>Oil<cr>", desc = "Open file explorer" },
-        },
-        lazy = false, -- recommended to avoid issues
-    },
-    { -- terminal utils
-        "akinsho/toggleterm.nvim",
-        version = "*",
-        config = true,
-        keys = {
-            -- Example: `2<C-t>`opens terminal 2
-            { "<C-t>", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', "Toggle terminal" },
-        },
-    },
-    { -- (Auto)-Completion
-        "saghen/blink.cmp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        version = "*",
-        lazy = false,
-        opts = {
-            -- VS Code convention: `Tab` accepts the completion and jumps between snippet placeholders, `C-n`/`C-p` move through the menu
-            keymap = {
-                preset = "super-tab",
-                ["<Esc>"] = { "cancel", "fallback" }, -- dismiss the menu, else leave insert mode
-            },
-            completion = {
-                menu = { auto_show_delay_ms = 300 },
-                documentation = { auto_show = true },
-                ghost_text = { enabled = true, show_without_menu = false },
-            },
-            sources = { min_keyword_length = 2 },
-            -- `max_typos = 0` requires every typed character to be present in the match, the default allows 1 missing char per 4 typed
-            fuzzy = { implementation = "rust", max_typos = 0 },
-            signature = { enabled = true },
-            cmdline = {
-                enabled = true,
-                -- `inherit` reuses the keymap above instead of the cmdline default where `Tab` cycles the menu
-                keymap = {
-                    preset = "inherit",
-                    ["<Tab>"] = { "show", "accept", "fallback" },
-                },
-                completion = { menu = { auto_show = true } },
-            },
-        },
-    },
-    { -- syntax and navigation
+------- PLUGIN SETUP
 
-        -- * Requires `tree-sitter-cli`
-        -- * Check status with `:checkhealth nvim-treesitter`
-        --
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        branch = "main",
-        lazy = false,
-        config = function()
-            local ts = require("nvim-treesitter")
-            ts.install({
-                "bash",
-                "diff",
-                "markdown",
-                "markdown_inline",
-                "cpp",
-                "cuda",
-                "cmake",
-                "vim",
-                "lua",
-                "python",
-                "usd",
-            })
+-- colorscheme, applied first so the rest picks up the highlights
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+})
+vim.cmd.colorscheme("catppuccin")
 
-            -- enable highlighting (Neovim-side)
-            vim.api.nvim_create_autocmd("FileType", {
-                callback = function()
-                    -- This is a no-op if there is no parser for the buffer,
-                    -- vim's default regex-based syntax highlighting is active
-                    pcall(vim.treesitter.start)
-                end,
-            })
+-- align text on delimiters
+require("mini.align").setup({
+    mappings = { start = "", start_with_preview = "ga" },
+})
 
-            -- enable indentation (plugin-side)
-            vim.api.nvim_create_autocmd("FileType", {
-                callback = function()
-                    vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                end,
-            })
-        end,
+-- surround selections
+--
+-- Drop the normal mode defaults (`ys`, `ds`, `cs`, ...) to free `s` for `leap`, visual `S` and insert `C-g s` are kept
+vim.g.nvim_surround_no_normal_mappings = true
+require("nvim-surround").setup({})
+vim.keymap.set("n", "gz", "<Plug>(nvim-surround-normal)", { desc = "Surround a motion" })
+-- The trailing `s` is the `aliases` entry for any delimiter, `nvim-surround` then picks the nearest one
+vim.keymap.set(
+    "n",
+    "gzd",
+    "<Plug>(nvim-surround-delete)s",
+    { remap = true, desc = "Delete the nearest surrounding pair" }
+)
+
+-- session management
+require("resession").setup({
+    autosave = { enabled = true, interval = 60, notify = false },
+})
+-- stylua: ignore start
+vim.keymap.set('n', '<leader>qs', function() require('resession').load() end, { desc = 'Restore Session' })
+vim.keymap.set('n', '<leader>qw', function() require('resession').save() end, { desc = 'Save Session' })
+vim.keymap.set('n', '<leader>qd', function() require('resession').delete() end, { desc = 'Delete Session' })
+-- stylua: ignore end
+
+-- statusline
+require("lualine").setup({
+    options = {
+        section_separators = "",
+        component_separators = "|",
     },
-    { -- language servers
-        "neovim/nvim-lspconfig",
-        config = function()
-            local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-            -- LSP servers
-            -- Per-project settings belong in a `.clangd` at the repo root, which is also a `root_marker`
-            for _, server in ipairs({
-                "clangd",
-                "ty",
-                "ruff",
-                "rust_analyzer",
-                "bashls",
-                "lua_ls",
-            }) do
-                vim.lsp.config(server, {
-                    capabilities = capabilities,
-                })
-                vim.lsp.enable(server)
-            end
-        end,
-    },
-    { -- debugging
-        "mfussenegger/nvim-dap",
-        dependencies = {
-            { -- inline debugging info
-                "theHamsta/nvim-dap-virtual-text",
-                opts = {},
-            },
-        },
-        config = function()
-            local dap = require("dap")
-            -- Completion in REPL seems to not be supported currently : https://github.com/rcarriga/cmp-dap
-            -- `lldb-vscode` is going to be renamed to `lldb-dap` https://discourse.llvm.org/t/rfc-rename-lldb-vscode-to-lldb-dap/74075/7
-            dap.adapters.cpp = {
-                name = "lldb",
-                type = "executable",
-                -- command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
-                command = "/usr/bin/lldb-dap",
-            }
-            -- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process
-            dap.configurations.cpp = {
-                {
-                    -- If you get an "Operation not permitted" error using this, try disabling YAMA:
-                    --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
-                    name = "Attach to process",
-                    type = "cpp", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
-                    request = "attach",
-                    pid = require("dap.utils").pick_process,
-                    args = {},
-                    -- runInTerminal=true
-                },
-            }
-
-      -- stylua: ignore start
-      vim.keymap.set('n', '<M-c>', function() require('dap').continue() end)
-      vim.keymap.set('n', '<M-t>', function() require('dap').terminate() end)
-      vim.keymap.set('n', '<M-right>', function() require('dap').step_over() end)
-      vim.keymap.set('n', '<M-down>', function() require('dap').step_into() end)
-      vim.keymap.set('n', '<M-up>', function() require('dap').step_out() end)
-      vim.keymap.set('n', '<M-f>', function() require('dap').focus_frame() end)
-      vim.keymap.set('n', '<M-k>', function() require('dap').up() end)
-      vim.keymap.set('n', '<M-j>', function() require('dap').down() end)
-      vim.keymap.set('n', '<M-u>', function() require('dap').run_to_cursor() end)
-      vim.keymap.set('n', '<M-b>', function() require('dap').toggle_breakpoint() end)
-      vim.keymap.set('n', '<M-del>', function() require('dap').clear_breakpoints() end)
-      vim.keymap.set('n', '<M-l>', function() require('dap').list_breakpoints() end)
-      -- In REPL mode LLDB commands can be run by prefixing with ` : e.g. `bt
-      --
-      -- https://github.com/mfussenegger/nvim-dap/discussions/381#discussioncomment-2360181
-      vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end)
-            -- stylua: ignore end
-        end,
-    },
-    { -- git integration
-        "lewis6991/gitsigns.nvim",
-        -- event = 'LazyFile',
-        opts = {
-            on_attach = function(bufnr)
-                local gitsigns = require("gitsigns")
-
-                local function map(mode, l, r, opts)
-                    opts = opts or {}
-                    opts.buffer = bufnr
-                    vim.keymap.set(mode, l, r, opts)
-                end
-
-                -- Navigation
-                map("n", "]c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "]c", bang = true })
-                    else
-                        gitsigns.nav_hunk("next")
+    sections = {
+        lualine_b = { "diagnostics" },
+        lualine_x = {
+            "%S", -- pending command, needs `showcmdloc`
+            { -- keymap : https://github.com/nvim-lualine/lualine.nvim/wiki/Component-snippets
+                function()
+                    if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
+                        return "⌨ " .. vim.b.keymap_name
                     end
-                end)
-
-                map("n", "[c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "[c", bang = true })
-                    else
-                        gitsigns.nav_hunk("prev")
-                    end
-                end)
-
-                -- Actions
-                map("n", "<leader>hs", gitsigns.stage_hunk)
-                map("n", "<leader>hr", gitsigns.reset_hunk)
-
-                map("v", "<leader>hs", function()
-                    gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end)
-
-                map("v", "<leader>hr", function()
-                    gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end)
-
-                map("n", "<leader>hS", gitsigns.stage_buffer)
-                map("n", "<leader>hR", gitsigns.reset_buffer)
-                map("n", "<leader>hp", gitsigns.preview_hunk)
-                map("n", "<leader>hi", gitsigns.preview_hunk_inline)
-
-                map("n", "<leader>hb", function()
-                    gitsigns.blame_line({ full = true })
-                end)
-                map("n", "<leader>hB", gitsigns.blame)
-
-                map("n", "<leader>hd", gitsigns.diffthis)
-
-                -- Text object
-                map({ "o", "x" }, "ih", gitsigns.select_hunk)
-            end,
-        },
-    },
-    {
-        "famiu/bufdelete.nvim", -- (archived) preserves window layout when deleting buffers
-        keys = {
-            { "<leader>d", ":Bdelete<cr>", desc = "Close current buffer" },
-        },
-    },
-    { -- indent guides
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        opts = {
-            scope = {
-                enabled = false, -- don't underline outer scope
+                    return ""
+                end,
             },
+            {
+                function()
+                    return "󰃃" .. require("resession").get_current()
+                end,
+                cond = function()
+                    return require("resession").get_current() ~= nil
+                end,
+            },
+            "filetype",
         },
-    },
-    { -- autopairs
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = true,
-    },
-
-    { -- navigation
-        url = "https://codeberg.org/andyg/leap.nvim",
-        config = function()
-            vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
-            -- `(leap)` searches the current window only, which is what an operator needs
-            vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)")
-            -- Disable preview labels
-            require("leap").opts.preview_filter = function()
-                return false
-            end
-        end,
     },
 })
+
+-- fuzzy finder
+require("fzf-lua").register_ui_select() -- use `fzf-lua` to replace vim.ui.select
+-- stylua: ignore start
+vim.keymap.set('n', '<leader>/', '<cmd>FzfLua live_grep<cr>', { desc = 'FZF: live grep' })
+vim.keymap.set('n', '<leader>.', '<cmd>FzfLua grep_cword<cr>', { desc = 'FZF: grep current word' })
+vim.keymap.set('n', '<leader>f', '<cmd>FzfLua files<cr>', { desc = 'FZF: find files' })
+vim.keymap.set('n', '<leader>b', '<cmd>FzfLua buffers<cr>', { desc = 'FZF: list buffers' })
+vim.keymap.set('n', '<leader>k', '<cmd>FzfLua keymaps<cr>', { desc = 'FZF: list keymaps' })
+vim.keymap.set('n', '<leader>sc', '<cmd>FzfLua command_history<cr>', { desc = 'FZF: command history' })
+vim.keymap.set('n', '<leader>sr', '<cmd>FzfLua registers<cr>', { desc = 'FZF: list registers' })
+vim.keymap.set('n', '<leader>ya', '<cmd>FzfLua lsp_code_actions<cr>', { desc = 'FZF-LSP: code actions' })
+vim.keymap.set('n', '<leader>yl', '<cmd>FzfLua lsp_references<cr>', { desc = 'FZF-LSP: references' })
+vim.keymap.set('n', '<leader>yg', '<cmd>FzfLua lsp_definitions<cr>', { desc = 'FZF-LSP: definitions' })
+vim.keymap.set('n', '<leader>ye', '<cmd>FzfLua lsp_document_diagnostics<cr>', { desc = 'FZF-LSP: diagnostics' })
+vim.keymap.set('n', '<leader>ys', '<cmd>FzfLua lsp_document_symbols<cr>', { desc = 'FZF-LSP: document symbols' })
+-- stylua: ignore end
+
+-- file explorer
+require("oil").setup({
+    view_options = {
+        show_hidden = true,
+    },
+    -- keymaps = {
+    --   ['y'] = { 'actions.copy_to_system_clipboard', mode = 'n' },
+    -- },
+})
+vim.keymap.set("n", "<leader>o", "<cmd>Oil<cr>", { desc = "Open file explorer" })
+
+-- terminal utils
+require("toggleterm").setup({})
+-- Example: `2<C-t>` opens terminal 2
+vim.keymap.set("n", "<C-t>", '<Cmd>exe v:count1 . "ToggleTerm"<CR>', { desc = "Toggle terminal" })
+
+-- (auto)-completion
+require("blink.cmp").setup({
+    -- VS Code convention: `Tab` accepts the completion and jumps between snippet placeholders, `C-n`/`C-p` move through the menu
+    keymap = {
+        preset = "super-tab",
+        ["<Esc>"] = { "cancel", "fallback" }, -- dismiss the menu, else leave insert mode
+    },
+    completion = {
+        menu = { auto_show_delay_ms = 300 },
+        documentation = { auto_show = true },
+        ghost_text = { enabled = true, show_without_menu = false },
+    },
+    sources = { min_keyword_length = 2 },
+    -- `max_typos = 0` requires every typed character to be present in the match, the default allows 1 missing char per 4 typed
+    fuzzy = { implementation = "rust", max_typos = 0 },
+    signature = { enabled = true },
+    cmdline = {
+        enabled = true,
+        -- `inherit` reuses the keymap above instead of the cmdline default where `Tab` cycles the menu
+        keymap = { preset = "inherit" },
+        completion = { menu = { auto_show = true } },
+    },
+})
+
+-- syntax and navigation
+require("nvim-treesitter").install({
+    "bash",
+    "diff",
+    "markdown",
+    "markdown_inline",
+    "cpp",
+    "cuda",
+    "cmake",
+    "vim",
+    "lua",
+    "python",
+    "usd",
+})
+
+-- enable highlighting (Neovim-side)
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        -- This is a no-op if there is no parser for the buffer,
+        -- vim's default regex-based syntax highlighting is active
+        pcall(vim.treesitter.start)
+    end,
+})
+
+-- enable indentation (plugin-side)
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
+
+-- language servers, after `blink.cmp` for `get_lsp_capabilities()`
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+-- Per-project settings belong in a `.clangd` at the repo root, which is also a `root_marker`
+for _, server in ipairs({
+    "clangd",
+    "ty",
+    "ruff",
+    "rust_analyzer",
+    "bashls",
+    "lua_ls",
+}) do
+    vim.lsp.config(server, {
+        capabilities = capabilities,
+    })
+    vim.lsp.enable(server)
+end
+
+-- debugging
+require("nvim-dap-virtual-text").setup({})
+
+local dap = require("dap")
+-- Completion in REPL seems to not be supported currently : https://github.com/rcarriga/cmp-dap
+-- `lldb-vscode` is going to be renamed to `lldb-dap` https://discourse.llvm.org/t/rfc-rename-lldb-vscode-to-lldb-dap/74075/7
+dap.adapters.cpp = {
+    name = "lldb",
+    type = "executable",
+    -- command = '/usr/bin/lldb-vscode', -- adjust as needed, must be absolute path
+    command = "/usr/bin/lldb-dap",
+}
+-- https://github.com/mfussenegger/nvim-dap/wiki/Cookbook#pick-a-process
+dap.configurations.cpp = {
+    {
+        -- If you get an "Operation not permitted" error using this, try disabling YAMA:
+        --  echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+        name = "Attach to process",
+        type = "cpp", -- Adjust this to match your adapter name (`dap.adapters.<name>`)
+        request = "attach",
+        pid = require("dap.utils").pick_process,
+        args = {},
+        -- runInTerminal=true
+    },
+}
+
+-- stylua: ignore start
+vim.keymap.set('n', '<M-c>', function() require('dap').continue() end, { desc = 'DAP: start or continue' })
+vim.keymap.set('n', '<M-t>', function() require('dap').terminate() end, { desc = 'DAP: terminate the session' })
+vim.keymap.set('n', '<M-right>', function() require('dap').step_over() end, { desc = 'DAP: step over' })
+vim.keymap.set('n', '<M-down>', function() require('dap').step_into() end, { desc = 'DAP: step into' })
+vim.keymap.set('n', '<M-up>', function() require('dap').step_out() end, { desc = 'DAP: step out' })
+vim.keymap.set('n', '<M-f>', function() require('dap').focus_frame() end, { desc = 'DAP: jump to the current frame' })
+vim.keymap.set('n', '<M-k>', function() require('dap').up() end, { desc = 'DAP: up one frame' })
+vim.keymap.set('n', '<M-j>', function() require('dap').down() end, { desc = 'DAP: down one frame' })
+vim.keymap.set('n', '<M-u>', function() require('dap').run_to_cursor() end, { desc = 'DAP: run to cursor' })
+vim.keymap.set('n', '<M-b>', function() require('dap').toggle_breakpoint() end, { desc = 'DAP: toggle breakpoint' })
+vim.keymap.set('n', '<M-del>', function() require('dap').clear_breakpoints() end, { desc = 'DAP: clear all breakpoints' })
+vim.keymap.set('n', '<M-l>', function() require('dap').list_breakpoints() end, { desc = 'DAP: list breakpoints in the quickfix' })
+-- In REPL mode LLDB commands can be run by prefixing with ` : e.g. `bt
+--
+-- https://github.com/mfussenegger/nvim-dap/discussions/381#discussioncomment-2360181
+vim.keymap.set('n', '<M-r>', function() require('dap').repl.toggle() end, { desc = 'DAP: toggle the REPL' })
+-- stylua: ignore end
+
+-- git integration
+require("gitsigns").setup({
+    on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+
+        -- Navigation, fall back to the built-in diff motions in a diff split
+        vim.keymap.set("n", "]c", function()
+            if vim.wo.diff then
+                vim.cmd.normal({ "]c", bang = true })
+            else
+                gitsigns.nav_hunk("next")
+            end
+        end, { buffer = bufnr, desc = "Git: next hunk" })
+
+        vim.keymap.set("n", "[c", function()
+            if vim.wo.diff then
+                vim.cmd.normal({ "[c", bang = true })
+            else
+                gitsigns.nav_hunk("prev")
+            end
+        end, { buffer = bufnr, desc = "Git: previous hunk" })
+
+        -- Actions
+        vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk, { buffer = bufnr, desc = "Git: stage hunk" })
+        vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, { buffer = bufnr, desc = "Git: reset hunk" })
+
+        vim.keymap.set("v", "<leader>hs", function()
+            gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { buffer = bufnr, desc = "Git: stage selected lines" })
+
+        vim.keymap.set("v", "<leader>hr", function()
+            gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { buffer = bufnr, desc = "Git: reset selected lines" })
+
+        vim.keymap.set("n", "<leader>hS", gitsigns.stage_buffer, { buffer = bufnr, desc = "Git: stage buffer" })
+        vim.keymap.set("n", "<leader>hR", gitsigns.reset_buffer, { buffer = bufnr, desc = "Git: reset buffer" })
+        vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk, { buffer = bufnr, desc = "Git: preview hunk" })
+        vim.keymap.set("n", "<leader>hi", gitsigns.preview_hunk_inline, { buffer = bufnr, desc = "Git: inline hunk" })
+
+        vim.keymap.set("n", "<leader>hb", function()
+            gitsigns.blame_line({ full = true })
+        end, { buffer = bufnr, desc = "Git: blame current line" })
+        vim.keymap.set("n", "<leader>hB", gitsigns.blame, { buffer = bufnr, desc = "Git: blame buffer" })
+
+        vim.keymap.set("n", "<leader>hd", gitsigns.diffthis, { buffer = bufnr, desc = "Git: diff against index" })
+
+        -- Text object
+        vim.keymap.set({ "o", "x" }, "ih", gitsigns.select_hunk, { buffer = bufnr, desc = "Git: select hunk" })
+    end,
+})
+
+-- preserve the window layout when deleting buffers, plain `:bdelete` closes
+-- every window showing the buffer
+require("mini.bufremove").setup({})
+vim.keymap.set("n", "<leader>d", function()
+    require("mini.bufremove").delete()
+end, { desc = "Close current buffer" })
+
+-- indent guides
+require("ibl").setup({
+    scope = {
+        enabled = false, -- don't underline outer scope
+    },
+})
+
+-- autopairs
+require("nvim-autopairs").setup({})
+
+-- navigation
+vim.keymap.set("n", "s", "<Plug>(leap-anywhere)", { desc = "Leap: jump to a match in any window" })
+-- `(leap)` searches the current window only, which is what an operator needs
+vim.keymap.set({ "x", "o" }, "s", "<Plug>(leap)", { desc = "Leap: jump to a match in this window" })
+-- Disable preview labels
+require("leap").opts.preview_filter = function()
+    return false
+end
 
 -------- AUTOCOMMANDS
 
@@ -529,6 +488,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 ------- COMMANDS
+
+-- Nvim 0.13 ships `:packupdate` and `:packdel`, at which point these can go
+vim.api.nvim_create_user_command("PackUpdate", function()
+    vim.pack.update()
+end, { desc = "Pack: fetch updates and open the confirmation buffer" })
+
+vim.api.nvim_create_user_command("PackStatus", function()
+    vim.pack.update(nil, { offline = true })
+end, { desc = "Pack: list installed plugins without fetching" })
 
 vim.api.nvim_create_user_command("TNNCopyPath", function(opts)
     local expr = opts.args
