@@ -139,6 +139,7 @@ vim.pack.add({
     { src = gh("saghen/blink.cmp"), version = vim.version.range("1") }, -- (auto)-completion
     -- Requires `tree-sitter-cli`, check the status with `:checkhealth nvim-treesitter`
     { src = gh("nvim-treesitter/nvim-treesitter"), version = "main" }, -- syntax and navigation
+    { src = gh("nvim-treesitter/nvim-treesitter-textobjects"), version = "main" }, -- textobjects and motions
     gh("neovim/nvim-lspconfig"), -- language servers
     gh("mfussenegger/nvim-dap"), -- debugging
     gh("theHamsta/nvim-dap-virtual-text"), -- inline debugging info
@@ -332,6 +333,37 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
+
+-- textobjects and motions
+require("nvim-treesitter-textobjects").setup({})
+
+local ts_select = require("nvim-treesitter-textobjects.select")
+local ts_move = require("nvim-treesitter-textobjects.move")
+
+-- stylua: ignore start
+for key, spec in pairs({
+    ["af"] = { "@function.outer",  "TS: function" },
+    ["if"] = { "@function.inner",  "TS: function body" },
+    ["ac"] = { "@class.outer",     "TS: class" },
+    ["ic"] = { "@class.inner",     "TS: class body" },
+    ["aa"] = { "@parameter.outer", "TS: argument" },
+    ["ia"] = { "@parameter.inner", "TS: argument" },
+    ["al"] = { "@loop.outer",      "TS: loop" },
+    ["il"] = { "@loop.inner",      "TS: loop body" },
+}) do
+    vim.keymap.set({ "x", "o" }, key, function() ts_select.select_textobject(spec[1], "textobjects") end, { desc = spec[2] })
+end
+
+-- `]c`/`[c` are taken by the gitsigns hunk motions, so classes use the capital
+for key, spec in pairs({
+    ["]f"] = { ts_move.goto_next_start,     "@function.outer", "TS: next function" },
+    ["[f"] = { ts_move.goto_previous_start, "@function.outer", "TS: previous function" },
+    ["]C"] = { ts_move.goto_next_start,     "@class.outer",    "TS: next class" },
+    ["[C"] = { ts_move.goto_previous_start, "@class.outer",    "TS: previous class" },
+}) do
+    vim.keymap.set({ "n", "x", "o" }, key, function() spec[1](spec[2], "textobjects") end, { desc = spec[3] })
+end
+-- stylua: ignore end
 
 -- language servers, after `blink.cmp` for `get_lsp_capabilities()`
 local capabilities = require("blink.cmp").get_lsp_capabilities()
