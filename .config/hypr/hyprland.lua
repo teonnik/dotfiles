@@ -176,7 +176,7 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + Return",        hl.dsp.exec_cmd("foot"))
 hl.bind(mainMod .. " + D",             hl.dsp.exec_cmd("fuzzel"))
-hl.bind(mainMod .. " + SHIFT + D",     hl.dsp.exec_cmd("foot mydocs"))
+hl.bind(mainMod .. " + SHIFT + D",     hl.dsp.exec_cmd("fuzzel --list-executables-in-path"))
 hl.bind(mainMod .. " + L",             hl.dsp.exec_cmd("swaylock"))
 hl.bind(mainMod .. " + P",             hl.dsp.exec_cmd("~/bin/scr"))
 hl.bind("Print",                       hl.dsp.exec_cmd("~/bin/scr"))
