@@ -1,2 +1,30 @@
 #!/bin/bash
-grim -g "$(slurp)"
+# Single-bind screenshot dispatcher: pick a target via fuzzel, then
+# grab, save, copy to clipboard, and notify (mirrors what grimblast
+# does for Hyprland, without the AUR dependency).
+set -euo pipefail
+
+dir="${XDG_PICTURES_DIR:-$HOME}/screenshots"
+mkdir -p "$dir"
+file="$dir/$(date +%Y%m%d-%H%M%S).png"
+
+target=$(printf 'Region\nWindow\nMonitor\nAll\n' | fuzzel --dmenu --prompt "Screenshot ")
+[ -n "$target" ] || exit 0
+
+case "$target" in
+  Region)
+    grim -g "$(slurp)" "$file"
+    ;;
+  Window)
+    grim -g "$(hyprctl activewindow -j | jq -j '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')" "$file"
+    ;;
+  Monitor)
+    grim -o "$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')" "$file"
+    ;;
+  All)
+    grim "$file"
+    ;;
+esac
+
+wl-copy < "$file"
+notify-send "Screenshot saved" "$file" -i "$file"
