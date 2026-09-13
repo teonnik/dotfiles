@@ -15,10 +15,8 @@ alias spi="spack install -v --reuse"
 alias spf="spack find -lvd"
 alias sph="spack help --all"
 
-# vim
-alias vim=nvim
-alias vl="vim ${HOME}/personal/log/$(date "+%Y-%m-%d").md"
-alias vt="vim ${HOME}/personal/readme/todo.md"
+alias vl="nvim ${HOME}/personal/log/$(date "+%Y-%m-%d").md"
+alias vt="nvim ${HOME}/personal/readme/todo.md"
 
 # slurm
 alias slq="squeue --me -o \"%10A %10l %10L %10P %10T %6D %z\""
