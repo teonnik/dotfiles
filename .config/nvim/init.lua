@@ -565,3 +565,32 @@ vim.api.nvim_create_user_command("TNNToggleKeymap", function()
         vim.o.keymap = "bulgarian-phonetic"
     end
 end, {})
+
+vim.api.nvim_create_user_command("Log", function(opts)
+    local dir = vim.fn.expand("~/personal/log")
+    local n = tonumber(opts.args)
+
+    if not n then
+        vim.cmd.edit(dir .. "/" .. os.date("%Y-%m-%d") .. ".md")
+        return
+    end
+
+    local files = {}
+    for i = n - 1, 0, -1 do
+        local path = dir .. "/" .. os.date("%Y-%m-%d", os.time() - i * 86400) .. ".md"
+        if vim.uv.fs_stat(path) then
+            table.insert(files, vim.fn.fnameescape(path))
+        end
+    end
+
+    if #files == 0 then
+        vim.notify("No logs found in the past " .. n .. " days", vim.log.levels.WARN)
+        return
+    end
+
+    vim.cmd("args " .. table.concat(files, " "))
+    vim.cmd("argument " .. #files) -- jump to today's entry, :prev walks back through history
+end, {
+    nargs = "?",
+    desc = "Open today's daily log, or :Log N for the past N days",
+})
