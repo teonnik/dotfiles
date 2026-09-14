@@ -72,6 +72,3 @@ if [[ -z "$SSH_AUTH_SOCK" || ! -S "$SSH_AUTH_SOCK" ]]; then
     fi
     export SSH_AUTH_SOCK="$_sock"
 fi
-
-# source system-specific env variables
-source ~/.config/shell/$(hostname)

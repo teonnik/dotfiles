@@ -1,3 +1,0 @@
-# vim: filetype=sh
-
-export SSH_KEY_PATH="~/.ssh/rsa_id"
