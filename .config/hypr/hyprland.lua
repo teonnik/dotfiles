@@ -22,12 +22,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css")
     hl.exec_cmd("blueman-applet")
     -- hl.exec_cmd("signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland")
-    hl.exec_cmd("swayidle -w " ..
-        "before-sleep 'swaylock -f' " ..
-        "timeout 180 'notify-send -u critical \"Locking screen in 2 minutes.\" \"The system was idle for 3 minutes.\"' " ..
-        "timeout 300 'swaylock -f' " ..
-        "timeout 360 'hyprctl dispatch dpms off' " ..
-        "resume 'hyprctl dispatch dpms on'")
+    -- Timeouts and lock command live in ~/.config/hypr/hypridle.conf
+    hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("shikane")
     hl.exec_cmd("hyprsunset")
