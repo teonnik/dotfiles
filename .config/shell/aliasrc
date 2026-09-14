@@ -15,7 +15,7 @@ alias spi="spack install -v --reuse"
 alias spf="spack find -lvd"
 alias sph="spack help --all"
 
-alias vl="nvim ${HOME}/personal/log/$(date "+%Y-%m-%d").md"
+alias vl='nvim ${HOME}/personal/log/$(date +%F).md'
 alias vt="nvim ${HOME}/personal/readme/todo.md"
 
 # slurm
@@ -24,12 +24,7 @@ alias slc="scancel -u $(whoami)"
 alias sli="sinfo -S P -o \"%10P %6a %10A %20G %7m %z\""
 alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,AllocGRES%20,Elapsed,ExitCode,State"
 
-# clipboard
-alias mycopy='xlcip -selection clipboard'
-alias mypaste='xlcip -o'
-
-alias weather="curl wttr.in/Zurich"
+alias weather='curl wttr.in/$(timedatectl show -p Timezone --value | sed "s|.*/||")'
 alias printpath="echo \${PATH//:/'\n'}"
-alias dots='git --git-dir=${HOME}/code/dots --work-tree=${HOME}'
 alias recent='ls -ltch'
-alias open='xdg-open 2>&1 >/dev/null'
+alias open='xdg-open >/dev/null 2>&1'
