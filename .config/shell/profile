@@ -3,12 +3,11 @@
 # ---- env
 #
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
-export DEFAULT_USER=`whoami`
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export PAGER=less
-export TERM=xterm-256color
-#export TERM=foot # this is set in foot's config
+# TERM is left to the terminal: foot.ini sets it, and forcing a value here
+# would also override `linux` on a TTY.
 
 # -- XDG
 #
@@ -40,15 +39,13 @@ export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 # -- Wayland
 #
 if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-  export MOZ_ENABLE_WAYLAND=1           # force firefox to use wayland (ff 75+)
-  export MOZ_WAYLAND_USE_VAAPI=1        # firefox enable hw video decoding
   export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
   export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
   export ELECTRON_OZONE_PLATFORM_HINT="auto" # Wayland mode for `Electron` apps
 fi
 
 # fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 
 # less : https://wiki.archlinux.org/title/Color_output_in_console#less
 export LESS='-R'
