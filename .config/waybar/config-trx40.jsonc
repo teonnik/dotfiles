@@ -4,6 +4,7 @@
     ],
     "modules-right": [
         "idle_inhibitor",
+        "custom/nightlight",
         "hyprland/language",
         "pulseaudio",
         "tray"

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Report hyprsunset's state for the waybar custom/nightlight module.
+#
+# `hyprctl hyprsunset identity get` is undocumented (missing from --help and
+# the wiki) but is the only way to read back the live override; see
+# src/IPCSocket.cpp in hyprwm/hyprsunset. The on/off classes are coloured in
+# style.css.
+set -euo pipefail
+
+if [ "$(hyprctl hyprsunset identity get)" = "true" ]; then
+    printf '{"text":"","tooltip":"Night light: off","class":"off"}\n'
+else
+    printf '{"text":"","tooltip":"Night light: on (%sK)","class":"on"}\n' \
+        "$(hyprctl hyprsunset temperature)"
+fi

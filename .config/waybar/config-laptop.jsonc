@@ -6,6 +6,7 @@
         "idle_inhibitor",
         "battery",
         "backlight",
+        "custom/nightlight",
         "hyprland/language",
         "pulseaudio",
         "tray"
