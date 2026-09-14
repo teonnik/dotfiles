@@ -24,21 +24,6 @@ alias slc="scancel -u $(whoami)"
 alias sli="sinfo -S P -o \"%10P %6a %10A %20G %7m %z\""
 alias sla="sacct -S 2020-01-01 -X --format=Start,JobName%20,JobID%10,NNodes,AllocGRES%20,Elapsed,ExitCode,State"
 
-# git
-alias ga="git add --all"
-alias gb="git branch"
-alias gc='git checkout'
-alias gd='git diff'
-alias gg='git status -sb'
-alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gm="git commit"
-alias gpush='git push'
-alias gpull='git pull'
-
-# youtube-dl
-alias ytmp3='youtube-dl -ciw -o "%(title)s.%(ext)s" --extract-audio --audio-format mp3'
-alias ytvid='youtube-dl -ciw --format mp4 -o "%(title)s.%(ext)s"'
-
 # clipboard
 alias mycopy='xlcip -selection clipboard'
 alias mypaste='xlcip -o'
@@ -47,7 +32,4 @@ alias weather="curl wttr.in/Zurich"
 alias printpath="echo \${PATH//:/'\n'}"
 alias dots='git --git-dir=${HOME}/code/dots --work-tree=${HOME}'
 alias recent='ls -ltch'
-alias month='fd $(date +%Y-%m) ~/log | xargs bat'
-alias pacfindfile='pacman -Fq "/usr/bin/$1"'    # find which package contains the file
-rme() { fd $1 ~/readme | xargs bat } # open readme file
 alias open='xdg-open 2>&1 >/dev/null'
