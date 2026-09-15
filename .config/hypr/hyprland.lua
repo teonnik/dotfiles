@@ -177,6 +177,8 @@ hl.bind(mainMod .. " + SHIFT + D",     hl.dsp.exec_cmd("fuzzel --list-executable
 hl.bind(mainMod .. " + L",             hl.dsp.exec_cmd("swaylock"))
 hl.bind(mainMod .. " + P",             hl.dsp.exec_cmd("~/bin/scr"))
 hl.bind("Print",                       hl.dsp.exec_cmd("~/bin/scr"))
+hl.bind(mainMod .. " + V",             hl.dsp.exec_cmd("~/bin/dictate start"))
+hl.bind(mainMod .. " + V",             hl.dsp.exec_cmd("~/bin/dictate stop"), { release = true })
 
 hl.bind(mainMod .. " + SHIFT + Q",     hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.window.float())

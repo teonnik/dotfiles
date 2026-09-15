@@ -7,6 +7,7 @@
         "custom/nightlight",
         "hyprland/language",
         "pulseaudio",
+        "custom/dictate",
         "tray"
     ]
 }
