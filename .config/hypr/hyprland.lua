@@ -185,6 +185,7 @@ hl.bind(mainMod .. " + SHIFT + Space", hl.dsp.window.float())
 hl.bind(mainMod .. " + E",             hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + SHIFT + P",     hl.dsp.exec_cmd("~/bin/power-menu-fuzzel.sh"))
 hl.bind(mainMod .. " + F",             hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + R",     hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + N",         hl.dsp.exec_cmd("hyprctl hyprsunset temperature 4000"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("hyprctl hyprsunset identity"))
 

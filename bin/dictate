@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Voice dictation via whisper.cpp, driven by explicit start/stop for
+# push-to-talk (bind key-down to start, key-up to stop).
+#
+# State is surfaced via a hyprctl notify banner, dismissed on the next state
+# change, since recording has no ambient visual cue of its own.
+set -euo pipefail
+
+STATE_DIR="${XDG_RUNTIME_DIR:-/tmp}/dictate"
+PID_FILE="$STATE_DIR/record.pid"
+BUSY_FILE="$STATE_DIR/busy"
+WAV_FILE="$STATE_DIR/dictate.wav"
+MODEL="$HOME/.local/share/whisper.cpp/models/ggml-base.en.bin"
+
+mkdir -p "$STATE_DIR"
+
+notify() {
+  hyprctl notify -1 600000 "$1" "$2" >/dev/null
+}
+
+cmd="${1:-}"
+
+case "$cmd" in
+  start)
+    [[ -f "$PID_FILE" || -f "$BUSY_FILE" ]] && exit 0  # already recording, or still transcribing
+
+    notify "rgb(cc393a)" "Dictating…"
+    pw-record --target=@DEFAULT_SOURCE@ -P '{ format="s16" rate=16000 channels=1 }' "$WAV_FILE" &
+    echo $! > "$PID_FILE"
+    ;;
+
+  stop)
+    [[ -f "$PID_FILE" ]] || exit 0  # not recording
+
+    pid="$(cat "$PID_FILE")"
+    rm -f "$PID_FILE"
+    kill -INT "$pid" 2>/dev/null || true  # SIGINT lets pw-record finalize the WAV header; SIGTERM corrupts it
+    wait "$pid" 2>/dev/null || true
+
+    # Held until transcription finishes, so a `start` fired mid-transcription
+    # (WAV_FILE is a fixed path) can't clobber the file whisper-cli is still
+    # reading. Trap covers whisper-cli failing under `set -e` too.
+    touch "$BUSY_FILE"
+    trap 'rm -f "$BUSY_FILE"' EXIT
+
+    hyprctl dismissnotify >/dev/null
+    notify "rgb(f9c74f)" "Transcribing…"
+
+    text="$(whisper-cli -m "$MODEL" -f "$WAV_FILE" -nt -np 2>/dev/null | sed '/^[[:space:]]*$/d')"
+    rm -f "$WAV_FILE"
+
+    [[ -n "$text" ]] && printf '%s' "$text" | wl-copy
+
+    hyprctl dismissnotify >/dev/null
+    ;;
+
+  *)
+    echo "usage: dictate start|stop" >&2
+    exit 1
+    ;;
+esac

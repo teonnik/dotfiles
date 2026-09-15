@@ -38,36 +38,11 @@ window#waybar {
 #pulseaudio,
 #tray,
 #battery,
-#backlight,
-#custom-dictate {
+#backlight {
   background-color: rgba(30, 30, 46, 0.85);
   border-radius: 5px;
   margin: 5px 3px;
   padding: 2px 8px;
-}
-
-#custom-dictate {
-    min-width: 16px;
-}
-
-#custom-dictate.idle {
-    color: #6c7086;
-}
-
-#custom-dictate.recording {
-    color: #cc393a;
-    animation: blink 1s linear infinite alternate;
-}
-
-#custom-dictate.transcribing {
-    color: #f9c74f;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
 }
 
 label:focus {

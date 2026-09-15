@@ -6,7 +6,6 @@
         "idle_inhibitor",
         "hyprland/language",
         "pulseaudio",
-        "custom/dictate",
         "tray"
     ]
 }

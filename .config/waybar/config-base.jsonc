@@ -42,13 +42,6 @@
         "format-source": " {volume}",
         "format-source-muted": ""
     },
-    "custom/dictate": {
-        "exec": "~/.config/waybar/modules/dictate-status",
-        "interval": "once",
-        "signal": 8,
-        "return-type": "json",
-        "tooltip": true
-    },
     "idle_inhibitor": {
         "format": "{icon} ",
         "format-icons": {

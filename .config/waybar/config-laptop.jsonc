@@ -8,7 +8,6 @@
         "backlight",
         "hyprland/language",
         "pulseaudio",
-        "custom/dictate",
         "tray"
     ],
     "backlight": {
