@@ -39,16 +39,11 @@ window#waybar {
 #tray,
 #battery,
 #backlight,
-#custom-nightlight,
 #custom-dictate {
   background-color: rgba(30, 30, 46, 0.85);
   border-radius: 5px;
   margin: 5px 3px;
   padding: 2px 8px;
-}
-
-#custom-nightlight.on {
-    color: #f4a261;
 }
 
 #custom-dictate {

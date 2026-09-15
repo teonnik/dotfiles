@@ -56,13 +56,6 @@
             "deactivated": ""
         }
     },
-    "custom/nightlight": {
-        "exec": "~/.config/waybar/scripts/hyprsunset-status",
-        "return-type": "json",
-        "interval": 30,
-        "signal": 1,
-        "tooltip": true
-    },
     "tray": {
         "icon-size": 15,
         "spacing": 10
