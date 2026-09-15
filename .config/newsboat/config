@@ -3,8 +3,21 @@
 # https://wiki.archlinux.org/index.php/Newsboat#Color_schemes
 
 auto-reload yes
-#browser firefox
-browser w3m
+browser cha
+
+# default is 1, so feeds reload strictly one after another
+reload-threads 8
+
+# default is "%b %d", which drops the year -- unhelpful on feeds that go
+# quiet for months
+datetime-format "%Y-%m-%d"
+
+# default 0 uses the full terminal width, which is unreadable for prose
+# on a fullscreen terminal
+text-width 100
+
+# without this, a feed that stops resolving just silently shows nothing
+error-log "~/.local/share/newsboat/error.log"
 
 include /usr/share/doc/newsboat/contrib/colorschemes/nord
 color article             default   default

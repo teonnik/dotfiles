@@ -3,57 +3,22 @@ https://www.archlinux.org/feeds/news/          arch
 https://lwn.net/headlines/newrss               unix
 
 # cpp
-https://isocpp.org/blog/rss                    cpp
-
 https://brevzin.github.io/feed.xml             cpp
-#https://lukesmith.xyz/rss.xml                  unix
 https://herbsutter.com/feed                    cpp
 https://ericniebler.com/feed                   cpp
-https://drewdevault.com/feed.xml               unix
-https://awesomekling.github.io/feed.xml        cpp tech
-#https://daniel.haxx.se/blog/feed/              curl
+
+# foss
+https://ladybird.org/posts.rss                 foss ladybird
+https://drewdevault.com/blog/index.xml         foss sway
+https://emersion.fr/blog/rss.xml               foss sway
+https://blog.vaxry.net/feed                    foss hyprland
+https://moxie.org/feed.xml                     foss signal
+https://lukesmith.xyz/rss.xml                  foss
+
+# nvim
+https://neovim.io/news.xml                     nvim
 https://bluz71.github.io/feed.xml              vim
-#https://blog.cryptographyengineering.com/feed  crypto
-https://emersion.fr/blog/rss.xml               sway
-#https://moxie.org/blog/ (Signal dev)
-#https://matrix.org/blog/feed                   chat
 
-https://www.brandonsanderson.com/feed/
-#https://nitter.net/Snowden/rss
-#https://nitter.net/ericniebler/rss
-https://nitter.1d4.us/ericniebler/rss
-
-# Hacker News
-#https://hnrss.org/bestcomments
-#https://hnrss.org/newest?points=200
-#https://hnrss.org/best
-#https://news.ycombinator.com/rss
-#https://hn.algolia.com/latest.atom
-
+# bg
 https://blog.bozho.net/feed         bg
-#https://www.boec-bg.com/feed        bg
-https://pravosadiezavseki.com/feed/ bg
-https://acf.bg/bg/feed/             bg
-#https://news-bg-abroad.com/feed/    bg
-#https://chernakniga.bg/feed/        bg
-#https://spasisofia.org/bg/feed      bg
-#https://bulgarianhistory.org/feed/  bg
-#https://ime.bg/bg/rss/ime/          bg
-
-#https://demokrati.bg/feed/          bg
-#https://desebg.com/index.php/bg/feed
-#https://pametbg.com/index.php/bg/feed
-
 https://bird.bg/feed                bg
-#https://bivol.bg/feed               bg
-#https://zovnews.com/feed/           bg
-#https://nitter.net/SegaBG/rss       bg
-https://news.lex.bg/feed/           bg
-#https://ekipbg.com/feed/            bg
-#https://www.mediapool.bg/rss
-#https://www.dnevnik.bg/rss
-#https://www.clubz.bg/rss.xml
-#https://www.svobodnaevropa.bg/api/zgmpmie_$pmm
-#
-#https://www.capital.bg/rss/
-#https://www.banker.bg/rss
