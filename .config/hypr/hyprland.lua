@@ -1,17 +1,3 @@
--- Hyprland config, migrated from hyprland.conf (hyprlang) to Lua.
--- API reference: /usr/share/hypr/stubs/hl.meta.lua and
--- https://wiki.hypr.land/Configuring/Basics/
-
-------------------
----- MONITORS ----
-------------------
-
--- Monitors are managed by shikane (~/.config/shikane/config.toml).
--- Historical layouts kept for reference:
---   Laptop:                 eDP-1 preferred 0x0    scale 1
---   Katie's office Harwell: eDP-1 960x1080, DP-7 0x0, DP-6 1920x0
-
-
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -23,7 +9,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar")
     hl.exec_cmd("blueman-applet")
     -- hl.exec_cmd("signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland")
-    -- Timeouts and lock command live in ~/.config/hypr/hypridle.conf
     hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("shikane")
