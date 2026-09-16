@@ -42,9 +42,6 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
--- https://wiki.hypr.land/Configuring/Multi-GPU/
-hl.env("AQ_DRM_DEVICES", "/dev/dri/card1")
-
 
 -----------------------
 ---- LOOK AND FEEL ----
