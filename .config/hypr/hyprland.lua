@@ -19,7 +19,8 @@
 hl.on("hyprland.start", function()
     hl.exec_cmd("mako")
     hl.exec_cmd("nm-applet --indicator")
-    hl.exec_cmd("waybar -c ~/.config/waybar/config-laptop.jsonc -s ~/.config/waybar/style.css")
+    -- config.jsonc symlinks the host specific config
+    hl.exec_cmd("waybar")
     hl.exec_cmd("blueman-applet")
     -- hl.exec_cmd("signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland")
     -- Timeouts and lock command live in ~/.config/hypr/hypridle.conf
