@@ -1,49 +1,35 @@
+# Machine-local identity, LFS and credential helpers. Untracked, so the work
+# PC keeps its own email and binary paths.
+[include]
+  path = ~/.config/git/config.local
+
 [user]
   name = Teodor Nikolov
-  email = teodor.nikolov22@gmail.com
-[push]
-  default = current
+  # Refuse to commit rather than guessing an email from hostname/username.
+  # Forces config.local to exist on a new machine instead of silently
+  # authoring under the wrong address.
+  useConfigOnly = true
+
 [core]
   editor = nvim
   pager = delta
-[color]
-  ui = auto
-[commit]
-  #  Include a diff of the changes below the message area when editing the
-  #  commit message (the diff does NOT become part of the commit message, it's
-  #  only there for information).
-  verbose = true
-[diff]
-  # Prettier diffs
-  compactionHeuristic = true
-  indentHeuristic = on
-  colorMoved = default
-[rebase]
-  # Stash any dirty changes before running rebase, and then unstashes them
-  # afterwards.
-  autostash = true
-[log]
-  abbrevCommit = true
-  decorate = short
-  date = format:%a, %Y-%m-%d %R (%z)
-  follow = true
-  graphColors = 1,2,3,4,5,6,8,166,9,10,11,12,13,14,15,208
-  showRoot = true
-  mailmap = true
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false
+
+[push]
+  default = current
 [pull]
   ff = only
-[interactive]
-  #diffFilter = diff-so-fancy --patch
-  diffFilter = delta --color-only
-[filter "lfs"]
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-  clean = git-lfs clean -- %f
-[delta]
-  #side-by-side = true
-  #line-numbers = true
-  navigate = true    # use n and N to move between diff sections
-  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[rebase]
+  # Stash any dirty changes before rebasing, and restore them afterwards.
+  autostash = true
 [merge]
-  conflictstyle = diff3
+  # Like diff3, but drops lines common to both sides out of the conflict
+  # region, so the markers wrap only what actually differs.
+  conflictstyle = zdiff3
+
+[diff]
+  colorMoved = default
