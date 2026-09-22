@@ -6,19 +6,7 @@ alias mv="mv -iv"
 alias rm="rm -vI"
 alias ls="ls -hN --color=auto --group-directories-first"
 alias l="LC_COLLATE=C ls -al" # sort dots first
+alias recent='ls -ltch'
 alias grep="grep --color=auto --exclude-dir=.git"
 alias diff="diff --color=auto"
-
-# spack
-alias sps="spack spec -Il --reuse"
-alias spi="spack install -v --reuse"
-alias spf="spack find -lvd"
-alias sph="spack help --all"
-
-alias vl='nvim ${HOME}/personal/log/$(date +%F).md'
-alias vt="nvim ${HOME}/personal/readme/todo.md"
-
-alias weather='curl wttr.in/$(timedatectl show -p Timezone --value | sed "s|.*/||")'
-alias printpath="echo \${PATH//:/'\n'}"
-alias recent='ls -ltch'
 alias open='xdg-open >/dev/null 2>&1'

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# One PATH entry per line.
+printf '%s\n' "$PATH" | tr ':' '\n'

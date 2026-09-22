@@ -1,0 +1,6 @@
+#!/bin/sh
+# Weather for the city in the system timezone, or a location if given:
+#   weather          -> the local city
+#   weather berlin
+loc="${1:-$(timedatectl show -p Timezone --value | sed 's|.*/||')}"
+exec curl -fsS "wttr.in/${loc}"
