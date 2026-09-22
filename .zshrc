@@ -41,19 +41,19 @@ zstyle ':completion:*' menu select
 # case-insensitive and hiphen-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
+# gpg : pinentry needs it to prompt.
+[[ -t 0 ]] && export GPG_TTY="${TTY:-$(tty)}"
+
 # aliases
 source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-
-# spack
-if [ -f "${HOME}/code/spack/share/spack/setup-env.sh" ]; then
-  SPACK_SKIP_MODULES="" # speedup sourcing `setup-env.sh`
-  source "${HOME}/code/spack/share/spack/setup-env.sh"
-fi
 
 # direnv
 if type direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # fzf
 source "${FZF_SHELL_COMPLETION_DIR:-/usr/share/fzf}/key-bindings.zsh"
@@ -73,3 +73,4 @@ source ${XDG_DATA_HOME}/zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # zsh syntax highlighting
 source ${XDG_DATA_HOME}/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

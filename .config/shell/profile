@@ -1,33 +1,19 @@
 # vim: filetype=sh
 
-# ---- env
-#
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 export LANG=en_US.UTF-8
 export EDITOR=nvim
+export VISUAL=nvim   # sudoedit, crontab -e and others check VISUAL first
 export PAGER=less
-# TERM is left to the terminal: foot.ini sets it, and forcing a value here
-# would also override `linux` on a TTY.
 
-# -- XDG
-#
-# XDG base directories : https://wiki.archlinux.org/title/XDG_Base_Directory
+# XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-# `XDG_CURRENT_DESKTOP` is usually set by the desktop environment
-# `XDG_SESSION_DESKTOP` is set by the login manager
-#
-# If `XDG_CURRENT_DESKTOP` is empty, set to the same as `XDG_SESSION_DESKTOP`
-if [ -z "${XDG_CURRENT_DESKTOP}" ]; then
-  XDG_CURRENT_DESKTOP="${XDG_SESSION_DESKTOP}"
-fi
 
 # XDG config
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
-export WGETRC="${XDG_CONFIG_HOME}/wget/wgetrc"
-#export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 # XDG data
 export CARGO_HOME="${XDG_DATA_HOME}/cargo"
@@ -36,32 +22,22 @@ export GOPATH="${XDG_DATA_HOME}/go"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME}/password-store"
 export RUSTUP_HOME="${XDG_DATA_HOME}/rustup"
 
-# -- Wayland
-#
-if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-  export QT_QPA_PLATFORMTHEME=qt5ct     # QT apps theme
-  export _JAVA_AWT_WM_NONREPARENTING=1  # Fixes issues on jetbrains ides
-  export ELECTRON_OZONE_PLATFORM_HINT="auto" # Wayland mode for `Electron` apps
-fi
+# cmake
+export CMAKE_EXPORT_COMPILE_COMMANDS=ON
+
+# python
+export PYTHONPYCACHEPREFIX="${XDG_CACHE_HOME}/python"
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.git'"
 
-# less : https://wiki.archlinux.org/title/Color_output_in_console#less
-export LESS='-R'
+# less
+export LESS='-R -F -i -M --use-color --incsearch --mouse'
 export LESSHISTFILE="-" # no history file
 
-# man : https://wiki.archlinux.org/title/Color_output_in_console#man
+# man
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export MANROFFOPT="-P -c"
 
-# run ssh-agent if not already running, reuse socket across sessions
-if [[ -z "$SSH_AUTH_SOCK" || ! -S "$SSH_AUTH_SOCK" ]]; then
-    _sock="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-    SSH_AUTH_SOCK="$_sock" ssh-add -l &>/dev/null
-    if [[ $? -eq 2 ]]; then
-        rm -f "$_sock"
-        ssh-agent -a "$_sock" > /dev/null
-    fi
-    export SSH_AUTH_SOCK="$_sock"
-fi
+# ssh-agent is socket-activated by a systemd user unit
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
