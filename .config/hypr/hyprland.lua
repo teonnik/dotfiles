@@ -27,6 +27,11 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
+-- Toolkit settings for GUI apps. These belong here rather than in the shell
+hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")        -- QT apps theme
+hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")     -- fixes issues on jetbrains ides
+hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto") -- Wayland mode for Electron apps
+
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -92,7 +97,9 @@ hl.config({
     },
 
     input = {
-        kb_layout  = "us,bg",
+        -- us-german-umlaut lives in $XDG_CONFIG_HOME/xkb/symbols/, which
+        -- libxkbcommon searches by default. Caps Lock is the level-3 chooser.
+        kb_layout  = "us-german-umlaut,bg",
         kb_variant = ",phonetic",
         kb_options = "grp:alt_shift_toggle",
 
