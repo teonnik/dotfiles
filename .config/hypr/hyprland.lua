@@ -97,9 +97,7 @@ hl.config({
     },
 
     input = {
-        -- us-german-umlaut lives in $XDG_CONFIG_HOME/xkb/symbols/, which
-        -- libxkbcommon searches by default. Caps Lock is the level-3 chooser.
-        kb_layout  = "us-german-umlaut,bg",
+        kb_layout  = "us,bg",
         kb_variant = ",phonetic",
         kb_options = "grp:alt_shift_toggle",
 
