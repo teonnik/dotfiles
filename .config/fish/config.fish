@@ -27,9 +27,19 @@ end
 
 status is-interactive; or exit 0
 
+# No "Welcome to fish" banner. Set here rather than `set -U` so it lives in
+# the repo instead of fish's machine-local universal variable file.
+set -g fish_greeting
+
 # -- key bindings
 # Ctrl-arrows and Ctrl-Delete are bound by fish out of the box.
 bind \cx\ce edit_command_buffer   # [Ctrl-x Ctrl-e] edit in $EDITOR
+# [Ctrl-e] dismiss the completion pager, keeping the line. Matches blink.cmp,
+# where <C-e> is 'cancel' too. Escape does this as well, but nvim's terminal
+# swallows it. Overrides fish's preset (end-of-line, and accept the
+# autosuggestion when already at the end) -- End, Ctrl-f and Right still cover
+# both of those.
+bind ctrl-e cancel
 
 # -- aliases
 # Shared with zsh. The file is written so that both can parse it; anything
