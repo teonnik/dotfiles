@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Point pacman at mirrors in another country while travelling, or go back home.
+#
+#   mirrors bg    # Bulgaria, pauses the weekly reflector.timer
+#   mirrors us    # United States, likewise
+#   mirrors       # back to the UK list from reflector.conf, resumes the timer
+#
+# Reuses the filters from /etc/xdg/reflector/reflector.conf with only the
+# country swapped. Pausing the timer stops it from switching back to UK
+# mirrors mid-trip; a reboot resumes it.
+
+set -eu
+
+conf=/etc/xdg/reflector/reflector.conf
+
+if [ $# -eq 0 ] || [ "$1" = gb ] || [ "$1" = GB ]; then
+    sudo systemctl start reflector.service
+    sudo systemctl start reflector.timer
+else
+    # Config lines are plain "--flag value" pairs, so word splitting is safe.
+    args=$(grep -Ev '^[[:space:]]*(#|$)|^--country' "$conf")
+    # shellcheck disable=SC2086
+    sudo reflector $args --country "$1"
+    sudo systemctl stop reflector.timer
+fi
+
+grep -m3 '^Server' /etc/pacman.d/mirrorlist
