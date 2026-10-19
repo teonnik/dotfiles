@@ -25,8 +25,14 @@ hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
 -- https://wiki.hypr.land/Nvidia/
-hl.env("LIBVA_DRIVER_NAME", "nvidia")
-hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+-- Only where the NVIDIA driver is loaded (the kernel module creates this file,
+-- on any distro). Assumes NVIDIA drives the displays: wrong on a hybrid laptop.
+local nvidia = io.open("/proc/driver/nvidia/version")
+if nvidia then
+    nvidia:close()
+    hl.env("LIBVA_DRIVER_NAME", "nvidia")
+    hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+end
 
 -- Toolkit settings for GUI apps. These belong here rather than in the shell
 hl.env("QT_QPA_PLATFORMTHEME", "gtk3")         -- Qt apps follow the GTK theme (gsettings)

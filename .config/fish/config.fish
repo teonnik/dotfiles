@@ -1,27 +1,7 @@
 # vim: filetype=fish
 #
-# Environment lives in one place: .config/shell/profile, in POSIX sh, so
-# sh/bash/zsh and ly's session setup all read the same file. fish cannot
-# source it, so it is run in sh and the resulting environment imported.
-# Costs ~2 ms. Do not restate variables here -- edit the profile.
-
-if not set -q __profile_imported
-    set -gx __profile_imported 1
-    sh -c '. "$HOME/.config/shell/profile" >/dev/null 2>&1; env -0' \
-        | while read -lz entry
-            set -l parts (string split -m 1 = -- $entry)
-            test (count $parts) -eq 2; or continue
-            # Shell bookkeeping belongs to this shell, not the subprocess.
-            contains -- $parts[1] _ SHLVL PWD OLDPWD SHELL; and continue
-            set -gx $parts[1] $parts[2]
-        end
-    # The profile prepends to PATH, so an inherited entry can appear twice.
-    set -l seen
-    for d in $PATH
-        contains -- $d $seen; or set -a seen $d
-    end
-    set -gx PATH $seen
-end
+# Environment variables live in conf.d/env.fish, which fish sources before
+# this file. Do not restate them here.
 
 # ---- interactive only
 
@@ -41,10 +21,24 @@ bind \cx\ce edit_command_buffer   # [Ctrl-x Ctrl-e] edit in $EDITOR
 # both of those.
 bind ctrl-e cancel
 
-# -- aliases
-# Shared with zsh. The file is written so that both can parse it; anything
-# that cannot be spelled in both (printpath) is a script in ~/bin instead.
-source "$XDG_CONFIG_HOME/shell/aliasrc"
+# -- abbreviations
+# Expanded in place on space or enter, so the real command is what runs and
+# what lands in history. Each spells out its ls flags: an abbreviation does
+# not expand inside another. `..` needs nothing: fish cds into a bare path.
+abbr -a cp 'cp -iv'
+abbr -a mv 'mv -iv'
+abbr -a rm 'rm -vI'
+abbr -a ls 'ls -hN --color=auto --group-directories-first'
+abbr -a l 'LC_COLLATE=C ls -alhN --color=auto --group-directories-first' # sort dots first
+abbr -a recent 'ls -ltchN --color=auto --group-directories-first'
+abbr -a grep 'grep --color=auto --exclude-dir=.git'
+abbr -a diff 'diff --color=auto'
+
+# xdg-open, quiet. Shadows fish's own `open`, which lets the opened
+# application's output through to the terminal.
+function open --description 'Open files in their default application'
+    xdg-open $argv >/dev/null 2>&1
+end
 
 # -- gpg
 # Must be the current terminal, so it cannot live in the profile: that is
