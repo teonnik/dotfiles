@@ -50,7 +50,8 @@ window#waybar {
 #battery,
 #backlight {
   background-color: rgba(30, 30, 46, 0.85);
-  border-radius: 5px;
+  border: 1px solid #45475a; /* matches inactive window borders */
+  border-radius: 10px;       /* matches Hyprland's rounding */
   margin: 5px 3px;
   padding: 2px 8px;
 }
