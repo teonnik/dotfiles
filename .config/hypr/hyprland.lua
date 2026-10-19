@@ -29,7 +29,7 @@ hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 -- Toolkit settings for GUI apps. These belong here rather than in the shell
-hl.env("QT_QPA_PLATFORMTHEME", "qt5ct")        -- QT apps theme
+hl.env("QT_QPA_PLATFORMTHEME", "gtk3")         -- Qt apps follow the GTK theme (gsettings)
 hl.env("_JAVA_AWT_WM_NONREPARENTING", "1")     -- fixes issues on jetbrains ides
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "auto") -- Wayland mode for Electron apps
 

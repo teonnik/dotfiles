@@ -46,7 +46,7 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "foot --app-id=wiremix wiremix"
     },
     "idle_inhibitor": {
         "format": "{icon} ",
