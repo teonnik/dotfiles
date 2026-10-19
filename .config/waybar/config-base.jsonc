@@ -13,10 +13,18 @@
         "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({workspace = \"e-1\"})'"
     },
     "hyprland/language": {
-        "format": " {}"
+        "format": " {short}"
     },
     "clock": {
-        "format": " {:%A - %d %B %Y - %H:%M (%Z)}"
+        "format": " {:%a %d %b  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "format": {
+                "months": "<span color='#cba6f7'><b>{}</b></span>",
+                "weekdays": "<span color='#89b4fa'><b>{}</b></span>",
+                "today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "pulseaudio": {
         "format": "{icon} {volume}",
@@ -38,16 +46,19 @@
         },
         "on-click": "pavucontrol"
     },
-    "pulseaudio#mic": {
-        "format-source": " {volume}",
-        "format-source-muted": ""
-    },
     "idle_inhibitor": {
         "format": "{icon} ",
         "format-icons": {
             "activated": "",
             "deactivated": ""
         }
+    },
+    "privacy": {
+        "icon-size": 14,
+        "modules": [
+            { "type": "screenshare" },
+            { "type": "audio-in" }
+        ]
     },
     "tray": {
         "icon-size": 15,

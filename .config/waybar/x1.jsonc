@@ -3,6 +3,7 @@
         "~/.config/waybar/config-base.jsonc"
     ],
     "modules-right": [
+        "privacy",
         "idle_inhibitor",
         "battery",
         "backlight",

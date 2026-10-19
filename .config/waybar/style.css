@@ -10,6 +10,17 @@ window#waybar {
 
 #workspaces button {
     color: #cdd6f4;
+    padding: 0 5px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+/* Replace GTK's light hover with a dark one */
+#workspaces button:hover {
+    background: #313244;
+    box-shadow: inherit;
+    text-shadow: inherit;
 }
 
 /*Both selectors are needed to avoid overriding `active`*/
@@ -30,12 +41,10 @@ window#waybar {
 }
 
 #workspaces,
+#privacy,
 #idle_inhibitor,
-#window,
 #language,
 #clock,
-#temperature,
-#network,
 #pulseaudio,
 #tray,
 #battery,
@@ -48,4 +57,42 @@ window#waybar {
 
 label:focus {
     background-color: #313244;
+}
+
+/* States worth noticing at a glance */
+#idle_inhibitor.activated {
+    background-color: #cba6f7;
+    color: #1e1e2e;
+}
+
+#pulseaudio.muted {
+    color: #6c7086;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+    color: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f38ba8;
+    color: #1e1e2e;
+}
+
+#privacy {
+    background-color: #f38ba8;
+}
+
+tooltip {
+    background-color: rgba(30, 30, 46, 0.95);
+    border: 1px solid #45475a;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #cdd6f4;
 }
