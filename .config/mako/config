@@ -1,7 +1,7 @@
 background-color=#1e1e2ed9
+text-color=#cdd6f4
 border-color=#1e1e2ed9
 
 [urgency=critical]
-text-color=#ff5555
-border-color=#ff5555
-
+text-color=#f38ba8
+border-color=#f38ba8

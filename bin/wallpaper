@@ -1,0 +1,90 @@
+#!/bin/bash
+# Wallpapers from Wallhaven, one fresh download per Super+W.
+#
+#   wallpaper        download a new wallpaper and show it (Super+W)
+#   wallpaper save   keep the current one (Super+Shift+W): its ID and link go
+#                    to ~/personal/readme/wallpapers.md (synced); the image can
+#                    be downloaded again from the link
+#
+# Every download is logged to ~/.local/state/wallpaper/history.tsv and never
+# shown twice. ~/.cache/wallpaper/current points at the image on screen
+# (hyprlock reads it); older downloads are pruned.
+set -euo pipefail
+
+cache="$HOME/.cache/wallpaper"
+history="$HOME/.local/state/wallpaper/history.tsv"
+notes="$HOME/personal/readme/wallpapers.md"
+
+# Searches that tend to give calm, low-detail images that sit well behind code.
+keywords=(
+  "minimalism"
+  "minimalism dark"
+  "simple background"
+  "abstract dark"
+  "geometry"
+  "gradient"
+  "lines"
+  "low poly"
+  "space"
+  "night sky"
+  "mountains"
+  "fog"
+  "landscape digital art"
+  "vector landscape"
+)
+
+fail() {
+  notify-send -u low "Wallpaper" "$1" || true
+  echo "$1" >&2
+  exit 1
+}
+
+next() {
+  awww query >/dev/null 2>&1 || fail "awww-daemon is not running"
+  mkdir -p "$cache" "$(dirname "$history")"
+  touch "$history"
+
+  local keyword=${keywords[RANDOM % ${#keywords[@]}]}
+  local results pick id url file
+  results=$(curl -fsSG https://wallhaven.cc/api/v1/search \
+      --data-urlencode "q=$keyword" \
+      -d categories=100 -d purity=100 -d atleast=2560x1440 -d ratios=16x9,16x10 \
+      -d sorting=toplist -d topRange=1y -d page=$((RANDOM % 5 + 1)) \
+    | jq -r '.data[] | "\(.id) \(.path)"') || fail "Wallhaven search failed"
+
+  # Skip anything already shown.
+  pick=$(cut -f2 "$history" | grep -vwFf - <(printf '%s\n' "$results") | shuf -n1 || true)
+  [ -n "$pick" ] || fail "No new results for \"$keyword\", press again"
+  read -r id url <<< "$pick"
+
+  file="$cache/$(basename "$url")"
+  curl -fsSL -o "$file" "$url" || fail "Download of $id failed"
+
+  awww img "$file" --transition-type grow --transition-pos top-right --transition-duration 1.5 --transition-fps 60
+  ln -sfn "$file" "$cache/current"
+  printf '%s\t%s\t%s\thttps://wallhaven.cc/w/%s\n' "$(date -Iseconds)" "$id" "$keyword" "$id" >> "$history"
+
+  # Keep the 20 newest downloads; the current one is always among them.
+  ls -t "$cache"/wallhaven-* | tail -n +21 | xargs -r rm --
+}
+
+save() {
+  local file name id keyword
+  file=$(readlink -f "$cache/current") || fail "No current wallpaper"
+  name=$(basename "$file")
+  [[ $name == wallhaven-* ]] || fail "$name is not from Wallhaven"
+  id=${name#wallhaven-}
+  id=${id%.*}
+
+  if ! grep -qF "wallhaven.cc/w/$id)" "$notes"; then
+    keyword=$(awk -F'\t' -v id="$id" '$2 == id { k = $3 } END { print k }' "$history")
+    printf -- '- [%s](https://wallhaven.cc/w/%s) %s, "%s"\n' "$id" "$id" "$(date +%F)" "$keyword" >> "$notes"
+  fi
+  notify-send "Wallpaper saved" "$id"
+}
+
+case "${1:-next}" in
+  next) next ;;
+  save) save ;;
+  *) echo "usage: wallpaper [next|save]" >&2; exit 2 ;;
+esac

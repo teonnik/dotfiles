@@ -9,7 +9,7 @@ chosen=$({
 } | fuzzel --dmenu --prompt "Power  ")
 
 case "$chosen" in
-    Lock)     swaylock ;;
+    Lock)     loginctl lock-session ;;
     Shutdown) systemctl poweroff ;;
     Reboot)   systemctl reboot ;;
     Suspend)  systemctl suspend ;;

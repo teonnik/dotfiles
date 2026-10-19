@@ -10,7 +10,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("blueman-applet")
     -- hl.exec_cmd("signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland")
     hl.exec_cmd("hypridle")
-    hl.exec_cmd("hyprpaper")
+    -- the wallpaper itself is set by ~/bin/wallpaper (Super+W)
+    hl.exec_cmd("awww-daemon")
     hl.exec_cmd("shikane")
     hl.exec_cmd("hyprsunset")
 end)
@@ -45,8 +46,9 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border   = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-            inactive_border = "rgba(595959aa)",
+            -- Catppuccin Mocha: mauve -> blue, surface1
+            active_border   = { colors = { "rgba(cba6f7ee)", "rgba(89b4faee)" }, angle = 45 },
+            inactive_border = "rgba(45475aaa)",
         },
 
         resize_on_border = false,
@@ -67,13 +69,13 @@ hl.config({
             enabled      = false,
             range        = 4,
             render_power = 3,
-            color        = "rgba(1a1a1aee)",
+            color        = "rgba(11111bee)",
         },
 
         blur = {
             enabled  = true,
-            size     = 4,
-            passes   = 1,
+            size     = 6,
+            passes   = 2,
             vibrancy = 0.1696,
         },
     },
@@ -162,9 +164,11 @@ local mainMod = "SUPER"
 hl.bind(mainMod .. " + Return",        hl.dsp.exec_cmd("foot"))
 hl.bind(mainMod .. " + D",             hl.dsp.exec_cmd("fuzzel"))
 hl.bind(mainMod .. " + SHIFT + D",     hl.dsp.exec_cmd("fuzzel --list-executables-in-path"))
-hl.bind(mainMod .. " + L",             hl.dsp.exec_cmd("swaylock"))
+hl.bind(mainMod .. " + L",             hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + P",             hl.dsp.exec_cmd("~/bin/scr"))
 hl.bind("Print",                       hl.dsp.exec_cmd("~/bin/scr"))
+hl.bind(mainMod .. " + W",             hl.dsp.exec_cmd("~/bin/wallpaper"))
+hl.bind(mainMod .. " + SHIFT + W",     hl.dsp.exec_cmd("~/bin/wallpaper save"))
 hl.bind(mainMod .. " + V",             hl.dsp.exec_cmd("~/bin/dictate start"))
 hl.bind(mainMod .. " + V",             hl.dsp.exec_cmd("~/bin/dictate stop"), { release = true })
 
@@ -269,7 +273,7 @@ hl.window_rule({
 hl.window_rule({
     name    = "foot-opacity",
     match   = { class = "foot" },
-    opacity = "0.85",
+    -- opacity = "0.85",
 })
 
 -- Set border color to red for Xwayland windows

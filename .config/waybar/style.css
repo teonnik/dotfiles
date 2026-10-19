@@ -4,27 +4,28 @@
 }
 
 window#waybar {
-    color: #d8dee8;
+    color: #cdd6f4;
     background-color: transparent;
 }
 
 #workspaces button {
-    color: #d8dee8;
+    color: #cdd6f4;
 }
 
 /*Both selectors are needed to avoid overriding `active`*/
 #workspaces button.active.visible {
-    color: #cc393a;
+    color: #cba6f7;
     font-weight: bold;
 }
 
 #workspaces button.visible {
-    color: #d8dee8;
+    color: #cdd6f4;
     font-weight: bold;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4b98;
+    background-color: #f38ba8;
+    color: #1e1e2e;
     font-weight: bold;
 }
 
@@ -46,5 +47,5 @@ window#waybar {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: #313244;
 }
