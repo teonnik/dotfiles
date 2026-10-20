@@ -10,6 +10,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("blueman-applet")
     -- hl.exec_cmd("signal-desktop --use-tray-icon --enable-features=UseOzonePlatform --ozone-platform=wayland")
     hl.exec_cmd("hypridle")
+    -- Password prompts for GUI admin actions. Its unit is tied to
+    -- graphical-session.target, which nothing reaches without uwsm, so start
+    -- it by name instead of enabling it.
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
     -- the wallpaper itself is set by ~/bin/wallpaper (Super+W)
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("shikane")
