@@ -14,6 +14,9 @@ hl.on("hyprland.start", function()
     -- graphical-session.target, which nothing reaches without uwsm, so start
     -- it by name instead of enabling it.
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    -- Mounts removable drives as they appear, with a notification; the tray
+    -- icon (unmount/eject) only shows while one is plugged in.
+    hl.exec_cmd("udiskie --smart-tray")
     -- the wallpaper itself is set by ~/bin/wallpaper (Super+W)
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("shikane")
