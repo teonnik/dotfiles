@@ -14,6 +14,7 @@ set -gx XDG_STATE_HOME $HOME/.local/state
 
 # config
 set -gx DOCKER_CONFIG $XDG_CONFIG_HOME/docker
+set -gx SPACK_USER_CONFIG_PATH $XDG_CONFIG_HOME/spack
 # CUPS reads $XDG_CONFIG_HOME/cups by itself, no variable needed.
 
 # data
@@ -32,4 +33,5 @@ set -gx HISTFILE $XDG_STATE_HOME/bash/history        # bash started from fish
 set -gx CUDA_CACHE_PATH $XDG_CACHE_HOME/nv           # CUDA JIT cache
 set -gx NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 set -gx PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
+set -gx SPACK_USER_CACHE_PATH $XDG_CACHE_HOME/spack   # bootstrap store, misc cache
 set -gx TEXMFVAR $XDG_CACHE_HOME/texlive/texmf-var
