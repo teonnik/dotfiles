@@ -16,27 +16,10 @@ set -gx EDITOR nvim
 set -gx VISUAL nvim   # sudoedit, crontab -e and others check VISUAL first
 set -gx PAGER less
 
-# XDG
-set -gx XDG_CONFIG_HOME $HOME/.config
-set -gx XDG_CACHE_HOME $HOME/.cache
-set -gx XDG_DATA_HOME $HOME/.local/share
-set -gx XDG_STATE_HOME $HOME/.local/state
-
-# XDG config
-set -gx DOCKER_CONFIG $XDG_CONFIG_HOME/docker
-
-# XDG data
-set -gx CARGO_HOME $XDG_DATA_HOME/cargo
-set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
-set -gx GOPATH $XDG_DATA_HOME/go
-set -gx PASSWORD_STORE_DIR $XDG_DATA_HOME/password-store
-set -gx RUSTUP_HOME $XDG_DATA_HOME/rustup
+# XDG directories and the programs moved into them: conf.d/xdg.fish
 
 # cmake
 set -gx CMAKE_EXPORT_COMPILE_COMMANDS ON
-
-# python
-set -gx PYTHONPYCACHEPREFIX $XDG_CACHE_HOME/python
 
 # fzf
 set -gx FZF_DEFAULT_COMMAND "rg --files --hidden --glob '!.git'"
