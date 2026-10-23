@@ -7,8 +7,8 @@
 #                    be downloaded again from the link
 #
 # Every download is logged to ~/.local/state/wallpaper/history.tsv and never
-# shown twice. ~/.cache/wallpaper/current points at the image on screen
-# (hyprlock reads it); older downloads are pruned.
+# shown twice. ~/.cache/wallpaper/current points at the image on screen and
+# lock.jpg is a downscaled copy for hyprlock; older downloads are pruned.
 set -euo pipefail
 
 cache="$HOME/.cache/wallpaper"
@@ -62,6 +62,9 @@ next() {
 
   awww img "$file" --transition-type grow --transition-pos top-right --transition-duration 1.5 --transition-fps 60
   ln -sfn "$file" "$cache/current"
+  # Small copy for hyprlock, which blurs it anyway; full-size downloads (often
+  # 5K) made locking visibly slow.
+  magick "$file" -resize '1280x1280>' -quality 85 "$cache/lock.jpg" || echo "lock copy failed" >&2
   printf '%s\t%s\t%s\thttps://wallhaven.cc/w/%s\n' "$(date -Iseconds)" "$id" "$keyword" "$id" >> "$history"
 
   # Keep the 20 newest downloads; the current one is always among them.
