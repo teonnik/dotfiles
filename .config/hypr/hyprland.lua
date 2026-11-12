@@ -1,3 +1,30 @@
+------------------
+---- MONITORS ----
+------------------
+
+-- Home PC (description strings: `hyprctl monitors all`)
+hl.monitor({ output = "desc:Dell Inc. DELL P2724DEB CC8BFP3", mode = "preferred", position = "0x0",    scale = 1 })
+hl.monitor({ output = "desc:Dell Inc. DELL U2722D CN86YG3",   mode = "preferred", position = "2560x0", scale = 1 })
+
+-- Fallback for any other monitor: native mode, placed to the right
+hl.monitor({ output = "", mode = "preferred", position = "auto", scale = 1 })
+
+-- Lid closed while docked: logind ignores it, so turn the panel off.
+-- Undocked, logind suspends. Re-enabling needs a reload.
+hl.bind("switch:on:Lid Switch", function()
+    if #hl.get_monitors() > 1 then
+        hl.monitor({ output = "eDP-1", disabled = true })
+    end
+end, { locked = true })
+
+hl.bind("switch:off:Lid Switch", function()
+    local edp = hl.get_monitor("eDP-1")
+    if not (edp and edp.enabled) then
+        hl.dispatch(hl.dsp.reload_config())
+    end
+end, { locked = true })
+
+
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -19,7 +46,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("udiskie --smart-tray")
     -- the wallpaper itself is set by ~/bin/wallpaper (Super+W)
     hl.exec_cmd("awww-daemon")
-    hl.exec_cmd("shikane")
     hl.exec_cmd("hyprsunset")
 end)
 
